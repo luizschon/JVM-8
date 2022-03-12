@@ -1,8 +1,8 @@
 #ifndef _CMD_ARGUMENTS_HPP
 #define _CMD_ARGUMENTS_HPP
 
-#include <bits/stdc++.h>
 #include <cstdlib>
+#include <iostream>
 #include <stdexcept>
 
 using namespace std;

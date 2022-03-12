@@ -1,5 +1,5 @@
-#ifndef _IO_HPP
-#define _IO_HPP
+#ifndef _CLASS_FILE_HPP
+#define _CLASS_FILE_HPP
 
 #include <fstream>
 #include "types_definition.hpp"
@@ -34,4 +34,22 @@ u4 read_u4(ifstream &file);
  */
 u8 read_u8(ifstream &file);
 
-#endif // _IO_HPP
+// finish docs
+ifstream open_file(int argc, char** argv);
+
+// finish docs
+void get_metadata(class_file &class_f, ifstream &file);
+
+// finish docs
+void get_constant_pool(class_file &class_f, ifstream &file);
+
+// finish docs
+cp_info* create_pool(void* data);
+
+// finish docs
+void add_to_pool(cp_info* pool, void* data);
+
+// finish docs
+void delete_pool(cp_info* pool);
+
+#endif // _CLASS_FILE_HPP
