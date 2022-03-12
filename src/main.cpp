@@ -14,14 +14,13 @@ int main(int argc, char** argv)
     cmd_args.init(argc, argv);
 
     if (cmd_args.read_bytecode)
-        cout << "lendo bytecodes" << endl;
+        cout << "Reading bytecodes..." << endl;
 
     string line, filename = cmd_args.filename;
     ifstream file(filename, ios::binary);
 
-    // conserta aqui pls ty
     u4 magic = read_u4(file);
-    cout << "0x" << setfill('0') << setw(8) << hex << magic;
+    cout << "0x" << setfill('0') << setw(8) << uppercase << hex << magic;
 
     return 0;
 }
