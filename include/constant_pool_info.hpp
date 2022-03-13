@@ -21,7 +21,6 @@
 
 using namespace std;
 
-
 typedef struct CONSTANT_utf8_info {
     CONSTANT_utf8_info(ifstream &file);
     u1 tag; // 1

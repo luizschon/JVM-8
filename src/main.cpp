@@ -16,7 +16,7 @@ int main(int argc, char** argv)
     get_metadata(*class_f, file);
     get_constant_pool(*class_f, file);
     get_class_data(*class_f, file);
-    print_all_pool(*class_f);
+    print_all(*class_f);
 
     delete class_f;
 
