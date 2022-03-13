@@ -4,298 +4,285 @@
 
 using namespace std;
 
-void print_all(class_file &class_f)
+void print_all(class_file &class_f, string filename)
 {
-    print_pool(class_f);
-    print_class_data(class_f);
-    print_interfaces(class_f);
-    print_fields(class_f);
-    print_methods(class_f);
-    print_attributes(class_f);
+    int pos_i = filename.find("/"), pos_f = filename.find(".class") - pos_i;
+    string outname = filename.substr(pos_i + 1, pos_f - 1);
+
+    ofstream outfile("./out/" + outname + ".md");
+    outfile << "# **" << outname << "**" << endl << endl;
+    print_general_info(class_f, outfile);
+    print_pool(class_f, outfile);
+    print_interfaces(class_f, outfile);
+    print_fields(class_f, outfile);
+    print_methods(class_f, outfile);
+    print_attributes(class_f, outfile);
+    outfile.close();
 }
 
-void print_pool(class_file &class_f)
+void print_general_info(class_file &class_f, ofstream &outfile)
 {
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << right << " Constant Pool" << setfill('-') << endl;
-    cout.flags(f);
-    print_utf8_pool(class_f);
-    print_integer_pool(class_f);
-    print_float_pool(class_f);
-    print_long_pool(class_f);
-    print_double_pool(class_f);
-    print_class_pool(class_f);
-    print_string_pool(class_f);
-    print_fieldref_pool(class_f);
-    print_methodref_pool(class_f);
-    print_interface_methodref_pool(class_f);
-    print_name_and_type_pool(class_f);
-    print_method_handle_pool(class_f);
-    print_method_type_pool(class_f);
-    print_invoke_dynamic_pool(class_f);
+    outfile << "## **General Information**" << endl;
+    ios_base::fmtflags f(outfile.flags());
+    outfile << "Magic " << "**0x" << uppercase << hex << class_f.magic << "**  " << endl;
+    outfile.flags(f);
+    outfile << "Minor version **" << class_f.minor_version << "**  " << endl;
+    outfile << "Major version **" << class_f.major_version << "**  " << endl;
+    outfile << "Constant Pool Count **" << class_f.constant_pool_count << "**  " << endl;
+    outfile << "Access Flags **" << class_f.access_flag << "**  " << endl;
+    outfile << "This Class **" << class_f.this_class << "**  " << endl;
+    outfile << "Super Class **" << class_f.super_class << "**  " << endl;
+    outfile << "Interfaces Count **" << class_f.interfaces_count << "**  " << endl;
+    outfile << "Fields Count **" << class_f.fields_count << "**  " << endl;
+    outfile << "Methods Count **" << class_f.methods_count << "**  " << endl;
+    outfile << "Attributes Count **" << class_f.attributes_count << "**  " << endl;
+    outfile << endl;
 }
 
-void print_utf8_pool(class_file &class_f)
+void print_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Utf8" << endl;
+    outfile << "## **Constant Pool**" << endl;
+    print_utf8_pool(class_f, outfile);
+    print_integer_pool(class_f, outfile);
+    print_float_pool(class_f, outfile);
+    print_long_pool(class_f, outfile);
+    print_double_pool(class_f, outfile);
+    print_class_pool(class_f, outfile);
+    print_string_pool(class_f, outfile);
+    print_fieldref_pool(class_f, outfile);
+    print_methodref_pool(class_f, outfile);
+    print_interface_methodref_pool(class_f, outfile);
+    print_name_and_type_pool(class_f, outfile);
+    print_method_handle_pool(class_f, outfile);
+    print_method_type_pool(class_f, outfile);
+    print_invoke_dynamic_pool(class_f, outfile);
+}
+
+void print_utf8_pool(class_file &class_f, ofstream &outfile)
+{
     for (auto i : class_f.utf8_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Length: " << i.length << endl;
-        cout << "Bytes: ";
+        outfile << "### *CONSTANT_Utf8_info*" << endl;
+        outfile << "- Length " << i.length << "  " << endl;
+        outfile << "- Bytes [ `";
         
         for (auto j : i.bytes)
-            cout << j << " ";
-        cout << endl;
+            outfile << j;
+        outfile << "` ]" << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_integer_pool(class_file &class_f)
+void print_integer_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Integer" << endl;
+    outfile << "### *CONSTANT_Integer_info*" << endl;
     for (auto i : class_f.integer_pool)
-    {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Bytes: " << i.bytes << endl;
-    }
-    cout << endl;
+        outfile << "- Bytes " << i.bytes << endl;
+    outfile << endl;
 }
 
-void print_float_pool(class_file &class_f)
+void print_float_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Float" << endl;
+    outfile << "### *CONSTANT_Float_info*" << endl;
     for (auto i : class_f.float_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Bytes: " << i.bytes << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- Bytes 0x" << hex << i.bytes << endl;
+        outfile.flags(f);
+        outfile << "- Float " << calc_float(i.bytes) << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-// ios_base::fmtflags f(cout.flags());
-// cout << "Methods_access_flags: " << hex << class_f.methods[i].access_flags << endl;
-// cout.flags(f);
-
-void print_long_pool(class_file &class_f)
+void print_long_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Long" << endl;
+    outfile << "### *CONSTANT_Long_info*" << endl;
     for (auto i : class_f.long_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "High Bytes: " << i.high_bytes << endl;
-        cout << "Low Bytes: " << i.low_bytes << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- High Bytes 0x" << hex << i.high_bytes << endl;
+        outfile << "- Low Bytes 0x" << hex << i.low_bytes << endl;
+        outfile.flags(f);
+        outfile << "- Long " << calc_long(i.high_bytes, i.low_bytes) << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_double_pool(class_file &class_f)
+void print_double_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Double" << endl;
+    outfile << "### *CONSTANT_Double_info*" << endl;
     for (auto i : class_f.double_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "High Bytes: " << i.high_bytes << endl;
-        cout << "Low Bytes: " << i.low_bytes << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- High Bytes 0x" << hex << i.high_bytes << endl;
+        outfile << "- Low Bytes 0x" << hex << i.low_bytes << endl;
+        outfile.flags(f);
+        outfile << "- Double " << calc_double(i.high_bytes, i.low_bytes) << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_class_pool(class_file &class_f)
+void print_class_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Class" << endl;
+    outfile << "### *CONSTANT_Class_info*" << endl;
     for (auto i : class_f.class_pool)
-    {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Name Index: " << i.name_idx << endl;
-    }
-    cout << endl;
+        outfile << "- Name Index " << i.name_idx << endl;
+    outfile << endl;
 }
 
-void print_string_pool(class_file &class_f)
+void print_string_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "String" << endl;
+    outfile << "### *CONSTANT_String_info*" << endl;
     for (auto i : class_f.string_pool)
-    {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "String Index: " << i.str_idx << endl;
-    }
-    cout << endl;
+        outfile << "- String Index " << i.str_idx << endl;
+    outfile << endl;
 }
 
-void print_fieldref_pool(class_file &class_f)
+void print_fieldref_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Fieldref" << endl;
+    outfile << "### *CONSTANT_Fieldref_info*" << endl;
     for (auto i : class_f.fieldref_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Class Index: " << i.class_idx << endl;
-        cout << "Name And Type Index: " << i.name_and_type_idx << endl;
+        outfile << "- Class Index " << i.class_idx << endl;
+        outfile << "- Name And Type Index " << i.name_and_type_idx << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_methodref_pool(class_file &class_f)
+void print_methodref_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Methodref" << endl;
+    outfile << "### *CONSTANT_Methodref_info*" << endl;
     for (auto i : class_f.methodref_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Class Index: " << i.class_idx << endl;
-        cout << "Name And Type Index: " << i.name_and_type_idx << endl;
+        outfile << "- Class Index " << i.class_idx << endl;
+        outfile << "- Name And Type Index " << i.name_and_type_idx << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_interface_methodref_pool(class_file &class_f)
+void print_interface_methodref_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Interface Methodref" << endl;
+    outfile << "### *CONSTANT_Interface_methodref_info*" << endl;
     for (auto i : class_f.interface_methodref_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Class Index: " << i.class_idx << endl;
-        cout << "Name And Type Index: " << i.name_and_type_idx << endl;
+        outfile << "- Class Index " << i.class_idx << endl;
+        outfile << "- Name And Type Index " << i.name_and_type_idx << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_name_and_type_pool(class_file &class_f)
+void print_name_and_type_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Name And Type" << endl;
+    outfile << "### *CONSTANT_Name_and_type*" << endl;
     for (auto i : class_f.name_and_type_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Name Index: " << i.name_idx << endl;
-        cout << "Descriptor Index: " << i.descriptor_idx << endl;
+        outfile << "- Name Index " << i.name_idx << endl;
+        outfile << "- Descriptor Index " << i.descriptor_idx << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_method_handle_pool(class_file &class_f)
+void print_method_handle_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Method Handle Info" << endl;
+    outfile << "### *CONSTANT_Method_handle_info*" << endl;
     for (auto i : class_f.method_handle_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Reference Kind: " << i.reference_kind << endl;
-        cout << "Reference Index: " << i.reference_index << endl;
+        outfile << "- Reference Kind " << i.reference_kind << endl;
+        outfile << "- Reference Index " << i.reference_index << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_method_type_pool(class_file &class_f)
+void print_method_type_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Method Type" << endl;
+    outfile << "### *CONSTANT_Method_type*" << endl;
     for (auto i : class_f.method_type_pool)
-    {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Descriptor Index: " << i.descriptor_index << endl;
-    }
-    cout << endl;
+        outfile << "- Descriptor Index " << i.descriptor_index << endl;
+    outfile << endl;
 }
 
-void print_invoke_dynamic_pool(class_file &class_f)
+void print_invoke_dynamic_pool(class_file &class_f, ofstream &outfile)
 {
-    cout << "Invoke Dynamic" << endl;
+    outfile << "### *CONSTANT_Invoke_dynamic*" << endl;
     for (auto i : class_f.invoke_dynamic_pool)
     {
-        cout << "Tag: " << (int) i.tag << endl;
-        cout << "Bootstrap Method Attribute Index: " << i.bootstrap_method_attr_index << endl;
-        cout << "Name and Type Index: " << i.name_and_type_index << endl;
+        outfile << "- Bootstrap Method Attribute Index " << i.bootstrap_method_attr_index << endl;
+        outfile << "- Name and Type Index " << i.name_and_type_index << endl;
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_class_data(class_file &class_f)
+void print_interfaces(class_file &class_f, ofstream &outfile)
 {
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << left << "Access flag: " << right << " 0x" << uppercase << hex << class_f.access_flag << endl;
-    cout.flags(f);
-    cout << "This class idx: " << class_f.this_class << endl;
-    cout << "Super class idx: " << class_f.super_class << endl;
-}
-
-void print_interfaces(class_file &class_f)
-{
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << right << " Interfaces" << setfill('-') << endl;
-    cout.flags(f);
-    cout << "Interfaces count: " << class_f.interfaces_count << endl;
-    cout << "Interfaces: [ ";
+    outfile << "## **Interfaces**" << endl;
     for (int i = 0; i < class_f.interfaces_count; i++)
-        cout << class_f.interfaces[i] << " ";
-    cout << "]" << endl << endl;
+        outfile << "- Interface " << class_f.interfaces[i];
+    outfile << endl << endl;
 }
 
-void print_fields(class_file &class_f)
+void print_fields(class_file &class_f, ofstream &outfile)
 {
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << right << " Fields" << setfill('-') << endl;
-    cout.flags(f);
-    cout << "Fields count: " << class_f.fields_count << endl;
+    outfile << "## **Fields**" << endl;
     for(int i = 0; i < class_f.fields_count; i++) 
     {
-        ios_base::fmtflags f(cout.flags());
-        cout << "Fields Access Flags: " << hex << class_f.fields[i].access_flags << endl;
-        cout.flags(f);
-        cout << "Descriptor Index: " << class_f.fields[i].descriptor_idx << endl;
-        cout << "Name Index: " << class_f.fields[i].name_idx << endl;
-        cout << "Attr Count: " << class_f.fields[i].attr_count << endl;
+        outfile << "### *Field*" << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- Fields Access Flags " << hex << class_f.fields[i].access_flags << endl;
+        outfile.flags(f);
+        outfile << "- Descriptor Index " << class_f.fields[i].descriptor_idx << endl;
+        outfile << "- Name Index " << class_f.fields[i].name_idx << endl;
+        outfile << "- Attr Count " << class_f.fields[i].attr_count << endl;
         
         for (int k = 0; k < class_f.fields[i].attr_count; k++)
         {
-            cout << "Attr Name Idx: " << class_f.fields[i].attr[k].attr_name_idx << endl;
-            cout << "Attr Length: " << class_f.fields[i].attr[k].attr_length << endl;
-            cout << "Attributes: [ "; 
+            outfile << "  * Attribute Name Index " << class_f.fields[i].attr[k].attr_name_idx << endl;
+            outfile << "  * Attribute Length " << class_f.fields[i].attr[k].attr_length << endl;
+            outfile << "  * Attributes [ "; 
             for (int l = 0; l < class_f.fields[i].attr[k].attr_length; l++) 
-                cout << class_f.fields[i].attr[k].info[l] << " ";
-            cout << "]" << endl;
+                outfile << class_f.fields[i].attr[k].info[l];
+            outfile << " ]" << endl;
         }
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_methods(class_file &class_f)
+void print_methods(class_file &class_f, ofstream &outfile)
 {
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << right << " Methods" << setfill('-') << endl;
-    cout.flags(f);
-    cout << "Methods Count: " << class_f.methods_count << endl;
+    outfile << "## **Methods**" << endl;
     for(int i = 0; i < class_f.methods_count; i++) 
     {
-        ios_base::fmtflags f(cout.flags());
-        cout << "Methods Access Flags: " << right << " 0x" << uppercase << hex << class_f.methods[i].access_flags << endl;
-        cout.flags(f);
-        cout << "Name Index: " << class_f.methods[i].name_idx << endl;
-        cout << "Descriptor Index: " << class_f.methods[i].descriptor_idx << endl;
-        cout << "Attr Count: " << class_f.methods[i].attr_count << endl;
+        outfile << "### *Method*" << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- Methods Access Flags " << right << " 0x" << uppercase << hex << class_f.methods[i].access_flags << endl;
+        outfile.flags(f);
+        outfile << "- Name Index " << class_f.methods[i].name_idx << endl;
+        outfile << "- Descriptor Index " << class_f.methods[i].descriptor_idx << endl;
+        outfile << "- Attribute Count " << class_f.methods[i].attr_count << endl;
         
         for (int k = 0; k < class_f.methods[i].attr_count; k++)
         {
-            cout << "Attr Name Idx: " << class_f.methods[i].attr[k].attr_name_idx << endl;
-            cout << "Attr Length: " << class_f.methods[i].attr[k].attr_length << endl;
-            cout << "Attributes: [ "; 
-            for (int l = 0; l < class_f.methods[i].attr[k].attr_length; l++) 
-                cout << class_f.methods[i].attr[k].info[l] << " ";
-            cout << "]" << endl;
+            outfile << "  * Attribute Name Idx " << class_f.methods[i].attr[k].attr_name_idx << endl;
+            outfile << "  * Attribute Length " << class_f.methods[i].attr[k].attr_length << endl;
+            // outfile << "  * Attributes [ "; 
+            // for (int l = 0; l < class_f.methods[i].attr[k].attr_length; l++) 
+            //     outfile << class_f.methods[i].attr[k].info[l];
+            // outfile << " ]" << endl;
         }
     }
-    cout << endl;
+    outfile << endl;
 }
 
-void print_attributes(class_file &class_f)
+void print_attributes(class_file &class_f, ofstream &outfile)
 {
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << right << " Attributes" << setfill('-') << endl;
-    cout.flags(f);
-    cout << "Attributes count: " << class_f.attributes_count << endl;
-    for (int i = 0; i < class_f.attributes_count; i++) {
-        cout << "Attr Name Index: " << class_f.attributes[i].attr_name_idx << endl;
-        cout << "Attr Length: " << class_f.attributes[i].attr_length << endl;
-        cout << "Attributes Info: [ "; 
-        for (int j = 0; j < class_f.attributes[i].attr_length; j++)
-            cout << class_f.attributes[i].info[j] << " ";
-        cout << "]" << endl; 
+    outfile << "## **Attributes**" << endl;
+    for (int i = 0; i < class_f.attributes_count; i++)
+    {
+        outfile << "- Attribute Name Index " << class_f.attributes[i].attr_name_idx << endl;
+        outfile << "- Attribute Length " << class_f.attributes[i].attr_length << endl;
+        // outfile << "Attributes Info: [ "; 
+        // for (int j = 0; j < class_f.attributes[i].attr_length; j++)
+        //     outfile << class_f.attributes[i].info[j] << " ";
+        // outfile << "]" << endl; 
     }
-    cout << endl;
+    outfile << endl;
 }

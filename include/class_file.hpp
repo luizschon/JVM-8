@@ -81,6 +81,7 @@ typedef struct class_file {
     u2 minor_version;
     u2 major_version;
     u2 constant_pool_count;
+    vector<int> pool_lookup_table;
     vector<CONSTANT_utf8_info> utf8_pool;
     vector<CONSTANT_integer_info> integer_pool;
     vector<CONSTANT_long_info> long_pool;
@@ -162,5 +163,14 @@ void get_methods(class_file &class_f, ifstream &file);
 
 // finish docs
 void get_attributes(class_file &class_f, ifstream &file);
+
+// finish docs
+long calc_long(u4 high, u4 low);
+
+// finish docs
+double calc_double(u4 high, u4 low);
+
+// finish docs
+float calc_float(u4 bytes);
 
 #endif // _CLASS_FILE_HPP

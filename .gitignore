@@ -36,4 +36,4 @@
 
 # Generated files
 *.txt
-*.md
+/out/*.md

@@ -3,6 +3,8 @@
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
 #include <iomanip>
+#include <limits>
+#include <math.h>
 
 using namespace std;
 
@@ -52,6 +54,57 @@ u8 read_u8(ifstream &file)
     return data;
 }
 
+double calc_double(u4 high, u4 low) 
+{
+    long bits = calc_long(high, low);
+    if (bits == 0x7ff0000000000000L)
+        return numeric_limits<double>::infinity();
+    else if (bits == 0xfff0000000000000L)
+        return -numeric_limits<double>::infinity();
+    else if (bits >= 0x7ff0000000000001L && bits <= 0x7fffffffffffffffL)
+        return numeric_limits<double>::quiet_NaN();
+    else if (bits >= 0xfff0000000000001L && bits <= 0xffffffffffffffffL)
+        return numeric_limits<double>::quiet_NaN();
+    else
+    {
+        int s = ((bits >> 63) == 0) ? 1 : -1;
+        int e = (bits >> 52) & 0x7ffL;
+        long m = (e == 0) ? 
+            (bits & 0xfffffffffffffL) << 1 : 
+            (bits & 0xfffffffffffffL) | 0x10000000000000L;
+        
+        return s * m * pow(2, e - 1075);
+    }
+}
+
+float calc_float(u4 bytes)
+{
+    if (bytes == 0x7f800000)
+        return numeric_limits<float>::infinity();
+    else if (bytes == 0xff800000)
+        return -numeric_limits<float>::infinity();
+    else if (bytes >= 0x7f800001 && bytes <= 0x7fffffff)
+        return numeric_limits<float>::signaling_NaN();
+    else if (bytes >= 0xff800001 && bytes <= 0xffffffff)
+        return numeric_limits<float>::signaling_NaN();
+    else
+    {
+        int s = ((bytes >> 31) == 0) ? 1 : -1;
+        int e = ((bytes >> 23) & 0xff);
+        int m = (e == 0) ? 
+            (bytes & 0x7fffff) << 1 :
+            (bytes & 0x7fffff) | 0x800000;
+
+        return s * m * pow(2, e - 150);
+    }
+}
+
+long calc_long(u4 high, u4 low)
+{
+    auto l = ((u8) high << 32) | low;
+    return (long) l;
+}
+
 // finish docs
 ifstream open_file(int argc, char** argv)
 {
@@ -70,29 +123,22 @@ ifstream open_file(int argc, char** argv)
 // finish docs
 void get_metadata(class_file &class_f, ifstream &file) 
 {
-    // read class file fields
-    u4 magic     = read_u4(file);        // signature (0xCAFEBABE)
-    u2 minor_ver = read_u2(file);        // minor version
-    u2 major_ver = read_u2(file);        // major version
-    
-    cout << setw(50) << left << "Reading bytecodes" << setfill('-') << endl;
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << left << "Signature " << right << " 0x" << uppercase << hex << magic << endl;
-    cout.flags(f);
-    cout << setw(50) << left << "Minor version " << right << " " << minor_ver << endl;
-    cout << setw(50) << left << "Major version " << right << " " << major_ver << endl;
+    class_f.magic         = read_u4(file); // signature (0xCAFEBABE) 
+    class_f.minor_version = read_u2(file);
+    class_f.major_version = read_u2(file);
 }
 
 // finish docs
 void get_constant_pool(class_file &class_f, ifstream &file)
 {
-    u2 const_pool_count = read_u2(file);
-    cout << setw(50) << left << "Constant Pool Count " 
-         << right << " " << const_pool_count << endl;
-    
-    int iterator_counter = const_pool_count - 1;
+    // u1 tag = 0;
+    // bool is_valid_tag = true;
+
+    class_f.constant_pool_count = read_u2(file); 
+    int iterator_counter = class_f.constant_pool_count - 1;
     while (iterator_counter--)
     {
+        // is_valid_tag = true;
         u1 tag = read_u1(file);
         switch (tag) {
             case CONSTANT_Utf8: // utf8
@@ -143,6 +189,7 @@ void get_constant_pool(class_file &class_f, ifstream &file)
                 cout << "ERROR IN TAG" << endl;
                 break;
         }
+        // if (is_valid_tag) class_f.pool_lookup_table.push_back()
     }
 }
 
@@ -186,6 +233,6 @@ void get_attributes(class_file &class_f, ifstream &file)
 {
     class_f.attributes_count = read_u2(file);
 
-    for (int i = 0; i  < class_f.attributes_count; i++)
+    for (int i = 0; i < class_f.attributes_count; i++)
         class_f.attributes.push_back(attr_info(file));
 }
