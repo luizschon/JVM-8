@@ -21,31 +21,39 @@
 
 using namespace std;
 
-class CP_Info
-{
-public:
-    CP_Info() {}
-    virtual ~CP_Info() {}
-    u2 get_data() {
-        return 69;
-    }
-};
 
-template< typename T >
-class Typed_Info : public CP_Info
-{
-public:
-    Typed_Info (ifstream &file)
-      : data(T(file)) {}
-    
-    u2 get_data() {
-        return data.tag;
-    }
-private:
-    T data;
-};
+typedef struct CONSTANT_utf8_info {
+    CONSTANT_utf8_info(ifstream &file);
+    u1 tag; // 1
+    u2 length;
+    vector<u1> bytes;
+} CONSTANT_utf8_info;
 
-typedef vector<CP_Info> cp_info_list_type;
+typedef struct CONSTANT_integer_info {
+    CONSTANT_integer_info(ifstream &file);
+    u1 tag; // 3
+    u4 bytes;
+} CONSTANT_integer_info;
+
+typedef struct CONSTANT_float_info {
+    CONSTANT_float_info(ifstream &file);
+    u1 tag; // 4
+    u4 bytes;
+} CONSTANT_float_info;
+
+typedef struct CONSTANT_long_info {
+    CONSTANT_long_info(ifstream &file);
+    u1 tag; // 5
+    u4 high_bytes;
+    u4 low_bytes;
+} CONSTANT_long_info;
+
+typedef struct CONSTANT_double_info {
+    CONSTANT_double_info(ifstream &file);
+    u1 tag; // 6
+    u4 high_bytes;
+    u4 low_bytes;
+} CONSTANT_double_info;
 
 // Class_file types definition
 typedef struct CONSTANT_class_info {
@@ -53,6 +61,12 @@ typedef struct CONSTANT_class_info {
     u1 tag; // 7
     u2 name_idx;
 } CONSTANT_class_info;
+
+typedef struct CONSTANT_string_info {
+    CONSTANT_string_info(ifstream &file);
+    u1 tag; // 8
+    u2 str_idx;
+} CONSTANT_string_info;
 
 typedef struct CONSTANT_fieldref_info {
     CONSTANT_fieldref_info(ifstream &file);
@@ -81,46 +95,6 @@ typedef struct CONSTANT_name_and_type_info {
     u2 name_idx;
     u2 descriptor_idx;
 } CONSTANT_name_and_type_info;
-
-typedef struct CONSTANT_utf8_info {
-    CONSTANT_utf8_info(ifstream &file);
-    u1 tag; // 1
-    u2 length;
-    // u1 bytes[length]; -> length isnt defined at runtime so we use vector instead
-    vector<u1> bytes;
-} CONSTANT_utf8_info;
-
-typedef struct CONSTANT_string_info {
-    CONSTANT_string_info(ifstream &file);
-    u1 tag; // 8
-    u2 str_idx;
-} CONSTANT_string_info;
-
-typedef struct CONSTANT_integer_info {
-    CONSTANT_integer_info(ifstream &file);
-    u1 tag; // 3
-    u4 bytes;
-} CONSTANT_integer_info;
-
-typedef struct CONSTANT_float_info {
-    CONSTANT_float_info(ifstream &file);
-    u1 tag; // 4
-    u4 bytes;
-} CONSTANT_float_info;
-
-typedef struct CONSTANT_long_info {
-    CONSTANT_long_info(ifstream &file);
-    u1 tag; // 5
-    u4 high_bytes;
-    u4 low_bytes;
-} CONSTANT_long_info;
-
-typedef struct CONSTANT_double_info {
-    CONSTANT_double_info(ifstream &file);
-    u1 tag; // 6
-    u4 high_bytes;
-    u4 low_bytes;
-} CONSTANT_double_info;
 
 typedef struct CONSTANT_method_handle_info {
     CONSTANT_method_handle_info(ifstream &file);

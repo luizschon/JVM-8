@@ -89,59 +89,55 @@ void get_constant_pool(class_file &class_f, ifstream &file)
     u2 const_pool_count = read_u2(file);
     cout << setw(50) << left << "Constant Pool Count " 
          << right << " " << const_pool_count << endl;
-         
+    
     int iterator_counter = const_pool_count - 1;
     while (iterator_counter--)
     {
-        // vector<Property*> my_property_list;
-        // for(unsigned int u=0; u<10; ++u)
-        //     my_property_list.push_back(new Property(u));
-        
         u1 tag = read_u1(file);
         switch (tag) {
             case CONSTANT_Utf8: // utf8
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_utf8_info>(file));
+                class_f.utf8_pool.push_back(CONSTANT_utf8_info(file));
                 break;
             case CONSTANT_Integer: // integer
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_integer_info>(file));
+                class_f.integer_pool.push_back(CONSTANT_integer_info(file));
                 break;
             case CONSTANT_Float: // float
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_float_info>(file));
+                class_f.float_pool.push_back(CONSTANT_float_info(file));
                 break;
             case CONSTANT_Long: // long
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_long_info>(file));
+                class_f.long_pool.push_back(CONSTANT_long_info(file));
                 iterator_counter--; // Long uses 8 bytes (Large numeric continued)
                 break;
             case CONSTANT_Double: // double
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_double_info>(file));
+                class_f.double_pool.push_back(CONSTANT_double_info(file));
                 iterator_counter--; // Double uses 8 bytes (Large numeric continued)
                 break;
             case CONSTANT_Class: // class
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_class_info>(file));
+                class_f.class_pool.push_back(CONSTANT_class_info(file));
                 break;
             case CONSTANT_String: // string
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_string_info>(file));
+                class_f.string_pool.push_back(CONSTANT_string_info(file));
                 break;
             case CONSTANT_Fieldref: // fieldref
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_fieldref_info>(file));
+                class_f.fieldref_pool.push_back(CONSTANT_fieldref_info(file));
                 break;
             case CONSTANT_Methodref: // methodref
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_methodref_info>(file));
+                class_f.methodref_pool.push_back(CONSTANT_methodref_info(file));
                 break;
             case CONSTANT_InterfaceMethodref: // InterfaceMethodref
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_interface_methodref_info>(file));
+                class_f.interface_methodref_pool.push_back(CONSTANT_interface_methodref_info(file));
                 break;
             case CONSTANT_NameAndType: // Nameandtype
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_name_and_type_info>(file));
+                class_f.name_and_type_pool.push_back(CONSTANT_name_and_type_info(file));
                 break;
             case CONSTANT_MethodHandle: // methodhandle
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_method_handle_info>(file));
+                class_f.method_handle_pool.push_back(CONSTANT_method_handle_info(file));
                 break;
             case CONSTANT_MethodType: // methodtype
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_method_type_info>(file));
+                class_f.method_type_pool.push_back(CONSTANT_method_type_info(file));
                 break;
             case CONSTANT_InvokeDynamic: // invokedynamic
-                class_f.constant_pool.push_back(Typed_Info<CONSTANT_invoke_dynamic_info>(file));
+                class_f.invoke_dynamic_pool.push_back(CONSTANT_invoke_dynamic_info(file));
                 break;
             default: // invalid type
                 cout << "ERROR IN TAG" << endl;
@@ -161,6 +157,7 @@ void get_class_data(class_file &class_f, ifstream &file)
     cout << "This class idx: " << class_f.this_class << endl;
     cout << "Super class idx: " << class_f.super_class << endl;
 
+    cout << setw(50) << "Interfaces " << endl;
     get_interfaces(class_f, file);
 
     cout << setw(50) << "Fields " << endl;
