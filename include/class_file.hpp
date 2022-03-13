@@ -52,4 +52,19 @@ void add_to_pool(cp_info* pool, void* data);
 // finish docs
 void delete_pool(cp_info* pool);
 
+// finish docs
+void get_class_data(class_file &class_f, ifstream &file);
+
+// finish docs
+void get_interfaces(class_file &class_f, ifstream &file);
+
+// finish docs
+void get_fields(class_file &class_f, ifstream &file);
+
+// finish docs
+void get_methods(class_file &class_f, ifstream &file);
+
+// finish docs
+void get_attributes(class_file &class_f, ifstream &file);
+
 #endif // _CLASS_FILE_HPP
