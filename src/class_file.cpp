@@ -2,10 +2,7 @@
 #include "../include/class_file.hpp"
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
-#include <cstddef>
-#include <fstream>
 #include <iomanip>
-#include <ostream>
 
 using namespace std;
 
@@ -93,128 +90,64 @@ void get_constant_pool(class_file &class_f, ifstream &file)
     cout << setw(50) << left << "Constant Pool Count " 
          << right << " " << const_pool_count << endl;
          
-    void* data = NULL;
-
     int iterator_counter = const_pool_count - 1;
     while (iterator_counter--)
     {
+        // vector<Property*> my_property_list;
+        // for(unsigned int u=0; u<10; ++u)
+        //     my_property_list.push_back(new Property(u));
+        
         u1 tag = read_u1(file);
         switch (tag) {
             case CONSTANT_Utf8: // utf8
-                data = new CONSTANT_utf8_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << (int)(((CONSTANT_utf8_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_utf8_info>(file));
                 break;
             case CONSTANT_Integer: // integer
-                data = new CONSTANT_integer_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_integer_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_integer_info>(file));
                 break;
             case CONSTANT_Float: // float
-                data = new CONSTANT_float_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_float_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_float_info>(file));
                 break;
             case CONSTANT_Long: // long
-                data = new CONSTANT_long_info(file);
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_long_info>(file));
                 iterator_counter--; // Long uses 8 bytes (Large numeric continued)
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_long_info *) data)->tag) << endl;
                 break;
             case CONSTANT_Double: // double
-                data = new CONSTANT_double_info(file);
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_double_info>(file));
                 iterator_counter--; // Double uses 8 bytes (Large numeric continued)
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_double_info *) data)->tag) << endl;
                 break;
             case CONSTANT_Class: // class
-                data = new CONSTANT_class_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_class_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_class_info>(file));
                 break;
             case CONSTANT_String: // string
-                data = new CONSTANT_string_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_string_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_string_info>(file));
                 break;
             case CONSTANT_Fieldref: // fieldref
-                data = new CONSTANT_fieldref_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_fieldref_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_fieldref_info>(file));
                 break;
             case CONSTANT_Methodref: // methodref
-                data = new CONSTANT_methodref_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_methodref_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_methodref_info>(file));
                 break;
             case CONSTANT_InterfaceMethodref: // InterfaceMethodref
-                data = new CONSTANT_interface_methodref_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_interface_methodref_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_interface_methodref_info>(file));
                 break;
             case CONSTANT_NameAndType: // Nameandtype
-                data = new CONSTANT_name_and_type_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_name_and_type_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_name_and_type_info>(file));
                 break;
             case CONSTANT_MethodHandle: // methodhandle
-                data = new CONSTANT_method_handle_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_method_handle_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_method_handle_info>(file));
                 break;
             case CONSTANT_MethodType: // methodtype
-                data = new CONSTANT_method_type_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_method_type_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_method_type_info>(file));
                 break;
             case CONSTANT_InvokeDynamic: // invokedynamic
-                data = new CONSTANT_invoke_dynamic_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_invoke_dynamic_info *) data)->tag) << endl;
+                class_f.constant_pool.push_back(Typed_Info<CONSTANT_invoke_dynamic_info>(file));
                 break;
             default: // invalid type
                 cout << "ERROR IN TAG" << endl;
                 break;
         }
-        if (class_f.constant_pool == NULL)
-            class_f.constant_pool = create_pool(data);
-        else
-            add_to_pool(class_f.constant_pool, data);
     }
-}
-
-cp_info* create_pool(void* data) 
-{
-    cp_info* constant_pool = new cp_info;
-
-    if (!constant_pool) return NULL;
-
-    constant_pool->data = data;
-    constant_pool->next = NULL;
-
-    return constant_pool;
-}
-
-void add_to_pool(cp_info* constant_pool, void* data) 
-{
-    cp_info* new_item = new cp_info;
-    cp_info* temp = constant_pool;
-
-    if (!new_item) return;
-
-    new_item->data = data;
-    new_item->next = NULL;
-
-    while(temp->next != NULL)
-        temp = temp->next;
-
-    temp->next = new_item;
-}
-
-void delete_pool(cp_info *pool) 
-{
-    if (pool->next) delete_pool(pool->next);
-    delete pool;
 }
 
 void get_class_data(class_file &class_f, ifstream &file)

@@ -33,3 +33,7 @@
 
 # IDE
 .vscode
+
+# Generated files
+*.txt
+*.md
