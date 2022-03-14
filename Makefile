@@ -1,8 +1,7 @@
 CXX=g++
 
 # Development
-CFLAGS=-g -fsanitize=address -fno-omit-frame-pointer -static-libasan
-
+DEBUGFLAGS=-g -fsanitize=address -fno-omit-frame-pointer
 # Production
 CFLAGS=-std=c++11
 
@@ -17,9 +16,9 @@ all: $(TARGET)
 # cria arquivo executável main com o comando 'make'
 $(TARGET): $(wildcard $(SRCDIR)/*.cpp)
 	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS) -I $(IDIR)
-	
-debug:
-	$(CXX) -o $@ $^ $(CFLAGS) $(CFLAGSDEBUG) $(LIBS) -I $(IDIR)	
+
+debug: $(wildcard $(SRCDIR)/*.cpp)
+	$(CXX) -o $@ $^ $(CFLAGS) $(DEBUGFLAGS) $(LIBS) -I $(IDIR)
 
 # Remove os arquivos gerados com o comando 'make clean'
 clean:
