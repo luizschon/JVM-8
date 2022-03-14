@@ -69,33 +69,12 @@ typedef struct method_info {
     vector<attr_info> attr;
 } method_info;
 
-// constant_pool = [...] (14 tipos)
-// 14 vectors de 1 tipo cada
-// double -> [ ... ]
-// long -> [ ... ]
-// ...
-// invokedynamic -> [ ... ]
-
 typedef struct class_file {
     u4 magic;
     u2 minor_version;
     u2 major_version;
     u2 constant_pool_count;
-    vector<int> pool_lookup_table;
-    vector<CONSTANT_utf8_info> utf8_pool;
-    vector<CONSTANT_integer_info> integer_pool;
-    vector<CONSTANT_long_info> long_pool;
-    vector<CONSTANT_float_info> float_pool;
-    vector<CONSTANT_double_info> double_pool;
-    vector<CONSTANT_class_info> class_pool;
-    vector<CONSTANT_string_info> string_pool;
-    vector<CONSTANT_fieldref_info> fieldref_pool;
-    vector<CONSTANT_methodref_info> methodref_pool;
-    vector<CONSTANT_interface_methodref_info> interface_methodref_pool;
-    vector<CONSTANT_name_and_type_info> name_and_type_pool;
-    vector<CONSTANT_method_handle_info> method_handle_pool;
-    vector<CONSTANT_method_type_info> method_type_pool;
-    vector<CONSTANT_invoke_dynamic_info> invoke_dynamic_pool;
+    cp_info_vector constant_pool;
     u2 access_flag;
     u2 this_class;
     u2 super_class;

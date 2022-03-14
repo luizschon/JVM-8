@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <limits>
 #include <math.h>
+#include <memory>
 
 using namespace std;
 
@@ -131,65 +132,15 @@ void get_metadata(class_file &class_f, ifstream &file)
 // finish docs
 void get_constant_pool(class_file &class_f, ifstream &file)
 {
-    // u1 tag = 0;
-    // bool is_valid_tag = true;
-
     class_f.constant_pool_count = read_u2(file); 
-    int iterator_counter = class_f.constant_pool_count - 1;
-    while (iterator_counter--)
+    int iteration_counter = class_f.constant_pool_count - 1;
+    while (iteration_counter--)
     {
-        // is_valid_tag = true;
         u1 tag = read_u1(file);
-        switch (tag) {
-            case CONSTANT_Utf8: // utf8
-                class_f.utf8_pool.push_back(CONSTANT_utf8_info(file));
-                break;
-            case CONSTANT_Integer: // integer
-                class_f.integer_pool.push_back(CONSTANT_integer_info(file));
-                break;
-            case CONSTANT_Float: // float
-                class_f.float_pool.push_back(CONSTANT_float_info(file));
-                break;
-            case CONSTANT_Long: // long
-                class_f.long_pool.push_back(CONSTANT_long_info(file));
-                iterator_counter--; // Long uses 8 bytes (Large numeric continued)
-                break;
-            case CONSTANT_Double: // double
-                class_f.double_pool.push_back(CONSTANT_double_info(file));
-                iterator_counter--; // Double uses 8 bytes (Large numeric continued)
-                break;
-            case CONSTANT_Class: // class
-                class_f.class_pool.push_back(CONSTANT_class_info(file));
-                break;
-            case CONSTANT_String: // string
-                class_f.string_pool.push_back(CONSTANT_string_info(file));
-                break;
-            case CONSTANT_Fieldref: // fieldref
-                class_f.fieldref_pool.push_back(CONSTANT_fieldref_info(file));
-                break;
-            case CONSTANT_Methodref: // methodref
-                class_f.methodref_pool.push_back(CONSTANT_methodref_info(file));
-                break;
-            case CONSTANT_InterfaceMethodref: // InterfaceMethodref
-                class_f.interface_methodref_pool.push_back(CONSTANT_interface_methodref_info(file));
-                break;
-            case CONSTANT_NameAndType: // Nameandtype
-                class_f.name_and_type_pool.push_back(CONSTANT_name_and_type_info(file));
-                break;
-            case CONSTANT_MethodHandle: // methodhandle
-                class_f.method_handle_pool.push_back(CONSTANT_method_handle_info(file));
-                break;
-            case CONSTANT_MethodType: // methodtype
-                class_f.method_type_pool.push_back(CONSTANT_method_type_info(file));
-                break;
-            case CONSTANT_InvokeDynamic: // invokedynamic
-                class_f.invoke_dynamic_pool.push_back(CONSTANT_invoke_dynamic_info(file));
-                break;
-            default: // invalid type
-                cout << "ERROR IN TAG" << endl;
-                break;
-        }
-        // if (is_valid_tag) class_f.pool_lookup_table.push_back()
+        if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
+            iteration_counter--;
+        shared_ptr<CP_Info> new_el(new CP_Info(tag, file));
+        class_f.constant_pool.push_back(new_el);
     }
 }
 
