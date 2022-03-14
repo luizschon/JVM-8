@@ -2,10 +2,10 @@
 #include "../include/class_file.hpp"
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
-#include <cstddef>
-#include <fstream>
 #include <iomanip>
-#include <ostream>
+#include <limits>
+#include <math.h>
+#include <memory>
 
 using namespace std;
 
@@ -55,6 +55,57 @@ u8 read_u8(ifstream &file)
     return data;
 }
 
+double calc_double(u4 high, u4 low) 
+{
+    long bits = calc_long(high, low);
+    if (bits == 0x7ff0000000000000L)
+        return numeric_limits<double>::infinity();
+    else if (bits == 0xfff0000000000000L)
+        return -numeric_limits<double>::infinity();
+    else if (bits >= 0x7ff0000000000001L && bits <= 0x7fffffffffffffffL)
+        return numeric_limits<double>::quiet_NaN();
+    else if (bits >= 0xfff0000000000001L && bits <= 0xffffffffffffffffL)
+        return numeric_limits<double>::quiet_NaN();
+    else
+    {
+        int s = ((bits >> 63) == 0) ? 1 : -1;
+        int e = (bits >> 52) & 0x7ffL;
+        long m = (e == 0) ? 
+            (bits & 0xfffffffffffffL) << 1 : 
+            (bits & 0xfffffffffffffL) | 0x10000000000000L;
+        
+        return s * m * pow(2, e - 1075);
+    }
+}
+
+float calc_float(u4 bytes)
+{
+    if (bytes == 0x7f800000)
+        return numeric_limits<float>::infinity();
+    else if (bytes == 0xff800000)
+        return -numeric_limits<float>::infinity();
+    else if (bytes >= 0x7f800001 && bytes <= 0x7fffffff)
+        return numeric_limits<float>::signaling_NaN();
+    else if (bytes >= 0xff800001 && bytes <= 0xffffffff)
+        return numeric_limits<float>::signaling_NaN();
+    else
+    {
+        int s = ((bytes >> 31) == 0) ? 1 : -1;
+        int e = ((bytes >> 23) & 0xff);
+        int m = (e == 0) ? 
+            (bytes & 0x7fffff) << 1 :
+            (bytes & 0x7fffff) | 0x800000;
+
+        return s * m * pow(2, e - 150);
+    }
+}
+
+long calc_long(u4 high, u4 low)
+{
+    auto l = ((u8) high << 32) | low;
+    return (long) l;
+}
+
 // finish docs
 ifstream open_file(int argc, char** argv)
 {
@@ -73,148 +124,24 @@ ifstream open_file(int argc, char** argv)
 // finish docs
 void get_metadata(class_file &class_f, ifstream &file) 
 {
-    // read class file fields
-    u4 magic     = read_u4(file);        // signature (0xCAFEBABE)
-    u2 minor_ver = read_u2(file);        // minor version
-    u2 major_ver = read_u2(file);        // major version
-    
-    cout << setw(50) << left << "Reading bytecodes" << setfill('-') << endl;
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << left << "Signature " << right << " 0x" << uppercase << hex << magic << endl;
-    cout.flags(f);
-    cout << setw(50) << left << "Minor version " << right << " " << minor_ver << endl;
-    cout << setw(50) << left << "Major version " << right << " " << major_ver << endl;
+    class_f.magic         = read_u4(file); // signature (0xCAFEBABE) 
+    class_f.minor_version = read_u2(file);
+    class_f.major_version = read_u2(file);
 }
 
 // finish docs
 void get_constant_pool(class_file &class_f, ifstream &file)
 {
-    u2 const_pool_count = read_u2(file);
-    cout << setw(50) << left << "Constant Pool Count " 
-         << right << " " << const_pool_count << endl;
-         
-    void* data = NULL;
-
-    int iterator_counter = const_pool_count - 1;
-    while (iterator_counter--)
+    class_f.constant_pool_count = read_u2(file); 
+    int iteration_counter = class_f.constant_pool_count - 1;
+    while (iteration_counter--)
     {
         u1 tag = read_u1(file);
-        switch (tag) {
-            case CONSTANT_Utf8: // utf8
-                data = new CONSTANT_utf8_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << (int)(((CONSTANT_utf8_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Integer: // integer
-                data = new CONSTANT_integer_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_integer_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Float: // float
-                data = new CONSTANT_float_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_float_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Long: // long
-                data = new CONSTANT_long_info(file);
-                iterator_counter--; // Long uses 8 bytes (Large numeric continued)
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_long_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Double: // double
-                data = new CONSTANT_double_info(file);
-                iterator_counter--; // Double uses 8 bytes (Large numeric continued)
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_double_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Class: // class
-                data = new CONSTANT_class_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_class_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_String: // string
-                data = new CONSTANT_string_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_string_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Fieldref: // fieldref
-                data = new CONSTANT_fieldref_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_fieldref_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_Methodref: // methodref
-                data = new CONSTANT_methodref_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_methodref_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_InterfaceMethodref: // InterfaceMethodref
-                data = new CONSTANT_interface_methodref_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_interface_methodref_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_NameAndType: // Nameandtype
-                data = new CONSTANT_name_and_type_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_name_and_type_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_MethodHandle: // methodhandle
-                data = new CONSTANT_method_handle_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_method_handle_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_MethodType: // methodtype
-                data = new CONSTANT_method_type_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_method_type_info *) data)->tag) << endl;
-                break;
-            case CONSTANT_InvokeDynamic: // invokedynamic
-                data = new CONSTANT_invoke_dynamic_info(file);
-                cout << setw(50) << left << "Tag " << right << " " 
-                     << ((int)((CONSTANT_invoke_dynamic_info *) data)->tag) << endl;
-                break;
-            default: // invalid type
-                cout << "ERROR IN TAG" << endl;
-                break;
-        }
-        if (class_f.constant_pool == NULL)
-            class_f.constant_pool = create_pool(data);
-        else
-            add_to_pool(class_f.constant_pool, data);
+        if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
+            iteration_counter--;
+        shared_ptr<CP_Info> new_el(new CP_Info(tag, file));
+        class_f.constant_pool.push_back(new_el);
     }
-}
-
-cp_info* create_pool(void* data) 
-{
-    cp_info* constant_pool = new cp_info;
-
-    if (!constant_pool) return NULL;
-
-    constant_pool->data = data;
-    constant_pool->next = NULL;
-
-    return constant_pool;
-}
-
-void add_to_pool(cp_info* constant_pool, void* data) 
-{
-    cp_info* new_item = new cp_info;
-    cp_info* temp = constant_pool;
-
-    if (!new_item) return;
-
-    new_item->data = data;
-    new_item->next = NULL;
-
-    while(temp->next != NULL)
-        temp = temp->next;
-
-    temp->next = new_item;
-}
-
-void delete_pool(cp_info *pool) 
-{
-    if (pool->next) delete_pool(pool->next);
-    delete pool;
 }
 
 void get_class_data(class_file &class_f, ifstream &file)
@@ -222,113 +149,41 @@ void get_class_data(class_file &class_f, ifstream &file)
     class_f.access_flag = read_u2(file);
     class_f.this_class  = read_u2(file);
     class_f.super_class = read_u2(file);
-    ios_base::fmtflags f(cout.flags());
-    cout << setw(50) << left << "Access flag: " << right << " 0x" << uppercase << hex << class_f.access_flag << endl;
-    cout.flags(f);
-    cout << "This class idx: " << class_f.this_class << endl;
-    cout << "Super class idx: " << class_f.super_class << endl;
-
+    
     get_interfaces(class_f, file);
-
-    cout << setw(50) << "Fields " << endl;
     get_fields(class_f, file);
-
-    cout << setw(50) << "Methods " << endl;
     get_methods(class_f, file);
-
-    cout << setw(50) << "Attributes " << endl;
     get_attributes(class_f, file);
 }
 
 void get_interfaces(class_file &class_f, ifstream &file)
 {
     class_f.interfaces_count = read_u2(file);
-    cout << "Interfaces count: " << class_f.interfaces_count << endl;
+    
     for (int i = 0; i < class_f.interfaces_count; i++)
         class_f.interfaces.push_back(read_u2(file));
-
-    cout << "Interfaces: [ ";
-    for (int i = 0; i < class_f.interfaces_count; i++)
-        cout << class_f.interfaces[i] << " ";
-    cout << "]" << endl;
 }
 
 void get_fields(class_file &class_f, ifstream &file)
 {
     class_f.fields_count = read_u2(file);
-    cout << "Fields count: " << class_f.fields_count << endl;
 
     for(int i = 0; i < class_f.fields_count; i++)
         class_f.fields.push_back(field_info(file));
-
-    for(int i = 0; i < class_f.fields_count; i++) 
-    {
-        ios_base::fmtflags f(cout.flags());
-        cout << "Fields_access_flags: " << hex << class_f.fields[i].access_flags << endl;
-        cout.flags(f);
-        cout << "Descriptor_index: " << class_f.fields[i].descriptor_idx << endl;
-        cout << "Name_index: " << class_f.fields[i].name_idx << endl;
-        cout << "Attr_count: " << class_f.fields[i].attr_count << endl;
-        
-        for (int k = 0; k < class_f.fields[i].attr_count; k++)
-        {
-            cout << "Attr_name_idx: " << class_f.fields[i].attr[k].attr_name_idx << endl;
-            cout << "Attr_length: " << class_f.fields[i].attr[k].attr_length << endl;
-            cout << "Attributes: [ "; 
-            for (int l = 0; l < class_f.fields[i].attr[k].attr_length; l++) 
-            {
-                cout << class_f.fields[i].attr[k].info[l] << " ";
-            }
-            cout << "]" << endl;
-        }
-    }
 }
 
 void get_methods(class_file &class_f, ifstream &file)
 {
     class_f.methods_count = read_u2(file);
-    cout << "Methods count: " << class_f.methods_count << endl;
 
     for(int i = 0; i < class_f.methods_count; i++)
         class_f.methods.push_back(method_info(file));
-
-    for(int i = 0; i < class_f.methods_count; i++) 
-    {
-        ios_base::fmtflags f(cout.flags());
-        cout << "Methods_access_flags: " << hex << class_f.methods[i].access_flags << endl;
-        cout.flags(f);
-        cout << "Name_index: " << class_f.methods[i].name_idx << endl;
-        cout << "Descriptor_index: " << class_f.methods[i].descriptor_idx << endl;
-        cout << "Attr_count: " << class_f.methods[i].attr_count << endl;
-        
-        for (int k = 0; k < class_f.methods[i].attr_count; k++)
-        {
-            cout << "Attr_name_idx: " << class_f.methods[i].attr[k].attr_name_idx << endl;
-            cout << "Attr_length: " << class_f.methods[i].attr[k].attr_length << endl;
-            cout << "Attributes: [ "; 
-            for (int l = 0; l < class_f.methods[i].attr[k].attr_length; l++) 
-            {
-                cout << class_f.methods[i].attr[k].info[l] << " ";
-            }
-            cout << "]" << endl;
-        }
-    }
 }
 
 void get_attributes(class_file &class_f, ifstream &file)
 {
     class_f.attributes_count = read_u2(file);
-    cout << "Attributes count: " << class_f.attributes_count << endl;
 
-    for (int i = 0; i  < class_f.attributes_count; i++)
+    for (int i = 0; i < class_f.attributes_count; i++)
         class_f.attributes.push_back(attr_info(file));
-
-    for (int i = 0; i < class_f.attributes_count; i++) {
-        cout << "Attr_name_index: " << class_f.attributes[i].attr_name_idx << endl;
-        cout << "Attr_length: " << class_f.attributes[i].attr_length << endl;
-        cout << "Attributes_info: [ "; 
-        for (int j = 0; j < class_f.attributes[i].attr_length; j++)
-            cout << class_f.attributes[i].info[j] << " ";
-        cout << "]" << endl; 
-    }
 }

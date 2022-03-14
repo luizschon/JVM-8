@@ -1,5 +1,9 @@
 CXX=g++
-CFLAGS=-std=c++11 -g -fsanitize=address -fno-omit-frame-pointer
+
+# Development
+DEBUGFLAGS=-g -fsanitize=address -fno-omit-frame-pointer
+# Production
+CFLAGS=-std=c++11
 
 TARGET=main.out
 SRCDIR=./src
@@ -12,7 +16,10 @@ all: $(TARGET)
 # cria arquivo executável main com o comando 'make'
 $(TARGET): $(wildcard $(SRCDIR)/*.cpp)
 	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS) -I $(IDIR)
-	
+
+debug: $(wildcard $(SRCDIR)/*.cpp)
+	$(CXX) -o $@ $^ $(CFLAGS) $(DEBUGFLAGS) $(LIBS) -I $(IDIR)
+
 # Remove os arquivos gerados com o comando 'make clean'
 clean:
 	rm -f $(TARGET)
