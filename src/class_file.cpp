@@ -9,50 +9,43 @@
 
 using namespace std;
 
-u1 read_u1(ifstream &file) 
+attr_info::attr_info(ifstream &file) 
 {
-    u1 data = 0;
-    file.read(reinterpret_cast<char *>(&data), 1);
-    return data;
+    attr_name_idx = read_bytes<u2>(file);
+    attr_length = read_bytes<u4>(file);
+
+    for (int i = 0; i < attr_length; i++) 
+        info.push_back(read_bytes<u1>(file));
 }
 
-u2 read_u2(ifstream &file)
+attr_info::attr_info(bytestream_it &iterator) 
 {
-    u1 byte = 0;
-    u2 data = 0;  
-    for (int i = 0; i < sizeof(u2); i++)
-    {
-        file.read(reinterpret_cast<char *>(&byte), 1);
-        data <<= 8;
-        data |= byte;
-    }
-    return data;
+    attr_name_idx = get_bytes<u2>(iterator);
+    attr_length = get_bytes<u4>(iterator);
+    for (int i = 0; i < attr_length; i++)
+        info.push_back(get_bytes<u1>(iterator));
 }
 
-u4 read_u4 (ifstream &file)
+field_info::field_info(ifstream &file) 
 {
-    u1 byte = 0;
-    u4 data = 0;
-    for (int i = 0; i < sizeof(u4); i++) 
-    {
-        file.read(reinterpret_cast<char *>(&byte), 1);
-        data <<= 8;
-        data |= byte;
-    }
-    return data;
+    access_flags = read_bytes<u2>(file);
+    name_idx = read_bytes<u2>(file);
+    descriptor_idx = read_bytes<u2>(file);
+    attr_count = read_bytes<u2>(file);
+
+    for (int i = 0; i < attr_count; i++)
+        attr.push_back(attr_info(file));
 }
 
-u8 read_u8(ifstream &file) 
+method_info::method_info(ifstream &file) 
 {
-    u1 byte = 0;
-    u8 data = 0;
-    for (int i = 0; i < sizeof(u8); i++) 
-    {
-        file.read(reinterpret_cast<char *>(&byte), 1);
-        data <<= 8;
-        data |= byte;
-    }
-    return data;
+    access_flags = read_bytes<u2>(file);
+    name_idx = read_bytes<u2>(file);
+    descriptor_idx = read_bytes<u2>(file);
+    attr_count = read_bytes<u2>(file);
+
+    for (int i = 0; i < attr_count; i++)
+        attr.push_back(attr_info(file));
 }
 
 double calc_double(u4 high, u4 low) 
@@ -112,31 +105,26 @@ ifstream open_file(int argc, char** argv)
     CmdArgs cmd_args;
     cmd_args.init(argc, argv);
 
-    // if (cmd_args.read_bytecode)
-    // else
-
     // open given file and return
     string filename = cmd_args.filename;
     ifstream file(filename, ios::binary);
     return file;
 }
 
-// finish docs
 void get_metadata(class_file &class_f, ifstream &file) 
 {
-    class_f.magic         = read_u4(file); // signature (0xCAFEBABE) 
-    class_f.minor_version = read_u2(file);
-    class_f.major_version = read_u2(file);
+    class_f.magic         = read_bytes<u4>(file); // signature (0xCAFEBABE) 
+    class_f.minor_version = read_bytes<u2>(file);
+    class_f.major_version = read_bytes<u2>(file);
 }
 
-// finish docs
 void get_constant_pool(class_file &class_f, ifstream &file)
 {
-    class_f.constant_pool_count = read_u2(file); 
+    class_f.constant_pool_count = read_bytes<u2>(file); 
     int iteration_counter = class_f.constant_pool_count - 1;
     while (iteration_counter--)
     {
-        u1 tag = read_u1(file);
+        u1 tag = read_bytes<u1>(file);
         if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
             iteration_counter--;
         shared_ptr<CP_Info> new_el(new CP_Info(tag, file));
@@ -146,9 +134,9 @@ void get_constant_pool(class_file &class_f, ifstream &file)
 
 void get_class_data(class_file &class_f, ifstream &file)
 {
-    class_f.access_flag = read_u2(file);
-    class_f.this_class  = read_u2(file);
-    class_f.super_class = read_u2(file);
+    class_f.access_flag = read_bytes<u2>(file);
+    class_f.this_class  = read_bytes<u2>(file);
+    class_f.super_class = read_bytes<u2>(file);
     
     get_interfaces(class_f, file);
     get_fields(class_f, file);
@@ -158,15 +146,15 @@ void get_class_data(class_file &class_f, ifstream &file)
 
 void get_interfaces(class_file &class_f, ifstream &file)
 {
-    class_f.interfaces_count = read_u2(file);
+    class_f.interfaces_count = read_bytes<u2>(file);
     
     for (int i = 0; i < class_f.interfaces_count; i++)
-        class_f.interfaces.push_back(read_u2(file));
+        class_f.interfaces.push_back(read_bytes<u2>(file));
 }
 
 void get_fields(class_file &class_f, ifstream &file)
 {
-    class_f.fields_count = read_u2(file);
+    class_f.fields_count = read_bytes<u2>(file);
 
     for(int i = 0; i < class_f.fields_count; i++)
         class_f.fields.push_back(field_info(file));
@@ -174,7 +162,7 @@ void get_fields(class_file &class_f, ifstream &file)
 
 void get_methods(class_file &class_f, ifstream &file)
 {
-    class_f.methods_count = read_u2(file);
+    class_f.methods_count = read_bytes<u2>(file);
 
     for(int i = 0; i < class_f.methods_count; i++)
         class_f.methods.push_back(method_info(file));
@@ -182,7 +170,7 @@ void get_methods(class_file &class_f, ifstream &file)
 
 void get_attributes(class_file &class_f, ifstream &file)
 {
-    class_f.attributes_count = read_u2(file);
+    class_f.attributes_count = read_bytes<u2>(file);
 
     for (int i = 0; i < class_f.attributes_count; i++)
         class_f.attributes.push_back(attr_info(file));

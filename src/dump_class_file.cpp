@@ -1,6 +1,5 @@
-#include "../include/debug.hpp"
+#include "../include/dump_class_file.hpp"
 #include <iostream>
-#include <iomanip>
 
 using namespace std;
 
@@ -20,6 +19,7 @@ void print_all(class_file &class_f, string filename)
     print_methods(class_f, outfile);
     print_attributes(class_f, outfile);
     outfile.close();
+    pos_counter = 0;
 }
 
 void print_general_info(class_file &class_f, ofstream &outfile)
@@ -31,7 +31,9 @@ void print_general_info(class_file &class_f, ofstream &outfile)
     outfile << "Minor version `" << class_f.minor_version << "`  " << endl;
     outfile << "Major version `" << class_f.major_version << "`  " << endl;
     outfile << "Constant Pool Count `" << class_f.constant_pool_count << "`  " << endl;
-    outfile << "Access Flags `" << class_f.access_flag << "`  " << endl;
+    ios_base::fmtflags g(outfile.flags());
+    outfile << "Access Flags `0x" << hex << class_f.access_flag << "`  " << endl;
+    outfile.flags(g);
     outfile << "This Class `" << class_f.this_class << "`  " << endl;
     outfile << "Super Class `" << class_f.super_class << "`  " << endl;
     outfile << "Interfaces Count `" << class_f.interfaces_count << "`  " << endl;
@@ -254,6 +256,7 @@ void print_fields(class_file &class_f, ofstream &outfile)
     outfile << endl;
 }
 
+// add attributes info when types are defined
 void print_methods(class_file &class_f, ofstream &outfile)
 {
     outfile << "## **Methods**" << endl;
@@ -269,28 +272,29 @@ void print_methods(class_file &class_f, ofstream &outfile)
         
         for (int k = 0; k < class_f.methods[i].attr_count; k++)
         {
-            outfile << "  * Attribute Name Idx `" << class_f.methods[i].attr[k].attr_name_idx << "`" << endl;
-            outfile << "  * Attribute Length `" << class_f.methods[i].attr[k].attr_length << "`" << endl;
-            // outfile << "  * Attributes [ "; 
-            // for (int l = 0; l < class_f.methods[i].attr[k].attr_length; l++) 
-            //     outfile << class_f.methods[i].attr[k].info[l];
-            // outfile << " ]" << endl;
+            outfile << "  * Attribute Name Index `" << class_f.methods[i].attr[k].attr_name_idx << "` " << endl;
+            outfile << "  * Attribute Length `" << class_f.methods[i].attr[k].attr_length << "` " << endl;
+            outfile << "  * Attributes  " << endl; 
+            for (int l = 0; l < class_f.methods[i].attr[k].attr_length; l++) 
+                outfile << "  - `" << (char) class_f.methods[i].attr[k].info[l] << "`" << endl;
+            outfile << endl;
         }
     }
     outfile << endl;
 }
 
+// add attributes info when types are defined
 void print_attributes(class_file &class_f, ofstream &outfile)
 {
     outfile << "## **Attributes**" << endl;
-    for (int i = 0; i < class_f.attributes_count; i++)
+    for (auto attr : class_f.attributes)
     {
-        outfile << "- Attribute Name Index `" << class_f.attributes[i].attr_name_idx << "`" << endl;
-        outfile << "- Attribute Length `" << class_f.attributes[i].attr_length << "`" << endl;
-        // outfile << "Attributes Info: [ "; 
-        // for (int j = 0; j < class_f.attributes[i].attr_length; j++)
-        //     outfile << class_f.attributes[i].info[j] << " ";
-        // outfile << "]" << endl; 
+        outfile << "- Attribute Name Index `" << attr.attr_name_idx << "` " << endl;
+        outfile << "- Attribute Length `" << attr.attr_length << "` " << endl;
+        outfile << "- Attributes Info  " << endl; 
+        for (auto info : attr.info)
+            outfile << "  * `" << (int) info << "`  " << endl;
+        outfile << endl; 
     }
     outfile << endl;
 }

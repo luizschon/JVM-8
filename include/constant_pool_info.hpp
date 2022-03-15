@@ -3,12 +3,12 @@
 
 #include <memory>
 #include <type_traits>
+#include <vector>
 #include "types_definition.hpp"
-
-// CONSTANT POOL TAGS
 
 using namespace std;
 
+// Constant Pool Tags
 typedef enum {
     CONSTANT_Utf8               =  1,
     CONSTANT_Integer            =  3,
@@ -59,7 +59,6 @@ struct CONSTANT_double_info {
     u4 low_bytes;
 };
 
-// Class_file types definition
 struct CONSTANT_class_info {
     CONSTANT_class_info(ifstream &file);
     u1 tag; // 7
@@ -122,8 +121,6 @@ struct CONSTANT_invoke_dynamic_info {
 
 class CP_Info {
 public:
-    //CP_Info() {}
-    //CP_Info(const CP_Info &cp_info) {}
     CP_Info(u1 tag, ifstream &file);
     ~CP_Info();
 
@@ -147,6 +144,6 @@ public:
     };
 };
 
-typedef vector< shared_ptr<CP_Info> > cp_info_vector;
+typedef vector<shared_ptr<CP_Info>> cp_info_vector;
 
 #endif // _CONSTANT_POOL_INFO_HPP

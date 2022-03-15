@@ -27,7 +27,7 @@ using namespace std;
 #define ACC_SYNTHETIC 0x1000 // Declared synthetic; not present in the source code.
 #define ACC_ENUM      0x4000 // Declared as an element of an enum.
 
-// Method Access and property flags
+// Method Access and Property Flags
 #define ACC_PUBLIC       0x0001 // Declared public; may be accessed from outside its package.
 #define ACC_PRIVATE      0x0002 // Declared private; accessible only within the defining class.
 #define ACC_PROTECTED    0x0004 // Declared protected; may be accessed withinsubclasses.
@@ -44,6 +44,7 @@ using namespace std;
 // Attributes Info Structure
 typedef struct attr_info {
     attr_info(ifstream &file);
+    attr_info(bytestream_it &iterator);
     u2 attr_name_idx;
     u4 attr_length;
     vector<u1> info;
@@ -69,6 +70,7 @@ typedef struct method_info {
     vector<attr_info> attr;
 } method_info;
 
+// The Class File Structure
 typedef struct class_file {
     u4 magic;
     u2 minor_version;
@@ -88,68 +90,124 @@ typedef struct class_file {
     vector<attr_info> attributes;
 } class_file;
 
-// finish docs
+// A template to read u1, u2, u4 or u8 bytes in big-endian order
+template <typename T>
+T read_bytes(ifstream &file) 
+{
+    u1 byte = 0;
+    T data = 0;
+    for (int i = 0; i < sizeof(T); i++) 
+    {
+        file.read(reinterpret_cast<char*>(&byte), sizeof(byte));
+        data <<= 8;
+        data |= byte;
+    }
+    return data;
+}
+
+// A template to convert u1, u2, u4 or u8 bytes to little-endian order
+template <typename T>
+T get_bytes(bytestream_it &iterator)
+{
+    T return_value = 0;
+    for (int i = 1; i <= sizeof(T); i++)
+    {
+        return_value |= *iterator << (sizeof(T)*8 - i);
+        iterator++;
+    }
+    return return_value;
+}
+
+/**
+ * @brief Stores the magic, major and minor values from input file in the class file
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_metadata(class_file &class_f, ifstream &file);
 
-// finish docs
+/**
+ * @brief Stores the constant pool values from input file in the class file 
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_constant_pool(class_file &class_f, ifstream &file);
 
 /**
- * Reads a byte from current position in a given file.
- * @param file a binary file 
- * @return one byte from file
+ * @brief Opens an input file and returns a file stream
+ * 
+ * @param argc number of command line arguments
+ * @param argv the file name
+ * @return ifstream a stream of the input file
  */
-u1 read_u1(ifstream &file);
-
-/**
- * Reads two bytes from current position in a given file.
- * @param file a binary file
- * @return two bytes from file
- */
-u2 read_u2(ifstream &file);
-
-/**
- * Reads four bytes from current position in a given file.
- * @param file a binary file
- * @return four bytes from file
- */
-u4 read_u4(ifstream &file);
-
-/**
- * Reads eight bytes from current position in a given file.
- * @param file a binary file
- * @return eight bytes from file
- */
-u8 read_u8(ifstream &file);
-
-// finish docs
 ifstream open_file(int argc, char** argv);
 
-// finish docs
-void get_metadata(class_file &class_f, ifstream &file);
-
-// finish docs
+/**
+ * @brief Stores the access_flag, this_flag, super_class values from input file
+ * in the class file and call remaining methods
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_class_data(class_file &class_f, ifstream &file);
 
-// finish docs
+/**
+ * @brief Stores the interfaces values from input file in the class file
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_interfaces(class_file &class_f, ifstream &file);
 
-// finish docs
+/**
+ * @brief Stores the fields values from input file in the class file
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_fields(class_file &class_f, ifstream &file);
 
-// finish docs
+/**
+ * @brief Stores the methods values from input file in the class file
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_methods(class_file &class_f, ifstream &file);
 
-// finish docs
+/**
+ * @brief Stores the attributes values from input in the class file
+ * 
+ * @param class_f a reference to the class_file struct
+ * @param file a reference to the input file stream
+ */
 void get_attributes(class_file &class_f, ifstream &file);
 
-// finish docs
+/**
+ * @brief Returns the true value of a long number
+ * 
+ * @param high the first 4 bytes of the long number
+ * @param low the last 4 bytes of the long number
+ * @return long the converted number
+ */
 long calc_long(u4 high, u4 low);
 
-// finish docs
+/**
+ * @brief Returns the true value of a double number
+ * 
+ * @param high the first 4 bytes of the double number
+ * @param low the last 4 bytes of the double number
+ * @return double the converted number
+ */
 double calc_double(u4 high, u4 low);
 
-// finish docs
+/**
+ * @brief Returns the true value of a float number
+ * 
+ * @param bytes the 4 bytes of the float number
+ * @return float the converted number
+ */
 float calc_float(u4 bytes);
 
 #endif // _CLASS_FILE_HPP

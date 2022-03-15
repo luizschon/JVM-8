@@ -5,15 +5,20 @@
 
 using namespace std;
 
-class CmdArgs {
+/**
+ * @brief Auxiliary class to read and format input file
+ * 
+ */
+class CmdArgs 
+{
 private:
-    void print_usage() {
+    void print_usage()
+    {
         cerr << "ERRO DE USO" << endl;
     }
 
 public:
     string filename = "";
-    string outfile = "";
     bool read_bytecode = false;
 
     void init(int argc, char** argv) {
@@ -28,7 +33,8 @@ public:
         }
     }
 
-    void read_args(int argc, char** argv) {
+    void read_args(int argc, char** argv) 
+    {
         string temp_str = "";
 
         if (argc <= 1) 
