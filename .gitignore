@@ -30,6 +30,8 @@
 *.exe
 *.out
 *.app
+debug
+main
 
 # IDE
 .vscode

@@ -2,6 +2,7 @@
 #include "../include/class_file.hpp"
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
+#include "../include/attributes.hpp"
 #include <iomanip>
 #include <limits>
 #include <math.h>
@@ -125,10 +126,14 @@ void get_constant_pool(class_file &class_f, ifstream &file)
     while (iteration_counter--)
     {
         u1 tag = read_bytes<u1>(file);
-        if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
-            iteration_counter--;
         shared_ptr<CP_Info> new_el(new CP_Info(tag, file));
         class_f.constant_pool.push_back(new_el);
+        if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
+        {
+            iteration_counter--;
+            shared_ptr<CP_Info> empty_el(new CP_Info(CONSTANT_Empty));
+            class_f.constant_pool.push_back(empty_el);
+        }
     }
 }
 
@@ -168,10 +173,41 @@ void get_methods(class_file &class_f, ifstream &file)
         class_f.methods.push_back(method_info(file));
 }
 
+// move to hpp
+void get_attributes_info(cp_info_vector &constant_pool, attr_info &attr);
+
 void get_attributes(class_file &class_f, ifstream &file)
 {
     class_f.attributes_count = read_bytes<u2>(file);
 
     for (int i = 0; i < class_f.attributes_count; i++)
+    {
         class_f.attributes.push_back(attr_info(file));
+        get_attributes_info(class_f.constant_pool, class_f.attributes[i]);
+    }
+}
+
+void get_attributes_info(cp_info_vector &constant_pool, attr_info &attr)
+{
+    string attr_type = "";
+    cout << attr.attr_name_idx << endl;
+    cout << constant_pool[attr.attr_name_idx - 1]->tag << endl;
+    for (auto b : constant_pool[attr.attr_name_idx - 1]->_utf8->bytes)
+        attr_type += (char)(b);
+    
+    cout << "Attr type: " << attr_type << endl;
+
+    if (attr_type == "SourceFile")
+    {
+        cout << "Source found" << endl;
+        SourceFile_attribute sf = SourceFile_attribute(attr);
+        cout << "SF: " << sf.sourcefile_index << endl;
+        string sourcename = "";
+        for (auto s : constant_pool[sf.sourcefile_index - 1]->_utf8->bytes)
+            sourcename += (char)s;
+            
+        cout << sourcename << endl;
+    } else if (attr_type == "Code") {
+        cout << "Code found" << endl;
+    }
 }

@@ -25,6 +25,7 @@ void print_name_and_type_pool(CONSTANT_name_and_type_info &info, ofstream &outfi
 void print_method_handle_pool(CONSTANT_method_handle_info &info, ofstream &outfile);
 void print_method_type_pool(CONSTANT_method_type_info &info, ofstream &outfile);
 void print_invoke_dynamic_pool(CONSTANT_invoke_dynamic_info &info, ofstream &outfile);
+void print_empty_pool(ofstream &outfile);
 
 // Writes remaining values from the rest of the class file in the output file
 void print_interfaces(class_file &class_f, ofstream &outfile);

@@ -96,6 +96,12 @@ CONSTANT_invoke_dynamic_info::CONSTANT_invoke_dynamic_info(ifstream &file)
     name_and_type_index = read_bytes<u2>(file);
 }
 
+CP_Info::CP_Info(u1 tag) : tag((CONSTANT_Types)tag)
+{
+    if ((CONSTANT_Types)tag == CONSTANT_Empty)
+        _empty = new CONSTANT_empty();
+}
+
 CP_Info::CP_Info(u1 tag, ifstream &file) : tag((CONSTANT_Types)tag) 
 {
     switch ((CONSTANT_Types)tag) 
@@ -142,6 +148,8 @@ CP_Info::CP_Info(u1 tag, ifstream &file) : tag((CONSTANT_Types)tag)
         case CONSTANT_InvokeDynamic:
             _invoke_dynamic= new CONSTANT_invoke_dynamic_info(file);
             break; 
+        default:
+            break;
     }
 }
 
@@ -190,6 +198,9 @@ CP_Info::~CP_Info()
             break;
         case CONSTANT_InvokeDynamic:
             delete _invoke_dynamic;
+            break;
+        case CONSTANT_Empty:
+            delete _empty;
             break;
     }
 }

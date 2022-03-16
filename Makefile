@@ -5,7 +5,7 @@ DEBUGFLAGS=-g -fsanitize=address -fno-omit-frame-pointer
 # Production
 CFLAGS=-std=c++11
 
-TARGET=main.out
+TARGET=main
 SRCDIR=./src
 IDIR=./include
 LIBS=-lm

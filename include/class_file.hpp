@@ -3,6 +3,7 @@
 
 #include "types_definition.hpp"
 #include "constant_pool_info.hpp"
+#include <iostream>
 
 using namespace std;
 
@@ -112,7 +113,8 @@ T get_bytes(bytestream_it &iterator)
     T return_value = 0;
     for (int i = 1; i <= sizeof(T); i++)
     {
-        return_value |= *iterator << (sizeof(T)*8 - i);
+        return_value <<= 8;
+        return_value |= *iterator;
         iterator++;
     }
     return return_value;

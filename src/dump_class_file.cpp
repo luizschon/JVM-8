@@ -62,11 +62,9 @@ void print_pool(class_file &class_f, ofstream &outfile)
                 break;
             case CONSTANT_Long:
                 print_long_pool(*(i->_long), outfile);
-                pos_counter++;
                 break;
             case CONSTANT_Double:
                 print_double_pool(*(i->_double), outfile);
-                pos_counter++;
                 break;
             case CONSTANT_Class:
                 print_class_pool(*(i->_class), outfile);
@@ -95,8 +93,11 @@ void print_pool(class_file &class_f, ofstream &outfile)
             case CONSTANT_InvokeDynamic:
                 print_invoke_dynamic_pool(*(i->_invoke_dynamic), outfile);
                 break;
+            case CONSTANT_Empty:
+                print_empty_pool(outfile);
+                break;
             default:
-                cout << "INVALID SWITCH TAG" << endl;
+                cout << "INVALID TAG" << endl;
                 break;
         }
     }
@@ -220,6 +221,12 @@ void print_invoke_dynamic_pool(CONSTANT_invoke_dynamic_info &info, ofstream &out
     outfile << "- Bootstrap Method Attribute Index `" << info.bootstrap_method_attr_index << "`" << endl;
     outfile << "- Name and Type Index `" << info.name_and_type_index << "`" << endl;
     outfile << endl;
+}
+
+void print_empty_pool(ofstream &outfile)
+{
+    cout << "empty detected" << endl;
+    outfile << "### [" << pos_counter << "] *Number continuation*" << endl << endl;
 }
 
 void print_interfaces(class_file &class_f, ofstream &outfile)

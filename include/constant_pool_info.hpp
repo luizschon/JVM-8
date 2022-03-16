@@ -23,7 +23,8 @@ typedef enum {
     CONSTANT_NameAndType        = 12,
     CONSTANT_MethodHandle       = 15,
     CONSTANT_MethodType         = 16,
-    CONSTANT_InvokeDynamic      = 18
+    CONSTANT_InvokeDynamic      = 18,
+    CONSTANT_Empty              = 19
 } CONSTANT_Types;
 
 struct CONSTANT_utf8_info {
@@ -119,8 +120,15 @@ struct CONSTANT_invoke_dynamic_info {
     u2 name_and_type_index;
 };
 
+struct CONSTANT_empty {
+    CONSTANT_empty() : tag((CONSTANT_Types)CONSTANT_Empty) {}
+    u1 tag;
+    // :)
+};
+
 class CP_Info {
 public:
+    CP_Info(u1 tag = CONSTANT_Empty);
     CP_Info(u1 tag, ifstream &file);
     ~CP_Info();
 
@@ -141,6 +149,7 @@ public:
         CONSTANT_method_handle_info* _method_handle;
         CONSTANT_method_type_info* _method_type;
         CONSTANT_invoke_dynamic_info* _invoke_dynamic;
+        CONSTANT_empty* _empty;
     };
 };
 

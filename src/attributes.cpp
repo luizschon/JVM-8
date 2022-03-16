@@ -1,4 +1,7 @@
 #include "../include/attributes.hpp"
+#include <iostream>
+
+using namespace std;
 
 exception_table_info::exception_table_info(bytestream_it &iterator)
 {
@@ -66,4 +69,5 @@ SourceFile_attribute::SourceFile_attribute(attr_info &attr)
 : attribute_name_index(attr.attr_name_idx), attribute_length(attr.attr_length) {
     auto iterator = attr.info.begin();
     sourcefile_index = get_bytes<u2>(iterator);
+    cout << "Constructor read this:" << sourcefile_index << endl;
 }
