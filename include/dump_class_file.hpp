@@ -8,8 +8,11 @@
 // Writes the values from class file in an output markdown file 
 void print_all(class_file &class_f, string file_name);
 void print_general_info(class_file &class_f, ofstream &outfile);
+string get_utf8_content(bytestream &bytes);
 
 // Writes the values from the rest of the constant pool in the output file
+string get_version(u2 major, u2 minor);
+string get_class_access_flags(u2 access_flags);
 void print_pool(class_file &class_f, ofstream &outfile);
 void print_utf8_pool(CONSTANT_utf8_info &info, ofstream &outfile);
 void print_integer_pool(CONSTANT_integer_info &info, ofstream &outfile);

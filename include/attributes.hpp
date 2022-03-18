@@ -1,16 +1,39 @@
 #ifndef _ATTRIBUTES_HPP
 #define _ATTRIBUTES_HPP
 
-#include "class_file.hpp"
+#include "constant_pool_info.hpp"
 #include "types_definition.hpp"
+#include <fstream>
+#include <memory>
 // #include "stack_map_frame.hpp"
 
 #define RANGE(x,y,n) ((n >= x && n <= y) ? n : -1)
 
+typedef enum {
+    ConstantValue, 
+    Code,
+    StackMapTable,
+    Exception,
+    BootstrapMethods,
+    SourceFile,
+    Unknown
+} Attribute_Types;
+
+class Attribute {
+public:
+    Attribute(ifstream &file, cp_info_vector &constant_pool);
+    u2 attribute_name_index;
+    u4 attribute_length;
+    bytestream info;
+    Attribute_Types tag;
+};
+
+typedef vector<shared_ptr<Attribute>> attr_info_vector;
+
 // See p.95 - jvm8
 
 struct exception_table_info {
-    exception_table_info(bytestream_it&);
+    exception_table_info(ifstream&);
     u2 start_pc;
     u2 end_pc;
     u2 handler_pc;
@@ -18,23 +41,19 @@ struct exception_table_info {
 };
 
 struct bootstrap_methods_info {
-    bootstrap_methods_info(bytestream_it&);
+    bootstrap_methods_info(ifstream&);
     u2 bootstrap_method_ref;
     u2 num_bootstrap_arguments;
     vector<u2> bootstrap_arguments;
 };
 
 struct ConstantValue_attribute {
-    ConstantValue_attribute(attr_info&);
-    u2 attribute_name_index;
-    u4 attribute_length;
+    ConstantValue_attribute(ifstream&, cp_info_vector&);
     u2 constantvalue_index;
 };
 
 struct Code_attribute {
-    Code_attribute(attr_info&);
-    u2 attribute_name_index;
-    u4 attribute_length;
+    Code_attribute(ifstream&, cp_info_vector&);
     u2 max_stack;
     u2 max_locals;
     u4 code_length;
@@ -42,37 +61,52 @@ struct Code_attribute {
     u2 exception_table_length;
     vector<exception_table_info> exception_table;
     u2 attributes_count;
-    vector<attr_info> attributes;
+    attr_info_vector attributes;
 };
 
 // struct StackMapTable_attribute {
-//     u2 attribute_name_index;
-//     u4 attribute_length;
 //     u2 number_of_entries;
 //     vector<stack_map_frame> entries;
 // };
 
 struct Exception_attribute {
-    Exception_attribute(attr_info&);
-    u2 attribute_name_index;
-    u4 attribute_length;
+    Exception_attribute(ifstream&, cp_info_vector&);
     u2 number_of_exceptions;
     vector<u2> exception_index_table;
 };
 
 struct BootstrapMethods_attribute {
-    BootstrapMethods_attribute(attr_info&);
-    u2 attribute_name_index;
-    u4 attribute_length;
+    BootstrapMethods_attribute(ifstream&, cp_info_vector&);
     u2 num_bootstrap_methods;
     vector<bootstrap_methods_info> bootstrap_methods;
 };
 
 struct SourceFile_attribute {
-    SourceFile_attribute(attr_info&);
-    u2 attribute_name_index;
-    u4 attribute_length;
+    SourceFile_attribute(ifstream&, cp_info_vector&);
     u2 sourcefile_index;
+};
+
+// gamer attribute - finish other attributes
+struct Unknown_attribute {
+    Unknown_attribute(ifstream&, u4);
+    bytestream info;
+};
+
+class Attribute_Info : public Attribute {
+public:
+    Attribute_Info(ifstream&, cp_info_vector&);
+    Attribute_Info(bytestream_it&, cp_info_vector&);
+    ~Attribute_Info();
+
+    union {
+        ConstantValue_attribute* _constantvalue;
+        Code_attribute* _code;
+        // StackMapTable_attribute* _stackmaptable;
+        Exception_attribute* _exception;
+        BootstrapMethods_attribute* _bootstrapmethods;
+        SourceFile_attribute* _sourcefile;
+        Unknown_attribute* _unknown;
+    };
 };
 
 #endif // _ATTRIBUTES_HPP

@@ -1,4 +1,3 @@
-#pragma once
 #include "../include/class_file.hpp"
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
@@ -27,7 +26,7 @@ attr_info::attr_info(bytestream_it &iterator)
         info.push_back(get_bytes<u1>(iterator));
 }
 
-field_info::field_info(ifstream &file) 
+field_info::field_info(ifstream &file, cp_info_vector &constant_pool) 
 {
     access_flags = read_bytes<u2>(file);
     name_idx = read_bytes<u2>(file);
@@ -35,10 +34,13 @@ field_info::field_info(ifstream &file)
     attr_count = read_bytes<u2>(file);
 
     for (int i = 0; i < attr_count; i++)
-        attr.push_back(attr_info(file));
+    {
+        shared_ptr<Attribute> new_attr(new Attribute_Info(file, constant_pool));
+        attr.push_back(new_attr);
+    }
 }
 
-method_info::method_info(ifstream &file) 
+method_info::method_info(ifstream &file, cp_info_vector &constant_pool) 
 {
     access_flags = read_bytes<u2>(file);
     name_idx = read_bytes<u2>(file);
@@ -46,7 +48,18 @@ method_info::method_info(ifstream &file)
     attr_count = read_bytes<u2>(file);
 
     for (int i = 0; i < attr_count; i++)
-        attr.push_back(attr_info(file));
+    {
+        shared_ptr<Attribute> new_attr(new Attribute_Info(file, constant_pool));
+        attr.push_back(new_attr);
+    }
+}
+
+string get_utf8_content(CONSTANT_utf8_info &info)
+{
+    string out = "";
+    for (auto j : info.bytes)
+        out += j;
+    return out;
 }
 
 double calc_double(u4 high, u4 low) 
@@ -100,13 +113,12 @@ long calc_long(u4 high, u4 low)
     return (long) l;
 }
 
-// finish docs
 ifstream open_file(int argc, char** argv)
 {
     CmdArgs cmd_args;
     cmd_args.init(argc, argv);
 
-    // open given file and return
+    // open given file and return stream
     string filename = cmd_args.filename;
     ifstream file(filename, ios::binary);
     return file;
@@ -162,7 +174,7 @@ void get_fields(class_file &class_f, ifstream &file)
     class_f.fields_count = read_bytes<u2>(file);
 
     for(int i = 0; i < class_f.fields_count; i++)
-        class_f.fields.push_back(field_info(file));
+        class_f.fields.push_back(field_info(file, class_f.constant_pool));
 }
 
 void get_methods(class_file &class_f, ifstream &file)
@@ -170,11 +182,8 @@ void get_methods(class_file &class_f, ifstream &file)
     class_f.methods_count = read_bytes<u2>(file);
 
     for(int i = 0; i < class_f.methods_count; i++)
-        class_f.methods.push_back(method_info(file));
+        class_f.methods.push_back(method_info(file, class_f.constant_pool));
 }
-
-// move to hpp
-void get_attributes_info(cp_info_vector &constant_pool, attr_info &attr);
 
 void get_attributes(class_file &class_f, ifstream &file)
 {
@@ -182,32 +191,35 @@ void get_attributes(class_file &class_f, ifstream &file)
 
     for (int i = 0; i < class_f.attributes_count; i++)
     {
-        class_f.attributes.push_back(attr_info(file));
-        get_attributes_info(class_f.constant_pool, class_f.attributes[i]);
+        shared_ptr<Attribute> new_attr(new Attribute_Info(file, class_f.constant_pool));
+        class_f.attributes.push_back(new_attr);
     }
 }
 
-void get_attributes_info(cp_info_vector &constant_pool, attr_info &attr)
-{
-    string attr_type = "";
-    cout << attr.attr_name_idx << endl;
-    cout << constant_pool[attr.attr_name_idx - 1]->tag << endl;
-    for (auto b : constant_pool[attr.attr_name_idx - 1]->_utf8->bytes)
-        attr_type += (char)(b);
+// void get_attributes_info(cp_info_vector &constant_pool, Attribute_Info &attr)
+// {
+//     string attr_type = "";
+//     cout << attr.attr_name_idx << endl;
+//     cout << constant_pool[attr.attr_name_idx - 1]->tag << endl;
+//     for (auto b : constant_pool[attr.attr_name_idx - 1]->_utf8->bytes)
+//         attr_type += (char)(b);
     
-    cout << "Attr type: " << attr_type << endl;
+//     cout << "Attr type: " << attr_type << endl;
+//     switch (attr.tag)
+//         cout << "[0] Code " << endl
+//         attr->_code->print(outfile);
 
-    if (attr_type == "SourceFile")
-    {
-        cout << "Source found" << endl;
-        SourceFile_attribute sf = SourceFile_attribute(attr);
-        cout << "SF: " << sf.sourcefile_index << endl;
-        string sourcename = "";
-        for (auto s : constant_pool[sf.sourcefile_index - 1]->_utf8->bytes)
-            sourcename += (char)s;
+//     if (attr_type == "SourceFile")
+//     {
+//         cout << "Source found" << endl;
+//         SourceFile_attribute sf = SourceFile_attribute(attr);
+//         cout << "SF: " << sf.sourcefile_index << endl;
+//         string sourcename = "";
+//         for (auto s : constant_pool[sf.sourcefile_index - 1]->_utf8->bytes)
+//             sourcename += (char)s;
             
-        cout << sourcename << endl;
-    } else if (attr_type == "Code") {
-        cout << "Code found" << endl;
-    }
-}
+//         cout << sourcename << endl;
+//     } else if (attr_type == "Code") {
+//         cout << "Code found" << endl;
+//     }
+// }
