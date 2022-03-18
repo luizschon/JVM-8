@@ -67,13 +67,13 @@ void print_pool(class_file &class_f, ofstream &outfile)
                 print_double_pool(*(i->_double), outfile);
                 break;
             case CONSTANT_Class:
-                print_class_pool(*(i->_class), outfile);
+                print_class_pool(*(i->_class), outfile, class_f.constant_pool);
                 break;
             case CONSTANT_String:
-                print_string_pool(*(i->_string), outfile);
+                print_string_pool(*(i->_string), outfile, class_f.constant_pool);
                 break;
             case CONSTANT_Fieldref:
-                print_fieldref_pool(*(i->_fieldref), outfile);
+                print_fieldref_pool(*(i->_fieldref), outfile, class_f.constant_pool);
                 break;
             case CONSTANT_Methodref:
                 print_methodref_pool(*(i->_methodref), outfile);
@@ -155,26 +155,47 @@ void print_double_pool(CONSTANT_double_info &info, ofstream &outfile)
     outfile << endl;
 }
 
-void print_class_pool(CONSTANT_class_info &info, ofstream &outfile)
+void print_class_pool(CONSTANT_class_info &info, ofstream &outfile, cp_info_vector &constant_pool)
 {
     outfile << "### [" << pos_counter << "] *CONSTANT_Class_info*" << endl;
     outfile << "- Name Index `" << info.name_idx << "`" << endl;
-    outfile << endl;
+    outfile << "- Class Name `<";
+    for (auto i : constant_pool[info.name_idx - 1]->_utf8->bytes)
+        outfile << i;
+    outfile << ">`" << endl << endl;
 }
 
-void print_string_pool(CONSTANT_string_info &info, ofstream &outfile)
+void print_string_pool(CONSTANT_string_info &info, ofstream &outfile, cp_info_vector &constant_pool)
 {
     outfile << "### [" << pos_counter << "] *CONSTANT_String_info*" << endl;
     outfile << "- String Index `" << info.str_idx << "`" << endl;
-    outfile << endl;
+    outfile << "- String `<";
+    for (auto i : constant_pool[info.str_idx - 1]->_utf8->bytes)
+        outfile << i;
+    outfile << ">`" << endl << endl;
 }
 
-void print_fieldref_pool(CONSTANT_fieldref_info &info, ofstream &outfile)
+void print_fieldref_pool(CONSTANT_fieldref_info &info, ofstream &outfile, cp_info_vector &constant_pool)
 {
     outfile << "### [" << pos_counter << "] *CONSTANT_Fieldref_info*" << endl;
     outfile << "- Class Index `" << info.class_idx << "`" << endl;
+    outfile << "- Class Name `<";
+    
+    auto name_index = constant_pool[info.class_idx - 1]->_class->name_idx;
+    for (auto i : constant_pool[name_index - 1]->_utf8->bytes)
+        outfile << i;
+    outfile << ">`" << endl;
     outfile << "- Name And Type Index `" << info.name_and_type_idx << "`" << endl;
-    outfile << endl;
+    
+    auto name_idx = constant_pool[info.name_and_type_idx - 1]->_name_and_type->name_idx;
+    auto descriptor_index = constant_pool[info.name_and_type_idx - 1]->_name_and_type->descriptor_idx;
+    outfile << "- Name And Type `<";
+    for (auto i : constant_pool[name_idx - 1]->_utf8->bytes) 
+        outfile << i;
+    outfile << ":";
+    for (auto i : constant_pool[descriptor_index - 1]->_utf8->bytes)
+        outfile << i;
+    outfile << ">`" << endl << endl;
 }
 
 void print_methodref_pool(CONSTANT_methodref_info &info, ofstream &outfile)
