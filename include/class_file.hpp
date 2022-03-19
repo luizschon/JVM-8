@@ -156,7 +156,7 @@ ifstream open_file(int argc, char** argv);
 void get_class_data(class_file &class_f, ifstream &file);
 
 // TODO: finish docs
-string get_utf8_content(CONSTANT_utf8_info &info);
+// string get_utf8_content(CONSTANT_utf8_info &info);
 
 /**
  * @brief Stores the interfaces values from input file in the class file
