@@ -66,26 +66,32 @@ string get_version(u2 major, u2 minor)
     return to_string(major - 49 + 5);
 }
 
+union Nibble
+{
+    u2 h16;
+    struct {
+        unsigned int n0 : 4;
+        unsigned int n1 : 4;
+        unsigned int n2 : 4;
+        unsigned int n3 : 4;
+    } nb;
+};
+
 string get_class_access_flags(u2 access_flags)
 {
     string class_access = " ";
-    u2 flag;
-    bitset<16> z(access_flags);
-    cout << "ACCESS FLAG PRIMEIRA VEZ: " << z << endl;
-    for (int j = 0; j < 4; j++) 
-    {
-        // 0x0021 = 0010 0001
-        // 0010 0001 >> 1 => 0001 (1) 0000 (0)
-        // 1 -> 0x0002
-        // 20 -> 0x0000
+    
+    Nibble n;
+    n.h16 = access_flags;
 
-        // flag = access_flags % 0x16 * (0x16 * j);
-        flag = access_flags >> 1;
-        access_flags /= 10;
-        bitset<16> x(access_flags);
-        bitset<16> y(access_flags);
-        cout << "FLAG: " << y << endl;
-        cout << "ACCESS FLAG: " << x << endl;
+    unsigned int t3 = n.nb.n3 << 12;
+    unsigned int t2 = n.nb.n2 << 8;
+    unsigned int t1 = n.nb.n1 << 4;
+    unsigned int t0 = n.nb.n0;
+    vector<unsigned int> flag_v = {t3, t2, t1, t0};
+
+    for (auto flag : flag_v)
+    {
         switch (flag)
         {
             case ACC_PUBLIC:
