@@ -54,14 +54,6 @@ method_info::method_info(ifstream &file, cp_info_vector &constant_pool)
     }
 }
 
-string get_utf8_content(CONSTANT_utf8_info &info)
-{
-    string out = "";
-    for (auto j : info.bytes)
-        out += j;
-    return out;
-}
-
 double calc_double(u4 high, u4 low) 
 {
     long bits = calc_long(high, low);
