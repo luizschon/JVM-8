@@ -19,8 +19,8 @@ void print_all(class_file &class_f, string filename)
     print_general_info(class_f, outfile);
     print_pool(class_f, outfile);
     print_interfaces(class_f, outfile);
-    // print_fields(class_f, outfile, class_f.constant_pool);
-    // print_methods(class_f, outfile);
+    print_fields(class_f, outfile);
+    print_methods(class_f, outfile);
     print_attributes(class_f, outfile);
     outfile.close();
     pos_counter = 0;
@@ -84,6 +84,12 @@ string get_class_access_flags(u2 access_flags)
     Nibble n;
     n.h16 = access_flags;
 
+    
+    // for(; access_flags; access_flags /= 16)
+    // {
+        
+    // }
+
     unsigned int t3 = n.nb.n3 << 12;
     unsigned int t2 = n.nb.n2 << 8;
     unsigned int t1 = n.nb.n1 << 4;
@@ -119,7 +125,7 @@ string get_class_access_flags(u2 access_flags)
                 class_access += "ACC_ENUM ";
                 break;
             default:
-                cout << "INVALID ACCESS FLAG IN DUMP_CLASS_FILE.CPP" << endl;
+                cout << "NOT A VALID ACCESS FLAG" << endl;
                 break;
         }
     }
@@ -128,7 +134,12 @@ string get_class_access_flags(u2 access_flags)
 
 void print_pool(class_file &class_f, ofstream &outfile)
 {
-    outfile << "## **Constant Pool**" << endl;
+    outfile << "## **Constant Pool**  " << endl;
+    outfile << endl;
+    outfile << "<details>" << endl;
+    outfile << "<summary>show more</summary>  " << endl;
+    outfile << "<hr>" << endl;
+    outfile << endl;
     for (auto i : class_f.constant_pool) 
     {
         pos_counter++;
@@ -184,12 +195,15 @@ void print_pool(class_file &class_f, ofstream &outfile)
                 break;
         }
     }
+    outfile << "</details>  " << endl;
+    outfile << "<br>" << endl;
+    outfile << endl;
 }
 
-string get_utf8_content(bytestream &bytes)
+string get_utf8_content(CONSTANT_utf8_info &utf8)
 {
     string out = "";
-    for (auto j : bytes)
+    for (auto j : utf8.bytes)
          out += j;
     return out;
 }
@@ -338,63 +352,69 @@ void print_empty_pool(ofstream &outfile)
 void print_interfaces(class_file &class_f, ofstream &outfile)
 {
     outfile << "## **Interfaces**" << endl;
-    for (int i = 0; i < class_f.interfaces_count; i++)
-        outfile << "- Interface `" << class_f.interfaces[i] << "`";
+    for (auto interface : class_f.interfaces)
+    {
+        auto interface_info = *(class_f.constant_pool[interface - 1]->_class);
+        outfile << "- `" << interface << "` ";
+        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[interface_info.name_idx - 1]->_utf8)) << ">`" << endl;
+    }
     outfile << endl << endl;
 }
 
-// void print_fields(class_file &class_f, ofstream &outfile)
-// {
-//     outfile << "## **Fields**" << endl;
-//     for(int i = 0; i < class_f.fields_count; i++) 
-//     {
-//         outfile << "### *Field*" << endl;
-//         ios_base::fmtflags f(outfile.flags());
-//         outfile << "- Fields Access Flags `" << hex << class_f.fields[i].access_flags << "`" << endl;
-//         outfile.flags(f);
-//         outfile << "- Descriptor Index `" << class_f.fields[i].descriptor_idx << "`" << endl;
-//         outfile << "- Name Index `" << class_f.fields[i].name_idx << "`" << endl;
-//         outfile << "- Attr Count `" << class_f.fields[i].attr_count << "`" << endl;
+void print_fields(class_file &class_f, ofstream &outfile)
+{
+    outfile << "## **Fields**" << endl;
+    // for(int i = 0; i < class_f.fields_count; i++) 
+    // {
+    //     outfile << "### *Field*" << endl;
+    //     ios_base::fmtflags f(outfile.flags());
+    //     outfile << "- Fields Access Flags `" << hex << class_f.fields[i].access_flags << "`";
+    //     outfile.flags(f);
+    //     outfile << "- Descriptor Index `" << class_f.fields[i].descriptor_idx << "`" << endl;
+    //     outfile << "- Name Index `" << class_f.fields[i].name_idx << "`" << endl;
+    //     outfile << "- Attr Count `" << class_f.fields[i].attr_count << "`" << endl;
         
-//         for (int k = 0; k < class_f.fields[i].attr_count; k++)
-//         {
-//             outfile << "  * Attribute Name Index `" << class_f.fields[i].attr[k].attr_name_idx << "`" << endl;
-//             outfile << "  * Attribute Length `" << class_f.fields[i].attr[k].attr_length << "`" << endl;
-//             outfile << "  * Attributes [ `"; 
-//             for (int l = 0; l < class_f.fields[i].attr[k].attr_length; l++) 
-//                 outfile << class_f.fields[i].attr[k].info[l];
-//             outfile << "` ]" << endl;
-//         }
-//     }
-//     outfile << endl;
-// }
+    //     for (int k = 0; k < class_f.fields[i].attr_count; k++)
+    //     {
+    //         outfile << "  * Attribute Name Index `" << class_f.fields[i].attr[k].attr_name_idx << "`" << endl;
+    //         outfile << "  * Attribute Length `" << class_f.fields[i].attr[k].attr_length << "`" << endl;
+    //         outfile << "  * Attributes [ `"; 
+    //         for (int l = 0; l < class_f.fields[i].attr[k].attr_length; l++) 
+    //             outfile << class_f.fields[i].attr[k].info[l];
+    //         outfile << "` ]" << endl;
+    //     }
+    // }
+    outfile << endl;
+}
 
 // add attributes info when types are defined
-// void print_methods(class_file &class_f, ofstream &outfile)
-// {
-//     outfile << "## **Methods**" << endl;
-//     for(int i = 0; i < class_f.methods_count; i++) 
-//     {
-//         outfile << "### *Method*" << endl;
-//         ios_base::fmtflags f(outfile.flags());
-//         outfile << "- Methods Access Flags " << "`0x" << uppercase << hex << class_f.methods[i].access_flags << "`" << endl;
-//         outfile.flags(f);
-//         outfile << "- Name Index `" << class_f.methods[i].name_idx << "`" << endl;
-//         outfile << "- Descriptor Index `" << class_f.methods[i].descriptor_idx << "`" << endl;
-//         outfile << "- Attribute Count `" << class_f.methods[i].attr_count << "`" << endl;
+void print_methods(class_file &class_f, ofstream &outfile)
+{
+    outfile << "## **Methods**" << endl;
+    for (auto method : class_f.methods) 
+    {
+        auto method_name = class_f.constant_pool[method.name_idx - 1];
+        outfile << "### `" << get_utf8_content(*(method_name->_utf8)) << "` " << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- Methods Access Flags " << "`0x" << uppercase << hex << method.access_flags << "` ";
+        outfile.flags(f);
+        outfile << "[`" << get_class_access_flags(method.access_flags) << "`]" << endl;
+        outfile << "- Name Index `" << method.name_idx << "` ";
+        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[method.name_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "- Descriptor Index `" << method.descriptor_idx << "` ";
+        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[method.descriptor_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "- Attribute Count `" << method.attr_count << "`" << endl;
         
-//         for (int k = 0; k < class_f.methods[i].attr_count; k++)
-//         {
-//             outfile << "  * Attribute Name Index `" << class_f.methods[i].attr[k].attr_name_idx << "` " << endl;
-//             outfile << "  * Attribute Length `" << class_f.methods[i].attr[k].attr_length << "` " << endl;
-//             outfile << "  * Attributes  " << endl; 
-//             for (int l = 0; l < class_f.methods[i].attr[k].attr_length; l++) 
-//                 outfile << "  - `" << (char) class_f.methods[i].attr[k].info[l] << "`" << endl;
-//             outfile << endl;
-//         }
-//     }
-//     outfile << endl;
-// }
+        outfile << "<details><summary>Show attributes</summary>" << endl << endl;
+        for (auto attr : method.attr)
+        {
+            auto attr_info = dynamic_pointer_cast<Attribute_Info>(attr);
+            attr_info->dump_info_to_file(class_f.constant_pool, outfile);
+        }
+        outfile << "</details><br>" << endl << endl;
+    }
+    outfile << endl;
+}
 
 // add attributes info when types are defined
 void print_attributes(class_file &class_f, ofstream &outfile)
@@ -402,16 +422,8 @@ void print_attributes(class_file &class_f, ofstream &outfile)
     outfile << "## **Attributes**" << endl;
     for (auto attr : class_f.attributes)
     {
-        outfile << "- Attribute Name Index `" << attr->attribute_name_index << "` " << endl;
-        outfile << "- Attribute Length `" << attr->attribute_length << "` " << endl;
-        outfile << "- Attributes Info  " << endl; 
-        outfile << "- Attribute tag (debug) `" << attr->tag << "`" << endl; // REmover
-        // if (attr->tag == SourceFile)
-        // {
-        //     auto _attr = dynamic_pointer_cast<Attribute_Info>(attr);
-        //     outfile << "- Sourcefile: `" << _attr->_sourcefile->sourcefile_index << "`" << endl; // REmover
-        // }
-        outfile << endl; 
+        auto attr_info = dynamic_pointer_cast<Attribute_Info>(attr);
+        attr_info->dump_info_to_file(class_f.constant_pool, outfile);
     }
     outfile << endl;
 }
