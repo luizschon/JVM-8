@@ -41,7 +41,7 @@ void print_general_info(class_file &class_f, ofstream &outfile)
     
     ios_base::fmtflags g(outfile.flags());
     outfile << "Access Flags `0x" << setw(4) << setfill('0') << hex << class_f.access_flag << "`";
-    outfile << "[`" << get_class_access_flags(class_f.access_flag) << "`]  " << endl;
+    outfile << "[`" << get_access_flags(class_f.access_flag, CLASS) << "`]  " << endl;
     outfile.flags(g);
     
     auto this_class = class_f.constant_pool[class_f.this_class - 1]->_class->name_idx;
@@ -77,23 +77,23 @@ union Nibble
     } nb;
 };
 
-string get_class_access_flags(u2 access_flags)
+string get_access_flags(u2 access_flags, int type)
 {
     string class_access = " ";
     
     Nibble n;
     n.h16 = access_flags;
 
+    cout << "COMPLETE ACCESS_FLAGS: " << "0x" << hex << access_flags << endl;
     
-    // for(; access_flags; access_flags /= 16)
-    // {
-        
-    // }
-
     unsigned int t3 = n.nb.n3 << 12;
+    cout << "T3 - ACCESS_FLAGS: " << "0x" << hex << t3 << endl;
     unsigned int t2 = n.nb.n2 << 8;
+    cout << "T2 - ACCESS_FLAGS: " << "0x" << hex << t2 << endl;
     unsigned int t1 = n.nb.n1 << 4;
+    cout << "T1 - ACCESS_FLAGS: " << "0x" << hex << t1 << endl;
     unsigned int t0 = n.nb.n0;
+    cout << "T0 - ACCESS_FLAGS: " << "0x" << hex << t0 << endl;
     vector<unsigned int> flag_v = {t3, t2, t1, t0};
 
     for (auto flag : flag_v)
@@ -106,27 +106,100 @@ string get_class_access_flags(u2 access_flags)
             case ACC_FINAL:
                 class_access += "ACC_FINAL ";
                 break;
-            case ACC_SUPER:
-                class_access += "ACC_SUPER ";
-                break;
-            case ACC_INTERFACE:
-                class_access += "ACC_INTERFACE ";
-                break;
-            case ACC_ABSTRACT:
-                class_access += "ACC_ABSTRACT ";
-                break;
             case ACC_SYNTHETIC:
                 class_access += "ACC_SYNTHETIC ";
                 break;
-            case ACC_ANNOTATION:
-                class_access += "ACC_ANNOTATION ";
-                break;
-            case ACC_ENUM:
-                class_access += "ACC_ENUM ";
-                break;
-            default:
-                cout << "NOT A VALID ACCESS FLAG" << endl;
-                break;
+        }
+        if (type == CLASS)
+        {
+            switch (flag)
+            {
+                case ACC_SUPER:
+                    class_access += "ACC_SUPER ";
+                    break;
+                case ACC_INTERFACE:
+                    class_access += "ACC_INTERFACE ";
+                    break;
+                case ACC_ABSTRACT:
+                    class_access += "ACC_ABSTRACT ";
+                    break;
+                case ACC_ANNOTATION:
+                    class_access += "ACC_ANNOTATION ";
+                    break;
+                case ACC_ENUM:
+                    class_access += "ACC_ENUM ";
+                    break;
+                default:
+                    cout << "NOT A VALID ACCESS FLAG" << endl;
+                    break;
+            }
+        }
+        else if (type == FIELD)
+        {
+            switch (flag)
+            {
+                case ACC_ENUM:
+                    class_access += "ACC_ENUM ";
+                    break;
+                case ACC_PRIVATE:
+                    class_access += "ACC_PRIVATE ";
+                    break;
+                case ACC_PROTECTED:
+                    class_access += "ACC_PROTECTED ";
+                    break;
+                case ACC_STATIC:
+                    class_access += "ACC_STATIC ";
+                    break;
+                case ACC_VOLATILE:
+                    class_access += "ACC_VOLATILE ";
+                    break;
+                case ACC_TRANSIENT:
+                    class_access += "ACC_TRANSIENT ";
+                    break;
+                default:
+                    cout << "NOT A VALID ACCESS FLAG" << endl;
+                    break;
+            }
+        }
+        else if (type == METHOD)
+        {
+            switch (flag)
+            {
+                case ACC_ABSTRACT:
+                    class_access += "ACC_ABSTRACT ";
+                    break;
+                case ACC_PRIVATE:
+                    class_access += "ACC_PRIVATE ";
+                    break;
+                case ACC_PROTECTED:
+                    class_access += "ACC_PROTECTED ";
+                    break;
+                case ACC_STATIC:
+                    class_access += "ACC_STATIC ";
+                    break;
+                case ACC_SYNCHRONIZED:
+                    class_access += "ACC_SYNCHRONIZED ";
+                    break;
+                case ACC_BRIDGE:
+                    class_access += "ACC_BRIDGE ";
+                    break;
+                case ACC_VARARGS:
+                    class_access += "ACC_VARARGS ";
+                    break;
+                case ACC_NATIVE:
+                    class_access += "ACC_NATIVE ";
+                    break;
+                case ACC_STRICT:
+                    class_access += "ACC_STRICT ";
+                    break;
+                default:
+                    cout << "NOT A VALID ACCESS FLAG" << endl;
+                    break;
+            }
+        }
+        else
+        {
+            cout << "INVALID FLAG TYPE" << endl;
         }
     }
     return class_access;
@@ -364,26 +437,27 @@ void print_interfaces(class_file &class_f, ofstream &outfile)
 void print_fields(class_file &class_f, ofstream &outfile)
 {
     outfile << "## **Fields**" << endl;
-    // for(int i = 0; i < class_f.fields_count; i++) 
-    // {
-    //     outfile << "### *Field*" << endl;
-    //     ios_base::fmtflags f(outfile.flags());
-    //     outfile << "- Fields Access Flags `" << hex << class_f.fields[i].access_flags << "`";
-    //     outfile.flags(f);
-    //     outfile << "- Descriptor Index `" << class_f.fields[i].descriptor_idx << "`" << endl;
-    //     outfile << "- Name Index `" << class_f.fields[i].name_idx << "`" << endl;
-    //     outfile << "- Attr Count `" << class_f.fields[i].attr_count << "`" << endl;
+    for (auto field : class_f.fields) 
+    {
+        auto field_name = class_f.constant_pool[field.name_idx - 1];
+        outfile << "### `" << get_utf8_content(*(field_name->_utf8)) << "` " << endl;
+        ios_base::fmtflags f(outfile.flags());
+        outfile << "- Fields Access Flags `0x" << hex << setw(4) << setfill('0') << field.access_flags << "`" << endl;
+        outfile << "[`" << get_access_flags(field.access_flags, FIELD) << "`]" << endl;
+        outfile.flags(f);
+        outfile << "- Name Index `" << field.name_idx << "` ";
+        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[field.name_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "- Descriptor Index `" << field.descriptor_idx << "` ";
+        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[field.descriptor_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "- Attribute Count `" << field.attr_count << "`" << endl;
         
-    //     for (int k = 0; k < class_f.fields[i].attr_count; k++)
-    //     {
-    //         outfile << "  * Attribute Name Index `" << class_f.fields[i].attr[k].attr_name_idx << "`" << endl;
-    //         outfile << "  * Attribute Length `" << class_f.fields[i].attr[k].attr_length << "`" << endl;
-    //         outfile << "  * Attributes [ `"; 
-    //         for (int l = 0; l < class_f.fields[i].attr[k].attr_length; l++) 
-    //             outfile << class_f.fields[i].attr[k].info[l];
-    //         outfile << "` ]" << endl;
-    //     }
-    // }
+        for (auto attr : field.attr)
+        {
+            outfile << "  * Attribute Name Index `" << attr->attribute_name_index << "` ";
+            outfile << "`<" << get_utf8_content(*(class_f.constant_pool[attr->attribute_name_index]->_utf8)) << ">` " << endl;
+            outfile << "  * Attribute Length `" << attr->attribute_length << "`" << endl;
+        }
+    }
     outfile << endl;
 }
 
@@ -398,7 +472,7 @@ void print_methods(class_file &class_f, ofstream &outfile)
         ios_base::fmtflags f(outfile.flags());
         outfile << "- Methods Access Flags " << "`0x" << uppercase << hex << method.access_flags << "` ";
         outfile.flags(f);
-        outfile << "[`" << get_class_access_flags(method.access_flags) << "`]" << endl;
+        outfile << "[`" << get_access_flags(method.access_flags, METHOD) << "`]" << endl;
         outfile << "- Name Index `" << method.name_idx << "` ";
         outfile << "`<" << get_utf8_content(*(class_f.constant_pool[method.name_idx - 1]->_utf8)) << ">`" << endl;
         outfile << "- Descriptor Index `" << method.descriptor_idx << "` ";

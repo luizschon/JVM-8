@@ -38,4 +38,4 @@ main
 
 # Generated files
 *.txt
-/out/*.md
+# /out/*.md
