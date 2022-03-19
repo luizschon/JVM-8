@@ -76,6 +76,27 @@ Attribute_Info::~Attribute_Info()
     }
 }
 
+void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile) 
+{
+    outfile << "### " << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << endl;
+    outfile << "- Generic info " << endl;
+    outfile << "  - Attribute name index `" << attribute_name_index << "`";
+    outfile << " `<" << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << ">`" << endl;
+    outfile << "  - Attribute length `" << attribute_length << "`" << endl << endl;
+
+    outfile << "- Specific info" << endl;
+    switch (tag) 
+    {
+        case ConstantValue: _constantvalue->dump_to_file(constant_pool, outfile); break;
+        case Code: _code->dump_to_file(constant_pool, outfile); break;
+        case StackMapTable: /* _stackmaptable->print(constant_pool); */ break;
+        case Exception: _exception->dump_to_file(constant_pool, outfile); break;
+        case BootstrapMethods: _bootstrapmethods->dump_to_file(constant_pool, outfile); break;
+        case SourceFile: _sourcefile->dump_to_file(constant_pool, outfile); break;
+        default: break;
+    }
+}
+
 exception_table_info::exception_table_info(ifstream &file)
 {
     start_pc = read_bytes<u2>(file);
@@ -98,6 +119,11 @@ ConstantValue_attribute::ConstantValue_attribute(ifstream &file, cp_info_vector&
     constantvalue_index = read_bytes<u2>(file);
 }
 
+void ConstantValue_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
+{
+    outfile << "  - Constant value index `" << constantvalue_index << "`" << endl;
+}
+
 Code_attribute::Code_attribute(ifstream &file, cp_info_vector& constant_pool)
 {
     max_stack = read_bytes<u2>(file);
@@ -117,12 +143,26 @@ Code_attribute::Code_attribute(ifstream &file, cp_info_vector& constant_pool)
     }
 }
 
+void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
+{
+    outfile << "  - Maximum stack size `" << max_stack << "`" << endl;
+    outfile << "  - Maximum local variables `" << max_locals << "`" << endl;
+    outfile << "  - Code length `" << code_length << "`" << endl;
+    outfile << "  - TODO PRINT BYTECODES" << endl;
+}
+
 Exception_attribute::Exception_attribute(ifstream &file, cp_info_vector& constant_pool)
 {
     number_of_exceptions = read_bytes<u2>(file);
     
     for (int i = 1; i <= sizeof(u2); i++)
         exception_index_table.push_back(read_bytes<u2>(file));
+}
+
+void Exception_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
+{
+    outfile << "  - Number of exceptions: " << number_of_exceptions << endl;
+    outfile << "  - TODO: PRINTAR EXCEPTION_TABLE" << endl;
 }
 
 BootstrapMethods_attribute::BootstrapMethods_attribute(ifstream &file, cp_info_vector& constant_pool) 
@@ -133,10 +173,21 @@ BootstrapMethods_attribute::BootstrapMethods_attribute(ifstream &file, cp_info_v
        bootstrap_methods.push_back(bootstrap_methods_info(file)); 
 }
 
+void BootstrapMethods_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
+{
+    outfile << "  - Number of bootstrap methods: " << num_bootstrap_methods << endl;
+    outfile << "  - TODO: PRINTAR EXCEPTION_TABLE" << endl;
+}
+
 SourceFile_attribute::SourceFile_attribute(ifstream &file, cp_info_vector& constant_pool)
 {
     sourcefile_index = read_bytes<u2>(file);
-    cout << "Constructor read this:" << sourcefile_index << endl;
+}
+
+void SourceFile_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
+{
+    outfile << "  - Source file name index `" << sourcefile_index << "`";
+    outfile << " `<" << get_utf8_content(*(constant_pool[sourcefile_index - 1]->_utf8)) << ">`" << endl;
 }
 
 Unknown_attribute::Unknown_attribute(ifstream &file, u4 length)
