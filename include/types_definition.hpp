@@ -4,6 +4,9 @@
 #include <fstream>
 #include <vector>
 
+#define to_cp_info dynamic_pointer_cast<CP_Info>
+#define to_attr_info dynamic_pointer_cast<Attribute_Info>
+
 using namespace std;
 
 // Common types definitions

@@ -1,6 +1,7 @@
 #ifndef _CONSTANT_POOL_INFO_HPP
 #define _CONSTANT_POOL_INFO_HPP
 
+#include <fstream>
 #include <memory>
 #include <type_traits>
 #include <vector>
@@ -27,112 +28,112 @@ typedef enum {
     CONSTANT_Empty              = 19
 } CONSTANT_Types;
 
+class CP_Item {
+public:
+    CP_Item(u1);
+    virtual ~CP_Item() {}
+    CONSTANT_Types tag;
+};
+
+typedef vector<shared_ptr<CP_Item>> cp_info_vector;
+
 struct CONSTANT_utf8_info {
     CONSTANT_utf8_info(ifstream &file);
-    u1 tag; // 1
     u2 length;
     vector<u1> bytes;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_integer_info {
     CONSTANT_integer_info(ifstream &file);
-    u1 tag; // 3
     u4 bytes;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_float_info {
     CONSTANT_float_info(ifstream &file);
-    u1 tag; // 4
     u4 bytes;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_long_info {
     CONSTANT_long_info(ifstream &file);
-    u1 tag; // 5
     u4 high_bytes;
     u4 low_bytes;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_double_info {
     CONSTANT_double_info(ifstream &file);
-    u1 tag; // 6
     u4 high_bytes;
     u4 low_bytes;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_class_info {
     CONSTANT_class_info(ifstream &file);
-    u1 tag; // 7
     u2 name_idx;
+    void dump_to_file(ofstream &outfile, cp_info_vector&);
 };
 
 struct CONSTANT_string_info {
     CONSTANT_string_info(ifstream &file);
-    u1 tag; // 8
     u2 str_idx;
+    void dump_to_file(ofstream &outfile, cp_info_vector&);
 };
 
 struct CONSTANT_fieldref_info {
     CONSTANT_fieldref_info(ifstream &file);
-    u1 tag; // 9
     u2 class_idx;
     u2 name_and_type_idx;
+    void dump_to_file(ofstream &outfile, cp_info_vector&);
 };
 
 struct CONSTANT_methodref_info {
     CONSTANT_methodref_info(ifstream &file);
-    u1 tag; // 10
     u2 class_idx;
     u2 name_and_type_idx;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_interface_methodref_info {
     CONSTANT_interface_methodref_info(ifstream &file);
-    u1 tag; // 11
     u2 class_idx;
     u2 name_and_type_idx;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_name_and_type_info {
     CONSTANT_name_and_type_info(ifstream &file);
-    u1 tag; // 12
     u2 name_idx;
     u2 descriptor_idx;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_method_handle_info {
     CONSTANT_method_handle_info(ifstream &file);
-    u1 tag; // 15 
     u1 reference_kind;
     u2 reference_index;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_method_type_info {
     CONSTANT_method_type_info(ifstream &file);
-    u1 tag; // 16
     u2 descriptor_index;
+    void dump_to_file(ofstream &outfile);
 };
 
 struct CONSTANT_invoke_dynamic_info {
     CONSTANT_invoke_dynamic_info(ifstream &file);
-    u1 tag; // 18
     u2 bootstrap_method_attr_index;
     u2 name_and_type_index;
+    void dump_to_file(ofstream &outfile);
 };
 
-struct CONSTANT_empty {
-    CONSTANT_empty() : tag((CONSTANT_Types)CONSTANT_Empty) {}
-    u1 tag;
-    // :)
-};
-
-class CP_Info {
+class CP_Info : public CP_Item {
 public:
-    CP_Info(u1 tag = CONSTANT_Empty);
     CP_Info(u1 tag, ifstream &file);
     ~CP_Info();
-
-    CONSTANT_Types tag;
 
     union {
         CONSTANT_utf8_info* _utf8;
@@ -149,10 +150,9 @@ public:
         CONSTANT_method_handle_info* _method_handle;
         CONSTANT_method_type_info* _method_type;
         CONSTANT_invoke_dynamic_info* _invoke_dynamic;
-        CONSTANT_empty* _empty;
     };
-};
 
-typedef vector<shared_ptr<CP_Info>> cp_info_vector;
+    void dump_info_to_file(cp_info_vector&, ofstream&, unsigned int&);
+};
 
 #endif // _CONSTANT_POOL_INFO_HPP
