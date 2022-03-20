@@ -13,7 +13,7 @@ Attribute::Attribute(ifstream &file, cp_info_vector &constant_pool)
     cout << "attr_name_idx: " << attribute_name_index << endl;
     cout << "attr_length: " << attribute_length << endl;
 
-    string attribute_name = get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8));
+    string attribute_name = get_utf8_content(*(to_cp_info(constant_pool[attribute_name_index - 1])->_utf8));
     cout << "attr_name: " << attribute_name << endl;
 
     if (attribute_name == "ConstantValue") {
@@ -79,13 +79,16 @@ Attribute_Info::~Attribute_Info()
 
 void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile, unsigned int &counter) 
 {
-    outfile << "### [" << counter++ << "] " << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << endl;
+    auto attribute_name = *(to_cp_info(constant_pool[attribute_name_index - 1])->_utf8);
+
+    outfile << "### [" << counter++ << "] " << get_utf8_content(attribute_name) << endl;
+
     outfile << "- Generic info " << endl;
     outfile << "  - Attribute name index `" << attribute_name_index << "`";
-    outfile << " `<" << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << ">`" << endl;
+    outfile << " `<" << get_utf8_content(attribute_name) << ">`" << endl;
     outfile << "  - Attribute length `" << attribute_length << "`" << endl << endl;
-
     outfile << "- Specific info" << endl;
+    
     switch (tag) 
     {
         case ConstantValue: _constantvalue->dump_to_file(constant_pool, outfile); break;
@@ -211,8 +214,9 @@ SourceFile_attribute::SourceFile_attribute(ifstream &file, cp_info_vector& const
 
 void SourceFile_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
 {
+    auto sourcefile_name = *(to_cp_info(constant_pool[sourcefile_index - 1])->_utf8);
     outfile << "  - Source file name index `" << sourcefile_index << "`";
-    outfile << " `<" << get_utf8_content(*(constant_pool[sourcefile_index - 1]->_utf8)) << ">`" << endl;
+    outfile << " `<" << get_utf8_content(sourcefile_name) << ">`" << endl;
 }
 
 Unknown_attribute::Unknown_attribute(ifstream &file, u4 length)

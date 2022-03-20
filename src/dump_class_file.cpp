@@ -17,7 +17,7 @@ void print_all(class_file &class_f, string filename)
     ofstream outfile("./out/" + outname + ".md");
     outfile << "# **" << outname << "**" << endl << endl;
     print_general_info(class_f, outfile);
-    print_pool(class_f, outfile);
+    print_pool(class_f.constant_pool, outfile);
     print_interfaces(class_f, outfile);
     print_fields(class_f, outfile);
     print_methods(class_f, outfile);
@@ -41,16 +41,18 @@ void print_general_info(class_file &class_f, ofstream &outfile)
     
     ios_base::fmtflags g(outfile.flags());
     outfile << "Access Flags `0x" << setw(4) << setfill('0') << hex << class_f.access_flag << "`";
-    outfile << "[`" << get_access_flags(class_f.access_flag, CLASS) << "`]  " << endl;
+    outfile << " [`" << get_access_flags(class_f.access_flag, CLASS) << "`]  " << endl;
     outfile.flags(g);
     
-    auto this_class = class_f.constant_pool[class_f.this_class - 1]->_class->name_idx;
+    auto this_class = to_cp_info(class_f.constant_pool[class_f.this_class - 1])->_class->name_idx;
+    auto this_class_name = *(to_cp_info(class_f.constant_pool[this_class - 1])->_utf8);
     outfile << "This Class `" << class_f.this_class << "` ";
-    outfile << "`<" << get_utf8_content(*(class_f.constant_pool[this_class - 1]->_utf8)) << ">`  " << endl;
+    outfile << "`<" << get_utf8_content(this_class_name)  << ">`  " << endl;
     
-    auto super_class = class_f.constant_pool[class_f.super_class - 1]->_class->name_idx;
+    auto super_class = to_cp_info(class_f.constant_pool[class_f.super_class - 1])->_class->name_idx;
+    auto super_class_name = *(to_cp_info(class_f.constant_pool[super_class - 1])->_utf8);
     outfile << "Super Class `" << class_f.super_class << "` ";
-    outfile << "`<" << get_utf8_content(*(class_f.constant_pool[super_class - 1]->_utf8)) << ">`  " << endl;
+    outfile << "`<" << get_utf8_content(super_class_name) << ">`  " << endl;
 
     outfile << "Interfaces Count `" << class_f.interfaces_count << "`  " << endl;
     outfile << "Fields Count `" << class_f.fields_count << "`  " << endl;
@@ -205,72 +207,18 @@ string get_access_flags(u2 access_flags, int type)
     return class_access;
 }
 
-void print_pool(class_file &class_f, ofstream &outfile)
+void print_pool(cp_info_vector &constant_pool, ofstream &outfile)
 {
-    outfile << "## **Constant Pool**  " << endl;
-    outfile << endl;
-    outfile << "<details>" << endl;
-    outfile << "<summary>show more</summary>  " << endl;
-    outfile << "<hr>" << endl;
-    outfile << endl;
-    for (auto i : class_f.constant_pool) 
+    unsigned int cp_counter = 1;
+    outfile << "## **Constant Pool**  " << endl << endl;
+    outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
+
+    for (auto cp_item : constant_pool) 
     {
-        pos_counter++;
-        switch (i->tag) 
-        {
-            case CONSTANT_Utf8:
-                print_utf8_pool(*(i->_utf8), outfile);
-                break;
-            case CONSTANT_Integer:
-                print_integer_pool(*(i->_integer), outfile);
-                break;
-            case CONSTANT_Float:
-                print_float_pool(*(i->_float), outfile);
-                break;
-            case CONSTANT_Long:
-                print_long_pool(*(i->_long), outfile);
-                break;
-            case CONSTANT_Double:
-                print_double_pool(*(i->_double), outfile);
-                break;
-            case CONSTANT_Class:
-                print_class_pool(*(i->_class), outfile, class_f.constant_pool);
-                break;
-            case CONSTANT_String:
-                print_string_pool(*(i->_string), outfile, class_f.constant_pool);
-                break;
-            case CONSTANT_Fieldref:
-                print_fieldref_pool(*(i->_fieldref), outfile, class_f.constant_pool);
-                break;
-            case CONSTANT_Methodref:
-                print_methodref_pool(*(i->_methodref), outfile);
-                break;
-            case CONSTANT_InterfaceMethodref:
-                print_interface_methodref_pool(*(i->_interface_methodref), outfile);
-                break;
-            case CONSTANT_NameAndType:
-                print_name_and_type_pool(*(i->_name_and_type), outfile);
-                break;
-            case CONSTANT_MethodHandle:
-                print_method_handle_pool(*(i->_method_handle), outfile);
-                break;
-            case CONSTANT_MethodType:
-                print_method_type_pool(*(i->_method_type), outfile);
-                break;
-            case CONSTANT_InvokeDynamic:
-                print_invoke_dynamic_pool(*(i->_invoke_dynamic), outfile);
-                break;
-            case CONSTANT_Empty:
-                print_empty_pool(outfile);
-                break;
-            default:
-                cout << "INVALID TAG" << endl;
-                break;
-        }
+        auto cp_info = dynamic_pointer_cast<CP_Info>(cp_item);
+        cp_info->dump_info_to_file(constant_pool, outfile, cp_counter);
     }
-    outfile << "</details>  " << endl;
-    outfile << "<br>" << endl;
-    outfile << endl;
+    outfile << "</details> <br>" << endl << endl;
 }
 
 string get_utf8_content(CONSTANT_utf8_info &utf8)
@@ -281,215 +229,90 @@ string get_utf8_content(CONSTANT_utf8_info &utf8)
     return out;
 }
 
-void print_utf8_pool(CONSTANT_utf8_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Utf8_info*" << endl;
-    outfile << "- Length `" << info.length << "`" << endl;
-    outfile << "- Bytes [ `" << get_utf8_content(info) << "`]" << endl << endl;
-}
-
-void print_integer_pool(CONSTANT_integer_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Integer_info*" << endl;
-    outfile << "- Bytes `" << info.bytes << "`" << endl;
-    outfile << endl;
-}
-
-void print_float_pool(CONSTANT_float_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Float_info*" << endl;
-    ios_base::fmtflags f(outfile.flags());
-    outfile << "- Bytes `0x" << hex << info.bytes << "`" << endl;
-    outfile.flags(f);
-    outfile << "- Float `" << calc_float(info.bytes) << "`" << endl;
-    outfile << endl;
-}
-
-void print_long_pool(CONSTANT_long_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Long_info*" << endl;
-    ios_base::fmtflags f(outfile.flags());
-    outfile << "- High Bytes `0x" << hex << info.high_bytes << "`" << endl;
-    outfile << "- Low Bytes `0x" << hex << info.low_bytes << "`" << endl;
-    outfile.flags(f);
-    outfile << "- Long `" << calc_long(info.high_bytes, info.low_bytes) << "`" << endl;
-    outfile << endl;
-}
-
-void print_double_pool(CONSTANT_double_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Double_info*" << endl;
-    ios_base::fmtflags f(outfile.flags());
-    outfile << "- High Bytes `0x" << hex << info.high_bytes << "`" << endl;
-    outfile << "- Low Bytes `0x" << hex << info.low_bytes << "`" << endl;
-    outfile.flags(f);
-    outfile << "- Double `" << calc_double(info.high_bytes, info.low_bytes) << "`" << endl;
-    outfile << endl;
-}
-
-void print_class_pool(CONSTANT_class_info &info, ofstream &outfile, cp_info_vector &constant_pool)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Class_info*" << endl;
-    outfile << "- Name Index `" << info.name_idx << "`" << endl;
-    outfile << "- Class Name `<";
-    for (auto i : constant_pool[info.name_idx - 1]->_utf8->bytes)
-        outfile << i;
-    outfile << ">`" << endl << endl;
-}
-
-void print_string_pool(CONSTANT_string_info &info, ofstream &outfile, cp_info_vector &constant_pool)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_String_info*" << endl;
-    outfile << "- String Index `" << info.str_idx << "`" << endl;
-    outfile << "- String `<";
-    for (auto i : constant_pool[info.str_idx - 1]->_utf8->bytes)
-        outfile << i;
-    outfile << ">`" << endl << endl;
-}
-
-void print_fieldref_pool(CONSTANT_fieldref_info &info, ofstream &outfile, cp_info_vector &constant_pool)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Fieldref_info*" << endl;
-    outfile << "- Class Index `" << info.class_idx << "`" << endl;
-    outfile << "- Class Name `<";
-    
-    auto name_index = constant_pool[info.class_idx - 1]->_class->name_idx;
-    for (auto i : constant_pool[name_index - 1]->_utf8->bytes)
-        outfile << i;
-    outfile << ">`" << endl;
-    outfile << "- Name And Type Index `" << info.name_and_type_idx << "`" << endl;
-    
-    auto name_idx = constant_pool[info.name_and_type_idx - 1]->_name_and_type->name_idx;
-    auto descriptor_index = constant_pool[info.name_and_type_idx - 1]->_name_and_type->descriptor_idx;
-    outfile << "- Name And Type `<";
-    for (auto i : constant_pool[name_idx - 1]->_utf8->bytes) 
-        outfile << i;
-    outfile << ":";
-    for (auto i : constant_pool[descriptor_index - 1]->_utf8->bytes)
-        outfile << i;
-    outfile << ">`" << endl << endl;
-}
-
-void print_methodref_pool(CONSTANT_methodref_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Methodref_info*" << endl;
-    outfile << "- Class Index `" << info.class_idx << "`" << endl;
-    outfile << "- Name And Type Index `" << info.name_and_type_idx << "`" << endl;
-    outfile << endl;
-}
-
-void print_interface_methodref_pool(CONSTANT_interface_methodref_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Interface_methodref_info*" << endl;
-    outfile << "- Class Index `" << info.class_idx << "`" << endl;
-    outfile << "- Name And Type Index `" << info.name_and_type_idx << "`" << endl;
-    outfile << endl;
-}
-
-void print_name_and_type_pool(CONSTANT_name_and_type_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Name_and_type*" << endl;
-    outfile << "- Name Index `" << info.name_idx << "`" << endl;
-    outfile << "- Descriptor Index `" << info.descriptor_idx << "`" << endl;
-    outfile << endl;
-}
-
-void print_method_handle_pool(CONSTANT_method_handle_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Method_handle_info*" << endl;
-    outfile << "- Reference Kind `" << info.reference_kind << "`" << endl;
-    outfile << "- Reference Index `" << info.reference_index << "`" << endl;
-    outfile << endl;
-}
-
-void print_method_type_pool(CONSTANT_method_type_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Method_type*" << endl;
-    outfile << "- Descriptor Index `" << info.descriptor_index << "`" << endl;
-}
-
-void print_invoke_dynamic_pool(CONSTANT_invoke_dynamic_info &info, ofstream &outfile)
-{
-    outfile << "### [" << pos_counter << "] *CONSTANT_Invoke_dynamic*" << endl;
-    outfile << "- Bootstrap Method Attribute Index `" << info.bootstrap_method_attr_index << "`" << endl;
-    outfile << "- Name and Type Index `" << info.name_and_type_index << "`" << endl;
-    outfile << endl;
-}
-
-void print_empty_pool(ofstream &outfile)
-{
-    cout << "empty detected" << endl;
-    outfile << "### [" << pos_counter << "] *Number continuation*" << endl << endl;
-}
-
 void print_interfaces(class_file &class_f, ofstream &outfile)
 {
-    outfile << "## **Interfaces**" << endl;
+    outfile << "## **Interfaces**" << endl << endl;
+    outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
+
     for (auto interface : class_f.interfaces)
     {
-        auto interface_info = *(class_f.constant_pool[interface - 1]->_class);
-        outfile << "- `" << interface << "` ";
-        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[interface_info.name_idx - 1]->_utf8)) << ">`" << endl;
+        auto interface_name_index = to_cp_info(class_f.constant_pool[interface - 1])->_class->name_idx;
+        auto interface_name = *(to_cp_info(class_f.constant_pool[interface_name_index - 1])->_utf8);
+        outfile << "- Interface: `" << interface << "` ";
+        outfile << "`<" << get_utf8_content(interface_name) << ">`" << endl;
     }
-    outfile << endl << endl;
+    outfile << "</details><br>" << endl << endl;
 }
 
 void print_fields(class_file &class_f, ofstream &outfile)
 {
-    outfile << "## **Fields**" << endl;
+    unsigned int field_counter = 0;
+    outfile << "## **Fields**" << endl << endl;
+    outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
+
     for (auto field : class_f.fields) 
     {
-        auto field_name = class_f.constant_pool[field.name_idx - 1];
-        outfile << "### `" << get_utf8_content(*(field_name->_utf8)) << "` " << endl;
+        auto field_name = *(to_cp_info(class_f.constant_pool[field.name_idx - 1])->_utf8);
+        auto field_descriptor = *(to_cp_info(class_f.constant_pool[field.descriptor_idx - 1])->_utf8);
+
+        outfile << "### [" << field_counter++ << "] `" << get_utf8_content(field_name) << "`" << endl;
+
         ios_base::fmtflags f(outfile.flags());
         outfile << "- Fields Access Flags `0x" << hex << setw(4) << setfill('0') << field.access_flags << "`" << endl;
         outfile << "[`" << get_access_flags(field.access_flags, FIELD) << "`]" << endl;
         outfile.flags(f);
+
         outfile << "- Name Index `" << field.name_idx << "` ";
-        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[field.name_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "`<" << get_utf8_content(field_name) << ">`" << endl;
         outfile << "- Descriptor Index `" << field.descriptor_idx << "` ";
-        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[field.descriptor_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "`<" << get_utf8_content(field_descriptor) << ">`" << endl;
         outfile << "- Attribute Count `" << field.attr_count << "`" << endl;
         
-        for (auto attr : field.attr)
-        {
-            outfile << "  * Attribute Name Index `" << attr->attribute_name_index << "` ";
-            outfile << "`<" << get_utf8_content(*(class_f.constant_pool[attr->attribute_name_index]->_utf8)) << ">` " << endl;
-            outfile << "  * Attribute Length `" << attr->attribute_length << "`" << endl;
-        }
+        outfile << "<details><summary>Show attributes</summary>" << endl << endl;
+        print_attributes_vector(field.attr, class_f.constant_pool, outfile);
+        outfile << "</details><br>" << endl << endl;
     }
-    outfile << endl;
+    outfile << "</details><br>" << endl << endl;
 }
 
 // add attributes info when types are defined
 void print_methods(class_file &class_f, ofstream &outfile)
 {
+    unsigned int method_counter = 0;
     outfile << "## **Methods**" << endl;
+    outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
+
     for (auto method : class_f.methods) 
     {
-        auto method_name = class_f.constant_pool[method.name_idx - 1];
-        outfile << "### `" << get_utf8_content(*(method_name->_utf8)) << "` " << endl;
+        auto method_name = *(to_cp_info(class_f.constant_pool[method.name_idx - 1])->_utf8);
+        auto method_descriptor = *(to_cp_info(class_f.constant_pool[method.descriptor_idx - 1])->_utf8);
+
+        outfile << "### [" << method_counter++ << "] `" << get_utf8_content(method_name) << "` " << endl;
+
         ios_base::fmtflags f(outfile.flags());
         outfile << "- Methods Access Flags " << "`0x" << uppercase << hex << method.access_flags << "` ";
         outfile.flags(f);
+
         outfile << "[`" << get_access_flags(method.access_flags, METHOD) << "`]" << endl;
         outfile << "- Name Index `" << method.name_idx << "` ";
-        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[method.name_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "`<" << get_utf8_content(method_name) << ">`" << endl;
         outfile << "- Descriptor Index `" << method.descriptor_idx << "` ";
-        outfile << "`<" << get_utf8_content(*(class_f.constant_pool[method.descriptor_idx - 1]->_utf8)) << ">`" << endl;
+        outfile << "`<" << get_utf8_content(method_descriptor) << ">`" << endl;
         outfile << "- Attribute Count `" << method.attr_count << "`" << endl;
         
         outfile << "<details><summary>Show attributes</summary>" << endl << endl;
         print_attributes_vector(method.attr, class_f.constant_pool, outfile);
         outfile << "</details><br>" << endl << endl;
     }
-    outfile << endl;
+    outfile << "</details><br>" << endl << endl;
 }
 
 void print_class_attributes(class_file &class_f, ofstream &outfile)
 {
     outfile << "## **Attributes**" << endl;
+    outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
     print_attributes_vector(class_f.attributes, class_f.constant_pool, outfile);
+    outfile << "</details><br>" << endl << endl;
 }
 
 void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &constant_pool, ofstream &outfile)

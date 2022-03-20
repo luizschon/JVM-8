@@ -135,7 +135,7 @@ void get_constant_pool(class_file &class_f, ifstream &file)
         if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
         {
             iteration_counter--;
-            shared_ptr<CP_Info> empty_el(new CP_Info(CONSTANT_Empty));
+            shared_ptr<CP_Info> empty_el(new CP_Info(CONSTANT_Empty, file));
             class_f.constant_pool.push_back(empty_el);
         }
     }
