@@ -187,31 +187,3 @@ void get_attributes(class_file &class_f, ifstream &file)
         class_f.attributes.push_back(new_attr);
     }
 }
-
-// void get_attributes_info(cp_info_vector &constant_pool, Attribute_Info &attr)
-// {
-//     string attr_type = "";
-//     cout << attr.attr_name_idx << endl;
-//     cout << constant_pool[attr.attr_name_idx - 1]->tag << endl;
-//     for (auto b : constant_pool[attr.attr_name_idx - 1]->_utf8->bytes)
-//         attr_type += (char)(b);
-    
-//     cout << "Attr type: " << attr_type << endl;
-//     switch (attr.tag)
-//         cout << "[0] Code " << endl
-//         attr->_code->print(outfile);
-
-//     if (attr_type == "SourceFile")
-//     {
-//         cout << "Source found" << endl;
-//         SourceFile_attribute sf = SourceFile_attribute(attr);
-//         cout << "SF: " << sf.sourcefile_index << endl;
-//         string sourcename = "";
-//         for (auto s : constant_pool[sf.sourcefile_index - 1]->_utf8->bytes)
-//             sourcename += (char)s;
-            
-//         cout << sourcename << endl;
-//     } else if (attr_type == "Code") {
-//         cout << "Code found" << endl;
-//     }
-// }

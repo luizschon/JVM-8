@@ -1,6 +1,8 @@
 #include "../include/attributes.hpp"
 #include "../include/dump_class_file.hpp"
+#include "../include/bytecode.hpp"
 #include <algorithm>
+#include <iomanip>
 #include <iostream>
 
 using namespace std;
@@ -9,17 +11,14 @@ Attribute::Attribute(ifstream &file, cp_info_vector &constant_pool)
 {
     attribute_name_index = read_bytes<u2>(file);
     attribute_length = read_bytes<u4>(file);
-
-    cout << "attr_name_idx: " << attribute_name_index << endl;
-    cout << "attr_length: " << attribute_length << endl;
-
     string attribute_name = get_utf8_content(*(to_cp_info(constant_pool[attribute_name_index - 1])->_utf8));
-    cout << "attr_name: " << attribute_name << endl;
 
     if (attribute_name == "ConstantValue") {
         tag = ConstantValue;
     } else if (attribute_name == "Code" ) {
         tag = Code;
+    } else if (attribute_name == "LineNumberTable" ) {
+        tag = LineNumberTable;
     } else if (attribute_name == "StackMapTable" ) {
         tag = StackMapTable;
     } else if (attribute_name == "Exception" ) {
@@ -45,6 +44,9 @@ Attribute_Info::Attribute_Info(ifstream &file, cp_info_vector &constant_pool)
         case Code:
             _code = new Code_attribute(file, constant_pool);
             break;
+        case LineNumberTable:
+            _linenumbertable = new LineNumberTable_attribute(file, constant_pool);
+            break;
         case StackMapTable:
             // TODO StackMapTable
             break;
@@ -69,6 +71,7 @@ Attribute_Info::~Attribute_Info()
     {
         case ConstantValue: delete _constantvalue; break;
         case Code: delete _code; break;
+        case LineNumberTable: delete _linenumbertable; break;
         case StackMapTable: /* delete _stackmaptable */; break;
         case Exception: delete _exception; break;
         case BootstrapMethods: delete _bootstrapmethods; break;
@@ -93,6 +96,7 @@ void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &
     {
         case ConstantValue: _constantvalue->dump_to_file(constant_pool, outfile); break;
         case Code: _code->dump_to_file(constant_pool, outfile); break;
+        case LineNumberTable: _linenumbertable->dump_to_file(constant_pool, outfile); break;
         case StackMapTable: /* _stackmaptable->print(constant_pool); */ break;
         case Exception: _exception->dump_to_file(constant_pool, outfile); break;
         case BootstrapMethods: _bootstrapmethods->dump_to_file(constant_pool, outfile); break;
@@ -152,10 +156,8 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
     outfile << "  - Maximum stack size `" << max_stack << "`" << endl;
     outfile << "  - Maximum local variables `" << max_locals << "`" << endl;
     outfile << "  - Code length `" << code_length << "`" << endl;
-    outfile << "  - BYTECODES" << endl;
-
-    // const vector<string> damned = {"nop", "iconst_1", "iconst_2", "iconst_3", "iconst_4",
-    // "iconst_m1"};
+    outfile << "- Bytecode" << endl;
+    outfile << "```" << endl;
 
     // JVM ignores some instructions, discover why
     const vector<string> damned = {":)"};
@@ -163,20 +165,51 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
     int pos = 0;
     for (auto byte : code)
     {
-        pos++;
-        for (auto& p : mnemonic)
-            if (p.first == byte && !count(damned.begin(), damned.end(), p.second))
-                outfile << "    - " << pos << " `" << p.second << "`" << endl;
+        try {
+            auto instr = mnemonic.at(byte);
+            outfile << pos++ << " " << instr << endl;
+        } catch (...) {
+            ios_base::fmtflags f(cout.flags());
+            cout << "Bytecode nao encontrado: 0x" << hex << (int) byte <<  endl;
+            cout.flags(f);
+        }    
     }
+    outfile << "```" << endl;
 
-    // for (auto attr : attributes)
-    // {
-    //     cout << attr->attribute_name_index << endl;
-    //     cout << attr->attribute_length << endl;
-    //     cout << attr->tag << endl;
-    // }
-    
-    cout << endl << endl;
+    unsigned int attr_counter = 0;
+    for (auto attr : attributes)
+    {
+        auto attr_info = to_attr_info(attr);
+        attr_info->dump_info_to_file(constant_pool, outfile, attr_counter);
+    }
+}
+
+LineNumberTable_attribute::LineNumberTable_attribute(ifstream &file, cp_info_vector &constant_pool)
+{
+    line_number_table_length = read_bytes<u2>(file);
+
+    for (int i = 0; i < line_number_table_length; i++)
+    {
+        line_num_table_item item;
+        item.start_pc = read_bytes<u2>(file);
+        item.line_number = read_bytes<u2>(file);
+        line_number_table.push_back(item);
+    }
+}
+
+void LineNumberTable_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfile)
+{
+    outfile << "  - Line number table length `" << line_number_table_length << "`  " << endl << endl;
+    outfile << "| Number | Start PC | Line Number |  " << endl;
+    outfile << "|--------|----------|-------------|  " << endl;
+    unsigned int counter = 0;
+    for (auto line_number_table_item : line_number_table)
+    {
+        outfile << "|" << setw(8) << setfill(' ') << counter++;
+        outfile << "|" << setw(10) << setfill(' ') << line_number_table_item.start_pc;
+        outfile << "|" << setw(13) << setfill(' ') << line_number_table_item.line_number << "|  " << endl;
+    }
+    outfile << endl;
 }
 
 Exception_attribute::Exception_attribute(ifstream &file, cp_info_vector& constant_pool)

@@ -215,7 +215,7 @@ void print_pool(cp_info_vector &constant_pool, ofstream &outfile)
 
     for (auto cp_item : constant_pool) 
     {
-        auto cp_info = dynamic_pointer_cast<CP_Info>(cp_item);
+        auto cp_info = to_cp_info(cp_item);
         cp_info->dump_info_to_file(constant_pool, outfile, cp_counter);
     }
     outfile << "</details> <br>" << endl << endl;
