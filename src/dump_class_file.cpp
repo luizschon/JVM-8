@@ -21,7 +21,7 @@ void print_all(class_file &class_f, string filename)
     print_interfaces(class_f, outfile);
     print_fields(class_f, outfile);
     print_methods(class_f, outfile);
-    print_attributes(class_f, outfile);
+    print_class_attributes(class_f, outfile);
     outfile.close();
     pos_counter = 0;
 }
@@ -480,24 +480,25 @@ void print_methods(class_file &class_f, ofstream &outfile)
         outfile << "- Attribute Count `" << method.attr_count << "`" << endl;
         
         outfile << "<details><summary>Show attributes</summary>" << endl << endl;
-        for (auto attr : method.attr)
-        {
-            auto attr_info = dynamic_pointer_cast<Attribute_Info>(attr);
-            attr_info->dump_info_to_file(class_f.constant_pool, outfile);
-        }
+        print_attributes_vector(method.attr, class_f.constant_pool, outfile);
         outfile << "</details><br>" << endl << endl;
     }
     outfile << endl;
 }
 
-// add attributes info when types are defined
-void print_attributes(class_file &class_f, ofstream &outfile)
+void print_class_attributes(class_file &class_f, ofstream &outfile)
 {
     outfile << "## **Attributes**" << endl;
-    for (auto attr : class_f.attributes)
+    print_attributes_vector(class_f.attributes, class_f.constant_pool, outfile);
+}
+
+void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &constant_pool, ofstream &outfile)
+{
+    unsigned int attr_counter = 0;
+    for (auto attr : attr_vector)
     {
         auto attr_info = dynamic_pointer_cast<Attribute_Info>(attr);
-        attr_info->dump_info_to_file(class_f.constant_pool, outfile);
+        attr_info->dump_info_to_file(constant_pool, outfile, attr_counter);
     }
     outfile << endl;
 }

@@ -33,11 +33,12 @@ void print_method_handle_pool(CONSTANT_method_handle_info &info, ofstream &outfi
 void print_method_type_pool(CONSTANT_method_type_info &info, ofstream &outfile);
 void print_invoke_dynamic_pool(CONSTANT_invoke_dynamic_info &info, ofstream &outfile);
 void print_empty_pool(ofstream &outfile);
+void print_attributes_vector(attr_info_vector&, cp_info_vector&, ofstream&);
 
 // Writes remaining values from the rest of the class file in the output file
 void print_interfaces(class_file &class_f, ofstream &outfile);
 void print_fields(class_file &class_f, ofstream &outfile);
 void print_methods(class_file &class_f, ofstream &outfile);
-void print_attributes(class_file &class_f, ofstream &outfile);
+void print_class_attributes(class_file &class_f, ofstream &outfile);
 
 #endif // _DUMP_CLASS_FILE
