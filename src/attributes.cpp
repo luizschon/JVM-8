@@ -76,9 +76,9 @@ Attribute_Info::~Attribute_Info()
     }
 }
 
-void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile) 
+void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile, unsigned int &counter) 
 {
-    outfile << "### " << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << endl;
+    outfile << "### [" << counter++ << "] " << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << endl;
     outfile << "- Generic info " << endl;
     outfile << "  - Attribute name index `" << attribute_name_index << "`";
     outfile << " `<" << get_utf8_content(*(constant_pool[attribute_name_index - 1]->_utf8)) << ">`" << endl;

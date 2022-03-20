@@ -113,7 +113,7 @@ public:
         Unknown_attribute* _unknown;
     };
 
-    void dump_info_to_file(cp_info_vector&, ofstream&);
+    void dump_info_to_file(cp_info_vector&, ofstream&, unsigned int&);
 };
 
 #endif // _ATTRIBUTES_HPP
