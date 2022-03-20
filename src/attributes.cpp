@@ -1,5 +1,6 @@
 #include "../include/attributes.hpp"
 #include "../include/dump_class_file.hpp"
+#include <algorithm>
 #include <iostream>
 
 using namespace std;
@@ -148,7 +149,31 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
     outfile << "  - Maximum stack size `" << max_stack << "`" << endl;
     outfile << "  - Maximum local variables `" << max_locals << "`" << endl;
     outfile << "  - Code length `" << code_length << "`" << endl;
-    outfile << "  - TODO PRINT BYTECODES" << endl;
+    outfile << "  - BYTECODES" << endl;
+
+    // const vector<string> damned = {"nop", "iconst_1", "iconst_2", "iconst_3", "iconst_4",
+    // "iconst_m1"};
+
+    // JVM ignores some instructions, discover why
+    const vector<string> damned = {":)"};
+
+    int pos = 0;
+    for (auto byte : code)
+    {
+        pos++;
+        for (auto& p : mnemonic)
+            if (p.first == byte && !count(damned.begin(), damned.end(), p.second))
+                outfile << "    - " << pos << " `" << p.second << "`" << endl;
+    }
+
+    // for (auto attr : attributes)
+    // {
+    //     cout << attr->attribute_name_index << endl;
+    //     cout << attr->attribute_length << endl;
+    //     cout << attr->tag << endl;
+    // }
+    
+    cout << endl << endl;
 }
 
 Exception_attribute::Exception_attribute(ifstream &file, cp_info_vector& constant_pool)

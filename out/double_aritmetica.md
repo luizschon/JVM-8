@@ -164,7 +164,11 @@ Attributes Count `1`
   - Maximum stack size `1`
   - Maximum local variables `1`
   - Code length `5`
-  - TODO PRINT BYTECODES
+  - BYTECODES
+    - `aload_0`
+    - `invokespecial`
+    - `aconst_null`
+    - `return`
 </details><br>
 
 ### `main` 
@@ -183,7 +187,41 @@ Attributes Count `1`
   - Maximum stack size `5`
   - Maximum local variables `5`
   - Code length `62`
-  - TODO PRINT BYTECODES
+  - BYTECODES
+    - `ldc2_w`
+    - `dstore_1`
+    - `ldc2_w`
+    - `dstore_3`
+    - `getstatic`
+    - `dload_1`
+    - `dload_3`
+    - `dadd`
+    - `invokevirtual`
+    - `getstatic`
+    - `dload_1`
+    - `dload_3`
+    - `dsub`
+    - `invokevirtual`
+    - `getstatic`
+    - `dload_1`
+    - `dload_3`
+    - `dmul`
+    - `invokevirtual`
+    - `getstatic`
+    - `dload_1`
+    - `dload_3`
+    - `ddiv`
+    - `invokevirtual`
+    - `getstatic`
+    - `dload_1`
+    - `dneg`
+    - `invokevirtual`
+    - `getstatic`
+    - `dload_3`
+    - `dload_1`
+    - `drem`
+    - `invokevirtual`
+    - `return`
 </details><br>
 
 
