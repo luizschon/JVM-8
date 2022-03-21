@@ -159,20 +159,60 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
     outfile << "- Bytecode" << endl;
     outfile << "```" << endl;
 
-    // JVM ignores some instructions, discover why
-    const vector<string> damned = {":)"};
-
-    int pos = 0;
-    for (auto byte : code)
+    cout << "=============METHOD=============" << endl;
+    // for (auto byte : code)
+    for (int i = 0; i < code_length; i++)
     {
-        try {
-            auto instr = mnemonic.at(byte);
-            outfile << pos++ << " " << instr << endl;
-        } catch (...) {
+        outfile << i << " ";
+        if (mnemonic_0_op.count(code[i])) 
+        {
+            outfile << mnemonic_0_op.at(code[i]) << endl;
+        } 
+        else if (mnemonic_1_op.count(code[i])) 
+        {
+            outfile << mnemonic_1_op.at(code[i++]);
+            i++;
+            // Continuar implementacao
+            outfile << endl;
+        }
+        else if (mnemonic_2_op.count(code[i]))
+        {
+            outfile << mnemonic_2_op.at(code[i++]);
+            auto indexbyte1 = code[i++];
+            auto indexbyte2 = code[i];
+            auto result = (indexbyte1 << 8) | indexbyte2;
+            outfile << " #" << (int) result;
+            outfile << " <" << to_cp_info(constant_pool[result - 1])->get_content(constant_pool) << ">  ";
+            outfile << endl;
+        }
+        else if (mnemonic_3_op.count(code[i])) 
+        {
+            outfile << mnemonic_3_op.at(code[i++]);
+            i++;
+            i++;
+            // Continuar implementacao
+            
+            outfile << endl;
+        } 
+        else if (mnemonic_4_op.count(code[i])) 
+        {
+            outfile << mnemonic_4_op.at(code[i++]);
+            auto branchbyte1 = code[i++];
+            auto branchbyte2 = code[i++];
+            auto branchbyte3 = code[i++];
+            auto branchbyte4 = code[i];
+            auto branchoffset = (branchbyte1 << 24) | (branchbyte2 << 16) |
+                                (branchbyte3 << 8)  | branchbyte4;
+            // Continuar implementacao
+            outfile << " #" << (int) branchoffset << to_cp_info(constant_pool[branchoffset - 1])->get_content(constant_pool);
+            outfile << endl;
+        } 
+        else
+        {
             ios_base::fmtflags f(cout.flags());
-            cout << "Bytecode nao encontrado: 0x" << hex << (int) byte <<  endl;
+            cout << "Bytecode nao encontrado: 0x" << hex << (int) code[i] <<  endl;
             cout.flags(f);
-        }    
+        }
     }
     outfile << "```" << endl;
 

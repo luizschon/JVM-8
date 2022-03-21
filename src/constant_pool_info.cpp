@@ -2,6 +2,7 @@
 #include "../include/class_file.hpp"
 #include "../include/dump_class_file.hpp"
 #include <memory>
+#include <string>
 #include <type_traits>
 
 CP_Item::CP_Item(u1 tag) : tag((CONSTANT_Types)tag) {}
@@ -146,6 +147,21 @@ void CP_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile
     }
 }
 
+string CP_Info::get_content(cp_info_vector &constant_pool)
+{
+    switch (tag) 
+    {
+        case CONSTANT_Integer: return _integer->get_content();
+        case CONSTANT_Float: return _float->get_content();
+        case CONSTANT_Long: return _long->get_content();
+        case CONSTANT_Double: return _double->get_content();
+        case CONSTANT_String: return _string->get_content(constant_pool);
+        case CONSTANT_Methodref: return _methodref->get_content(constant_pool);
+        case CONSTANT_Fieldref: return _fieldref->get_content(constant_pool);
+        default: return "Invalid tag";
+    }
+}
+
 CONSTANT_utf8_info::CONSTANT_utf8_info(ifstream &file) 
 {
     length = read_bytes<u2>(file);
@@ -171,6 +187,11 @@ void CONSTANT_integer_info::dump_to_file(ofstream &outfile)
     outfile << endl;
 }
 
+string CONSTANT_integer_info::get_content()
+{
+    return to_string(bytes);
+}
+
 CONSTANT_float_info::CONSTANT_float_info(ifstream &file) 
 {
     bytes = read_bytes<u4>(file);
@@ -183,6 +204,11 @@ void CONSTANT_float_info::dump_to_file(ofstream &outfile)
     outfile.flags(f);
     outfile << "- Float `" << calc_float(bytes) << "`" << endl;
     outfile << endl;
+}
+
+string CONSTANT_float_info::get_content()
+{
+    return to_string(calc_float(bytes));
 }
 
 CONSTANT_long_info::CONSTANT_long_info(ifstream &file) 
@@ -201,6 +227,11 @@ void CONSTANT_long_info::dump_to_file(ofstream &outfile)
     outfile << endl;
 }
 
+string CONSTANT_long_info::get_content()
+{
+    return to_string(calc_long(high_bytes, low_bytes));
+}
+
 CONSTANT_double_info::CONSTANT_double_info(ifstream &file) 
 {
     high_bytes = read_bytes<u4>(file);
@@ -215,6 +246,11 @@ void CONSTANT_double_info::dump_to_file(ofstream &outfile)
     outfile.flags(f);
     outfile << "- Double `" << calc_double(high_bytes, low_bytes) << "`" << endl;
     outfile << endl;
+}
+
+string CONSTANT_double_info::get_content()
+{
+    return to_string(calc_double(high_bytes, low_bytes));
 }
 
 CONSTANT_class_info::CONSTANT_class_info(ifstream &file) 
@@ -243,6 +279,12 @@ void CONSTANT_string_info::dump_to_file(ofstream &outfile, cp_info_vector &const
     outfile << endl << endl;
 }
 
+string CONSTANT_string_info::get_content(cp_info_vector &constant_pool)
+{
+    auto string_utf8 = *(to_cp_info(constant_pool[str_idx - 1])->_utf8);
+    return get_utf8_content(string_utf8);
+}
+
 CONSTANT_fieldref_info::CONSTANT_fieldref_info(ifstream &file) 
 {
     class_idx = read_bytes<u2>(file);
@@ -265,6 +307,17 @@ void CONSTANT_fieldref_info::dump_to_file(ofstream &outfile, cp_info_vector &con
     outfile << endl << endl;
 }
 
+string CONSTANT_fieldref_info::get_content(cp_info_vector &constant_pool)
+{
+    auto class_name_idx = to_cp_info(constant_pool[class_idx - 1])->_class->name_idx;
+    auto class_name = *(to_cp_info(constant_pool[class_name_idx - 1])->_utf8);
+    auto name_idx = to_cp_info(constant_pool[name_and_type_idx - 1])->_name_and_type->name_idx;
+    auto descriptor_idx = to_cp_info(constant_pool[name_and_type_idx - 1])->_name_and_type->descriptor_idx;
+    auto method_name = *(to_cp_info(constant_pool[name_idx - 1])->_utf8);
+    auto method_descriptor = *(to_cp_info(constant_pool[descriptor_idx - 1])->_utf8);
+    return (get_utf8_content(class_name) + "." + get_utf8_content(method_name) + " : " + get_utf8_content(method_descriptor));
+}
+
 CONSTANT_methodref_info::CONSTANT_methodref_info(ifstream &file) 
 {
     class_idx = read_bytes<u2>(file);
@@ -276,6 +329,17 @@ void CONSTANT_methodref_info::dump_to_file(ofstream &outfile)
     outfile << "- Class Index `" << class_idx << "`" << endl;
     outfile << "- Name And Type Index `" << name_and_type_idx << "`" << endl;
     outfile << endl;
+}
+
+string CONSTANT_methodref_info::get_content(cp_info_vector &constant_pool)
+{
+    auto class_name_idx = to_cp_info(constant_pool[class_idx - 1])->_class->name_idx;
+    auto class_name = *(to_cp_info(constant_pool[class_name_idx - 1])->_utf8);
+    auto name_idx = to_cp_info(constant_pool[name_and_type_idx - 1])->_name_and_type->name_idx;
+    auto descriptor_idx = to_cp_info(constant_pool[name_and_type_idx - 1])->_name_and_type->descriptor_idx;
+    auto method_name = *(to_cp_info(constant_pool[name_idx - 1])->_utf8);
+    auto method_descriptor = *(to_cp_info(constant_pool[descriptor_idx - 1])->_utf8);
+    return (get_utf8_content(class_name) + "." + get_utf8_content(method_name) + " : " + get_utf8_content(method_descriptor));
 }
 
 CONSTANT_interface_methodref_info::CONSTANT_interface_methodref_info(ifstream &file) 

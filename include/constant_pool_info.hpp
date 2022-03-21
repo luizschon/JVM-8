@@ -42,18 +42,21 @@ struct CONSTANT_utf8_info {
     u2 length;
     vector<u1> bytes;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_integer_info {
     CONSTANT_integer_info(ifstream &file);
     u4 bytes;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_float_info {
     CONSTANT_float_info(ifstream &file);
     u4 bytes;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_long_info {
@@ -61,6 +64,7 @@ struct CONSTANT_long_info {
     u4 high_bytes;
     u4 low_bytes;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_double_info {
@@ -68,18 +72,21 @@ struct CONSTANT_double_info {
     u4 high_bytes;
     u4 low_bytes;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_class_info {
     CONSTANT_class_info(ifstream &file);
     u2 name_idx;
     void dump_to_file(ofstream &outfile, cp_info_vector&);
+    string get_content();
 };
 
 struct CONSTANT_string_info {
     CONSTANT_string_info(ifstream &file);
     u2 str_idx;
     void dump_to_file(ofstream &outfile, cp_info_vector&);
+    string get_content(cp_info_vector&);
 };
 
 struct CONSTANT_fieldref_info {
@@ -87,6 +94,7 @@ struct CONSTANT_fieldref_info {
     u2 class_idx;
     u2 name_and_type_idx;
     void dump_to_file(ofstream &outfile, cp_info_vector&);
+    string get_content(cp_info_vector&);
 };
 
 struct CONSTANT_methodref_info {
@@ -94,6 +102,7 @@ struct CONSTANT_methodref_info {
     u2 class_idx;
     u2 name_and_type_idx;
     void dump_to_file(ofstream &outfile);
+    string get_content(cp_info_vector&);
 };
 
 struct CONSTANT_interface_methodref_info {
@@ -101,6 +110,7 @@ struct CONSTANT_interface_methodref_info {
     u2 class_idx;
     u2 name_and_type_idx;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_name_and_type_info {
@@ -108,6 +118,7 @@ struct CONSTANT_name_and_type_info {
     u2 name_idx;
     u2 descriptor_idx;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_method_handle_info {
@@ -115,12 +126,14 @@ struct CONSTANT_method_handle_info {
     u1 reference_kind;
     u2 reference_index;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_method_type_info {
     CONSTANT_method_type_info(ifstream &file);
     u2 descriptor_index;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 struct CONSTANT_invoke_dynamic_info {
@@ -128,6 +141,7 @@ struct CONSTANT_invoke_dynamic_info {
     u2 bootstrap_method_attr_index;
     u2 name_and_type_index;
     void dump_to_file(ofstream &outfile);
+    string get_content();
 };
 
 class CP_Info : public CP_Item {
@@ -153,6 +167,7 @@ public:
     };
 
     void dump_info_to_file(cp_info_vector&, ofstream&, unsigned int&);
+    string get_content(cp_info_vector&);
 };
 
 #endif // _CONSTANT_POOL_INFO_HPP
