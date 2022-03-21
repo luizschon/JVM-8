@@ -281,7 +281,9 @@ void CONSTANT_string_info::dump_to_file(ofstream &outfile, cp_info_vector &const
 
 string CONSTANT_string_info::get_content(cp_info_vector &constant_pool)
 {
+    cout << "PRIMEIRA" << endl;
     auto string_utf8 = *(to_cp_info(constant_pool[str_idx - 1])->_utf8);
+    cout << "SEGUNDA" << endl;
     return get_utf8_content(string_utf8);
 }
 

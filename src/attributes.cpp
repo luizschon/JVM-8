@@ -159,8 +159,6 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
     outfile << "- Bytecode" << endl;
     outfile << "```" << endl;
 
-    cout << "=============METHOD=============" << endl;
-    // for (auto byte : code)
     for (int i = 0; i < code_length; i++)
     {
         outfile << i << " ";
@@ -171,7 +169,6 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
         else if (mnemonic_1_op.count(code[i])) 
         {
             outfile << mnemonic_1_op.at(code[i++]);
-            i++;
             // Continuar implementacao
             outfile << endl;
         }
@@ -180,9 +177,9 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
             outfile << mnemonic_2_op.at(code[i++]);
             auto indexbyte1 = code[i++];
             auto indexbyte2 = code[i];
-            auto result = (indexbyte1 << 8) | indexbyte2;
-            outfile << " #" << (int) result;
-            outfile << " <" << to_cp_info(constant_pool[result - 1])->get_content(constant_pool) << ">  ";
+            // auto result = (indexbyte1 << 8) | indexbyte2;
+            // outfile << " #" << (int) result;
+            // outfile << " <" << to_cp_info(constant_pool[result - 1])->get_content(constant_pool) << ">  ";
             outfile << endl;
         }
         else if (mnemonic_3_op.count(code[i])) 
@@ -201,10 +198,10 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool, ofstream &outfi
             auto branchbyte2 = code[i++];
             auto branchbyte3 = code[i++];
             auto branchbyte4 = code[i];
-            auto branchoffset = (branchbyte1 << 24) | (branchbyte2 << 16) |
-                                (branchbyte3 << 8)  | branchbyte4;
+            // auto branchoffset = (branchbyte1 << 24) | (branchbyte2 << 16) |
+            //                     (branchbyte3 << 8)  | branchbyte4;
             // Continuar implementacao
-            outfile << " #" << (int) branchoffset << to_cp_info(constant_pool[branchoffset - 1])->get_content(constant_pool);
+            // outfile << " #" << (int) branchoffset << to_cp_info(constant_pool[branchoffset - 1])->get_content(constant_pool);
             outfile << endl;
         } 
         else
