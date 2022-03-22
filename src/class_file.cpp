@@ -1,7 +1,7 @@
-#pragma once
 #include "../include/class_file.hpp"
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
+#include "../include/attributes.hpp"
 #include <iomanip>
 #include <limits>
 #include <math.h>
@@ -26,7 +26,7 @@ attr_info::attr_info(bytestream_it &iterator)
         info.push_back(get_bytes<u1>(iterator));
 }
 
-field_info::field_info(ifstream &file) 
+field_info::field_info(ifstream &file, cp_info_vector &constant_pool) 
 {
     access_flags = read_bytes<u2>(file);
     name_idx = read_bytes<u2>(file);
@@ -34,10 +34,13 @@ field_info::field_info(ifstream &file)
     attr_count = read_bytes<u2>(file);
 
     for (int i = 0; i < attr_count; i++)
-        attr.push_back(attr_info(file));
+    {
+        shared_ptr<Attribute> new_attr(new Attribute_Info(file, constant_pool));
+        attr.push_back(new_attr);
+    }
 }
 
-method_info::method_info(ifstream &file) 
+method_info::method_info(ifstream &file, cp_info_vector &constant_pool) 
 {
     access_flags = read_bytes<u2>(file);
     name_idx = read_bytes<u2>(file);
@@ -45,7 +48,10 @@ method_info::method_info(ifstream &file)
     attr_count = read_bytes<u2>(file);
 
     for (int i = 0; i < attr_count; i++)
-        attr.push_back(attr_info(file));
+    {
+        shared_ptr<Attribute> new_attr(new Attribute_Info(file, constant_pool));
+        attr.push_back(new_attr);
+    }
 }
 
 double calc_double(u4 high, u4 low) 
@@ -99,13 +105,12 @@ long calc_long(u4 high, u4 low)
     return (long) l;
 }
 
-// finish docs
 ifstream open_file(int argc, char** argv)
 {
     CmdArgs cmd_args;
     cmd_args.init(argc, argv);
 
-    // open given file and return
+    // open given file and return stream
     string filename = cmd_args.filename;
     ifstream file(filename, ios::binary);
     return file;
@@ -125,10 +130,14 @@ void get_constant_pool(class_file &class_f, ifstream &file)
     while (iteration_counter--)
     {
         u1 tag = read_bytes<u1>(file);
-        if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
-            iteration_counter--;
         shared_ptr<CP_Info> new_el(new CP_Info(tag, file));
         class_f.constant_pool.push_back(new_el);
+        if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
+        {
+            iteration_counter--;
+            shared_ptr<CP_Info> empty_el(new CP_Info(CONSTANT_Empty, file));
+            class_f.constant_pool.push_back(empty_el);
+        }
     }
 }
 
@@ -157,7 +166,7 @@ void get_fields(class_file &class_f, ifstream &file)
     class_f.fields_count = read_bytes<u2>(file);
 
     for(int i = 0; i < class_f.fields_count; i++)
-        class_f.fields.push_back(field_info(file));
+        class_f.fields.push_back(field_info(file, class_f.constant_pool));
 }
 
 void get_methods(class_file &class_f, ifstream &file)
@@ -165,7 +174,7 @@ void get_methods(class_file &class_f, ifstream &file)
     class_f.methods_count = read_bytes<u2>(file);
 
     for(int i = 0; i < class_f.methods_count; i++)
-        class_f.methods.push_back(method_info(file));
+        class_f.methods.push_back(method_info(file, class_f.constant_pool));
 }
 
 void get_attributes(class_file &class_f, ifstream &file)
@@ -173,5 +182,8 @@ void get_attributes(class_file &class_f, ifstream &file)
     class_f.attributes_count = read_bytes<u2>(file);
 
     for (int i = 0; i < class_f.attributes_count; i++)
-        class_f.attributes.push_back(attr_info(file));
+    {
+        shared_ptr<Attribute> new_attr(new Attribute_Info(file, class_f.constant_pool));
+        class_f.attributes.push_back(new_attr);
+    }
 }
