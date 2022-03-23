@@ -1,9 +1,6 @@
 #include "../include/constant_pool_info.hpp"
 #include "../include/class_file.hpp"
 #include "../include/dump_class_file.hpp"
-#include <memory>
-#include <string>
-#include <type_traits>
 
 CP_Item::CP_Item(u1 tag) : tag((CONSTANT_Types)tag) {}
 
@@ -141,7 +138,7 @@ void CP_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile
             outfile << "### [" << counter++ << "] *CONSTANT_InvokeDynamic_info*" << endl;
             _invoke_dynamic->dump_to_file(outfile);
             break;
-        case CONSTANT_Empty:
+        case CONSTANT_Continuation:
             outfile << "### [" << counter++ << "] *(large numeric continued)*" << endl << endl;
             break;
     }

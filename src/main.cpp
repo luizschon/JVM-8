@@ -2,10 +2,10 @@
 using namespace std;
 
 /**
- * @brief 
+ * @brief Entry point of the JVM
  * 
- * @param argc 
- * @param argv 
+ * @param argc number of args
+ * @param argv vector of args
  * @return int 
  */
 int main(int argc, char** argv) 

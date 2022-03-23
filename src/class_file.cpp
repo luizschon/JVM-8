@@ -2,10 +2,8 @@
 #include "../include/constant_pool_info.hpp"
 #include "../include/cmd_arguments.hpp"
 #include "../include/attributes.hpp"
-#include <iomanip>
 #include <limits>
 #include <math.h>
-#include <memory>
 
 using namespace std;
 
@@ -135,8 +133,8 @@ void get_constant_pool(class_file &class_f, ifstream &file)
         if ((CONSTANT_Types)tag == CONSTANT_Double || (CONSTANT_Types)tag == CONSTANT_Long)
         {
             iteration_counter--;
-            shared_ptr<CP_Info> empty_el(new CP_Info(CONSTANT_Empty, file));
-            class_f.constant_pool.push_back(empty_el);
+            shared_ptr<CP_Info> continuation_el(new CP_Info(CONSTANT_Continuation, file));
+            class_f.constant_pool.push_back(continuation_el);
         }
     }
 }

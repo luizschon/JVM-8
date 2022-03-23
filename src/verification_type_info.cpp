@@ -1,6 +1,5 @@
 #include "../include/class_file.hpp"
 #include "../include/verification_type_info.hpp"
-#include <vector>
 
 Top_variable_info::Top_variable_info(bytestream_it &iterator)
 : tag(get_bytes<u1>(iterator)) {}

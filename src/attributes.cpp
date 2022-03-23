@@ -1,9 +1,7 @@
 #include "../include/attributes.hpp"
 #include "../include/dump_class_file.hpp"
 #include "../include/bytecode.hpp"
-#include <algorithm>
 #include <iomanip>
-#include <iostream>
 
 using namespace std;
 

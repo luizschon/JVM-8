@@ -1,7 +1,7 @@
 #ifndef _BYTECODE_HPP
 #define _BYTECODE_HPP
 
-#include "types_definition.hpp"
+#include "types.hpp"
 #include <map>
 
 // instructions with 0, 1, 2, 3 or more parameters

@@ -1,7 +1,6 @@
 #ifndef _DUMP_CLASS_FILE_HPP
 #define _DUMP_CLASS_FILE_HPP
 
-#include <vector>
 #include "class_file.hpp"
 #include "constant_pool_info.hpp"
 

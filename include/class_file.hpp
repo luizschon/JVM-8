@@ -1,7 +1,7 @@
 #ifndef _CLASS_FILE_HPP
 #define _CLASS_FILE_HPP
 
-#include "types_definition.hpp"
+#include "types.hpp"
 #include "constant_pool_info.hpp"
 #include "attributes.hpp"
 #include <iostream>

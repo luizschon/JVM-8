@@ -9,7 +9,7 @@
 #include "constant_pool_info.hpp"
 #include "dump_class_file.hpp"
 #include "stack_map_frame.hpp"
-#include "types_definition.hpp"
+#include "types.hpp"
 #include "verification_type_info.hpp"
 
 #endif // _LIBRARIES_HPP

@@ -1,6 +1,5 @@
 #include <memory>
-#include <vector>
-#include "types_definition.hpp"
+#include "types.hpp"
 
 using namespace std;
 

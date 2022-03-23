@@ -1,9 +1,7 @@
 #include "../include/dump_class_file.hpp"
 #include <iomanip>
-#include <iostream>
-#include <memory>
-#include <string>
-#include <bits/stdc++.h>
+#include <regex>
+#include <sys/stat.h>
 
 using namespace std;
 
@@ -11,8 +9,14 @@ unsigned int pos_counter = 0;
 
 void print_all(class_file &class_f, string filename)
 {
-    int pos_i = filename.find("/"), pos_f = filename.find(".class") - pos_i;
-    string outname = filename.substr(pos_i + 1, pos_f - 1);
+    smatch m;
+    regex regexp("[a-zA-Z0-9_]+.class");
+    regex_search(filename, m, regexp);
+    
+    string outname = m[0];
+    outname = outname.substr(0, outname.find('.')); 
+
+    mkdir("out", 0777);
 
     ofstream outfile("./out/" + outname + ".md");
     outfile << "# **" << outname << "**" << endl << endl;
@@ -320,7 +324,7 @@ void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &cons
     unsigned int attr_counter = 0;
     for (auto attr : attr_vector)
     {
-        auto attr_info = dynamic_pointer_cast<Attribute_Info>(attr);
+        auto attr_info = to_attr_info(attr);
         attr_info->dump_info_to_file(constant_pool, outfile, attr_counter);
     }
     outfile << endl;

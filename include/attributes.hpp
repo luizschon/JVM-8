@@ -2,9 +2,7 @@
 #define _ATTRIBUTES_HPP
 
 #include "constant_pool_info.hpp"
-#include "types_definition.hpp"
-#include <fstream>
-#include <memory>
+#include "types.hpp"
 // #include "stack_map_frame.hpp"
 
 #define RANGE(x,y,n) ((n >= x && n <= y) ? n : -1)

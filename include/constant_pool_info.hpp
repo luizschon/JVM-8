@@ -1,11 +1,8 @@
 #ifndef _CONSTANT_POOL_INFO_HPP
 #define _CONSTANT_POOL_INFO_HPP
 
-#include <fstream>
 #include <memory>
-#include <type_traits>
-#include <vector>
-#include "types_definition.hpp"
+#include "types.hpp"
 
 using namespace std;
 
@@ -25,7 +22,7 @@ typedef enum {
     CONSTANT_MethodHandle       = 15,
     CONSTANT_MethodType         = 16,
     CONSTANT_InvokeDynamic      = 18,
-    CONSTANT_Empty              = 19
+    CONSTANT_Continuation       = 19
 } CONSTANT_Types;
 
 class CP_Item {
