@@ -200,7 +200,7 @@ void get_attributes_info(cp_info_vector &constant_pool, attr_info &attr);
  * @param low the last 4 bytes of the long number
  * @return long the converted number
  */
-long calc_long(u4 high, u4 low);
+long long calc_long(u4 high, u4 low);
 
 /**
  * @brief Returns the true value of a double number
