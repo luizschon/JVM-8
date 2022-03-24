@@ -1,7 +1,7 @@
 #include "../include/dump_class_file.hpp"
+#include "../include/windows.hpp"
 #include <iomanip>
 #include <regex>
-#include <sys/stat.h>
 
 using namespace std;
 
@@ -16,7 +16,7 @@ void print_all(class_file &class_f, string filename)
     string outname = m[0];
     outname = outname.substr(0, outname.find('.')); 
 
-    mkdir("out", 0777);
+    create_dir();
 
     ofstream outfile("./out/" + outname + ".md");
     outfile << "# **" << outname << "**" << endl << endl;
