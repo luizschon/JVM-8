@@ -49,7 +49,7 @@ struct bootstrap_methods_info {
 struct ConstantValue_attribute {
     ConstantValue_attribute(ifstream&, cp_info_vector&);
     u2 constantvalue_index;
-    void dump_to_file(cp_info_vector&, ofstream&);
+    void dump_to_file(cp_info_vector&);
 };
 
 struct Code_attribute {
@@ -62,7 +62,7 @@ struct Code_attribute {
     vector<exception_table_info> exception_table;
     u2 attributes_count;
     attr_info_vector attributes;
-    void dump_to_file(cp_info_vector&, ofstream&);
+    void dump_to_file(cp_info_vector&);
 };
 
 struct LineNumberTable_attribute {
@@ -75,7 +75,7 @@ struct LineNumberTable_attribute {
         u2 line_number;
     };
     vector<line_num_table_item> line_number_table;
-    void dump_to_file(cp_info_vector&, ofstream&);
+    void dump_to_file(cp_info_vector&);
 };
 
 // struct StackMapTable_attribute {
@@ -87,20 +87,20 @@ struct Exception_attribute {
     Exception_attribute(ifstream&, cp_info_vector&);
     u2 number_of_exceptions;
     vector<u2> exception_index_table;
-    void dump_to_file(cp_info_vector&, ofstream&);
+    void dump_to_file(cp_info_vector&);
 };
 
 struct BootstrapMethods_attribute {
     BootstrapMethods_attribute(ifstream&, cp_info_vector&);
     u2 num_bootstrap_methods;
     vector<bootstrap_methods_info> bootstrap_methods;
-    void dump_to_file(cp_info_vector&, ofstream&);
+    void dump_to_file(cp_info_vector&);
 };
 
 struct SourceFile_attribute {
     SourceFile_attribute(ifstream&, cp_info_vector&);
     u2 sourcefile_index;
-    void dump_to_file(cp_info_vector&, ofstream&);
+    void dump_to_file(cp_info_vector&);
 };
 
 // gamer attribute - finish other attributes
@@ -126,7 +126,7 @@ public:
         Unknown_attribute* _unknown;
     };
 
-    void dump_info_to_file(cp_info_vector&, ofstream&, unsigned int&);
+    void dump_info_to_file(cp_info_vector&, unsigned int&);
 };
 
 #endif // _ATTRIBUTES_HPP

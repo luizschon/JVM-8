@@ -7,30 +7,35 @@ using namespace std;
 
 unsigned int pos_counter = 0;
 
-void print_all(class_file &class_f, string filename)
+ofstream outfile;
+
+void open_outfile(string filename) {
+    create_dir();
+    outfile = ofstream("./out/" + filename + ".md");
+}
+
+void print_all(class_file &class_f, string filepath)
 {
     smatch m;
     regex regexp("[a-zA-Z0-9_]+.class");
-    regex_search(filename, m, regexp);
+    regex_search(filepath, m, regexp);
     
-    string outname = m[0];
-    outname = outname.substr(0, outname.find('.')); 
+    string filename = m[0];
+    filename = filename.substr(0, filename.find('.')); 
+    open_outfile(filename);
 
-    create_dir();
-
-    ofstream outfile("./out/" + outname + ".md");
-    outfile << "# **" << outname << "**" << endl << endl;
-    print_general_info(class_f, outfile);
-    print_pool(class_f.constant_pool, outfile);
-    print_interfaces(class_f, outfile);
-    print_fields(class_f, outfile);
-    print_methods(class_f, outfile);
-    print_class_attributes(class_f, outfile);
+    outfile << "# **" << filename << "**" << endl << endl;
+    print_general_info(class_f);
+    print_pool(class_f.constant_pool);
+    print_interfaces(class_f);
+    print_fields(class_f);
+    print_methods(class_f);
+    print_class_attributes(class_f);
     outfile.close();
     pos_counter = 0;
 }
 
-void print_general_info(class_file &class_f, ofstream &outfile)
+void print_general_info(class_file &class_f)
 {
     outfile << "## **General Information**" << endl;
     ios_base::fmtflags f(outfile.flags());
@@ -211,7 +216,7 @@ string get_access_flags(u2 access_flags, int type)
     return class_access;
 }
 
-void print_pool(cp_info_vector &constant_pool, ofstream &outfile)
+void print_pool(cp_info_vector &constant_pool)
 {
     unsigned int cp_counter = 1;
     outfile << "## **Constant Pool**  " << endl << endl;
@@ -220,7 +225,7 @@ void print_pool(cp_info_vector &constant_pool, ofstream &outfile)
     for (auto cp_item : constant_pool) 
     {
         auto cp_info = to_cp_info(cp_item);
-        cp_info->dump_info_to_file(constant_pool, outfile, cp_counter);
+        cp_info->dump_info_to_file(constant_pool, cp_counter);
     }
     outfile << "</details> <br>" << endl << endl;
 }
@@ -233,7 +238,7 @@ string get_utf8_content(CONSTANT_utf8_info &utf8)
     return out;
 }
 
-void print_interfaces(class_file &class_f, ofstream &outfile)
+void print_interfaces(class_file &class_f)
 {
     outfile << "## **Interfaces**" << endl << endl;
     outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
@@ -248,7 +253,7 @@ void print_interfaces(class_file &class_f, ofstream &outfile)
     outfile << "</details><br>" << endl << endl;
 }
 
-void print_fields(class_file &class_f, ofstream &outfile)
+void print_fields(class_file &class_f)
 {
     unsigned int field_counter = 0;
     outfile << "## **Fields**" << endl << endl;
@@ -273,14 +278,14 @@ void print_fields(class_file &class_f, ofstream &outfile)
         outfile << "- Attribute Count `" << field.attr_count << "`" << endl;
         
         outfile << "<details><summary>Show attributes</summary>" << endl << endl;
-        print_attributes_vector(field.attr, class_f.constant_pool, outfile);
+        print_attributes_vector(field.attr, class_f.constant_pool);
         outfile << "</details><br>" << endl << endl;
     }
     outfile << "</details><br>" << endl << endl;
 }
 
 // add attributes info when types are defined
-void print_methods(class_file &class_f, ofstream &outfile)
+void print_methods(class_file &class_f)
 {
     unsigned int method_counter = 0;
     outfile << "## **Methods**" << endl;
@@ -305,27 +310,27 @@ void print_methods(class_file &class_f, ofstream &outfile)
         outfile << "- Attribute Count `" << method.attr_count << "`" << endl;
         
         outfile << "<details><summary>Show attributes</summary>" << endl << endl;
-        print_attributes_vector(method.attr, class_f.constant_pool, outfile);
+        print_attributes_vector(method.attr, class_f.constant_pool);
         outfile << "</details><br>" << endl << endl;
     }
     outfile << "</details><br>" << endl << endl;
 }
 
-void print_class_attributes(class_file &class_f, ofstream &outfile)
+void print_class_attributes(class_file &class_f)
 {
     outfile << "## **Attributes**" << endl;
     outfile << "<details> <summary>Show more</summary> <hr>" << endl << endl;
-    print_attributes_vector(class_f.attributes, class_f.constant_pool, outfile);
+    print_attributes_vector(class_f.attributes, class_f.constant_pool);
     outfile << "</details><br>" << endl << endl;
 }
 
-void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &constant_pool, ofstream &outfile)
+void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &constant_pool)
 {
     unsigned int attr_counter = 0;
     for (auto attr : attr_vector)
     {
         auto attr_info = to_attr_info(attr);
-        attr_info->dump_info_to_file(constant_pool, outfile, attr_counter);
+        attr_info->dump_info_to_file(constant_pool, attr_counter);
     }
     outfile << endl;
 }
