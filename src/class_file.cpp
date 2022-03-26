@@ -54,7 +54,7 @@ method_info::method_info(ifstream &file, cp_info_vector &constant_pool)
 
 double calc_double(u4 high, u4 low) 
 {
-    long bits = calc_long(high, low);
+    u8 bits = calc_long(high, low);
     if (bits == 0x7ff0000000000000L)
         return numeric_limits<double>::infinity();
     else if (bits == 0xfff0000000000000L)
@@ -67,10 +67,7 @@ double calc_double(u4 high, u4 low)
     {
         int s = ((bits >> 63) == 0) ? 1 : -1;
         int e = (bits >> 52) & 0x7ffL;
-        long m = (e == 0) ? 
-            (bits & 0xfffffffffffffL) << 1 : 
-            (bits & 0xfffffffffffffL) | 0x10000000000000L;
-        
+        u8 m = (e == 0) ? ((bits & 0xfffffffffffffL) << 1) : ((bits & 0xfffffffffffffL) | 0x10000000000000L);
         return s * m * pow(2, e - 1075);
     }
 }
@@ -97,10 +94,10 @@ float calc_float(u4 bytes)
     }
 }
 
-long calc_long(u4 high, u4 low)
+long long calc_long(u4 high, u4 low)
 {
     auto l = ((u8) high << 32) | low;
-    return (long) l;
+    return (long long) l;
 }
 
 ifstream open_file(int argc, char** argv)
