@@ -168,8 +168,8 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool)
             {
                 auto print_instr = debug.at(bytecode);
                 print_instr(i, constant_pool, code);
-            } else 
-                outfile << endl;
+            } 
+            outfile << endl;
         } 
         else
         {
