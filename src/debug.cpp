@@ -15,8 +15,7 @@ void iinc_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code
 {
     u1 index = code[++code_index];
     u1 _const = code[++code_index];
-
-    outfile << " #" << (int)index << " <" << (int)_const << ">  ";
+    outfile << " " << (int)index << " by " << (int)_const;
 }
 
 void iinc_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
@@ -31,6 +30,20 @@ void iinc_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream 
     outfile << " #" << (int)index << " <" << (int)_const << ">  ";
 }
 
+void index_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
+{
+    u1 index = code[++code_index];
+    outfile << " " << (int)index;
+}
+
+void index_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
+{
+    u1 indexbyte1 = code[++code_index];
+    u1 indexbyte2 = code[++code_index];
+    u2 index = ((u2)indexbyte1 << 8) | indexbyte2;
+    outfile << " #" << (int)index;
+}
+
 void invoke_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     reference_debug(code_index, constant_pool, code);
@@ -40,85 +53,74 @@ void invoke_debug(int &code_index, cp_info_vector &constant_pool, bytestream &co
 
 void jump_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
-    u1 branchbyte1  = code[++code_index] ;
+    s2 old_index = code_index;
+    u1 branchbyte1  = code[++code_index];
     u1 branchbyte2  = code[++code_index];
-    u2 branchoffset = ((u2)branchbyte1 << 8) | branchbyte2;
-    outfile << " " << branchoffset;
+    s2 branchoffset = ((s2)branchbyte1 << 8) | branchbyte2;
+    outfile << " " << old_index + branchoffset << " (" << branchoffset << ")";
 }
 
+// this int may be a headache in windows
 void jump_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
+    s4 old_index = code_index;
     u1 branchbyte1  = code[++code_index]; 
     u1 branchbyte2  = code[++code_index];
     u1 branchbyte3  = code[++code_index];
     u1 branchbyte4  = code[++code_index];
-    u4 branchoffset = ((u4)branchbyte1 << 24) | ((u4)branchbyte2 << 16) | ((u4)branchbyte3 << 8) | branchbyte4;
-    outfile << " " << branchoffset;
-}
-
-void index_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
-{
-    u1 index = code[++code_index];
-    outfile << " #" << (int)index;
-}
-
-void index_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
-{
-    u1 indexbyte1 = code[++code_index];
-    u1 indexbyte2 = code[++code_index];
-    u2 index = ((u2)indexbyte1 << 8) | indexbyte2;
-
-    outfile << " #" << (int)index;
+    s4 branchoffset = ((s4)branchbyte1 << 24) | ((s4)branchbyte2 << 16) | ((s4)branchbyte3 << 8) | branchbyte4;
+    outfile << " " << old_index + branchoffset << " (" << branchoffset << ")";
 }
 
 void lookupswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
+    u4 old_index = code_index;
     u1 padding = (++code_index) % 4;
-    auto defaultbyte1 = code[padding + code_index++] << 24;
-    auto defaultbyte2 = code[padding + code_index++] << 16;
-    auto defaultbyte3 = code[padding + code_index++] << 8;
-    auto defaultbyte4 = code[padding + code_index++];
-    auto defaultbytes = defaultbyte1 | defaultbyte2 | defaultbyte3 | defaultbyte4;
+    s4 defaultbyte1 = code[padding + code_index++] << 24;
+    s4 defaultbyte2 = code[padding + code_index++] << 16;
+    s4 defaultbyte3 = code[padding + code_index++] << 8;
+    s4 defaultbyte4 = code[padding + code_index++];
+    s4 defaultbytes = defaultbyte1 | defaultbyte2 | defaultbyte3 | defaultbyte4;
 
-    auto npairs1 = code[padding + code_index++] << 24;
-    auto npairs2 = code[padding + code_index++] << 16;
-    auto npairs3 = code[padding + code_index++] << 8;
-    auto npairs4 = code[padding + code_index++];
-    auto npairs  = npairs1 | npairs2 | npairs3 | npairs4;
+    s4 npairs1 = (s4) code[padding + code_index++] << 24;
+    s4 npairs2 = (s4) code[padding + code_index++] << 16;
+    s4 npairs3 = (s4) code[padding + code_index++] << 8;
+    s4 npairs4 = (s4) code[padding + code_index++];
+    s4 npairs  = npairs1 | npairs2 | npairs3 | npairs4;
 
-    u4 howManyBytes = 1 + padding + 8;
+    outfile << " " << npairs << endl;
 
-    for (uint n = 0; (signed) n < (signed) npairs; n++)
+    for (s4 n = 0; n < npairs; n++)
     {
-        auto matchbyte1 = code[code_index + howManyBytes++] << 24;
-        auto matchbyte2 = code[code_index + howManyBytes++] << 16;
-        auto matchbyte3 = code[code_index + howManyBytes++] << 8;
-        auto matchbyte4 = code[code_index + howManyBytes++];
-        auto matchbytes = matchbyte1 | matchbyte2 | matchbyte3 | matchbyte4; 
+        s4 matchbyte1 = code[code_index + padding++] << 24;
+        s4 matchbyte2 = code[code_index + padding++] << 16;
+        s4 matchbyte3 = code[code_index + padding++] << 8;
+        s4 matchbyte4 = code[code_index + padding++];
+        s4 matchbytes = matchbyte1 | matchbyte2 | matchbyte3 | matchbyte4; 
         
-        auto offset1 = code[code_index + howManyBytes++] << 24;
-        auto offset2 = code[code_index + howManyBytes++] << 16;
-        auto offset3 = code[code_index + howManyBytes++] << 8;
-        auto offset4 = code[code_index + howManyBytes++];
-        auto offset = offset1 | offset2 | offset3 | offset4;
+        s4 offset1 = code[code_index + padding++] << 24;
+        s4 offset2 = code[code_index + padding++] << 16;
+        s4 offset3 = code[code_index + padding++] << 8;
+        s4 offset4 = code[code_index + padding++];
+        s4 offset = offset1 | offset2 | offset3 | offset4;
 
-        outfile << matchbytes << ": " << code_index + offset << " ("<< offset << ")";
-        howManyBytes += 8;
+        outfile << "    " << matchbytes << ": " << old_index + offset << " (" << offset << ")" << endl;
     }
-    outfile << "default: " << code_index + defaultbytes << " ("<< defaultbytes<< ")";
-    code_index += howManyBytes;
+    outfile << "    default: " << old_index + defaultbytes << " (" << defaultbytes << ")";
+    code_index += padding - 1;
 }
 
 void multianewarray_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 indexbyte1 = code[++code_index];
     u1 indexbyte2 = code[++code_index];
-    u1 dimensions = code[++code_index]; // operand stack
+    u1 dimensions = code[++code_index];
     u2 index = (indexbyte1 << 8) | indexbyte2;
     
     outfile << " #" << (int)index;
     auto reference = to_cp_info(constant_pool[index - 1]);
-    outfile << " <" << reference->get_content(constant_pool) << ">  ";
+    outfile << " <" << reference->get_content(constant_pool) << "> ";
+    outfile << "dim " << (int) dimensions;
 }
 
 void newarray_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
@@ -165,6 +167,7 @@ void sipush_debug(int &code_index, cp_info_vector &constant_pool, bytestream &co
     outfile << " " << (int)short_val;
 }
 
+// no examples to debug tableswitch! :D
 void tableswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u4 padding = (++code_index) % 4;
@@ -180,21 +183,18 @@ void tableswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestrea
     auto lowbytes4 = code[padding + code_index++];
     auto lowbytes  = lowbytes1 | lowbytes2 | lowbytes3 | lowbytes4;
 
-    auto howManyBytes = 1 + padding + 12;
-
     auto offsets = defaultbytes - lowbytes + 1;
 
     for (auto n = 0; n < offsets; n++)
     {
-        auto highbytes1 = code[howManyBytes + code_index++] << 24;
-        auto highbytes2 = code[howManyBytes + code_index++] << 16;
-        auto highbytes3 = code[howManyBytes + code_index++] << 8;
-        auto highbytes4 = code[howManyBytes + code_index++];
+        auto highbytes1 = code[padding + code_index++] << 24;
+        auto highbytes2 = code[padding + code_index++] << 16;
+        auto highbytes3 = code[padding + code_index++] << 8;
+        auto highbytes4 = code[padding + code_index++];
         auto highbytes  = highbytes1 | highbytes2 | highbytes3 | highbytes4;
         
         outfile << lowbytes << ": " << code_index + highbytes << " (" << highbytes << ")" << endl;
         lowbytes++;
-        howManyBytes += 4;
     }
 }
 

@@ -12,24 +12,22 @@ Attribute::Attribute(ifstream &file, cp_info_vector &constant_pool)
     attribute_length = read_bytes<u4>(file);
     string attribute_name = get_utf8_content(*(to_cp_info(constant_pool[attribute_name_index - 1])->_utf8));
 
-    if (attribute_name == "ConstantValue") {
+    if (attribute_name == "ConstantValue")
         tag = ConstantValue;
-    } else if (attribute_name == "Code" ) {
+    else if (attribute_name == "Code" )
         tag = Code;
-    } else if (attribute_name == "LineNumberTable" ) {
+    else if (attribute_name == "LineNumberTable" )
         tag = LineNumberTable;
-    } else if (attribute_name == "StackMapTable" ) {
+    else if (attribute_name == "StackMapTable" )
         tag = StackMapTable;
-    } else if (attribute_name == "Exception" ) {
+    else if (attribute_name == "Exception" )
         tag = Exception;
-    } else if (attribute_name == "BootstrapMethods" ) {
+    else if (attribute_name == "BootstrapMethods" )
         tag = BootstrapMethods;
-    } else if (attribute_name == "SourceFile" ) {
+    else if (attribute_name == "SourceFile" )
         tag = SourceFile;
-    } else {
+    else
         tag = Unknown;
-        cout << "UNKNOWN ATTRIBUTE NAME IN ATTRIBUTES.CPP, SKIPPING" << endl;
-    }
 }
 
 Attribute_Info::Attribute_Info(ifstream &file, cp_info_vector &constant_pool)
@@ -86,7 +84,7 @@ void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, unsigned i
     outfile << "### [" << counter++ << "] " << get_utf8_content(attribute_name) << endl;
 
     outfile << "- Generic info " << endl;
-    outfile << "  - Attribute name index`" << attribute_name_index << "`";
+    outfile << "  - Attribute name index `" << attribute_name_index << "`";
     outfile << " `<" << get_utf8_content(attribute_name) << ">`" << endl;
     outfile << "  - Attribute length `" << attribute_length << "`" << endl << endl;
     outfile << "- Specific info" << endl;

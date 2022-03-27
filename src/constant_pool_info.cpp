@@ -158,6 +158,7 @@ string CP_Info::get_content(cp_info_vector &constant_pool)
         case CONSTANT_String: return _string->get_content(constant_pool);
         case CONSTANT_Methodref: return _methodref->get_content(constant_pool);
         case CONSTANT_Fieldref: return _fieldref->get_content(constant_pool);
+        case CONSTANT_Class: return _class->get_content(constant_pool);
         default: return "Invalid tag";
     }
 }
@@ -266,6 +267,12 @@ void CONSTANT_class_info::dump_to_file(cp_info_vector &constant_pool)
     outfile << endl << endl;
 }
 
+string CONSTANT_class_info::get_content(cp_info_vector &constant_pool)
+{
+    auto class_name = *(to_cp_info(constant_pool[name_idx - 1])->_utf8);
+    return get_utf8_content(class_name);
+}
+
 CONSTANT_string_info::CONSTANT_string_info(ifstream &file) 
 {
     str_idx = read_bytes<u2>(file);
@@ -281,9 +288,7 @@ void CONSTANT_string_info::dump_to_file(cp_info_vector &constant_pool)
 
 string CONSTANT_string_info::get_content(cp_info_vector &constant_pool)
 {
-    cout << "PRIMEIRA" << endl;
     auto string_utf8 = *(to_cp_info(constant_pool[str_idx - 1])->_utf8);
-    cout << "SEGUNDA" << endl;
     return get_utf8_content(string_utf8);
 }
 

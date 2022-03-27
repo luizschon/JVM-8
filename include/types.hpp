@@ -9,12 +9,18 @@
 
 using namespace std;
 
-// Common types definitions
-
+// Unsigned types
 typedef uint8_t  u1;
 typedef uint16_t u2;
 typedef uint32_t u4;
 typedef uint64_t u8;
+
+// Signed types
+typedef int8_t  s1;
+typedef int16_t s2; 
+typedef int32_t s4;
+typedef int64_t s8;
+
 typedef vector<u1> bytestream;
 typedef vector<u1>::iterator bytestream_it;
 

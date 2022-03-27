@@ -95,16 +95,10 @@ string get_access_flags(u2 access_flags, int type)
     Nibble n;
     n.h16 = access_flags;
 
-    cout << "COMPLETE ACCESS_FLAGS: " << "0x" << hex << access_flags << endl;
-    
     unsigned int t3 = n.nb.n3 << 12;
-    cout << "T3 - ACCESS_FLAGS: " << "0x" << hex << t3 << endl;
     unsigned int t2 = n.nb.n2 << 8;
-    cout << "T2 - ACCESS_FLAGS: " << "0x" << hex << t2 << endl;
     unsigned int t1 = n.nb.n1 << 4;
-    cout << "T1 - ACCESS_FLAGS: " << "0x" << hex << t1 << endl;
     unsigned int t0 = n.nb.n0;
-    cout << "T0 - ACCESS_FLAGS: " << "0x" << hex << t0 << endl;
     vector<unsigned int> flag_v = {t3, t2, t1, t0};
 
     for (auto flag : flag_v)
@@ -141,7 +135,6 @@ string get_access_flags(u2 access_flags, int type)
                     class_access += "ACC_ENUM ";
                     break;
                 default:
-                    cout << "NOT A VALID ACCESS FLAG" << endl;
                     break;
             }
         }
@@ -168,7 +161,6 @@ string get_access_flags(u2 access_flags, int type)
                     class_access += "ACC_TRANSIENT ";
                     break;
                 default:
-                    cout << "NOT A VALID ACCESS FLAG" << endl;
                     break;
             }
         }
@@ -204,14 +196,11 @@ string get_access_flags(u2 access_flags, int type)
                     class_access += "ACC_STRICT ";
                     break;
                 default:
-                    cout << "NOT A VALID ACCESS FLAG" << endl;
                     break;
             }
         }
         else
-        {
             cout << "INVALID FLAG TYPE" << endl;
-        }
     }
     return class_access;
 }

@@ -293,7 +293,7 @@ typedef map<u1, function<void(int&, cp_info_vector&, bytestream&)>> bytecode_map
 
 const bytecode_map debug = {
     {0x18, index_debug},           // dload
-    {0x19, reference_debug},       // aload
+    {0x19, index_debug},           // aload
     {0x3A, index_debug},           // astore
     {0x10, bipush_debug},          // bipush
     {0x17, index_debug},           // fload

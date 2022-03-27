@@ -76,7 +76,7 @@ struct CONSTANT_class_info {
     CONSTANT_class_info(ifstream &file);
     u2 name_idx;
     void dump_to_file(cp_info_vector&);
-    string get_content();
+    string get_content(cp_info_vector&);
 };
 
 struct CONSTANT_string_info {
