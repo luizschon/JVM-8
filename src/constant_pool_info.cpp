@@ -1,6 +1,9 @@
 #include "../include/constant_pool_info.hpp"
 #include "../include/class_file.hpp"
 #include "../include/dump_class_file.hpp"
+#include <string>
+
+extern ofstream outfile;
 
 CP_Item::CP_Item(u1 tag) : tag((CONSTANT_Types)tag) {}
 
@@ -78,65 +81,65 @@ CP_Info::~CP_Info()
     }
 }
 
-void CP_Info::dump_info_to_file(cp_info_vector &constant_pool, ofstream &outfile, unsigned int &counter)
+void CP_Info::dump_info_to_file(cp_info_vector &constant_pool, unsigned int &counter)
 {
     switch (tag) 
     {
         case CONSTANT_Utf8:
             outfile << "### [" << counter++ << "] *CONSTANT_Utf8_info*" << endl;
-            _utf8->dump_to_file(outfile);
+            _utf8->dump_to_file();
             break;
         case CONSTANT_Integer:
             outfile << "### [" << counter++ << "] *CONSTANT_Integer_info*" << endl;
-            _integer->dump_to_file(outfile);
+            _integer->dump_to_file();
             break;
         case CONSTANT_Float:
             outfile << "### [" << counter++ << "] *CONSTANT_Float_info*" << endl;
-            _float->dump_to_file(outfile);
+            _float->dump_to_file();
             break;
         case CONSTANT_Long:
             outfile << "### [" << counter++ << "] *CONSTANT_Long_info*" << endl;
-            _long->dump_to_file(outfile);
+            _long->dump_to_file();
             break;
         case CONSTANT_Double:
             outfile << "### [" << counter++ << "] *CONSTANT_Double_info*" << endl;
-            _double->dump_to_file(outfile);
+            _double->dump_to_file();
             break;
         case CONSTANT_Class:
             outfile << "### [" << counter++ << "] *CONSTANT_Class_info*" << endl;
-            _class->dump_to_file(outfile, constant_pool);
+            _class->dump_to_file(constant_pool);
             break;
         case CONSTANT_String:
             outfile << "### [" << counter++ << "] *CONSTANT_String_info*" << endl;
-            _string->dump_to_file(outfile, constant_pool);
+            _string->dump_to_file(constant_pool);
             break;
         case CONSTANT_Fieldref:
             outfile << "### [" << counter++ << "] *CONSTANT_Fieldref_info*" << endl;
-            _fieldref->dump_to_file(outfile, constant_pool);
+            _fieldref->dump_to_file(constant_pool);
             break;
         case CONSTANT_Methodref:
             outfile << "### [" << counter++ << "] *CONSTANT_Methodref_info*" << endl;
-            _methodref->dump_to_file(outfile);
+            _methodref->dump_to_file();
             break;
         case CONSTANT_InterfaceMethodref:
             outfile << "### [" << counter++ << "] *CONSTANT_InterfaceMethodref_info*" << endl;
-            _interface_methodref->dump_to_file(outfile);
+            _interface_methodref->dump_to_file();
             break;
         case CONSTANT_NameAndType:
             outfile << "### [" << counter++ << "] *CONSTANT_NameAndType_info*" << endl;
-            _name_and_type->dump_to_file(outfile);
+            _name_and_type->dump_to_file();
             break;
         case CONSTANT_MethodHandle:
             outfile << "### [" << counter++ << "] *CONSTANT_MethodHandle_info*" << endl;
-            _method_handle->dump_to_file(outfile);
+            _method_handle->dump_to_file();
             break;
         case CONSTANT_MethodType:
             outfile << "### [" << counter++ << "] *CONSTANT_MethodType_info*" << endl;
-            _method_type->dump_to_file(outfile);
+            _method_type->dump_to_file();
             break;
         case CONSTANT_InvokeDynamic:
             outfile << "### [" << counter++ << "] *CONSTANT_InvokeDynamic_info*" << endl;
-            _invoke_dynamic->dump_to_file(outfile);
+            _invoke_dynamic->dump_to_file();
             break;
         case CONSTANT_Continuation:
             outfile << "### [" << counter++ << "] *(large numeric continued)*" << endl << endl;
@@ -155,6 +158,7 @@ string CP_Info::get_content(cp_info_vector &constant_pool)
         case CONSTANT_String: return _string->get_content(constant_pool);
         case CONSTANT_Methodref: return _methodref->get_content(constant_pool);
         case CONSTANT_Fieldref: return _fieldref->get_content(constant_pool);
+        case CONSTANT_Class: return _class->get_content(constant_pool);
         default: return "Invalid tag";
     }
 }
@@ -167,7 +171,7 @@ CONSTANT_utf8_info::CONSTANT_utf8_info(ifstream &file)
         bytes.push_back(read_bytes<u1>(file));
 }
 
-void CONSTANT_utf8_info::dump_to_file(ofstream &outfile)
+void CONSTANT_utf8_info::dump_to_file()
 {
     outfile << "- Length `" << length << "`" << endl;
     outfile << "- Bytes [ `" << get_utf8_content(*this) << "`]" << endl << endl;
@@ -178,7 +182,7 @@ CONSTANT_integer_info::CONSTANT_integer_info(ifstream &file)
     bytes = read_bytes<u4>(file);
 }
 
-void CONSTANT_integer_info::dump_to_file(ofstream &outfile)
+void CONSTANT_integer_info::dump_to_file()
 {
     outfile << "- Bytes `" << bytes << "`" << endl;
     outfile << endl;
@@ -194,7 +198,7 @@ CONSTANT_float_info::CONSTANT_float_info(ifstream &file)
     bytes = read_bytes<u4>(file);
 }
 
-void CONSTANT_float_info::dump_to_file(ofstream &outfile)
+void CONSTANT_float_info::dump_to_file()
 {
     ios_base::fmtflags f(outfile.flags());
     outfile << "- Bytes `0x" << hex << bytes << "`" << endl;
@@ -214,7 +218,7 @@ CONSTANT_long_info::CONSTANT_long_info(ifstream &file)
     low_bytes = read_bytes<u4>(file);
 }
 
-void CONSTANT_long_info::dump_to_file(ofstream &outfile)
+void CONSTANT_long_info::dump_to_file()
 {
     ios_base::fmtflags f(outfile.flags());
     outfile << "- High Bytes `0x" << hex << high_bytes << "`" << endl;
@@ -235,7 +239,7 @@ CONSTANT_double_info::CONSTANT_double_info(ifstream &file)
     low_bytes = read_bytes<u4>(file);
 }
 
-void CONSTANT_double_info::dump_to_file(ofstream &outfile)
+void CONSTANT_double_info::dump_to_file()
 {
     ios_base::fmtflags f(outfile.flags());
     outfile << "- High Bytes `0x" << hex << high_bytes << "`" << endl;
@@ -255,7 +259,7 @@ CONSTANT_class_info::CONSTANT_class_info(ifstream &file)
     name_idx = read_bytes<u2>(file);
 }
 
-void CONSTANT_class_info::dump_to_file(ofstream &outfile, cp_info_vector &constant_pool)
+void CONSTANT_class_info::dump_to_file(cp_info_vector &constant_pool)
 {
     auto class_name = *(to_cp_info(constant_pool[name_idx - 1])->_utf8);
     outfile << "- Name Index `" << name_idx << "`" << endl;
@@ -263,12 +267,18 @@ void CONSTANT_class_info::dump_to_file(ofstream &outfile, cp_info_vector &consta
     outfile << endl << endl;
 }
 
+string CONSTANT_class_info::get_content(cp_info_vector &constant_pool)
+{
+    auto class_name = *(to_cp_info(constant_pool[name_idx - 1])->_utf8);
+    return get_utf8_content(class_name);
+}
+
 CONSTANT_string_info::CONSTANT_string_info(ifstream &file) 
 {
     str_idx = read_bytes<u2>(file);
 }
 
-void CONSTANT_string_info::dump_to_file(ofstream &outfile, cp_info_vector &constant_pool)
+void CONSTANT_string_info::dump_to_file(cp_info_vector &constant_pool)
 {
     auto str = *(to_cp_info(constant_pool[str_idx - 1])->_utf8);
     outfile << "- String Index `" << str_idx << "`" << endl;
@@ -278,9 +288,7 @@ void CONSTANT_string_info::dump_to_file(ofstream &outfile, cp_info_vector &const
 
 string CONSTANT_string_info::get_content(cp_info_vector &constant_pool)
 {
-    cout << "PRIMEIRA" << endl;
     auto string_utf8 = *(to_cp_info(constant_pool[str_idx - 1])->_utf8);
-    cout << "SEGUNDA" << endl;
     return get_utf8_content(string_utf8);
 }
 
@@ -290,7 +298,7 @@ CONSTANT_fieldref_info::CONSTANT_fieldref_info(ifstream &file)
     name_and_type_idx = read_bytes<u2>(file);
 }
 
-void CONSTANT_fieldref_info::dump_to_file(ofstream &outfile, cp_info_vector &constant_pool)
+void CONSTANT_fieldref_info::dump_to_file(cp_info_vector &constant_pool)
 {
     auto class_name_index = to_cp_info(constant_pool[class_idx - 1])->_class->name_idx;
     auto class_name = *(to_cp_info(constant_pool[class_name_index - 1])->_utf8);
@@ -323,7 +331,7 @@ CONSTANT_methodref_info::CONSTANT_methodref_info(ifstream &file)
     name_and_type_idx = read_bytes<u2>(file);
 }
 
-void CONSTANT_methodref_info::dump_to_file(ofstream &outfile)
+void CONSTANT_methodref_info::dump_to_file()
 {
     outfile << "- Class Index `" << class_idx << "`" << endl;
     outfile << "- Name And Type Index `" << name_and_type_idx << "`" << endl;
@@ -347,7 +355,7 @@ CONSTANT_interface_methodref_info::CONSTANT_interface_methodref_info(ifstream &f
     name_and_type_idx = read_bytes<u2>(file);
 }
 
-void CONSTANT_interface_methodref_info::dump_to_file(ofstream &outfile)
+void CONSTANT_interface_methodref_info::dump_to_file()
 {
     outfile << "- Class Index `" << class_idx << "`" << endl;
     outfile << "- Name And Type Index `" << name_and_type_idx << "`" << endl;
@@ -360,7 +368,7 @@ CONSTANT_name_and_type_info::CONSTANT_name_and_type_info(ifstream &file)
     descriptor_idx = read_bytes<u2>(file);
 }
 
-void CONSTANT_name_and_type_info::dump_to_file(ofstream &outfile)
+void CONSTANT_name_and_type_info::dump_to_file()
 {
     outfile << "- Name Index `" << name_idx << "`" << endl;
     outfile << "- Descriptor Index `" << descriptor_idx << "`" << endl;
@@ -373,7 +381,7 @@ CONSTANT_method_handle_info::CONSTANT_method_handle_info(ifstream &file)
     reference_index = read_bytes<u2>(file);
 }
 
-void CONSTANT_method_handle_info::dump_to_file(ofstream &outfile)
+void CONSTANT_method_handle_info::dump_to_file()
 {
     outfile << "- Reference Kind `" << reference_kind << "`" << endl;
     outfile << "- Reference Index `" << reference_index << "`" << endl;
@@ -385,7 +393,7 @@ CONSTANT_method_type_info::CONSTANT_method_type_info(ifstream &file)
     descriptor_index = read_bytes<u2>(file);
 }
 
-void CONSTANT_method_type_info::dump_to_file(ofstream &outfile)
+void CONSTANT_method_type_info::dump_to_file()
 {
     outfile << "- Descriptor Index `" << descriptor_index << "`" << endl;
 }
@@ -396,7 +404,7 @@ CONSTANT_invoke_dynamic_info::CONSTANT_invoke_dynamic_info(ifstream &file)
     name_and_type_index = read_bytes<u2>(file);
 }
 
-void CONSTANT_invoke_dynamic_info::dump_to_file(ofstream &outfile)
+void CONSTANT_invoke_dynamic_info::dump_to_file()
 {
     outfile << "- Bootstrap Method Attribute Index `" << bootstrap_method_attr_index << "`" << endl;
     outfile << "- Name and Type Index `" << name_and_type_index << "`" << endl;
