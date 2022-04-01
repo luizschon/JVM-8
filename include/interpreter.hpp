@@ -2,21 +2,28 @@
 #define _INTERPRETER_HPP
 
 #include "class_file.hpp"
+#include "constant_pool_info.hpp"
 #include "frame.hpp"
 #include "bytecode.hpp"
+#include <map>
+
+using namespace std;
 
 class JVMInterpreter {
     u8 pc;
-    //method_area
+    struct method_area {
+        struct class_info {
+            stack_frame pilha_de_frames; // referencia para cp_info_vector, stack de op, vector de var locais
+            class_file* class_f; // cp_info_vector de runtime, methods.code, fields, methods
+        };
+        map<string, class_info> string_class; // string = this_class
+    };
     
 public:
-    void run()
+    void run();
 };
 
-/**
- * @brief execute the interpretation of .class file
- * 
- */
-void execute(class_file &class_f, bytestream &code);
+// botar no frame ?
+void execute_instr(class_file &class_f, bytestream &code);
 
 #endif // _INTERPRETER_HPP

@@ -1,6 +1,7 @@
 #include "../include/constant_pool_info.hpp"
 #include "../include/class_file.hpp"
 #include "../include/dump_class_file.hpp"
+#include "../include/utils.hpp"
 #include <string>
 
 extern ofstream outfile;

@@ -14,22 +14,16 @@ int main(int argc, char** argv)
     CmdArgs opts;
     opts.init(argc, argv);
 
-    // TODO: put in class loader logic -------------
-    class_file* class_f = new class_file;
-    auto file = open_file(opts.filename);
-
-    get_metadata(*class_f, file);
-    get_constant_pool(*class_f, file);
-    get_class_data(*class_f, file);
-    // ---------------------------------------------
+    ClassLoader loader;
+    loader.load(opts.filename);
 
     if (opts.read_bytecode)
-        print_all(*class_f, argv[1]);
+        print_all(*loader.get_class_file(), opts.filename);
     else
-        JVMInterpreter.run();
-        execute(class_f, /* bytestream &code */);
-        
-    delete class_f;
+    {
+        JVMInterpreter interpreter;
+        // interpreter.run(*loader.get_class_file());
+    }
 
     return 0;
 }

@@ -1,7 +1,9 @@
 #include "../include/attributes.hpp"
 #include "../include/dump_class_file.hpp"
 #include "../include/bytecode.hpp"
+#include "../include/utils.hpp"
 #include <iomanip>
+#include <iostream>
 
 using namespace std;
 extern ofstream outfile;
@@ -156,19 +158,12 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool)
     outfile << "- Bytecode" << endl;
     outfile << "```" << endl;
 
-    frames_t frames;
-
     for (int i = 0; i < code_length; i++)
     {
         if (mnemonic.count(code[i])) 
         {
             auto bytecode = code[i];
             outfile << i << " " << mnemonic.at(bytecode);
-            if (bytecode == 0x10 && bytecodes.at(bytecode))
-            {
-                auto execute_instr = bytecodes.at(bytecode);
-                execute_instr(i, constant_pool, code, frames);
-            }
             if (debug.count(bytecode))
             {
                 auto print_instr = debug.at(bytecode);
@@ -183,12 +178,6 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool)
             cout.flags(f);
         }
     }
-    while (!frames.stack_frame.empty() && !frames.stack_frame.top().operands.empty())
-    {
-        cout << (int) frames.stack_frame.top().operands.top() << " ";
-        frames.stack_frame.top().operands.pop();
-    }
-    cout << endl;
     outfile << "```" << endl;
 
     unsigned int attr_counter = 0;

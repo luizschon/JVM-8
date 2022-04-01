@@ -18,7 +18,7 @@ typedef struct operand_t {
         u4 byte_type;
         u4 char_type;
         u4 short_type;
-/*
+        /*
         string;
         array;
         class_container;*/
