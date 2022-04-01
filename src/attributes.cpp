@@ -183,10 +183,10 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool)
             cout.flags(f);
         }
     }
-    while (!frames.empty() && !frames.top().operands.empty())
+    while (!frames.stack_frame.empty() && !frames.stack_frame.top().operands.empty())
     {
-        cout << (int) frames.top().operands.top() << " ";
-        frames.top().operands.pop();
+        cout << (int) frames.stack_frame.top().operands.top() << " ";
+        frames.stack_frame.top().operands.pop();
     }
     cout << endl;
     outfile << "```" << endl;

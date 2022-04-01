@@ -100,13 +100,8 @@ long long calc_long(u4 high, u4 low)
     return (long long) l;
 }
 
-ifstream open_file(int argc, char** argv)
+ifstream open_file(string &filename)
 {
-    CmdArgs cmd_args;
-    cmd_args.init(argc, argv);
-
-    // open given file and return stream
-    string filename = cmd_args.filename;
     ifstream file(filename, ios::binary);
     return file;
 }

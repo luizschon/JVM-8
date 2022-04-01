@@ -8,213 +8,213 @@
 #include <map>
 
 // Instructions implementation
-void aaload          (int&, cp_info_vector&, bytestream&, frames_t&);
-void nop             (int&, cp_info_vector&, bytestream&);
-void aconst_null     (int&, cp_info_vector&, bytestream&);
-void iconst_m1       (int&, cp_info_vector&, bytestream&);
-void iconst_0        (int&, cp_info_vector&, bytestream&);
-void iconst_1        (int&, cp_info_vector&, bytestream&);
-void iconst_2        (int&, cp_info_vector&, bytestream&);
-void iconst_3        (int&, cp_info_vector&, bytestream&);
-void iconst_4        (int&, cp_info_vector&, bytestream&);
-void iconst_5        (int&, cp_info_vector&, bytestream&);
-void lconst_0        (int&, cp_info_vector&, bytestream&);
-void lconst_1        (int&, cp_info_vector&, bytestream&);
-void fconst_0        (int&, cp_info_vector&, bytestream&);
-void fconst_1        (int&, cp_info_vector&, bytestream&);
-void fconst_2        (int&, cp_info_vector&, bytestream&);
-void dconst_0        (int&, cp_info_vector&, bytestream&);
-void dconst_1        (int&, cp_info_vector&, bytestream&);
-void bipush          (int&, cp_info_vector&, bytestream&, frames_t&);
-void sipush          (int&, cp_info_vector&, bytestream&);
-void ldc             (int&, cp_info_vector&, bytestream&);
-void ldc_w           (int&, cp_info_vector&, bytestream&);
-void ldc2_w          (int&, cp_info_vector&, bytestream&);
-void iload           (int&, cp_info_vector&, bytestream&);
-void lload           (int&, cp_info_vector&, bytestream&);
-void fload           (int&, cp_info_vector&, bytestream&);
-void dload           (int&, cp_info_vector&, bytestream&);
-void aload           (int&, cp_info_vector&, bytestream&);
-void iload_0         (int&, cp_info_vector&, bytestream&);
-void iload_1         (int&, cp_info_vector&, bytestream&);
-void iload_2         (int&, cp_info_vector&, bytestream&);
-void iload_3         (int&, cp_info_vector&, bytestream&);
-void lload_0         (int&, cp_info_vector&, bytestream&);
-void lload_1         (int&, cp_info_vector&, bytestream&);
-void lload_2         (int&, cp_info_vector&, bytestream&);
-void lload_3         (int&, cp_info_vector&, bytestream&);
-void fload_0         (int&, cp_info_vector&, bytestream&);
-void fload_1         (int&, cp_info_vector&, bytestream&);
-void fload_2         (int&, cp_info_vector&, bytestream&);
-void fload_3         (int&, cp_info_vector&, bytestream&);
-void dload_0         (int&, cp_info_vector&, bytestream&);
-void dload_1         (int&, cp_info_vector&, bytestream&);
-void dload_2         (int&, cp_info_vector&, bytestream&);
-void dload_3         (int&, cp_info_vector&, bytestream&);
-void aload_0         (int&, cp_info_vector&, bytestream&);
-void aload_1         (int&, cp_info_vector&, bytestream&);
-void aload_2         (int&, cp_info_vector&, bytestream&);
-void aload_3         (int&, cp_info_vector&, bytestream&);
-void iaload          (int&, cp_info_vector&, bytestream&);
-void laload          (int&, cp_info_vector&, bytestream&);
-void faload          (int&, cp_info_vector&, bytestream&);
-void daload          (int&, cp_info_vector&, bytestream&);
-void baload          (int&, cp_info_vector&, bytestream&);
-void caload          (int&, cp_info_vector&, bytestream&);
-void saload          (int&, cp_info_vector&, bytestream&);
-void istore          (int&, cp_info_vector&, bytestream&);
-void lstore          (int&, cp_info_vector&, bytestream&);
-void fstore          (int&, cp_info_vector&, bytestream&);
-void dstore          (int&, cp_info_vector&, bytestream&);
-void astore          (int&, cp_info_vector&, bytestream&);
-void istore_0        (int&, cp_info_vector&, bytestream&);
-void istore_1        (int&, cp_info_vector&, bytestream&);
-void istore_2        (int&, cp_info_vector&, bytestream&);
-void istore_3        (int&, cp_info_vector&, bytestream&);
-void lstore_0        (int&, cp_info_vector&, bytestream&);
-void lstore_1        (int&, cp_info_vector&, bytestream&);
-void lstore_2        (int&, cp_info_vector&, bytestream&);
-void lstore_3        (int&, cp_info_vector&, bytestream&);
-void fstore_0        (int&, cp_info_vector&, bytestream&);
-void fstore_1        (int&, cp_info_vector&, bytestream&);
-void fstore_2        (int&, cp_info_vector&, bytestream&);
-void fstore_3        (int&, cp_info_vector&, bytestream&);
-void dstore_0        (int&, cp_info_vector&, bytestream&);
-void dstore_1        (int&, cp_info_vector&, bytestream&);
-void dstore_2        (int&, cp_info_vector&, bytestream&);
-void dstore_3        (int&, cp_info_vector&, bytestream&);
-void astore_0        (int&, cp_info_vector&, bytestream&);
-void astore_1        (int&, cp_info_vector&, bytestream&);
-void astore_2        (int&, cp_info_vector&, bytestream&);
-void astore_3        (int&, cp_info_vector&, bytestream&);
-void iastore         (int&, cp_info_vector&, bytestream&);
-void lastore         (int&, cp_info_vector&, bytestream&);
-void fastore         (int&, cp_info_vector&, bytestream&);
-void dastore         (int&, cp_info_vector&, bytestream&);
-void aastore         (int&, cp_info_vector&, bytestream&);
-void bastore         (int&, cp_info_vector&, bytestream&);
-void castore         (int&, cp_info_vector&, bytestream&);
-void sastore         (int&, cp_info_vector&, bytestream&);
-void pop             (int&, cp_info_vector&, bytestream&);
-void pop2            (int&, cp_info_vector&, bytestream&);
-void dup             (int&, cp_info_vector&, bytestream&);
-void dup_x1          (int&, cp_info_vector&, bytestream&);
-void dup_x2          (int&, cp_info_vector&, bytestream&);
-void dup2            (int&, cp_info_vector&, bytestream&);
-void dup2_x1         (int&, cp_info_vector&, bytestream&);
-void dup2_x2         (int&, cp_info_vector&, bytestream&);
-void swap            (int&, cp_info_vector&, bytestream&);
-void iadd            (int&, cp_info_vector&, bytestream&);
-void ladd            (int&, cp_info_vector&, bytestream&);
-void fadd            (int&, cp_info_vector&, bytestream&);
-void dadd            (int&, cp_info_vector&, bytestream&);
-void isub            (int&, cp_info_vector&, bytestream&);
-void lsub            (int&, cp_info_vector&, bytestream&);
-void fsub            (int&, cp_info_vector&, bytestream&);
-void dsub            (int&, cp_info_vector&, bytestream&);
-void imul            (int&, cp_info_vector&, bytestream&);
-void lmul            (int&, cp_info_vector&, bytestream&);
-void fmul            (int&, cp_info_vector&, bytestream&);
-void dmul            (int&, cp_info_vector&, bytestream&);
-void idiv            (int&, cp_info_vector&, bytestream&);
-void ldiv            (int&, cp_info_vector&, bytestream&);
-void fdiv            (int&, cp_info_vector&, bytestream&);
-void ddiv            (int&, cp_info_vector&, bytestream&);
-void irem            (int&, cp_info_vector&, bytestream&);
-void lrem            (int&, cp_info_vector&, bytestream&);
-void frem            (int&, cp_info_vector&, bytestream&);
-void drem            (int&, cp_info_vector&, bytestream&);
-void ineg            (int&, cp_info_vector&, bytestream&);
-void lneg            (int&, cp_info_vector&, bytestream&);
-void fneg            (int&, cp_info_vector&, bytestream&);
-void dneg            (int&, cp_info_vector&, bytestream&);
-void ishl            (int&, cp_info_vector&, bytestream&);
-void lshl            (int&, cp_info_vector&, bytestream&);
-void ishr            (int&, cp_info_vector&, bytestream&);
-void lshr            (int&, cp_info_vector&, bytestream&);
-void iushr           (int&, cp_info_vector&, bytestream&);
-void lushr           (int&, cp_info_vector&, bytestream&);
-void iand            (int&, cp_info_vector&, bytestream&);
-void land            (int&, cp_info_vector&, bytestream&);
-void ior             (int&, cp_info_vector&, bytestream&);
-void lor             (int&, cp_info_vector&, bytestream&);
-void ixor            (int&, cp_info_vector&, bytestream&);
-void lxor            (int&, cp_info_vector&, bytestream&);
-void iinc            (int&, cp_info_vector&, bytestream&);
-void i2l             (int&, cp_info_vector&, bytestream&);
-void i2f             (int&, cp_info_vector&, bytestream&);
-void i2d             (int&, cp_info_vector&, bytestream&);
-void l2i             (int&, cp_info_vector&, bytestream&);
-void l2f             (int&, cp_info_vector&, bytestream&);
-void l2d             (int&, cp_info_vector&, bytestream&);
-void f2i             (int&, cp_info_vector&, bytestream&);
-void f2l             (int&, cp_info_vector&, bytestream&);
-void f2d             (int&, cp_info_vector&, bytestream&);
-void d2i             (int&, cp_info_vector&, bytestream&);
-void d2l             (int&, cp_info_vector&, bytestream&);
-void d2f             (int&, cp_info_vector&, bytestream&);
-void i2b             (int&, cp_info_vector&, bytestream&);
-void i2c             (int&, cp_info_vector&, bytestream&);
-void i2s             (int&, cp_info_vector&, bytestream&);
-void lcmp            (int&, cp_info_vector&, bytestream&);
-void fcmpl           (int&, cp_info_vector&, bytestream&);
-void fcmpg           (int&, cp_info_vector&, bytestream&);
-void dcmpl           (int&, cp_info_vector&, bytestream&);
-void dcmpg           (int&, cp_info_vector&, bytestream&);
-void ifeq            (int&, cp_info_vector&, bytestream&);
-void ifne            (int&, cp_info_vector&, bytestream&);
-void iflt            (int&, cp_info_vector&, bytestream&);
-void ifge            (int&, cp_info_vector&, bytestream&);
-void ifgt            (int&, cp_info_vector&, bytestream&);
-void ifle            (int&, cp_info_vector&, bytestream&);
-void if_icmpeq       (int&, cp_info_vector&, bytestream&);
-void if_icmpne       (int&, cp_info_vector&, bytestream&);
-void if_icmplt       (int&, cp_info_vector&, bytestream&);
-void if_icmpge       (int&, cp_info_vector&, bytestream&);
-void if_icmpgt       (int&, cp_info_vector&, bytestream&);
-void if_icmple       (int&, cp_info_vector&, bytestream&);
-void if_acmpeq       (int&, cp_info_vector&, bytestream&);
-void if_acmpne       (int&, cp_info_vector&, bytestream&);
-void _goto           (int&, cp_info_vector&, bytestream&);
-void jsr             (int&, cp_info_vector&, bytestream&);
-void ret             (int&, cp_info_vector&, bytestream&);
-void tableswitch     (int&, cp_info_vector&, bytestream&);
-void lookupswitch    (int&, cp_info_vector&, bytestream&);
-void ireturn         (int&, cp_info_vector&, bytestream&);
-void lreturn         (int&, cp_info_vector&, bytestream&);
-void freturn         (int&, cp_info_vector&, bytestream&);
-void dreturn         (int&, cp_info_vector&, bytestream&);
-void areturn         (int&, cp_info_vector&, bytestream&);
-void _return         (int&, cp_info_vector&, bytestream&);
-void getstatic       (int&, cp_info_vector&, bytestream&);
-void putstatic       (int&, cp_info_vector&, bytestream&);
-void getfield        (int&, cp_info_vector&, bytestream&);
-void putfield        (int&, cp_info_vector&, bytestream&);
-void invokevirtual   (int&, cp_info_vector&, bytestream&);
-void invokespecial   (int&, cp_info_vector&, bytestream&);
-void invokestatic    (int&, cp_info_vector&, bytestream&);
-void invokeinterface (int&, cp_info_vector&, bytestream&);
-void invokedynamic   (int&, cp_info_vector&, bytestream&);
-void _new            (int&, cp_info_vector&, bytestream&);
-void newarray        (int&, cp_info_vector&, bytestream&);
-void anewarray       (int&, cp_info_vector&, bytestream&);
-void arraylength     (int&, cp_info_vector&, bytestream&);
-void athrow          (int&, cp_info_vector&, bytestream&);
-void checkcast       (int&, cp_info_vector&, bytestream&);
-void instanceof      (int&, cp_info_vector&, bytestream&);
-void monitorenter    (int&, cp_info_vector&, bytestream&);
-void monitorexit     (int&, cp_info_vector&, bytestream&);
-void wide            (int&, cp_info_vector&, bytestream&);
-void multianewarray  (int&, cp_info_vector&, bytestream&);
-void ifnull          (int&, cp_info_vector&, bytestream&);
-void ifnonnull       (int&, cp_info_vector&, bytestream&);
-void goto_w          (int&, cp_info_vector&, bytestream&);
-void jsr_w           (int&, cp_info_vector&, bytestream&);
+void aaload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void nop             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aconst_null     (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_m1       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_3        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_4        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iconst_5        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lconst_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lconst_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fconst_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fconst_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fconst_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dconst_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dconst_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void bipush          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void sipush          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ldc             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ldc_w           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ldc2_w          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iload           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lload           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fload           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dload           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aload           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iload_0         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iload_1         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iload_2         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iload_3         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lload_0         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lload_1         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lload_2         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lload_3         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fload_0         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fload_1         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fload_2         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fload_3         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dload_0         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dload_1         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dload_2         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dload_3         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aload_0         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aload_1         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aload_2         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aload_3         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iaload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void laload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void faload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void daload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void baload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void caload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void saload          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void istore          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lstore          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fstore          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dstore          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void astore          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void istore_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void istore_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void istore_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void istore_3        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lstore_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lstore_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lstore_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lstore_3        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fstore_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fstore_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fstore_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fstore_3        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dstore_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dstore_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dstore_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dstore_3        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void astore_0        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void astore_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void astore_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void astore_3        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void aastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void bastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void castore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void sastore         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void pop             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void pop2            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dup             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dup_x1          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dup_x2          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dup2            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dup2_x1         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dup2_x2         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void swap            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iadd            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ladd            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fadd            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dadd            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void isub            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lsub            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fsub            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dsub            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void imul            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lmul            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fmul            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dmul            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void idiv            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ldiv            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fdiv            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ddiv            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void irem            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lrem            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void frem            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void drem            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ineg            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lneg            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fneg            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dneg            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ishl            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lshl            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ishr            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lshr            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iushr           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lushr           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iand            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void land            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ior             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lor             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ixor            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lxor            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iinc            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void i2l             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void i2f             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void i2d             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void l2i             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void l2f             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void l2d             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void f2i             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void f2l             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void f2d             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void d2i             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void d2l             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void d2f             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void i2b             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void i2c             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void i2s             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lcmp            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fcmpl           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void fcmpg           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dcmpl           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dcmpg           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifeq            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifne            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void iflt            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifge            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifgt            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifle            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_icmpeq       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_icmpne       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_icmplt       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_icmpge       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_icmpgt       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_icmple       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_acmpeq       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void if_acmpne       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void _goto           (int&, cp_info_vector&, bytestream&, stack_frame&);
+void jsr             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ret             (int&, cp_info_vector&, bytestream&, stack_frame&);
+void tableswitch     (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lookupswitch    (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ireturn         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void lreturn         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void freturn         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void dreturn         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void areturn         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void _return         (int&, cp_info_vector&, bytestream&, stack_frame&);
+void getstatic       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void putstatic       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void getfield        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void putfield        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void invokevirtual   (int&, cp_info_vector&, bytestream&, stack_frame&);
+void invokespecial   (int&, cp_info_vector&, bytestream&, stack_frame&);
+void invokestatic    (int&, cp_info_vector&, bytestream&, stack_frame&);
+void invokeinterface (int&, cp_info_vector&, bytestream&, stack_frame&);
+void invokedynamic   (int&, cp_info_vector&, bytestream&, stack_frame&);
+void _new            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void newarray        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void anewarray       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void arraylength     (int&, cp_info_vector&, bytestream&, stack_frame&);
+void athrow          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void checkcast       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void instanceof      (int&, cp_info_vector&, bytestream&, stack_frame&);
+void monitorenter    (int&, cp_info_vector&, bytestream&, stack_frame&);
+void monitorexit     (int&, cp_info_vector&, bytestream&, stack_frame&);
+void wide            (int&, cp_info_vector&, bytestream&, stack_frame&);
+void multianewarray  (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifnull          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void ifnonnull       (int&, cp_info_vector&, bytestream&, stack_frame&);
+void goto_w          (int&, cp_info_vector&, bytestream&, stack_frame&);
+void jsr_w           (int&, cp_info_vector&, bytestream&, stack_frame&);
 
 // reserved
-void break_point(int&, cp_info_vector&, bytestream&);
-void impdep_1(int&, cp_info_vector&, bytestream&);
-void impdep_2(int&, cp_info_vector&, bytestream&);
+void break_point     (int&, cp_info_vector&, bytestream&, stack_frame&);
+void impdep_1        (int&, cp_info_vector&, bytestream&, stack_frame&);
+void impdep_2        (int&, cp_info_vector&, bytestream&, stack_frame&);
 
 // Debug Instructions
 void bipush_debug         (int&, cp_info_vector&, bytestream&);
@@ -354,15 +354,15 @@ const bytecode_map debug = {
     {0xC4, wide_debug}             // wide
 };
 
-typedef map<u1, function<void(int&, cp_info_vector&, bytestream&, frames_t&)>> bytecode_instr;
+typedef map<u1, function<void(int&, cp_info_vector&, bytestream&, stack_frame&)>> bytecode_instr;
 
 // TODO: fix swap and ldiv
 const bytecode_instr bytecodes = {
-    /*{0x00, nop},             {0x01, aconst_null},     {0x02, iconst_m1},     {0x03, iconst_0},
+    {0x00, nop},             {0x01, aconst_null},     {0x02, iconst_m1},     {0x03, iconst_0},
     {0x04, iconst_1},        {0x05, iconst_2},        {0x06, iconst_3},      {0x07, iconst_4}, 
     {0x08, iconst_5},        {0x09, lconst_0},        {0x0A, lconst_1},      {0x0B, fconst_0},
     {0x0C, fconst_1},        {0x0D, fconst_2},        {0x0E, dconst_0},      {0x0F, dconst_1},
-    */{0x10, bipush},/*          {0x11, sipush} ,         {0x12, ldc},           {0x13, ldc_w},
+    {0x10, bipush},          {0x11, sipush} ,         {0x12, ldc},           {0x13, ldc_w},
     {0x14, ldc2_w},          {0x15, iload},           {0x16, lload},         {0x17, fload},
     {0x18, dload},           {0x19, aload},           {0x1A, iload_0},       {0x1B, iload_1}, 
     {0x1C, iload_2},         {0x1D, iload_3},         {0x1E, lload_0},       {0x1F, lload_1},    
@@ -370,7 +370,7 @@ const bytecode_instr bytecodes = {
     {0x24, fload_2},         {0x25, fload_3},         {0x26, dload_0},       {0x27, dload_1},    
     {0x28, dload_2},         {0x29, dload_3},         {0x2A, aload_0},       {0x2B, aload_1},
     {0x2C, aload_2},         {0x2D, aload_3},         {0x2E, iaload},        {0x2F, laload},
-    {0x30, faload},          {0x31, daload},         */{0x32, aaload}/*         {0x33, baload},   
+    {0x30, faload},          {0x31, daload},          {0x32, aaload},        {0x33, baload},   
     {0x34, caload},          {0x35, saload},          {0x36, istore},        {0x37, lstore},   
     {0x38, fstore},          {0x39, dstore},          {0x3A, astore},        {0x3B, istore_0},
     {0x3C, istore_1},        {0x3D, istore_2},        {0x3E, istore_3},      {0x3F, lstore_0},
@@ -381,11 +381,11 @@ const bytecode_instr bytecodes = {
     {0x50, lastore},         {0x51, fastore},         {0x52, dastore},       {0x53, aastore},
     {0x54, bastore},         {0x55, castore},         {0x56, sastore},       {0x57, pop},
     {0x58, pop2},            {0x59, dup},             {0x5A, dup_x1},        {0x5B, dup_x2},
-    {0x5C, dup2},            {0x5D, dup2_x1},         {0x5E, dup2_x2},       {0x5F, swap},
+    {0x5C, dup2},            {0x5D, dup2_x1},         {0x5E, dup2_x2},       /*{0x5F, swap},*/
     {0x60, iadd},            {0x61, ladd},            {0x62, fadd},          {0x63, dadd},
     {0x64, isub},            {0x65, lsub},            {0x66, fsub},          {0x67, dsub},              
     {0x68, imul},            {0x69, lmul},            {0x6A, fmul},          {0x6B, dmul},
-    {0x6C, idiv},            {0x6D, ldiv},            {0x6E, fdiv},          {0x6F, ddiv},
+    {0x6C, idiv},            /*{0x6D, ldiv},*/            {0x6E, fdiv},          {0x6F, ddiv},
     {0x70, irem},            {0x71, lrem},            {0x72, frem},          {0x73, drem},
     {0x74, ineg},            {0x75, lneg},            {0x76, fneg},          {0x77, dneg},
     {0x78, ishl},            {0x79, lshl},            {0x7A, ishr},          {0x7B, lshr},
@@ -413,7 +413,6 @@ const bytecode_instr bytecodes = {
     {0xCA, break_point},      
     {0xFE, impdep_1},
     {0xFF, impdep_2}
-    */
 };
 
 #endif // _BYTECODE_HPP

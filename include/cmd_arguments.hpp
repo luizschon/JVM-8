@@ -43,15 +43,15 @@ public:
             throw runtime_error("Wrong number of arguments");
         }
         
-        filename = static_cast<string>(argv[1]);
-
-        for (auto i=2; i < argc; i++) 
+        for (auto i = 1; i < argc - 1; i++) 
         {
             temp_str = static_cast<string>(argv[i]);
 
             if (temp_str.compare("-r") == 0 || temp_str.compare("--read-bytecode") == 0)
                 read_bytecode = true;
         } 
+        
+        filename = static_cast<string>(argv[argc - 1]);
     }
 };
 

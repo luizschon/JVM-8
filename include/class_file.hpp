@@ -140,11 +140,10 @@ void get_constant_pool(class_file &class_f, ifstream &file);
 /**
  * @brief Opens an input file and returns a file stream
  * 
- * @param argc number of command line arguments
- * @param argv the file name
- * @return ifstream a stream of the input file
+ * @param string class file name
+ * @return a stream of the input file
  */
-ifstream open_file(int argc, char** argv);
+ifstream open_file(string&);
 
 /**
  * @brief Stores the access_flag, this_flag, super_class values from input file

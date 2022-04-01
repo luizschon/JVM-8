@@ -1,12 +1,9 @@
 #include "../include/bytecode.hpp"
 #include "../include/frame.hpp"
 
-void aaload(int &code_index, cp_info_vector &constant_pool , bytestream &code, frames_t &frames)
+void aaload(int &code_index, cp_info_vector &constant_pool, bytestream &code, stack_frame &frames)
 {
-    if (frames.empty()) return;
-
-    auto frame = frames.top();
-    frames.pop();
+    auto frame = frames.pop();
     
     if (frame.operands.empty())
     {
@@ -14,11 +11,8 @@ void aaload(int &code_index, cp_info_vector &constant_pool , bytestream &code, f
         return;
     }
 
-    auto arrayref = frame.operands.top();
-    frame.operands.pop();
-
-    auto index = frame.operands.top();
-    frame.operands.pop();
+    auto arrayref = frame.pop_op();
+    auto index = frame.pop_op();
     
     if (arrayref >= frame.local_variable_array.size())
     {
@@ -27,11 +21,11 @@ void aaload(int &code_index, cp_info_vector &constant_pool , bytestream &code, f
     }
 
     auto value = frame.local_variable_array[arrayref];
-    frame.operands.push(value);
+    frame.push_op(value);
     frames.push(frame);
 }
 
-void bipush(int &code_index, cp_info_vector &constant_pool , bytestream &code, frames_t &frames)
+void bipush(int &code_index, cp_info_vector &constant_pool, bytestream &code, stack_frame &frames)
 {
     s4 byte = code[++code_index];
     
@@ -43,9 +37,8 @@ void bipush(int &code_index, cp_info_vector &constant_pool , bytestream &code, f
     }
     else
     {
-        frame = frames.top(); 
+        frame = frames.pop(); 
         frame.push_op(byte);
-        frames.pop();
         frames.push(frame);
     }
 }
