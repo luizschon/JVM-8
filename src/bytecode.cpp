@@ -26,21 +26,21 @@ void aaload(int &code_index, cp_info_vector &constant_pool, bytestream &code, st
     frames.push(frame);
 }
 
-void bipush(int &code_index, cp_info_vector &constant_pool, bytestream &code, stack_frame &frames)
+void bipush(int &code_index, cp_info_vector &constant_pool, bytestream &code, stack_frame &stack_f)
 {
     s4 byte = code[++code_index];
     
     frame_t frame;
-    if (frames.empty())
+    if (stack_f.empty())
     {
         frame.push_op(byte);
-        frames.push(frame);
+        stack_f.push(frame);
     }
     else
     {
-        frame = frames.pop(); 
+        frame = stack_f.pop(); 
         frame.push_op(byte);
-        frames.push(frame);
+        stack_f.push(frame);
     }
 }
 

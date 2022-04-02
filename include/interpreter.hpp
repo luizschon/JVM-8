@@ -13,7 +13,7 @@ class JVMInterpreter {
     u8 pc;
     struct method_area {
         struct class_info {
-            stack_frame pilha_de_frames; // referencia para cp_info_vector, stack de op, vector de var locais
+            stack_frame stack_f; // referencia para cp_info_vector, stack de op, vector de var locais
             class_file* class_f; // cp_info_vector de runtime, methods.code, fields, methods
         };
         map<string, class_info> string_class; // string = this_class

@@ -37,7 +37,7 @@ typedef struct frame_t {
 } frame_t;
 
 struct stack_frame {
-    stack<frame_t> stack_frame;
+    stack<frame_t> stack_f;
     void push(frame_t);
     frame_t pop();
     frame_t top();

@@ -25,24 +25,24 @@ bool frame_t::empty_op()
 
 void stack_frame::push(frame_t frame)
 {
-    this->stack_frame.push(frame);
+    this->stack_f.push(frame);
 }
 
 frame_t stack_frame::pop()
 {
     if (this->empty())
         throw runtime_error("stack_frame::pop: Stack frame is empty.");
-    auto res = this->stack_frame.top();
-    this->stack_frame.pop();
+    auto res = this->stack_f.top();
+    this->stack_f.pop();
     return res;
 }
 
 bool stack_frame::empty()
 {
-    return this->stack_frame.empty();
+    return this->stack_f.empty();
 }
 
 frame_t stack_frame::top()
 {
-    return this->stack_frame.top();
+    return this->stack_f.top();
 }
