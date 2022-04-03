@@ -5,14 +5,14 @@
 #include "frame.hpp"
 #include <map>
 
-struct class_container {
-    class_file &class_f;
-    map<string, operand_t> class_fields;
-};
+typedef struct class_container {
+    class_file class_f;
+    map<u2, operand_t*> *class_fields;
+} class_container;
 
-struct method_area {
-    map<string, operand_t> loaded_classes;
-    map<string, operand_t> static_classes;
-};
+typedef struct method_area {
+    map<u2, class_container*> loaded_classes;
+    map<u2, class_container*> static_classes;
+} method_area;
 
 #endif // _METHOD_AREA_HPP
