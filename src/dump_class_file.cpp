@@ -274,7 +274,6 @@ void print_fields(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
-// add attributes info when types are defined
 void print_methods(class_file &class_f)
 {
     unsigned int method_counter = 0;
