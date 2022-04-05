@@ -25,7 +25,7 @@ typedef struct class_container {
     class_container(class_file *class_f) : class_f(class_f) {}
     class_file* class_f;
     map<string, operand_t*> *class_fields;
-    ~class_container() { delete class_f; }
+    ~class_container() { delete class_f; delete class_fields; } // ver isso aqui depois
 } class_container;
 
 typedef struct method_area {
@@ -33,6 +33,7 @@ typedef struct method_area {
     map<string, class_container*> static_classes;
 } method_area;
 
+method_info* find_main(method_area* method_area);
 void load_class_variables(class_container* class_container);
 class_file load_parent_classes(string c_path);
 

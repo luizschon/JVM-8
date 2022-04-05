@@ -178,6 +178,11 @@ void CONSTANT_utf8_info::dump_to_file()
     outfile << "- Bytes [ `" << get_utf8_content(*this) << "`]" << endl << endl;
 }
 
+string CONSTANT_utf8_info::get_content()
+{
+    return get_utf8_content(*this);
+}
+
 CONSTANT_integer_info::CONSTANT_integer_info(ifstream &file) 
 {
     bytes = read_bytes<u4>(file);

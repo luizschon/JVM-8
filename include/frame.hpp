@@ -2,9 +2,7 @@
 #define _FRAME_HPP
 
 #include "class_file.hpp"
-#include "constant_pool_info.hpp"
 #include "types.hpp"
-#include <algorithm>
 #include <stack>
 
 struct Array_type;
@@ -35,9 +33,17 @@ typedef struct Array_type {
 
 // TODO: change type of local_var_array?
 typedef struct frame_t {
-    vector<u1> local_variable_array;
+    frame_t(method_info*, class_file*);
+
     stack<u1> operands;
+    vector<u1> local_variable_array;
+
     class_file* class_f;
+    method_info* mthd_info = nullptr;
+    cp_info_vector cp_reference;
+    Code_attribute* code = nullptr;
+    u4 pc;
+    
     void push_op(u1);
     u1 pop_op();
     u1 top_op();

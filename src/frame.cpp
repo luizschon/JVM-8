@@ -1,4 +1,23 @@
 #include "../include/frame.hpp"
+#include "../include/utils.hpp"
+#include <iostream>
+
+frame_t::frame_t(method_info* method, class_file* cls_f)
+{
+    cp_reference = cls_f->constant_pool;
+    class_f = cls_f;
+    mthd_info = method;
+    pc = 0;
+
+    for (auto attr : mthd_info->attr)
+    {
+        auto attr_info = to_attr_info(attr);
+        if (attr_info->tag == Code)
+            code = attr_info->_code;
+    }
+
+    local_variable_array.resize(code->max_locals);
+}
 
 void frame_t::push_op(u1 value)
 {

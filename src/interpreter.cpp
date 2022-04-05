@@ -1,4 +1,5 @@
 #include "../include/interpreter.hpp"
+#include "../include/class_file.hpp"
 #include "../include/bytecode.hpp"
 #include "../include/method_area.hpp"
 #include "../include/types.hpp"
@@ -7,6 +8,7 @@
 #include "../include/dump_class_file.hpp"
 #include "../include/class_loader.hpp"
 #include <iostream>
+#include <assert.h>
 
 void JVMInterpreter::run(class_file *class_f)
 {
@@ -16,11 +18,8 @@ void JVMInterpreter::run(class_file *class_f)
     // method_area = load_class_memory(class_file);
     // Frame::set_instructions_functions();
 
-    // if (DEBUG) std::cout << "INICIA FRAME\n";
     // Frame* frame = new Frame(find_main(method_area), class_file);
     // frame_stack.push(frame);
-
-    // printf("\n----------Iniciando Execucao----------\n");
 
     // while (!(frame_stack.empty())) {
     //     frame_stack.top()->execute_frame(); // executa stack frame do topo para baixo
@@ -31,7 +30,37 @@ void JVMInterpreter::run(class_file *class_f)
     // carrega o method area
     method_area mthd_area = this->load_class(class_f);
 
+    // for (auto i : mthd_area.loaded_classes)
+    // {
+    //     cout << "M_AREA: " << i.first << endl;
+    //     cout << "CONTAINER: " << i.second << endl;
+    //     assert(i.second->class_fields != nullptr);
+    //     // for (auto j : *i.second->class_fields)
+    //     // {
+    //     //     // cout << "C_FIELD: " << j.first << endl;
+    //     // }
+    // }
+    
+    // for (auto i : mthd_area.static_classes)
+    // {
+    //     cout << "M_AREA: " << i.first << endl;
+    //     cout << "CONTAINER: " << i.second << endl;
+    //     for (auto j : *i.second->class_fields)
+    //     {
+    //         cout << "C_FIELD: " << j.first << endl;
+    //     }
+    // }
+
+    method_info *m_info = find_main(&mthd_area);
+
+    cout << "NAME INDEX " << hex << m_info->name_idx << endl;
+    cout << "DESCRIPTOR INDEX " << m_info->descriptor_idx << endl;
+    cout << "ACCESS FLAGS " << m_info->access_flags << endl;
+    cout << "ATTRIBUTE COUNT " << m_info->attr_count << endl;
+
     // itera sobre os metodos do class file ate encontrar a main
+    // frame_t frame = frame_t(test, class_f);
+    // stck_frame.push(frame);
 
     // cria um frame com o metodo main
 
@@ -70,10 +99,10 @@ method_area JVMInterpreter::load_class(class_file *class_f)
     
     // inicializa o method area
     method_area mthd_area;
+    load_class_variables(*cls_container);
     mthd_area.loaded_classes.insert(pair<string, class_container*>(cls_name, cls_container));
     mthd_area.static_classes.insert(pair<string, class_container*>(cls_name, cls_container));
 
-    load_class_variables(*cls_container);
     cout << "END OF LOAD CLASS" << endl;
     return mthd_area;
 }
@@ -88,8 +117,9 @@ void JVMInterpreter::load_class_variables(class_container &cls_container)
         auto super_class = to_cp_info(current_class.constant_pool[current_class.super_class - 1])->_class;
         super_class_name = get_name(current_class.constant_pool, current_class.super_class);
 
-        for (auto field : current_class.fields)
+        for (int i = 0; i < current_class.fields_count; i++)
         {
+            auto field = current_class.fields[i];
             string field_name = get_utf8_content(*to_cp_info(cls_container.class_f->constant_pool[field.name_idx])->_utf8);
             string var_type = get_utf8_content(*to_cp_info(cls_container.class_f->constant_pool[field.descriptor_idx])->_utf8);
 
@@ -209,4 +239,25 @@ class_file JVMInterpreter::load_parent_classes(string class_path)
     methodArea = load_class(&class_f);
     cout << "This is the end" << endl;
     return class_f;
+}
+
+method_info *find_main(method_area *mthd_area)
+{ 
+    class_file *class_f = mthd_area->loaded_classes.begin()->second->class_f;
+    for (int i = 0; i < class_f->methods_count; i++)
+    // for (auto method : class_f->methods)
+    {
+        auto method = class_f->methods[i];
+        // method_info *mthd_info;
+        string method_name = to_cp_info(class_f->constant_pool[method.name_idx - 1])->_utf8->get_content();
+        method_info* temp = &method;
+        cout << "method_info: " << method_name << endl;
+        if (method_name == "main")
+        {
+            string method_descriptor = to_cp_info(class_f->constant_pool[method.descriptor_idx - 1])->_utf8->get_content();
+            if (method_descriptor == "([Ljava/lang/String;)V")
+                return temp;
+        }
+    }
+    return NULL;
 }

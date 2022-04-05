@@ -28,20 +28,20 @@ void aaload(int &code_index, cp_info_vector &constant_pool, bytestream &code, st
 
 void bipush(int &code_index, cp_info_vector &constant_pool, bytestream &code, stack_frame &stack_f)
 {
-    s4 byte = code[++code_index];
+    // s4 byte = code[++code_index];
     
-    frame_t frame;
-    if (stack_f.empty())
-    {
-        frame.push_op(byte);
-        stack_f.push(frame);
-    }
-    else
-    {
-        frame = stack_f.pop(); 
-        frame.push_op(byte);
-        stack_f.push(frame);
-    }
+    // frame_t frame;
+    // if (stack_f.empty())
+    // {
+    //     frame.push_op(byte);
+    //     stack_f.push(frame);
+    // }
+    // else
+    // {
+    //     frame = stack_f.pop(); 
+    //     frame.push_op(byte);
+    //     stack_f.push(frame);
+    // }
 }
 
 void nop(int &code_index, cp_info_vector &constant_pool, bytestream &code, stack_frame &stack_f)
