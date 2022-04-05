@@ -15,15 +15,17 @@ int main(int argc, char** argv)
     opts.init(argc, argv);
 
     ClassLoader loader;
-    loader.load(opts.filename);
+    class_file *entry_file = loader.load(opts.filename);
 
     if (opts.read_bytecode)
-        print_all(*loader.get_class_file(), opts.filename);
+        print_all(*entry_file, opts.filename);
     else
     {
         JVMInterpreter interpreter;
-        // interpreter.run(*loader.get_class_file());
+        interpreter.run(entry_file);
     }
+
+    delete entry_file;
 
     return 0;
 }

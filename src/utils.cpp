@@ -1,6 +1,9 @@
 #include "../include/utils.hpp"
+#include "../include/class_file.hpp"
+#include "../include/dump_class_file.hpp"
 #include <cmath>
 #include <limits>
+#include <sstream>
 
 double calc_double(u4 high, u4 low)
 {
@@ -54,4 +57,9 @@ ifstream open_file(string &filename)
 {
     ifstream file(filename, ios::binary);
     return file;
+}
+
+string get_name(cp_info_vector &constant_pool, u2 idx)
+{
+    return to_cp_info(constant_pool[idx - 1])->_class->get_content(constant_pool);
 }

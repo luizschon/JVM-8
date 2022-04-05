@@ -2,11 +2,13 @@
 #define _UTILS_HPP
 
 #include "../include/types.hpp"
+#include "constant_pool_info.hpp"
 
 double calc_double(u4 high, u4 low);
 float calc_float(u4 bytes);
 long long calc_long(u4 high, u4 low);
 ifstream open_file(string &filename);
+string get_name(cp_info_vector&, u2);
 
 // A template to read u1, u2, u4 or u8 bytes in big-endian order
 template <typename T>

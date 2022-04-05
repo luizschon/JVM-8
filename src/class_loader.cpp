@@ -3,28 +3,30 @@
 #include "../include/class_file.hpp"
 #include "../include/utils.hpp"
 
-void ClassLoader::load(string &filename)
+class_file* ClassLoader::load(string &filename)
 {
-    class_f = new class_file;
+    class_file *class_f = new class_file;
     file = open_file(filename);
 
-    get_metadata();
-    get_constant_pool();
-    get_class_data();
-    get_interfaces();
-    get_fields();
-    get_methods();
-    get_attributes();
+    get_metadata(class_f);
+    get_constant_pool(class_f);
+    get_class_data(class_f);
+    get_interfaces(class_f);
+    get_fields(class_f);
+    get_methods(class_f);
+    get_attributes(class_f);
+
+    return class_f;
 }
 
-void ClassLoader::get_metadata()
+void ClassLoader::get_metadata(class_file *class_f)
 {
     class_f->magic         = read_bytes<u4>(file); // signature (0xCAFEBABE) 
     class_f->minor_version = read_bytes<u2>(file);
     class_f->major_version = read_bytes<u2>(file);
 }
 
-void ClassLoader::get_constant_pool()
+void ClassLoader::get_constant_pool(class_file *class_f)
 {
     class_f->constant_pool_count = read_bytes<u2>(file); 
     int iteration_counter = class_f->constant_pool_count - 1;
@@ -42,14 +44,14 @@ void ClassLoader::get_constant_pool()
     }
 }
 
-void ClassLoader::get_class_data()
+void ClassLoader::get_class_data(class_file *class_f)
 {
     class_f->access_flag = read_bytes<u2>(file);
     class_f->this_class  = read_bytes<u2>(file);
     class_f->super_class = read_bytes<u2>(file);
 }
 
-void ClassLoader::get_interfaces()
+void ClassLoader::get_interfaces(class_file *class_f)
 {
     class_f->interfaces_count = read_bytes<u2>(file);
     
@@ -57,7 +59,7 @@ void ClassLoader::get_interfaces()
         class_f->interfaces.push_back(read_bytes<u2>(file));
 }
 
-void ClassLoader::get_fields()
+void ClassLoader::get_fields(class_file *class_f)
 {
     class_f->fields_count = read_bytes<u2>(file);
 
@@ -65,7 +67,7 @@ void ClassLoader::get_fields()
         class_f->fields.push_back(field_info(file, class_f->constant_pool));
 }
 
-void ClassLoader::get_methods()
+void ClassLoader::get_methods(class_file *class_f)
 {
     class_f->methods_count = read_bytes<u2>(file);
 
@@ -73,7 +75,7 @@ void ClassLoader::get_methods()
         class_f->methods.push_back(method_info(file, class_f->constant_pool));
 }
 
-void ClassLoader::get_attributes()
+void ClassLoader::get_attributes(class_file *class_f)
 {
     class_f->attributes_count = read_bytes<u2>(file);
 
@@ -82,9 +84,4 @@ void ClassLoader::get_attributes()
         shared_ptr<Attribute> new_attr(new Attribute_Info(file, class_f->constant_pool));
         class_f->attributes.push_back(new_attr);
     }
-}
-
-ClassLoader::~ClassLoader()
-{
-    delete class_f;
 }

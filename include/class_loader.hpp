@@ -5,20 +5,17 @@
 
 class ClassLoader {
 private:
-    class_file* class_f = nullptr;
     ifstream file;
-    void get_metadata();
-    void get_constant_pool();
-    void get_class_data();
-    void get_interfaces();
-    void get_fields();
-    void get_methods();
-    void get_attributes();
+    void get_metadata(class_file*);
+    void get_constant_pool(class_file*);
+    void get_class_data(class_file*);
+    void get_interfaces(class_file*);
+    void get_fields(class_file*);
+    void get_methods(class_file*);
+    void get_attributes(class_file*);
 
 public:
-    void load(string&);
-    inline class_file* get_class_file() { return this->class_f; }
-    ~ClassLoader();
+    class_file* load(string&);
 };
 
 #endif // _CLASS_LOADER_HPP

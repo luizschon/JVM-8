@@ -12,11 +12,13 @@ class JVMInterpreter {
     u8 pc;
     
 public:
-    void run(class_file&);
+    void run(class_file*);
 private:
-    method_area load_class(class_file&);
+    method_area methodArea;
+    method_area load_class(class_file*);
     void load_class_variables(class_container&);
+    operand_t* check_string_create_type(string);
+    class_file load_parent_classes(string);
 };
-
 
 #endif // _INTERPRETER_HPP
