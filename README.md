@@ -5,7 +5,7 @@ Implementação menos avançada de JVM já vista na UnB. Projeto da disciplina d
 Compilar: `$ make`  
 Exibidor: `$ ./main.exe -r ./examples/<nome_da_classe>.class`  
 Interpretador: `$ ./main.exe ./examples/<nome_da_classe>.class`  
-Docs: `$ doxygen Doxyfile` (`index.html`)
+Docs: `$ doxygen Doxyfile` (`docs/index.html`)
 
 ## Linux
 Para compilar e rodar o programa em modo debug, basta utilizar `$ make debug` e `$ ./debug ./examples/<nome_da_classe>.class`, que irá compilar o programa com sanitize address para verificar vazamentos de memória.
