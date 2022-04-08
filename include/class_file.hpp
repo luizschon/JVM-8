@@ -61,6 +61,7 @@ typedef struct field_info {
 
 // Method Info Structure
 typedef struct method_info {
+    method_info() = default; // talvez precise mudar depois
     method_info(ifstream&, cp_info_vector&);
     u2 access_flags;
     u2 name_idx;
