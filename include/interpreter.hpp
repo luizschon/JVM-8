@@ -8,17 +8,15 @@
 
 using namespace std;
 
+/**
+ * @brief The JVM interpreter that runs a given class
+ */
 class JVMInterpreter {
-    u8 pc;
-    
 public:
     void run(class_file*);
 private:
-    method_area methodArea;
-    method_area load_class(class_file*);
-    void load_class_variables(class_container&);
-    operand_t* check_string_create_type(string);
-    class_file load_parent_classes(string);
+    method_area load_classes(class_file*);
+    method_info get_main_method(method_area);
 };
 
 #endif // _INTERPRETER_HPP
