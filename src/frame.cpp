@@ -1,5 +1,6 @@
 #include "../include/frame.hpp"
 #include "../include/utils.hpp"
+#include "../include/bytecode.hpp"
 #include <iostream>
 
 /**
@@ -16,12 +17,32 @@ frame_t::frame_t(cp_info_vector* constant_pool)
  * @brief Executes frame with given method 
  * @param method the method of the frame
  */
-void frame_t::execute_frame(method_info method)
+void frame_t::execute_frame(method_info method, stack<frame_t> *stack_f)
 {
     for (auto attr : method.attr)
     {
-        // cout << this->run_time_constant_pool[attr->attribute_name_index - 1] << endl;
+        auto attr_info = to_attr_info(attr);
+        if (attr_info->tag == Code)
+        {
+            auto code = attr_info->_code->code;
+
+            // for testing purposes
+            for (int i = 0; i < code.size(); i++)
+            {
+                auto bytecode = code[pc];
+                if (bytecodes.count(bytecode))
+                {
+                    auto execute_bytecode = bytecodes.at(bytecode);
+                    execute_bytecode(*run_time_constant_pool, code, stack_f);
+                }
+                else
+                {
+                    ios_base::fmtflags f(cout.flags());
+                    cout << "Bytecode nao encontrado: 0x" << hex << (u4) bytecode << endl;
+                    cout.flags(f);
+                }
+                cout << "PC:" << pc << endl;
+            }
+        }
     }
-    // u1 opcode = method_code->code[pc]; // NOTE: method_code armazena os opcode
-    // func[op_code](this);               // chama a funcao do respectivo indice opcode // seg fault aqui
 }

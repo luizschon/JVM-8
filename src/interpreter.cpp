@@ -36,8 +36,8 @@ void JVMInterpreter::run(class_file *class_f)
     //! Executes every frame until there is none left in the stack
     while (!stack_f.empty())
     {
-        stack_f.top().execute_frame(main_method);
-        break; // remove 
+        stack_f.top().execute_frame(main_method, &stack_f);
+        break; // remove
     }
 }
 

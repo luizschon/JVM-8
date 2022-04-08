@@ -29,16 +29,16 @@ typedef struct local_variable_t {
 
 typedef struct operand_t {
     union {
-        u1 _boolean;
-        u1 _byte;
-        u1 _char;
-        u2 _short;
-        u4 _int;
-        u4 _float;
+        s1 _boolean;
+        s1 _byte;
+        s1 _char;
+        s2 _short;
+        s4 _int;
+        s4 _float;
         // reference
         // returnAddress
-        u8 _long;
-        u8 _double;
+        s8 _long;
+        double _double;
     };
 } operand_t;
 
@@ -58,7 +58,8 @@ typedef struct frame_t {
     cp_info_vector* run_time_constant_pool;
 
     // executa o frame corrente dado o conteudo do metodo
-    void execute_frame(method_info);
+    u4 pc = 0;
+    void execute_frame(method_info, stack<frame_t>*);
 } frame_t;
 
 #endif // _FRAME_HPP
