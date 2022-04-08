@@ -5,57 +5,60 @@
 #include "types.hpp"
 #include <stack>
 
-struct Array_type;
-struct class_container;
+/// A single local variable can hold a value of type boolean , byte , char , short , int ,
+/// float , reference , or returnAddress . A pair of local variables can hold a value
+/// of type long or double .
+
+/// TODO: finish reference and returnAddress types
+/// The type of a local variable can be boolean, byte, char, short, int,
+/// float, long, double, reference or returnAddress
+typedef struct local_variable_t {
+    union {
+        u1 _boolean;
+        u1 _byte;
+        u1 _char;
+        u2 _short;
+        u4 _int;
+        u4 _float;
+        // reference
+        // returnAddress
+        u8 _long;
+        u8 _double;
+    };
+} local_variable_t;
 
 typedef struct operand_t {
-    u1 tag;
     union {
-        u4              int_type;
-        u4              float_type;
-        u8              long_type;
-        u8              double_type;
-
-        u4              bool_type;
-        u4              byte_type;
-        u4              char_type;
-        u4              short_type;
-        
-        string          *string_type;
-        Array_type      *array_type;
-        class_container *class_type;
+        u1 _boolean;
+        u1 _byte;
+        u1 _char;
+        u2 _short;
+        u4 _int;
+        u4 _float;
+        // reference
+        // returnAddress
+        u8 _long;
+        u8 _double;
     };
 } operand_t;
 
-typedef struct Array_type {
-    vector<operand_t> *array;
-} Array_type;
-
-// TODO: change type of local_var_array?
+/**
+ * @brief A frame with local variables array, operand stack and reference to run-time constant pool 
+ */
 typedef struct frame_t {
-    frame_t(method_info*, class_file*);
+    frame_t(cp_info_vector* constant_pool);
+    // array de variaveis locais
+    vector<local_variable_t> local_variables_array = {};
 
-    stack<u1> operands;
-    vector<u1> local_variable_array;
+    // pilha de operandos
+    stack<operand_t> operand_stack = {};
 
-    class_file* class_f;
-    method_info* mthd_info = nullptr;
-    cp_info_vector cp_reference;
-    Code_attribute* code = nullptr;
-    u4 pc;
-    
-    void push_op(u1);
-    u1 pop_op();
-    u1 top_op();
-    bool empty_op();
+    // jvms8 - p.16
+    // referencia para o pool de constantes da classe do metodo corrente
+    cp_info_vector* run_time_constant_pool;
+
+    // executa o frame corrente dado o conteudo do metodo
+    void execute_frame(method_info);
 } frame_t;
-
-struct stack_frame {
-    stack<frame_t> stack_f;
-    void push(frame_t);
-    frame_t pop();
-    frame_t top();
-    bool empty();
-};
 
 #endif // _FRAME_HPP
