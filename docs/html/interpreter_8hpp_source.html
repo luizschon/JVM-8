@@ -95,30 +95,23 @@ $(document).ready(function(){initNavTree('interpreter_8hpp_source.html',''); ini
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using namespace </span>std;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classJVMInterpreter.html">   11</a></span><span class="keyword">class </span><a class="code hl_class" href="classJVMInterpreter.html">JVMInterpreter</a> {</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <a class="code hl_typedef" href="types_8hpp.html#ae4d1c3d548028e31400378ec81026110">u8</a> pc;</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classJVMInterpreter.html#a99c8e79da6a85d29a390191b86e9aa27">run</a>(<a class="code hl_struct" href="structclass__file.html">class_file</a>*);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_struct" href="structmethod__area.html">method_area</a> methodArea;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_struct" href="structmethod__area.html">method_area</a> load_class(<a class="code hl_struct" href="structclass__file.html">class_file</a>*);</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordtype">void</span> load_class_variables(<a class="code hl_struct" href="structclass__container.html">class_container</a>&amp;);</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_struct" href="structoperand__t.html">operand_t</a>* check_string_create_type(<span class="keywordtype">string</span>);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <a class="code hl_struct" href="structclass__file.html">class_file</a> load_parent_classes(<span class="keywordtype">string</span>);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>};</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#endif </span><span class="comment">// _INTERPRETER_HPP</span></div>
-<div class="ttc" id="aclassJVMInterpreter_html"><div class="ttname"><a href="classJVMInterpreter.html">JVMInterpreter</a></div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8hpp_source.html#l00011">interpreter.hpp:11</a></div></div>
-<div class="ttc" id="aclassJVMInterpreter_html_a99c8e79da6a85d29a390191b86e9aa27"><div class="ttname"><a href="classJVMInterpreter.html#a99c8e79da6a85d29a390191b86e9aa27">JVMInterpreter::run</a></div><div class="ttdeci">void run(class_file *)</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00013">interpreter.cpp:13</a></div></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classJVMInterpreter.html">   14</a></span><span class="keyword">class </span><a class="code hl_class" href="classJVMInterpreter.html">JVMInterpreter</a> {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classJVMInterpreter.html#a99c8e79da6a85d29a390191b86e9aa27">run</a>(<a class="code hl_struct" href="structclass__file.html">class_file</a>*);</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_typedef" href="method__area_8hpp.html#a8735495c08a816149d5be22f8d0d1402">method_area</a> load_classes(<a class="code hl_struct" href="structclass__file.html">class_file</a>*);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <a class="code hl_struct" href="structmethod__info.html">method_info</a> get_main_method(<a class="code hl_typedef" href="method__area_8hpp.html#a8735495c08a816149d5be22f8d0d1402">method_area</a>);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>};</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#endif </span><span class="comment">// _INTERPRETER_HPP</span></div>
+<div class="ttc" id="aclassJVMInterpreter_html"><div class="ttname"><a href="classJVMInterpreter.html">JVMInterpreter</a></div><div class="ttdoc">The JVM interpreter that runs a given class.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8hpp_source.html#l00014">interpreter.hpp:14</a></div></div>
+<div class="ttc" id="aclassJVMInterpreter_html_a99c8e79da6a85d29a390191b86e9aa27"><div class="ttname"><a href="classJVMInterpreter.html#a99c8e79da6a85d29a390191b86e9aa27">JVMInterpreter::run</a></div><div class="ttdeci">void run(class_file *)</div><div class="ttdoc">Initializes the class methods, starting with main.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00024">interpreter.cpp:24</a></div></div>
 <div class="ttc" id="aclass__file_8hpp_html"><div class="ttname"><a href="class__file_8hpp.html">class_file.hpp</a></div></div>
 <div class="ttc" id="aframe_8hpp_html"><div class="ttname"><a href="frame_8hpp.html">frame.hpp</a></div></div>
 <div class="ttc" id="amethod__area_8hpp_html"><div class="ttname"><a href="method__area_8hpp.html">method_area.hpp</a></div></div>
-<div class="ttc" id="astructclass__container_html"><div class="ttname"><a href="structclass__container.html">class_container</a></div><div class="ttdef"><b>Definition:</b> <a href="method__area_8hpp_source.html#l00024">method_area.hpp:24</a></div></div>
-<div class="ttc" id="astructclass__file_html"><div class="ttname"><a href="structclass__file.html">class_file</a></div><div class="ttdef"><b>Definition:</b> <a href="class__file_8hpp_source.html#l00073">class_file.hpp:73</a></div></div>
-<div class="ttc" id="astructmethod__area_html"><div class="ttname"><a href="structmethod__area.html">method_area</a></div><div class="ttdef"><b>Definition:</b> <a href="method__area_8hpp_source.html#l00031">method_area.hpp:31</a></div></div>
-<div class="ttc" id="astructoperand__t_html"><div class="ttname"><a href="structoperand__t.html">operand_t</a></div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00011">frame.hpp:11</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_ae4d1c3d548028e31400378ec81026110"><div class="ttname"><a href="types_8hpp.html#ae4d1c3d548028e31400378ec81026110">u8</a></div><div class="ttdeci">uint64_t u8</div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00016">types.hpp:16</a></div></div>
+<div class="ttc" id="amethod__area_8hpp_html_a8735495c08a816149d5be22f8d0d1402"><div class="ttname"><a href="method__area_8hpp.html#a8735495c08a816149d5be22f8d0d1402">method_area</a></div><div class="ttdeci">map&lt; string, class_container &gt; method_area</div><div class="ttdoc">A mapping of class name to its content.</div><div class="ttdef"><b>Definition:</b> <a href="method__area_8hpp_source.html#l00025">method_area.hpp:25</a></div></div>
+<div class="ttc" id="astructclass__file_html"><div class="ttname"><a href="structclass__file.html">class_file</a></div><div class="ttdef"><b>Definition:</b> <a href="class__file_8hpp_source.html#l00074">class_file.hpp:74</a></div></div>
+<div class="ttc" id="astructmethod__info_html"><div class="ttname"><a href="structmethod__info.html">method_info</a></div><div class="ttdef"><b>Definition:</b> <a href="class__file_8hpp_source.html#l00063">class_file.hpp:63</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

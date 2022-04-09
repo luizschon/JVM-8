@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "Array_type", "structArray__type.html", null ],
     [ "attr_info", "structattr__info.html", null ],
     [ "Attribute", "classAttribute.html", [
       [ "Attribute_Info", "classAttribute__Info.html", null ]
@@ -40,15 +39,14 @@ var hierarchy =
     [ "JVMInterpreter", "classJVMInterpreter.html", null ],
     [ "LineNumberTable_attribute::line_num_table_item", "structLineNumberTable__attribute_1_1line__num__table__item.html", null ],
     [ "LineNumberTable_attribute", "structLineNumberTable__attribute.html", null ],
+    [ "local_variable_t", "structlocal__variable__t.html", null ],
     [ "Long_variable_info", "structLong__variable__info.html", null ],
-    [ "method_area", "structmethod__area.html", null ],
     [ "method_info", "structmethod__info.html", null ],
     [ "Nibble", "unionNibble.html", null ],
     [ "Null_variable_info", "structNull__variable__info.html", null ],
     [ "Object_variable_info", "structObject__variable__info.html", null ],
     [ "operand_t", "structoperand__t.html", null ],
     [ "SourceFile_attribute", "structSourceFile__attribute.html", null ],
-    [ "stack_frame", "structstack__frame.html", null ],
     [ "Top_variable_info", "structTop__variable__info.html", null ],
     [ "Uninitialized_variable_info", "structUninitialized__variable__info.html", null ],
     [ "UninitializedThis_variable_info", "structUninitializedThis__variable__info.html", null ],

@@ -97,8 +97,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6bec3bc3f6f4ccbe1e9f0281ce5234b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a2cae180b60217c0a5f3f99814d3ecb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCONSTANT__methodref__info.html#a3a2cae180b60217c0a5f3f99814d3ecb">dump_to_file</a> ()</td></tr>
 <tr class="separator:a3a2cae180b60217c0a5f3f99814d3ecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab660d7a66859cf5e9b2e1c24ef583a5f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCONSTANT__methodref__info.html#ab660d7a66859cf5e9b2e1c24ef583a5f">get_class_name</a> (<a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="separator:ab660d7a66859cf5e9b2e1c24ef583a5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a327ecadcd9e7172eb54157f25db8dd6f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCONSTANT__methodref__info.html#a327ecadcd9e7172eb54157f25db8dd6f">get_content</a> (<a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
 <tr class="separator:a327ecadcd9e7172eb54157f25db8dd6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab72ad56e203a3ae8f2fa306e8c63251c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCONSTANT__methodref__info.html#ab72ad56e203a3ae8f2fa306e8c63251c">get_method_name</a> (<a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="separator:ab72ad56e203a3ae8f2fa306e8c63251c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e612a007f3affc03397e71f55a1c035"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structCONSTANT__methodref__info.html#a7e612a007f3affc03397e71f55a1c035">get_method_descriptor</a> (<a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="separator:a7e612a007f3affc03397e71f55a1c035"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
@@ -163,6 +169,33 @@ Data Fields</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="ab660d7a66859cf5e9b2e1c24ef583a5f" name="ab660d7a66859cf5e9b2e1c24ef583a5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab660d7a66859cf5e9b2e1c24ef583a5f">&#9670;&nbsp;</a></span>get_class_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string CONSTANT_methodref_info::get_class_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>constant_pool</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00358">358</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  359</span>{</div>
+<div class="line"><span class="lineno">  360</span>    <span class="keyword">auto</span> class_name_idx = <a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[<a class="code hl_variable" href="structCONSTANT__methodref__info.html#a8b2592c43e829897d65877ded567584b">class_idx</a> - 1])-&gt;_class-&gt;name_idx;</div>
+<div class="line"><span class="lineno">  361</span>    <span class="keyword">auto</span> class_name = *(<a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[class_name_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  362</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(class_name);</div>
+<div class="line"><span class="lineno">  363</span>}</div>
+<div class="ttc" id="adump__class__file_8hpp_html_ace07e54f02a2b253a4a84f69b27b093c"><div class="ttname"><a href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a></div><div class="ttdeci">string get_utf8_content(CONSTANT_utf8_info &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="dump__class__file_8cpp_source.html#l00223">dump_class_file.cpp:223</a></div></div>
+<div class="ttc" id="atypes_8hpp_html_abb7ea1d3958d89b769f958f0b7ff4106"><div class="ttname"><a href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a></div><div class="ttdeci">#define to_cp_info</div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00007">types.hpp:7</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a327ecadcd9e7172eb54157f25db8dd6f" name="a327ecadcd9e7172eb54157f25db8dd6f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a327ecadcd9e7172eb54157f25db8dd6f">&#9670;&nbsp;</a></span>get_content()</h2>
 
@@ -189,8 +222,56 @@ Data Fields</h2></td></tr>
 <div class="line"><span class="lineno">  354</span>    <span class="keyword">auto</span> method_descriptor = *(<a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[descriptor_idx - 1])-&gt;_utf8);</div>
 <div class="line"><span class="lineno">  355</span>    <span class="keywordflow">return</span> (<a class="code hl_function" href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(class_name) + <span class="stringliteral">&quot;.&quot;</span> + <a class="code hl_function" href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(method_name) + <span class="stringliteral">&quot; : &quot;</span> + <a class="code hl_function" href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(method_descriptor));</div>
 <div class="line"><span class="lineno">  356</span>}</div>
-<div class="ttc" id="adump__class__file_8hpp_html_ace07e54f02a2b253a4a84f69b27b093c"><div class="ttname"><a href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a></div><div class="ttdeci">string get_utf8_content(CONSTANT_utf8_info &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="dump__class__file_8cpp_source.html#l00223">dump_class_file.cpp:223</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_abb7ea1d3958d89b769f958f0b7ff4106"><div class="ttname"><a href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a></div><div class="ttdeci">#define to_cp_info</div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00007">types.hpp:7</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a7e612a007f3affc03397e71f55a1c035" name="a7e612a007f3affc03397e71f55a1c035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7e612a007f3affc03397e71f55a1c035">&#9670;&nbsp;</a></span>get_method_descriptor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string CONSTANT_methodref_info::get_method_descriptor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>constant_pool</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00372">372</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  373</span>{</div>
+<div class="line"><span class="lineno">  374</span>    <span class="keyword">auto</span> descriptor_idx = <a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[<a class="code hl_variable" href="structCONSTANT__methodref__info.html#ad64a953aefb4027ba7e09e4994952390">name_and_type_idx</a> - 1])-&gt;_name_and_type-&gt;descriptor_idx;</div>
+<div class="line"><span class="lineno">  375</span>    <span class="keyword">auto</span> method_descriptor = *(<a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[descriptor_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  376</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(method_descriptor);</div>
+<div class="line"><span class="lineno">  377</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab72ad56e203a3ae8f2fa306e8c63251c" name="ab72ad56e203a3ae8f2fa306e8c63251c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab72ad56e203a3ae8f2fa306e8c63251c">&#9670;&nbsp;</a></span>get_method_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string CONSTANT_methodref_info::get_method_name </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;&#160;</td>
+          <td class="paramname"><em>constant_pool</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00365">365</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  366</span>{</div>
+<div class="line"><span class="lineno">  367</span>    <span class="keyword">auto</span> name_idx = <a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[<a class="code hl_variable" href="structCONSTANT__methodref__info.html#ad64a953aefb4027ba7e09e4994952390">name_and_type_idx</a> - 1])-&gt;_name_and_type-&gt;name_idx;</div>
+<div class="line"><span class="lineno">  368</span>    <span class="keyword">auto</span> method_name = *(<a class="code hl_define" href="types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[name_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  369</span>    <span class="keywordflow">return</span> <a class="code hl_function" href="dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(method_name);</div>
+<div class="line"><span class="lineno">  370</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

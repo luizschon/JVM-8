@@ -310,7 +310,8 @@ var NAVTREE =
     [ "JVM-8", "md_README.html", [
       [ "TL;DR", "md_README.html#autotoc_md266", null ],
       [ "Linux", "md_README.html#autotoc_md267", null ],
-      [ "Windows", "md_README.html#autotoc_md268", null ]
+      [ "Windows", "md_README.html#autotoc_md268", null ],
+      [ "Documentação", "md_README.html#autotoc_md269", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -340,11 +341,11 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"bytecode_8hpp.html#a1fb43342c98afe1edaa4462798b2261a",
+"bytecode_8hpp.html#a1ab608288b756e0b6c7b6f409db19989",
 "classCmdArgs.html#aec95732064204c3bbcb964228ad77844",
-"md_out_FooCorporation.html#autotoc_md132",
-"method__area_8hpp.html#ae6bc52024986da7c2d58e9f87f0ad6fc",
-"types_8hpp.html#a6cbbd184fa2df78cc5d5fe4d7104223a"
+"md_out_FooCorporation.html#autotoc_md131",
+"structCONSTANT__class__info.html#abdfe23de838af1764169737e2e988a4e",
+"unionverification__type__info.html#a8d28469b7eee003d3decc238c13b90ab"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

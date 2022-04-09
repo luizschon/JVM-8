@@ -1,4 +1,4 @@
 var interpreter_8cpp =
 [
-    [ "find_main", "interpreter_8cpp.html#a5e844c7df0f56d52d71e7fb1ab897aa5", null ]
+    [ "object_class", "interpreter_8cpp.html#a271524cb41488e21c75fa0ed6cc02387", null ]
 ];

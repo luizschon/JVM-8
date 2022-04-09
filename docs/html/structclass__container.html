@@ -83,121 +83,60 @@ $(document).ready(function(){initNavTree('structclass__container.html',''); init
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle"><div class="title">class_container Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
+<p>A class container with constant pool, method data, attributes and constructor code.  
+ <a href="structclass__container.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:aadd540c9735aafbbfb2bfbbdae2582d8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclass__container.html#aadd540c9735aafbbfb2bfbbdae2582d8">class_container</a> (<a class="el" href="structclass__file.html">class_file</a> *<a class="el" href="structclass__container.html#a49148d5c1264dd677136cb2544db6843">class_f</a>)</td></tr>
-<tr class="separator:aadd540c9735aafbbfb2bfbbdae2582d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30c876ffb37955d5a64e9d2484c96c71"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclass__container.html#a30c876ffb37955d5a64e9d2484c96c71">~class_container</a> ()</td></tr>
-<tr class="separator:a30c876ffb37955d5a64e9d2484c96c71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a49148d5c1264dd677136cb2544db6843"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structclass__file.html">class_file</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclass__container.html#a49148d5c1264dd677136cb2544db6843">class_f</a></td></tr>
-<tr class="separator:a49148d5c1264dd677136cb2544db6843"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a697545376d111d99eef53aa9ada69b02"><td class="memItemLeft" align="right" valign="top">map&lt; string, <a class="el" href="structoperand__t.html">operand_t</a> * &gt; *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclass__container.html#a697545376d111d99eef53aa9ada69b02">class_fields</a></td></tr>
-<tr class="separator:a697545376d111d99eef53aa9ada69b02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc12b74dac8e65f63d7989b9c2ac3c8d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclass__container.html#abc12b74dac8e65f63d7989b9c2ac3c8d">constant_pool</a></td></tr>
+<tr class="separator:abc12b74dac8e65f63d7989b9c2ac3c8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a678b820e9818d540a76ed0a0404ac3ec"><td class="memItemLeft" align="right" valign="top">map&lt; string, <a class="el" href="structmethod__info.html">method_info</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structclass__container.html#a678b820e9818d540a76ed0a0404ac3ec">methods</a></td></tr>
+<tr class="memdesc:a678b820e9818d540a76ed0a0404ac3ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps the name of the methods to their info.  <a href="structclass__container.html#a678b820e9818d540a76ed0a0404ac3ec">More...</a><br /></td></tr>
+<tr class="separator:a678b820e9818d540a76ed0a0404ac3ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00024">24</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aadd540c9735aafbbfb2bfbbdae2582d8" name="aadd540c9735aafbbfb2bfbbdae2582d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aadd540c9735aafbbfb2bfbbdae2582d8">&#9670;&nbsp;</a></span>class_container()</h2>
+<div class="textblock"><p >A class container with constant pool, method data, attributes and constructor code. </p>
 
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">class_container::class_container </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structclass__file.html">class_file</a> *&#160;</td>
-          <td class="paramname"><em>class_f</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00025">25</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>: <a class="code hl_variable" href="structclass__container.html#a49148d5c1264dd677136cb2544db6843">class_f</a>(<a class="code hl_variable" href="structclass__container.html#a49148d5c1264dd677136cb2544db6843">class_f</a>) {}</div>
-<div class="ttc" id="astructclass__container_html_a49148d5c1264dd677136cb2544db6843"><div class="ttname"><a href="structclass__container.html#a49148d5c1264dd677136cb2544db6843">class_container::class_f</a></div><div class="ttdeci">class_file * class_f</div><div class="ttdef"><b>Definition:</b> <a href="method__area_8hpp_source.html#l00026">method_area.hpp:26</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<a id="a30c876ffb37955d5a64e9d2484c96c71" name="a30c876ffb37955d5a64e9d2484c96c71"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30c876ffb37955d5a64e9d2484c96c71">&#9670;&nbsp;</a></span>~class_container()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">class_container::~class_container </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00028">28</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{ <span class="keyword">delete</span> <a class="code hl_variable" href="structclass__container.html#a49148d5c1264dd677136cb2544db6843">class_f</a>; <span class="keyword">delete</span> <a class="code hl_variable" href="structclass__container.html#a697545376d111d99eef53aa9ada69b02">class_fields</a>; } <span class="comment">// ver isso aqui depois</span></div>
-<div class="ttc" id="astructclass__container_html_a697545376d111d99eef53aa9ada69b02"><div class="ttname"><a href="structclass__container.html#a697545376d111d99eef53aa9ada69b02">class_container::class_fields</a></div><div class="ttdeci">map&lt; string, operand_t * &gt; * class_fields</div><div class="ttdef"><b>Definition:</b> <a href="method__area_8hpp_source.html#l00027">method_area.hpp:27</a></div></div>
-</div><!-- fragment -->
-</div>
-</div>
-<h2 class="groupheader">Field Documentation</h2>
-<a id="a49148d5c1264dd677136cb2544db6843" name="a49148d5c1264dd677136cb2544db6843"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a49148d5c1264dd677136cb2544db6843">&#9670;&nbsp;</a></span>class_f</h2>
+<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00010">10</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
+</div><h2 class="groupheader">Field Documentation</h2>
+<a id="abc12b74dac8e65f63d7989b9c2ac3c8d" name="abc12b74dac8e65f63d7989b9c2ac3c8d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc12b74dac8e65f63d7989b9c2ac3c8d">&#9670;&nbsp;</a></span>constant_pool</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structclass__file.html">class_file</a>* class_container::class_f</td>
+          <td class="memname"><a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> class_container::constant_pool</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00026">26</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00012">12</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
 
 </div>
 </div>
-<a id="a697545376d111d99eef53aa9ada69b02" name="a697545376d111d99eef53aa9ada69b02"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a697545376d111d99eef53aa9ada69b02">&#9670;&nbsp;</a></span>class_fields</h2>
+<a id="a678b820e9818d540a76ed0a0404ac3ec" name="a678b820e9818d540a76ed0a0404ac3ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a678b820e9818d540a76ed0a0404ac3ec">&#9670;&nbsp;</a></span>methods</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">map&lt;string, <a class="el" href="structoperand__t.html">operand_t</a>*&gt;* class_container::class_fields</td>
+          <td class="memname">map&lt;string, <a class="el" href="structmethod__info.html">method_info</a>&gt; class_container::methods</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00027">27</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
+<p>Maps the name of the methods to their info. </p>
+
+<p class="definition">Definition at line <a class="el" href="method__area_8hpp_source.html#l00017">17</a> of file <a class="el" href="method__area_8hpp_source.html">method_area.hpp</a>.</p>
 
 </div>
 </div>

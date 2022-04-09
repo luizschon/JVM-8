@@ -109,7 +109,7 @@ Data Fields</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="constant__pool__info_8hpp_source.html#l00113">113</a> of file <a class="el" href="constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8hpp_source.html#l00116">116</a> of file <a class="el" href="constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a74aba6c3a250d6f34c731823f262a4c2" name="a74aba6c3a250d6f34c731823f262a4c2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a74aba6c3a250d6f34c731823f262a4c2">&#9670;&nbsp;</a></span>CONSTANT_name_and_type_info()</h2>
@@ -127,13 +127,13 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00371">371</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  372</span>{</div>
-<div class="line"><span class="lineno">  373</span>    <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a140319e53399d8fbec0c28946e39d335">name_idx</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  374</span>    <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a85b4b61cfacd77556377725c0bb1dad9">descriptor_idx</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  375</span>}</div>
-<div class="ttc" id="astructCONSTANT__name__and__type__info_html_a140319e53399d8fbec0c28946e39d335"><div class="ttname"><a href="structCONSTANT__name__and__type__info.html#a140319e53399d8fbec0c28946e39d335">CONSTANT_name_and_type_info::name_idx</a></div><div class="ttdeci">u2 name_idx</div><div class="ttdef"><b>Definition:</b> <a href="constant__pool__info_8hpp_source.html#l00115">constant_pool_info.hpp:115</a></div></div>
-<div class="ttc" id="astructCONSTANT__name__and__type__info_html_a85b4b61cfacd77556377725c0bb1dad9"><div class="ttname"><a href="structCONSTANT__name__and__type__info.html#a85b4b61cfacd77556377725c0bb1dad9">CONSTANT_name_and_type_info::descriptor_idx</a></div><div class="ttdeci">u2 descriptor_idx</div><div class="ttdef"><b>Definition:</b> <a href="constant__pool__info_8hpp_source.html#l00116">constant_pool_info.hpp:116</a></div></div>
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00392">392</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  393</span>{</div>
+<div class="line"><span class="lineno">  394</span>    <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a140319e53399d8fbec0c28946e39d335">name_idx</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  395</span>    <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a85b4b61cfacd77556377725c0bb1dad9">descriptor_idx</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  396</span>}</div>
+<div class="ttc" id="astructCONSTANT__name__and__type__info_html_a140319e53399d8fbec0c28946e39d335"><div class="ttname"><a href="structCONSTANT__name__and__type__info.html#a140319e53399d8fbec0c28946e39d335">CONSTANT_name_and_type_info::name_idx</a></div><div class="ttdeci">u2 name_idx</div><div class="ttdef"><b>Definition:</b> <a href="constant__pool__info_8hpp_source.html#l00118">constant_pool_info.hpp:118</a></div></div>
+<div class="ttc" id="astructCONSTANT__name__and__type__info_html_a85b4b61cfacd77556377725c0bb1dad9"><div class="ttname"><a href="structCONSTANT__name__and__type__info.html#a85b4b61cfacd77556377725c0bb1dad9">CONSTANT_name_and_type_info::descriptor_idx</a></div><div class="ttdeci">u2 descriptor_idx</div><div class="ttdef"><b>Definition:</b> <a href="constant__pool__info_8hpp_source.html#l00119">constant_pool_info.hpp:119</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -153,12 +153,12 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00377">377</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  378</span>{</div>
-<div class="line"><span class="lineno">  379</span>    <a class="code hl_variable" href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Name Index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a140319e53399d8fbec0c28946e39d335">name_idx</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  380</span>    <a class="code hl_variable" href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Descriptor Index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a85b4b61cfacd77556377725c0bb1dad9">descriptor_idx</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  381</span>    <a class="code hl_variable" href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  382</span>}</div>
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8cpp_source.html#l00398">398</a> of file <a class="el" href="constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  399</span>{</div>
+<div class="line"><span class="lineno">  400</span>    <a class="code hl_variable" href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Name Index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a140319e53399d8fbec0c28946e39d335">name_idx</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  401</span>    <a class="code hl_variable" href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Descriptor Index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="structCONSTANT__name__and__type__info.html#a85b4b61cfacd77556377725c0bb1dad9">descriptor_idx</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  402</span>    <a class="code hl_variable" href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  403</span>}</div>
 <div class="ttc" id="aconstant__pool__info_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -193,7 +193,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="constant__pool__info_8hpp_source.html#l00116">116</a> of file <a class="el" href="constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8hpp_source.html#l00119">119</a> of file <a class="el" href="constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 
 </div>
 </div>
@@ -209,7 +209,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="constant__pool__info_8hpp_source.html#l00115">115</a> of file <a class="el" href="constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="constant__pool__info_8hpp_source.html#l00118">118</a> of file <a class="el" href="constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 
 </div>
 </div>

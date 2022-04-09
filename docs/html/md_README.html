@@ -91,12 +91,16 @@ TL;DR</h1>
 <p >Compilar: <code>$ make</code> <br  />
  Exibidor: <code>$ ./main.exe -r ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
  Interpretador: <code>$ ./main.exe ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
-</p>
+ Docs: <code>$ doxygen Doxyfile</code> (<code>docs/index.html</code>)</p>
 <h1><a class="anchor" id="autotoc_md267"></a>
 Linux</h1>
+<p >Para compilar e rodar o programa em modo debug, basta utilizar <code>$ make debug</code> e <code>$ ./debug ./examples/&lt;nome_da_classe&gt;.class</code>, que irá compilar o programa com sanitize address para verificar vazamentos de memória.</p>
 <h1><a class="anchor" id="autotoc_md268"></a>
 Windows</h1>
-<p >Para compilar e rodar o programa, basta utilizar <code>$ make</code> para compilar e <code>$ ./main.exe examples/double_aritmetica.class</code> para executar os arquivos contidos na pasta <code>examples</code> (ou outro arquivo da sua escolha). </p>
+<p >Para compilar e rodar o programa, basta utilizar <code>$ make</code> para compilar e <code>$ ./main.exe examples/double_aritmetica.class</code> para executar os arquivos contidos na pasta <code>examples</code> (ou outro arquivo da sua escolha).</p>
+<h1><a class="anchor" id="autotoc_md269"></a>
+Documentação</h1>
+<p >É possível gerar uma página HTML com a documentação do código. Para isso, basta utilizar o comando <code>$ doxygen Doxyfile</code> (é preciso ter o doxygen instalado). Então, basta abrir na pasta docs o arquivo <code>index.html</code> no navegador, que ele irá te direcionar à página. </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->

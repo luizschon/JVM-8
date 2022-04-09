@@ -1,5 +1,6 @@
 var structmethod__info =
 [
+    [ "method_info", "structmethod__info.html#a0d1e2c41074c89c65ca24d233ec27042", null ],
     [ "method_info", "structmethod__info.html#a16a411b5ec6bc0e5239f5efe8e972f4d", null ],
     [ "access_flags", "structmethod__info.html#a3b657027a141cdbc94ded28607c98be5", null ],
     [ "attr", "structmethod__info.html#a9b5a2add2cc8cfb9fb457b286dbeabdb", null ],
