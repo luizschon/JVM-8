@@ -3,7 +3,7 @@
 #include "../include/dump_class_file.hpp"
 #include <cmath>
 #include <limits>
-#include <sstream>
+#include <sys/stat.h>
 
 double calc_double(u4 high, u4 low)
 {
@@ -62,4 +62,10 @@ ifstream open_file(string &filename)
 string get_name(cp_info_vector &constant_pool, u2 idx)
 {
     return to_cp_info(constant_pool[idx - 1])->_class->get_content(constant_pool);
+}
+
+bool exists(string &name)
+{
+    struct stat buffer;   
+    return (stat (name.c_str(), &buffer) == 0); 
 }
