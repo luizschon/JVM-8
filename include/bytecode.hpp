@@ -4,220 +4,21 @@
 #include "constant_pool_info.hpp"
 #include "types.hpp"
 #include "frame.hpp"
+
+#include "instructions/comparisons.hpp"
+#include "instructions/constants.hpp"
+#include "instructions/control.hpp"
+#include "instructions/conversions.hpp"
+#include "instructions/extended.hpp"
+#include "instructions/loads.hpp"
+#include "instructions/math.hpp"
+#include "instructions/references.hpp"
+#include "instructions/reserved.hpp"
+#include "instructions/stack.hpp"
+#include "instructions/stores.hpp"
+
 #include <functional>
 #include <map>
-
-#include <iostream>
-
-// Instructions implementation
-void aaload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aaload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void nop             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aconst_null     (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_m1       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_3        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_4        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iconst_5        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lconst_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lconst_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fconst_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fconst_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fconst_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dconst_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dconst_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void bipush          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void sipush          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ldc             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ldc_w           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ldc2_w          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iload           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lload           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fload           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dload           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aload           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iload_0         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iload_1         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iload_2         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iload_3         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lload_0         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lload_1         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lload_2         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lload_3         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fload_0         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fload_1         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fload_2         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fload_3         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dload_0         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dload_1         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dload_2         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dload_3         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aload_0         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aload_1         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aload_2         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aload_3         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iaload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void laload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void faload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void daload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void baload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void caload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void saload          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void istore          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lstore          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fstore          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dstore          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void astore          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void istore_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void istore_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void istore_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void istore_3        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lstore_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lstore_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lstore_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lstore_3        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fstore_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fstore_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fstore_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fstore_3        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dstore_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dstore_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dstore_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dstore_3        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void astore_0        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void astore_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void astore_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void astore_3        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void aastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void bastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void castore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void sastore         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void pop             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void pop2            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dup             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dup_x1          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dup_x2          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dup2            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dup2_x1         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dup2_x2         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void swap            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iadd            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ladd            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fadd            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dadd            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void isub            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lsub            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fsub            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dsub            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void imul            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lmul            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fmul            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dmul            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void idiv            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ldiv            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fdiv            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ddiv            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void irem            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lrem            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void frem            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void drem            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ineg            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lneg            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fneg            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dneg            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ishl            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lshl            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ishr            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lshr            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iushr           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lushr           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iand            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void land            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ior             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lor             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ixor            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lxor            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iinc            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void i2l             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void i2f             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void i2d             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void l2i             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void l2f             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void l2d             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void f2i             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void f2l             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void f2d             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void d2i             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void d2l             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void d2f             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void i2b             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void i2c             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void i2s             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lcmp            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fcmpl           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void fcmpg           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dcmpl           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dcmpg           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifeq            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifne            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void iflt            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifge            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifgt            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifle            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_icmpeq       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_icmpne       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_icmplt       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_icmpge       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_icmpgt       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_icmple       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_acmpeq       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void if_acmpne       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void _goto           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void jsr             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ret             (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void tableswitch     (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lookupswitch    (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ireturn         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void lreturn         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void freturn         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void dreturn         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void areturn         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void _return         (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void getstatic       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void putstatic       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void getfield        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void putfield        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void invokevirtual   (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void invokespecial   (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void invokestatic    (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void invokeinterface (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void invokedynamic   (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void _new            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void newarray        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void anewarray       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void arraylength     (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void athrow          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void checkcast       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void instanceof      (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void monitorenter    (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void monitorexit     (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void wide            (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void multianewarray  (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifnull          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void ifnonnull       (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void goto_w          (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void jsr_w           (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-
-// reserved
-void break_point     (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void impdep_1        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
-void impdep_2        (cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f);
 
 // Debug Instructions
 void bipush_debug         (int&, cp_info_vector&, bytestream&);
@@ -413,9 +214,9 @@ const bytecode_instr bytecodes = {
     {0xC4, wide},            {0xC5, multianewarray},  {0xC6, ifnull},        {0xC7, ifnonnull},     
     {0xC8, goto_w},          {0xC9, jsr_w},
     // reserved
-    {0xCA, break_point},      
-    {0xFE, impdep_1},
-    {0xFF, impdep_2}
+    {0xCA, breakpoint},      
+    {0xFE, impdep1},
+    {0xFF, impdep2}
 };
 
 #endif // _BYTECODE_HPP
