@@ -99,7 +99,10 @@ struct CONSTANT_methodref_info {
     u2 class_idx;
     u2 name_and_type_idx;
     void dump_to_file();
+    string get_class_name(cp_info_vector&);
     string get_content(cp_info_vector&);
+    string get_method_name(cp_info_vector&);
+    string get_method_descriptor(cp_info_vector&);
 };
 
 struct CONSTANT_interface_methodref_info {
