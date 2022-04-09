@@ -37,8 +37,9 @@ void JVMInterpreter::run(class_file *class_f)
     while (!stack_f.empty())
     {
         stack_f.top().execute_frame(main_method, &stack_f);
-        break; // remove
+        cout << "FINISHED FRAME" << endl;
     }
+    cout << "END OF RUN" << endl;
 }
 
 /**
