@@ -1,6 +1,5 @@
 #include "../include/interpreter.hpp"
 #include "../include/class_file.hpp"
-#include "../include/bytecode.hpp"
 #include "../include/method_area.hpp"
 #include "../include/types.hpp"
 #include "../include/utils.hpp"
@@ -24,8 +23,8 @@ const string object_class = "java/lang/Object";
 void JVMInterpreter::run(class_file *class_f)
 {
     //! Loads classes info into method area
-    method_area method_a = this->load_classes(class_f);
-    
+    this->load_classes(class_f);
+
     //! Checks if there is a main method
     method_info main_method = get_main_method(method_a);
     
@@ -47,16 +46,12 @@ void JVMInterpreter::run(class_file *class_f)
  * @param class_f the first class file loaded by class loader
  * @return method_area the method area with loaded classes
  */
-method_area JVMInterpreter::load_classes(class_file *class_f)
+void JVMInterpreter::load_classes(class_file *class_f)
 {
     string class_name = get_name(class_f->constant_pool, class_f->this_class);
-    cout << "Class Name: " << class_name << endl; // remove
-    
-    method_area method_a;
     string super_class = get_name(class_f->constant_pool, class_f->super_class);
 
-    /// TODO: only works with ONE class file (loops otherwise)
-    /// Searches class files until it finds java/lang/Object
+    /// Searches super class files until it finds java/lang/Object
     /// Each found method is loaded into method area and
     /// mapped as method_name -> method_info
     do {
@@ -71,10 +66,23 @@ method_area JVMInterpreter::load_classes(class_file *class_f)
 
         method_a[super_class] = class_c;
         super_class = get_name(class_f->constant_pool, class_f->super_class);
-    } while (super_class != object_class); 
+        
+        //! Super class must exist in the examples folder
+        if (super_class != object_class)
+        {
+            string super_class_path = "./examples/" + super_class + ".class";
+            if (!exists(super_class_path))
+            {
+                cout << "Class File \"" << super_class << "\" not in /examples/ - Aborting" << endl;
+                exit(1);
+            }
 
-    cout << "END OF LOAD CLASS" << endl; // remove
-    return method_a;
+            ClassLoader super_class_loader;
+            class_f = super_class_loader.load(super_class_path);
+            super_class = get_name(class_f->constant_pool, class_f->super_class);
+            load_classes(class_f);
+        }
+    } while (super_class != object_class); 
 }
 
 /**
@@ -89,6 +97,6 @@ method_info JVMInterpreter::get_main_method(method_area method_a)
             if (method.first == "main")
                 return method.second;
 
-    cout << "METODO MAIN NAO ENCONTRADO" << endl;
+    cout << "Main Class not found - Aborting" << endl;
     exit(1);
 }
