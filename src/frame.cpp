@@ -27,13 +27,13 @@ void frame_t::execute_frame(method_info method, stack<frame_t> *stack_f)
             auto code = attr_info->_code->code;
 
             // for testing purposes
-            for (int i = 0; i < code.size(); i++)
+            while (pc < code.size())
             {
                 auto bytecode = code[pc];
                 if (bytecodes.count(bytecode))
                 {
                     auto execute_bytecode = bytecodes.at(bytecode);
-                    execute_bytecode(*run_time_constant_pool, code, stack_f);
+                    execute_bytecode(*run_time_constant_pool, code, stack_f); // change to pointer maybe
                 }
                 else
                 {
