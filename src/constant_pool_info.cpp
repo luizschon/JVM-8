@@ -355,6 +355,27 @@ string CONSTANT_methodref_info::get_content(cp_info_vector &constant_pool)
     return (get_utf8_content(class_name) + "." + get_utf8_content(method_name) + " : " + get_utf8_content(method_descriptor));
 }
 
+string CONSTANT_methodref_info::get_class_name(cp_info_vector &constant_pool)
+{
+    auto class_name_idx = to_cp_info(constant_pool[class_idx - 1])->_class->name_idx;
+    auto class_name = *(to_cp_info(constant_pool[class_name_idx - 1])->_utf8);
+    return get_utf8_content(class_name);
+}
+
+string CONSTANT_methodref_info::get_method_name(cp_info_vector &constant_pool)
+{
+    auto name_idx = to_cp_info(constant_pool[name_and_type_idx - 1])->_name_and_type->name_idx;
+    auto method_name = *(to_cp_info(constant_pool[name_idx - 1])->_utf8);
+    return get_utf8_content(method_name);
+}
+
+string CONSTANT_methodref_info::get_method_descriptor(cp_info_vector &constant_pool)
+{
+    auto descriptor_idx = to_cp_info(constant_pool[name_and_type_idx - 1])->_name_and_type->descriptor_idx;
+    auto method_descriptor = *(to_cp_info(constant_pool[descriptor_idx - 1])->_utf8);
+    return get_utf8_content(method_descriptor);
+}
+
 CONSTANT_interface_methodref_info::CONSTANT_interface_methodref_info(ifstream &file) 
 {
     class_idx = read_bytes<u2>(file);
