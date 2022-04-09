@@ -30,12 +30,11 @@
 *.exe
 *.out
 *.app
-debug
-main
+jvm
 
 # IDE
 .vscode
 
 # Generated files
-*.txt
-/out/*.md
+/build/
+/out/
