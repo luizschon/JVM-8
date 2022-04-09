@@ -27,5 +27,8 @@ Para rodar o programa no modo leitor, basta usar o mesmo comando do interpretado
 __Atenção para o interpretador__  
 É preciso que todas as classes chamadas pela classe executada estejam no diretório `/examples/`. Caso contrário o interpretador não irá funcionar corretamente.
 
+## Limpar
+Depois de executar o programa, basta executar `$ make clean` para deletar os arquivos gerados (arquivos objetos e executáveis).
+
 ## Documentação
 É possível gerar uma página HTML com a documentação do código. Para isso, basta utilizar o comando `$ doxygen Doxyfile` (é preciso ter o doxygen instalado). Então, basta abrir na pasta docs o arquivo `index.html` no navegador, que ele irá te direcionar à página.
