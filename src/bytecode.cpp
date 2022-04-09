@@ -2,11 +2,13 @@
 #include "../include/frame.hpp"
 #include "../include/utils.hpp"
 #include <iostream>
+#include <string.h>
+#include <math.h>
 
 void aaload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto frame = stack_f->top();
-    
+
     if (frame.operand_stack.empty())
     {
         cout << "NullPointerException" << endl;
@@ -16,7 +18,7 @@ void aaload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
 
 void aconst_null(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-    
+
 }
 
 void aload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -26,7 +28,7 @@ void aload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stac
 
 void aload_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-    
+
 }
 
 void aload_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -83,9 +85,9 @@ void bipush(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
 {
     auto top_frame = stack_f->top();
     operand_t byte;
-    
+
     byte._byte = code[++top_frame.pc];
-    
+
     top_frame.operand_stack.push(byte);
     top_frame.pc++;
 
@@ -109,25 +111,23 @@ void dadd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 {
     auto top_frame = stack_f->top();
     operand_t byte;
-    byte._byte = code[++top_frame.pc];
 
     auto value1 = top_frame.operand_stack.top();
-    cout << "value1: " << value1._double << endl;
     top_frame.operand_stack.pop();
-    top_frame.pc++;
-    auto value2 = top_frame.operand_stack.top();
-    cout << "value2: " << value2._double << endl;
-    top_frame.operand_stack.pop();
-    top_frame.pc++;
-    
-    operand_t result;
 
+    auto value2 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    operand_t result;
     result._double = value1._double + value2._double;
 
     top_frame.operand_stack.push(result);
+
+    top_frame.pc++;
     stack_f->pop();
     stack_f->push(top_frame);
-    // operand_t byte = top_frame.operand_stack.pop_operand();
+    
+    cout << "[DADD] result: " << result._double << endl;
 }
 
 void dconst_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -136,7 +136,7 @@ void dconst_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t dconst;
 
     dconst._double = 0.0;
-    
+
     top_frame.operand_stack.push(dconst);
     top_frame.pc++;
 
@@ -152,7 +152,7 @@ void dconst_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t dconst;
 
     dconst._double = 1.0;
-    
+
     top_frame.operand_stack.push(dconst);
     top_frame.pc++;
 
@@ -193,7 +193,7 @@ void dload_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     operand_t dload_0;
 
     dload_0._double = 0.0;
-    
+
     top_frame.operand_stack.push(dload_0);
     top_frame.pc++;
 
@@ -209,7 +209,7 @@ void dload_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     operand_t dload_1;
 
     dload_1._double = 1.0;
-    
+
     top_frame.operand_stack.push(dload_1);
     top_frame.pc++;
 
@@ -225,7 +225,7 @@ void dload_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     operand_t dload_2;
 
     dload_2._double = 2.0;
-    
+
     top_frame.operand_stack.push(dload_2);
     top_frame.pc++;
 
@@ -241,7 +241,7 @@ void dload_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     operand_t dload_3;
 
     dload_3._double = 3.0;
-    
+
     top_frame.operand_stack.push(dload_3);
     top_frame.pc++;
 
@@ -249,6 +249,66 @@ void dload_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     stack_f->push(top_frame);
 
     cout << "dload_3: " << dload_3._double << endl;
+}
+
+void dmul(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
+{
+    auto top_frame = stack_f->top();
+
+    double value1 = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    double value2 = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._double = value1 * value2;
+    top_frame.operand_stack.push(result);
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[DMUL] result: " << result._double << endl;
+}
+
+void dneg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
+{
+    auto top_frame = stack_f->top();
+
+    double value = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._double = -value;
+    top_frame.operand_stack.push(result);
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[DNEG] result: " << result._double << endl;
+}
+
+void drem(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
+{
+    auto top_frame = stack_f->top();
+
+    double value1 = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    double value2 = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._double = fmod(value1, value2);
+    top_frame.operand_stack.push(result);
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[DREM] result: " << result._double << endl;
 }
 
 void dstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -262,7 +322,7 @@ void dstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t dstore_1;
 
     dstore_1._double = 1.0;
-    
+
     top_frame.operand_stack.push(dstore_1);
     top_frame.pc++;
 
@@ -278,7 +338,7 @@ void dstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t dstore_2;
 
     dstore_2._double = 2.0;
-    
+
     top_frame.operand_stack.push(dstore_2);
     top_frame.pc++;
 
@@ -294,7 +354,7 @@ void dstore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t dstore_3;
 
     dstore_3._double = 3.0;
-    
+
     top_frame.operand_stack.push(dstore_3);
     top_frame.pc++;
 
@@ -302,6 +362,25 @@ void dstore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     stack_f->push(top_frame);
 
     cout << "dstore_3: " << dstore_3._double << endl;
+}
+
+void dsub(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
+{
+    auto top_frame = stack_f->top();
+
+    double value1 = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    double value2 = top_frame.operand_stack.top()._double;
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._double = value1 - value2;
+    top_frame.operand_stack.push(result);
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void dup(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -340,7 +419,7 @@ void fconst_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t fconst_0;
 
     fconst_0._double = 0.0;
-    
+
     top_frame.operand_stack.push(fconst_0);
     top_frame.pc++;
 
@@ -356,7 +435,7 @@ void fconst_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t fconst_1;
 
     fconst_1._double = 1.0;
-    
+
     top_frame.operand_stack.push(fconst_1);
     top_frame.pc++;
 
@@ -372,7 +451,7 @@ void fconst_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     operand_t fconst_2;
 
     fconst_2._double = 2.0;
-    
+
     top_frame.operand_stack.push(fconst_2);
     top_frame.pc++;
 
@@ -387,9 +466,9 @@ void fload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stac
 {
     auto top_frame = stack_f->top();
     operand_t index;
-    
+
     index._byte = code[++top_frame.pc];
-    
+
     top_frame.operand_stack.push(index);
     top_frame.pc++;
 
@@ -405,7 +484,7 @@ void fload_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     operand_t index;
     // runtim
     // index._byte = code[++top_frame.pc];
-    
+
     top_frame.operand_stack.push(index);
     top_frame.pc++;
 
@@ -451,7 +530,7 @@ void getstatic(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *
     if (class_name == "java/lang/System")
         return;
 
-    cout << "kkkkk getstatic kkk" << endl;
+    cout << "------ getstatic -------" << endl;
 }
 
 void goto_w(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -552,7 +631,7 @@ void ldc(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_
 
 void ldc_w(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-    
+
 }
 
 void ldc2_w(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -564,7 +643,7 @@ void ldc2_w(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
     auto index = (indexbyte1 << 8) | indexbyte2;
 
     auto reference = to_cp_info(constant_pool[index - 1]);
-    
+
     operand_t value;
     if (reference->tag == CONSTANT_Double)
         value._double = calc_double(reference->_double->high_bytes, reference->_double->low_bytes);
@@ -602,6 +681,12 @@ void lload_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
 void lload_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
+}
+
+void _return(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
+{
+    stack_f->top().pc++;
+    stack_f->pop();
 }
 
 void iaload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -651,7 +736,42 @@ void dstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
 
 void invokevirtual(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
 
+    auto indexbyte1 = code[++top_frame.pc];
+    auto indexbyte2 = code[++top_frame.pc];
+    auto index = (indexbyte1 << 8) | indexbyte2;
+
+    auto methodref = to_cp_info(constant_pool[index - 1]);
+
+    string class_name = methodref->_methodref->get_class_name(constant_pool);
+    string method_name = methodref->_methodref->get_method_name(constant_pool);
+    string descriptor = methodref->_methodref->get_method_descriptor(constant_pool);
+
+    // cout << "CLASS NAME: " << class_name << endl;
+    // cout << "METHOD NAME: " << method_name << endl;
+    // cout << "METHOD DESCRIPTOR: " << descriptor << endl;
+
+    if (strstr(class_name.c_str(), "java/"))
+    {
+        if (class_name == "java/io/PrintStream" && (method_name == "println" || method_name == "print"))
+        {
+            if (descriptor != "()V")
+            {
+                if(method_name == "println")
+                    cout << endl;
+                cout << endl;
+                // system.out.println("ARGS");
+            }
+        }
+        // if(class_name == "java/lang/String" && method_name == "length")
+        // {
+            
+        // }
+    }
+    top_frame.pc++;
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void invokespecial(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -802,7 +922,7 @@ void swap(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 
 void iadd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-    
+
 }
 
 void ladd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -830,11 +950,6 @@ void fsub(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 
 }
 
-void dsub(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
-{
-
-}
-
 void imul(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
@@ -846,11 +961,6 @@ void lmul(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 }
 
 void fmul(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
-{
-
-}
-
-void dmul(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
 }
@@ -885,11 +995,6 @@ void frem(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 
 }
 
-void drem(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
-{
-
-}
-
 void ineg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
@@ -901,11 +1006,6 @@ void lneg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 }
 
 void fneg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
-{
-
-}
-
-void dneg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
 }
@@ -1186,11 +1286,6 @@ void dreturn(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
 }
 
 void areturn(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
-{
-
-}
-
-void _return(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
 }
