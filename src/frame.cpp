@@ -33,7 +33,7 @@ void frame_t::execute_frame(method_info method, stack<frame_t> *stack_f)
                 if (bytecodes.count(bytecode))
                 {
                     auto execute_bytecode = bytecodes.at(bytecode);
-                    execute_bytecode(*run_time_constant_pool, code, stack_f); // change to pointer maybe
+                    execute_bytecode(*run_time_constant_pool, code, stack_f); // change cp to pointer maybe
                 }
                 else
                 {

@@ -4,15 +4,17 @@
 #include "class_file.hpp"
 #include "types.hpp"
 #include <stack>
+#include <vector>
 
 /// A single local variable can hold a value of type boolean , byte , char , short , int ,
 /// float , reference , or returnAddress . A pair of local variables can hold a value
 /// of type long or double .
+struct operand_t;
+struct reference;
 
-/// TODO: finish reference and returnAddress types
 /// The type of a local variable can be boolean, byte, char, short, int,
 /// float, long, double, reference or returnAddress
-typedef struct local_variable_t {
+typedef struct operand_t {
     union {
         u1 _boolean;
         u1 _byte;
@@ -20,27 +22,17 @@ typedef struct local_variable_t {
         u2 _short;
         u4 _int;
         u4 _float;
-        // reference
-        // returnAddress
         u8 _long;
         u8 _double;
-    };
-} local_variable_t;
-
-typedef struct operand_t {
-    union {
-        s1 _boolean;
-        s1 _byte;
-        s1 _char;
-        s2 _short;
-        s4 _int;
-        s4 _float;
-        // reference
-        // returnAddress
-        s8 _long;
-        double _double;
+        
+        u4 *_return_address;
+        reference *_reference; //parece que também é ponteiro
     };
 } operand_t;
+
+typedef struct reference {
+    vector<operand_t> array;
+} reference;
 
 /**
  * @brief A frame with local variables array, operand stack and reference to run-time constant pool 
@@ -48,7 +40,7 @@ typedef struct operand_t {
 typedef struct frame_t {
     frame_t(cp_info_vector* constant_pool);
     // array de variaveis locais
-    vector<local_variable_t> local_variables_array = {};
+    vector<operand_t> local_variables_array = {};
 
     // pilha de operandos
     stack<operand_t> operand_stack = {};
