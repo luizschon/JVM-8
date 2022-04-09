@@ -2,24 +2,28 @@ CXX=g++
 
 # Development
 DEBUGFLAGS=-g -fsanitize=address -fno-omit-frame-pointer
-# Production
 CFLAGS=-std=c++11
 
-TARGET=main
-SRCDIR=./src
-IDIR=./include
-LIBS=-lm
+TARGET ?= jvm
 
-all: $(TARGET)
+BUILD_DIR ?= ./build
+SRC_DIRS ?= ./src
 
-# Compila e linka todos os arquivos da pasta src e 
-# cria arquivo executável main com o comando 'make'
-$(TARGET): $(wildcard $(SRCDIR)/*.cpp)
-	$(CXX) -o $@ $^ $(CFLAGS) $(LIBS) -I $(IDIR)
+SRCS := $(shell find $(SRC_DIRS) -name *.cpp)
+OBJS := $(SRCS:%.cpp=$(BUILD_DIR)/%.o)
 
-debug: $(wildcard $(SRCDIR)/*.cpp)
-	$(CXX) -o $@ $^ $(CFLAGS) $(DEBUGFLAGS) $(LIBS) -I $(IDIR)
+INC_DIRS := ./include ./include/instructions
+INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
-# Remove os arquivos gerados com o comando 'make clean'
+$(TARGET): $(OBJS)
+	$(CXX) $(DEBUGFLAGS) $(CFLAGS) $(OBJS) -o $@
+
+$(BUILD_DIR)/%.o: %.cpp
+	$(MKDIR_P) $(dir $@)
+	$(CXX) $(DEBUGFLAGS) $(CFLAGS) $(INC_FLAGS) -c $< -o $@
+
+.PHONY: clean
 clean:
-	rm -f $(TARGET)
+	$(RM) -r $(BUILD_DIR) $(TARGET)
+
+MKDIR_P ?= mkdir -p
