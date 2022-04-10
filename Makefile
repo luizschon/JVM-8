@@ -17,6 +17,8 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 $(TARGET): $(OBJS)
 	$(CXX) $(DEBUGFLAGS) $(CFLAGS) $(OBJS) -o $@
+	@echo "\n\nJVM compiled successfully."
+	@echo "Run with ./jvm ./examples/<class_name>.class"
 
 $(BUILD_DIR)/%.o: %.cpp
 	$(MKDIR_P) $(dir $@)
