@@ -119,6 +119,8 @@ struct CONSTANT_name_and_type_info {
     u2 descriptor_idx;
     void dump_to_file();
     string get_content();
+    string get_name(cp_info_vector&);
+    string get_descriptor(cp_info_vector&);
 };
 
 struct CONSTANT_method_handle_info {

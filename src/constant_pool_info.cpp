@@ -402,6 +402,16 @@ void CONSTANT_name_and_type_info::dump_to_file()
     outfile << endl;
 }
 
+string CONSTANT_name_and_type_info::get_name(cp_info_vector &constant_pool)
+{
+    return get_utf8_content(*(to_cp_info(constant_pool[name_idx - 1])->_utf8));
+}
+
+string CONSTANT_name_and_type_info::get_descriptor(cp_info_vector &constant_pool)
+{
+    return get_utf8_content(*(to_cp_info(constant_pool[descriptor_idx - 1])->_utf8));
+}
+
 CONSTANT_method_handle_info::CONSTANT_method_handle_info(ifstream &file) 
 {
     reference_kind = read_bytes<u1>(file);
