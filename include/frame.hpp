@@ -3,7 +3,9 @@
 
 #include "class_file.hpp"
 #include "types.hpp"
+#include <cstddef>
 #include <stack>
+#include <string>
 #include <vector>
 
 /// A single local variable can hold a value of type boolean , byte , char , short , int ,
@@ -22,9 +24,10 @@ typedef struct operand_t {
         u2 _short;
         u4 _int;
         u4 _float;
-        u8 _long;
-        u8 _double;
-        
+        s8 _long;
+        double _double;
+        string* _string; // ver se esse tipo pode virar reference
+
         u4 *_return_address;
         reference *_reference; //parece que também é ponteiro
     };
@@ -52,6 +55,7 @@ typedef struct frame_t {
     // executa o frame corrente dado o conteudo do metodo
     u4 pc = 0;
     void execute_frame(method_info, stack<frame_t>*);
+    void insert_into_local(u4, operand_t&);
 } frame_t;
 
 #endif // _FRAME_HPP
