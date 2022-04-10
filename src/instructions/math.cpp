@@ -4,17 +4,65 @@
 
 void iadd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    operand_t byte;
 
+    auto value1 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    auto value2 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._int = value1._int + value2._int;
+
+    top_frame.operand_stack.push(result);
+
+    top_frame.pc++;
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void ladd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    operand_t byte;
 
+    auto value1 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    auto value2 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._int = value1._int + value2._int;
+
+    top_frame.operand_stack.push(result);
+
+    top_frame.pc++;
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void fadd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    operand_t byte;
 
+    auto value1 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    auto value2 = top_frame.operand_stack.top();
+    top_frame.operand_stack.pop();
+
+    operand_t result;
+    result._int = value1._int + value2._int;
+
+    top_frame.operand_stack.push(result);
+
+    top_frame.pc++;
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void dadd(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -189,7 +237,16 @@ void ineg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack
 
 void lneg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
+    
+    value._long = -value._long;
+    top_frame.operand_stack.pop();
+    top_frame.operand_stack.push(value);
+    top_frame.pc++;
 
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void fneg(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)

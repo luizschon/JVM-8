@@ -180,7 +180,15 @@ void iaload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
 
 void iload(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto index = code[++top_frame.pc];
+    auto value = top_frame.local_variables_array[index];
 
+    top_frame.operand_stack.push(value);
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void iload_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -220,7 +228,14 @@ void lload_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
 
 void lload_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.local_variables_array[1];
+    
+    top_frame.operand_stack.push(value);
+    top_frame.pc++;
 
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void lload_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)

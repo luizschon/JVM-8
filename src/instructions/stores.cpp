@@ -86,7 +86,18 @@ void lstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
 
 void lstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
 
+    top_frame.operand_stack.pop();
+    top_frame.insert_into_local(1, value);
+    top_frame.insert_into_local(2, value);
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[LSTORE_1] value: " << value._long << endl;
 }
 
 void lstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -161,7 +172,20 @@ void sastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
 
 void istore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto index = code[++top_frame.pc];
+    auto value = top_frame.operand_stack.top();
 
+    while (top_frame.local_variables_array.size() < index + 1)
+        top_frame.local_variables_array.push_back(operand_t());
+
+    top_frame.operand_stack.pop();
+    // top_frame.local_variables_array.insert(index, value);
+    top_frame.local_variables_array[index] = value;
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void lstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -171,15 +195,25 @@ void lstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
 
 void fstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto index = code[++top_frame.pc];
+    auto value = top_frame.operand_stack.top();
 
+    while (top_frame.local_variables_array.size() < index + 1)
+        top_frame.local_variables_array.push_back(operand_t());
+
+    top_frame.operand_stack.pop();
+    top_frame.local_variables_array[index] = value;
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void dstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
 
 }
-
-
 
 void istore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {

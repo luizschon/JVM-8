@@ -148,9 +148,51 @@ void lconst_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
 
 }
 
+//! TODO: fix string reference type
+/**
+ * @brief Push item from run-time constant pool
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f the current frame
+ */
 void ldc(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
 
+    //! may be wrong
+    // u4 index = to_cp_info(constant_pool[++top_frame.pc])->_integer->bytes;
+    // auto cp_info = constant_pool[index - 1];
+    
+    auto index = code[++top_frame.pc];
+    auto cp_info = constant_pool[index];
+
+    operand_t value;
+
+    switch (cp_info->tag)
+    {
+        case CONSTANT_Integer:
+            value._int = (u4) to_cp_info(cp_info)->_integer->bytes;
+            break;
+
+        case CONSTANT_Float:
+            value._float = (float) to_cp_info(cp_info)->_float->bytes;
+            break;
+
+        case CONSTANT_String:
+            value._string = new string(to_cp_info(cp_info)->_string->get_content(constant_pool));
+            break;
+
+        case CONSTANT_Class:
+            break;
+
+        default:
+            break;
+    }
+    
+    top_frame.operand_stack.push(value);
+    top_frame.pc++;
+    stack_f->pop();
+    stack_f->push(top_frame);
 }
 
 void ldc_w(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -179,7 +221,12 @@ void ldc2_w(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
     stack_f->pop();
     stack_f->push(top_frame);
 
-    cout << "[LDC2_W] value: " << value._double << endl;
+    cout << "[LDC2_W] ";
+
+    if (reference->tag == CONSTANT_Double)
+        cout << "double value: " << value._double << endl;
+    if (reference->tag == CONSTANT_Long)
+        cout << "long value: " << value._long << endl;
 }
 
 void nop(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
