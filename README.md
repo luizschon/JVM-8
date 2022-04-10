@@ -24,6 +24,8 @@ Para rodar o programa no modo leitor, basta usar o mesmo comando do interpretado
 
 - Windows: ```$ ./jvm.exe -r ./examples/<nome_da_classe>.class```
 
+Um arquivo do tipo markdown (.md) será gerado com as informações do .class fornecido. Os arquivos gerados podem ser encontrados na pasta `/out/`.
+
 __Atenção para o interpretador__  
 É preciso que todas as classes chamadas pela classe executada estejam no diretório `/examples/`. Caso contrário o interpretador não irá funcionar corretamente.
 

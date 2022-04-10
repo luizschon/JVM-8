@@ -102,11 +102,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a67400175baa55a9b22e2f644e85b05ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structframe__t.html#a67400175baa55a9b22e2f644e85b05ea">execute_frame</a> (<a class="el" href="structmethod__info.html">method_info</a>, stack&lt; <a class="el" href="structframe__t.html">frame_t</a> &gt; *)</td></tr>
 <tr class="memdesc:a67400175baa55a9b22e2f644e85b05ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO: finish execute logic.  <a href="structframe__t.html#a67400175baa55a9b22e2f644e85b05ea">More...</a><br /></td></tr>
 <tr class="separator:a67400175baa55a9b22e2f644e85b05ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58fe7d5bc11651ada7b6ed9585b33679"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structframe__t.html#a58fe7d5bc11651ada7b6ed9585b33679">insert_into_local</a> (<a class="el" href="types_8hpp.html#ae5be1f726785414dd1b77d60df074c9d">u4</a>, <a class="el" href="structoperand__t.html">operand_t</a> &amp;)</td></tr>
+<tr class="separator:a58fe7d5bc11651ada7b6ed9585b33679"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a5669decc829be28307fce371bcdc1792"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structlocal__variable__t.html">local_variable_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structframe__t.html#a5669decc829be28307fce371bcdc1792">local_variables_array</a> = {}</td></tr>
-<tr class="separator:a5669decc829be28307fce371bcdc1792"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa41cfa139f1714b22b503b30de56e943"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structoperand__t.html">operand_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structframe__t.html#aa41cfa139f1714b22b503b30de56e943">local_variables_array</a> = {}</td></tr>
+<tr class="separator:aa41cfa139f1714b22b503b30de56e943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5068b99544fbbd913f95213e405050b"><td class="memItemLeft" align="right" valign="top">stack&lt; <a class="el" href="structoperand__t.html">operand_t</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structframe__t.html#ac5068b99544fbbd913f95213e405050b">operand_stack</a> = {}</td></tr>
 <tr class="separator:ac5068b99544fbbd913f95213e405050b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b5a85a58c999ee05402c6f2df300c63"><td class="memItemLeft" align="right" valign="top"><a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structframe__t.html#a1b5a85a58c999ee05402c6f2df300c63">run_time_constant_pool</a></td></tr>
@@ -117,7 +119,7 @@ Data Fields</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >A frame with local variables array, operand stack and reference to run-time constant pool. </p>
 
-<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00048">48</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00043">43</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af3f0ee0b1d1c33d2e72e7d5343072626" name="af3f0ee0b1d1c33d2e72e7d5343072626"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af3f0ee0b1d1c33d2e72e7d5343072626">&#9670;&nbsp;</a></span>frame_t()</h2>
@@ -147,7 +149,7 @@ Data Fields</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
 <div class="line"><span class="lineno">   12</span>    <a class="code hl_variable" href="structframe__t.html#a1b5a85a58c999ee05402c6f2df300c63">run_time_constant_pool</a> = constant_pool;</div>
 <div class="line"><span class="lineno">   13</span>}</div>
-<div class="ttc" id="astructframe__t_html_a1b5a85a58c999ee05402c6f2df300c63"><div class="ttname"><a href="structframe__t.html#a1b5a85a58c999ee05402c6f2df300c63">frame_t::run_time_constant_pool</a></div><div class="ttdeci">cp_info_vector * run_time_constant_pool</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00058">frame.hpp:58</a></div></div>
+<div class="ttc" id="astructframe__t_html_a1b5a85a58c999ee05402c6f2df300c63"><div class="ttname"><a href="structframe__t.html#a1b5a85a58c999ee05402c6f2df300c63">frame_t::run_time_constant_pool</a></div><div class="ttdeci">cp_info_vector * run_time_constant_pool</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00053">frame.hpp:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,7 +204,7 @@ Data Fields</h2></td></tr>
 <div class="line"><span class="lineno">   33</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="bytecode_8hpp.html#a0949e01ed12bf35a3cd3c66260d09088">bytecodes</a>.count(bytecode))</div>
 <div class="line"><span class="lineno">   34</span>                {</div>
 <div class="line"><span class="lineno">   35</span>                    <span class="keyword">auto</span> execute_bytecode = <a class="code hl_variable" href="bytecode_8hpp.html#a0949e01ed12bf35a3cd3c66260d09088">bytecodes</a>.at(bytecode);</div>
-<div class="line"><span class="lineno">   36</span>                    execute_bytecode(*<a class="code hl_variable" href="structframe__t.html#a1b5a85a58c999ee05402c6f2df300c63">run_time_constant_pool</a>, code, stack_f); <span class="comment">// change to pointer maybe</span></div>
+<div class="line"><span class="lineno">   36</span>                    execute_bytecode(*<a class="code hl_variable" href="structframe__t.html#a1b5a85a58c999ee05402c6f2df300c63">run_time_constant_pool</a>, code, stack_f); <span class="comment">// change cp to pointer maybe</span></div>
 <div class="line"><span class="lineno">   37</span>                }</div>
 <div class="line"><span class="lineno">   38</span>                <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   39</span>                {</div>
@@ -216,29 +218,67 @@ Data Fields</h2></td></tr>
 <div class="line"><span class="lineno">   47</span>    }</div>
 <div class="line"><span class="lineno">   48</span>}</div>
 <div class="ttc" id="aattributes_8hpp_html_a80a9c92a524195cbd3540bc38511b1d6a5c05bb7f6ea5cb7653276c81f45f287b"><div class="ttname"><a href="attributes_8hpp.html#a80a9c92a524195cbd3540bc38511b1d6a5c05bb7f6ea5cb7653276c81f45f287b">Code</a></div><div class="ttdeci">@ Code</div><div class="ttdef"><b>Definition:</b> <a href="attributes_8hpp_source.html#l00012">attributes.hpp:12</a></div></div>
-<div class="ttc" id="abytecode_8hpp_html_a0949e01ed12bf35a3cd3c66260d09088"><div class="ttname"><a href="bytecode_8hpp.html#a0949e01ed12bf35a3cd3c66260d09088">bytecodes</a></div><div class="ttdeci">const bytecode_instr bytecodes</div><div class="ttdef"><b>Definition:</b> <a href="bytecode_8hpp_source.html#l00363">bytecode.hpp:363</a></div></div>
+<div class="ttc" id="abytecode_8hpp_html_a0949e01ed12bf35a3cd3c66260d09088"><div class="ttname"><a href="bytecode_8hpp.html#a0949e01ed12bf35a3cd3c66260d09088">bytecodes</a></div><div class="ttdeci">const bytecode_instr bytecodes</div><div class="ttdef"><b>Definition:</b> <a href="bytecode_8hpp_source.html#l00164">bytecode.hpp:164</a></div></div>
 <div class="ttc" id="astructattr__info_html"><div class="ttname"><a href="structattr__info.html">attr_info</a></div><div class="ttdef"><b>Definition:</b> <a href="class__file_8hpp_source.html#l00044">class_file.hpp:44</a></div></div>
-<div class="ttc" id="astructframe__t_html_ad290866ba538b60849e3a5d62139b70a"><div class="ttname"><a href="structframe__t.html#ad290866ba538b60849e3a5d62139b70a">frame_t::pc</a></div><div class="ttdeci">u4 pc</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00061">frame.hpp:61</a></div></div>
+<div class="ttc" id="astructframe__t_html_ad290866ba538b60849e3a5d62139b70a"><div class="ttname"><a href="structframe__t.html#ad290866ba538b60849e3a5d62139b70a">frame_t::pc</a></div><div class="ttdeci">u4 pc</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00056">frame.hpp:56</a></div></div>
 <div class="ttc" id="astructmethod__info_html_a9b5a2add2cc8cfb9fb457b286dbeabdb"><div class="ttname"><a href="structmethod__info.html#a9b5a2add2cc8cfb9fb457b286dbeabdb">method_info::attr</a></div><div class="ttdeci">attr_info_vector attr</div><div class="ttdef"><b>Definition:</b> <a href="class__file_8hpp_source.html#l00070">class_file.hpp:70</a></div></div>
 <div class="ttc" id="atypes_8hpp_html_a811d474a4039f1315585d0a630058583"><div class="ttname"><a href="types_8hpp.html#a811d474a4039f1315585d0a630058583">to_attr_info</a></div><div class="ttdeci">#define to_attr_info</div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00008">types.hpp:8</a></div></div>
 <div class="ttc" id="atypes_8hpp_html_ae5be1f726785414dd1b77d60df074c9d"><div class="ttname"><a href="types_8hpp.html#ae5be1f726785414dd1b77d60df074c9d">u4</a></div><div class="ttdeci">uint32_t u4</div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00015">types.hpp:15</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">Field Documentation</h2>
-<a id="a5669decc829be28307fce371bcdc1792" name="a5669decc829be28307fce371bcdc1792"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5669decc829be28307fce371bcdc1792">&#9670;&nbsp;</a></span>local_variables_array</h2>
+<a id="a58fe7d5bc11651ada7b6ed9585b33679" name="a58fe7d5bc11651ada7b6ed9585b33679"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58fe7d5bc11651ada7b6ed9585b33679">&#9670;&nbsp;</a></span>insert_into_local()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;<a class="el" href="structlocal__variable__t.html">local_variable_t</a>&gt; frame_t::local_variables_array = {}</td>
+          <td class="memname">void frame_t::insert_into_local </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="types_8hpp.html#ae5be1f726785414dd1b77d60df074c9d">u4</a>&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structoperand__t.html">operand_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00051">51</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8cpp_source.html#l00050">50</a> of file <a class="el" href="frame_8cpp_source.html">frame.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">while</span> (<a class="code hl_variable" href="structframe__t.html#aa41cfa139f1714b22b503b30de56e943">local_variables_array</a>.size() &lt; index)</div>
+<div class="line"><span class="lineno">   53</span>        <a class="code hl_variable" href="structframe__t.html#aa41cfa139f1714b22b503b30de56e943">local_variables_array</a>.push_back(<a class="code hl_typedef" href="frame_8hpp.html#aba4957ce07e5c42ef7a01b495110493b">operand_t</a>());</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="structframe__t.html#aa41cfa139f1714b22b503b30de56e943">local_variables_array</a>.push_back(value);</div>
+<div class="line"><span class="lineno">   56</span>}</div>
+<div class="ttc" id="aframe_8hpp_html_aba4957ce07e5c42ef7a01b495110493b"><div class="ttname"><a href="frame_8hpp.html#aba4957ce07e5c42ef7a01b495110493b">operand_t</a></div><div class="ttdeci">struct operand_t operand_t</div></div>
+<div class="ttc" id="astructframe__t_html_aa41cfa139f1714b22b503b30de56e943"><div class="ttname"><a href="structframe__t.html#aa41cfa139f1714b22b503b30de56e943">frame_t::local_variables_array</a></div><div class="ttdeci">vector&lt; operand_t &gt; local_variables_array</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00046">frame.hpp:46</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">Field Documentation</h2>
+<a id="aa41cfa139f1714b22b503b30de56e943" name="aa41cfa139f1714b22b503b30de56e943"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa41cfa139f1714b22b503b30de56e943">&#9670;&nbsp;</a></span>local_variables_array</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="structoperand__t.html">operand_t</a>&gt; frame_t::local_variables_array = {}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00046">46</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
 
 </div>
 </div>
@@ -254,7 +294,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00054">54</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00049">49</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
 
 </div>
 </div>
@@ -270,7 +310,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00061">61</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00056">56</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
 
 </div>
 </div>
@@ -286,7 +326,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00058">58</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="frame_8hpp_source.html#l00053">53</a> of file <a class="el" href="frame_8hpp_source.html">frame.hpp</a>.</p>
 
 </div>
 </div>

@@ -86,19 +86,36 @@ $(document).ready(function(){initNavTree('md_README.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p >Implementação menos avançada de JVM já vista na UnB. Projeto da disciplina de Software Básico 2021/2 - Universidade de Brasília</p>
-<h1><a class="anchor" id="autotoc_md266"></a>
+<h1><a class="anchor" id="autotoc_md160"></a>
 TL;DR</h1>
 <p >Compilar: <code>$ make</code> <br  />
- Exibidor: <code>$ ./main.exe -r ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
- Interpretador: <code>$ ./main.exe ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
+ Exibidor: <code>$ ./jvm.exe -r ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
+ Interpretador: <code>$ ./jvm.exe ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
  Docs: <code>$ doxygen Doxyfile</code> (<code>docs/index.html</code>)</p>
-<h1><a class="anchor" id="autotoc_md267"></a>
-Linux</h1>
-<p >Para compilar e rodar o programa em modo debug, basta utilizar <code>$ make debug</code> e <code>$ ./debug ./examples/&lt;nome_da_classe&gt;.class</code>, que irá compilar o programa com sanitize address para verificar vazamentos de memória.</p>
-<h1><a class="anchor" id="autotoc_md268"></a>
-Windows</h1>
-<p >Para compilar e rodar o programa, basta utilizar <code>$ make</code> para compilar e <code>$ ./main.exe examples/double_aritmetica.class</code> para executar os arquivos contidos na pasta <code>examples</code> (ou outro arquivo da sua escolha).</p>
-<h1><a class="anchor" id="autotoc_md269"></a>
+<h1><a class="anchor" id="autotoc_md161"></a>
+Compilar</h1>
+<p >Para compilar o programa, basta utilizar <code>$ make</code> (uma pasta <code>build</code> será gerada).</p>
+<h1><a class="anchor" id="autotoc_md162"></a>
+Interpretador</h1>
+<p >Para rodar o programa no mode interpretador, basta usar o comando de acordo com o sistema operacional:</p>
+<ul>
+<li>Linux: <code>$ ./jvm ./examples/&lt;nome_da_classe&gt;.class</code></li>
+<li>Windows: <code>$ ./jvm.exe ./examples/&lt;nome_da_classe&gt;.class</code></li>
+</ul>
+<h1><a class="anchor" id="autotoc_md163"></a>
+Exibidor</h1>
+<p >Para rodar o programa no modo leitor, basta usar o mesmo comando do interpretador, com a flag <code>-r</code>:</p>
+<ul>
+<li>Linux: <code>$ ./jvm -r ./examples/&lt;nome_da_classe&gt;.class</code></li>
+<li>Windows: <code>$ ./jvm.exe -r ./examples/&lt;nome_da_classe&gt;.class</code></li>
+</ul>
+<p >Um arquivo do tipo markdown (.md) será gerado com as informações do .class fornecido. Os arquivos gerados podem ser encontrados na pasta <code>/out/</code>.</p>
+<p ><b>Atenção para o interpretador</b> <br  />
+ É preciso que todas as classes chamadas pela classe executada estejam no diretório <code>/examples/</code>. Caso contrário o interpretador não irá funcionar corretamente.</p>
+<h1><a class="anchor" id="autotoc_md164"></a>
+Limpar</h1>
+<p >Depois de executar o programa, basta executar <code>$ make clean</code> para deletar os arquivos gerados (arquivos objetos e executáveis).</p>
+<h1><a class="anchor" id="autotoc_md165"></a>
 Documentação</h1>
 <p >É possível gerar uma página HTML com a documentação do código. Para isso, basta utilizar o comando <code>$ doxygen Doxyfile</code> (é preciso ter o doxygen instalado). Então, basta abrir na pasta docs o arquivo <code>index.html</code> no navegador, que ele irá te direcionar à página. </p>
 </div></div><!-- contents -->

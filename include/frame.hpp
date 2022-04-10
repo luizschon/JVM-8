@@ -21,10 +21,10 @@ typedef struct operand_t {
         u1 _boolean;
         u1 _byte;
         u1 _char;
-        u2 _short;
-        u4 _int;
-        u4 _float;
+        s2 _short;
+        s4 _int;
         s8 _long;
+        float _float;
         double _double;
         string* _string; // ver se esse tipo pode virar reference
 

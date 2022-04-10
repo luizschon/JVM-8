@@ -1,5 +1,6 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
+    [ "instructions", "dir_2843b2c750ff6b39dcfe98bf2554dba0.html", "dir_2843b2c750ff6b39dcfe98bf2554dba0" ],
     [ "attributes.hpp", "attributes_8hpp.html", "attributes_8hpp" ],
     [ "bytecode.hpp", "bytecode_8hpp.html", "bytecode_8hpp" ],
     [ "class_file.hpp", "class__file_8hpp.html", "class__file_8hpp" ],
@@ -17,6 +18,9 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     ] ],
     [ "libraries.hpp", "libraries_8hpp.html", null ],
     [ "method_area.hpp", "method__area_8hpp.html", "method__area_8hpp" ],
+    [ "references.hpp", "references_8hpp.html", [
+      [ "array_t", "structarray__t.html", "structarray__t" ]
+    ] ],
     [ "stack_map_frame.hpp", "stack__map__frame_8hpp.html", null ],
     [ "types.hpp", "types_8hpp.html", "types_8hpp" ],
     [ "utils.hpp", "utils_8hpp.html", "utils_8hpp" ],

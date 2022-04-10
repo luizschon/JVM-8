@@ -131,26 +131,25 @@ Public Member Functions</h2></td></tr>
 <p >Checks if there is a main method</p>
 <p >Executes every frame until there is none left in the stack</p>
 
-<p class="definition">Definition at line <a class="el" href="interpreter_8cpp_source.html#l00024">24</a> of file <a class="el" href="interpreter_8cpp_source.html">interpreter.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   25</span>{</div>
-<div class="line"><span class="lineno">   27</span>    <a class="code hl_typedef" href="method__area_8hpp.html#a8735495c08a816149d5be22f8d0d1402">method_area</a> method_a = this-&gt;load_classes(class_f);</div>
-<div class="line"><span class="lineno">   28</span>    </div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_struct" href="structmethod__info.html">method_info</a> main_method = get_main_method(method_a);</div>
-<div class="line"><span class="lineno">   31</span>    </div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_struct" href="structframe__t.html">frame_t</a> first_frame{&amp;(method_a[<a class="code hl_variable" href="interpreter_8cpp.html#a271524cb41488e21c75fa0ed6cc02387">object_class</a>].constant_pool)};</div>
-<div class="line"><span class="lineno">   33</span>    stack&lt;frame_t&gt; stack_f;</div>
-<div class="line"><span class="lineno">   34</span>    stack_f.push(first_frame);</div>
-<div class="line"><span class="lineno">   35</span> </div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">while</span> (!stack_f.empty())</div>
-<div class="line"><span class="lineno">   38</span>    {</div>
-<div class="line"><span class="lineno">   39</span>        stack_f.top().<a class="code hl_function" href="structframe__t.html#a67400175baa55a9b22e2f644e85b05ea">execute_frame</a>(main_method, &amp;stack_f);</div>
-<div class="line"><span class="lineno">   40</span>        cout &lt;&lt; <span class="stringliteral">&quot;FINISHED FRAME&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
-<div class="line"><span class="lineno">   42</span>    cout &lt;&lt; <span class="stringliteral">&quot;END OF RUN&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   43</span>}</div>
-<div class="ttc" id="ainterpreter_8cpp_html_a271524cb41488e21c75fa0ed6cc02387"><div class="ttname"><a href="interpreter_8cpp.html#a271524cb41488e21c75fa0ed6cc02387">object_class</a></div><div class="ttdeci">const string object_class</div><div class="ttdoc">A constant for the object class string.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00015">interpreter.cpp:15</a></div></div>
-<div class="ttc" id="amethod__area_8hpp_html_a8735495c08a816149d5be22f8d0d1402"><div class="ttname"><a href="method__area_8hpp.html#a8735495c08a816149d5be22f8d0d1402">method_area</a></div><div class="ttdeci">map&lt; string, class_container &gt; method_area</div><div class="ttdoc">A mapping of class name to its content.</div><div class="ttdef"><b>Definition:</b> <a href="method__area_8hpp_source.html#l00025">method_area.hpp:25</a></div></div>
-<div class="ttc" id="astructframe__t_html"><div class="ttname"><a href="structframe__t.html">frame_t</a></div><div class="ttdoc">A frame with local variables array, operand stack and reference to run-time constant pool.</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00048">frame.hpp:48</a></div></div>
+<p class="definition">Definition at line <a class="el" href="interpreter_8cpp_source.html#l00023">23</a> of file <a class="el" href="interpreter_8cpp_source.html">interpreter.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   24</span>{</div>
+<div class="line"><span class="lineno">   26</span>    this-&gt;load_classes(class_f);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_struct" href="structmethod__info.html">method_info</a> main_method = get_main_method(method_a);</div>
+<div class="line"><span class="lineno">   30</span>    </div>
+<div class="line"><span class="lineno">   31</span>    <a class="code hl_struct" href="structframe__t.html">frame_t</a> first_frame{&amp;(method_a[<a class="code hl_variable" href="interpreter_8cpp.html#a271524cb41488e21c75fa0ed6cc02387">object_class</a>].constant_pool)};</div>
+<div class="line"><span class="lineno">   32</span>    stack&lt;frame_t&gt; stack_f;</div>
+<div class="line"><span class="lineno">   33</span>    stack_f.push(first_frame);</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">while</span> (!stack_f.empty())</div>
+<div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        stack_f.top().<a class="code hl_function" href="structframe__t.html#a67400175baa55a9b22e2f644e85b05ea">execute_frame</a>(main_method, &amp;stack_f);</div>
+<div class="line"><span class="lineno">   39</span>        cout &lt;&lt; <span class="stringliteral">&quot;FINISHED FRAME&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="line"><span class="lineno">   41</span>    cout &lt;&lt; <span class="stringliteral">&quot;END OF RUN&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   42</span>}</div>
+<div class="ttc" id="ainterpreter_8cpp_html_a271524cb41488e21c75fa0ed6cc02387"><div class="ttname"><a href="interpreter_8cpp.html#a271524cb41488e21c75fa0ed6cc02387">object_class</a></div><div class="ttdeci">const string object_class</div><div class="ttdoc">A constant for the object class string.</div><div class="ttdef"><b>Definition:</b> <a href="interpreter_8cpp_source.html#l00014">interpreter.cpp:14</a></div></div>
+<div class="ttc" id="astructframe__t_html"><div class="ttname"><a href="structframe__t.html">frame_t</a></div><div class="ttdoc">A frame with local variables array, operand stack and reference to run-time constant pool.</div><div class="ttdef"><b>Definition:</b> <a href="frame_8hpp_source.html#l00043">frame.hpp:43</a></div></div>
 <div class="ttc" id="astructframe__t_html_a67400175baa55a9b22e2f644e85b05ea"><div class="ttname"><a href="structframe__t.html#a67400175baa55a9b22e2f644e85b05ea">frame_t::execute_frame</a></div><div class="ttdeci">void execute_frame(method_info, stack&lt; frame_t &gt; *)</div><div class="ttdoc">TODO: finish execute logic.</div><div class="ttdef"><b>Definition:</b> <a href="frame_8cpp_source.html#l00020">frame.cpp:20</a></div></div>
 <div class="ttc" id="astructmethod__info_html"><div class="ttname"><a href="structmethod__info.html">method_info</a></div><div class="ttdef"><b>Definition:</b> <a href="class__file_8hpp_source.html#l00063">class_file.hpp:63</a></div></div>
 </div><!-- fragment -->

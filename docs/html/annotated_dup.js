@@ -1,5 +1,6 @@
 var annotated_dup =
 [
+    [ "array_t", "structarray__t.html", "structarray__t" ],
     [ "attr_info", "structattr__info.html", "structattr__info" ],
     [ "Attribute", "classAttribute.html", "classAttribute" ],
     [ "Attribute_Info", "classAttribute__Info.html", "classAttribute__Info" ],
@@ -36,13 +37,13 @@ var annotated_dup =
     [ "Integer_variable_info", "structInteger__variable__info.html", "structInteger__variable__info" ],
     [ "JVMInterpreter", "classJVMInterpreter.html", "classJVMInterpreter" ],
     [ "LineNumberTable_attribute", "structLineNumberTable__attribute.html", "structLineNumberTable__attribute" ],
-    [ "local_variable_t", "structlocal__variable__t.html", "structlocal__variable__t" ],
     [ "Long_variable_info", "structLong__variable__info.html", "structLong__variable__info" ],
     [ "method_info", "structmethod__info.html", "structmethod__info" ],
     [ "Nibble", "unionNibble.html", "unionNibble" ],
     [ "Null_variable_info", "structNull__variable__info.html", "structNull__variable__info" ],
     [ "Object_variable_info", "structObject__variable__info.html", "structObject__variable__info" ],
     [ "operand_t", "structoperand__t.html", "structoperand__t" ],
+    [ "reference", "structreference.html", "structreference" ],
     [ "SourceFile_attribute", "structSourceFile__attribute.html", "structSourceFile__attribute" ],
     [ "Top_variable_info", "structTop__variable__info.html", "structTop__variable__info" ],
     [ "Uninitialized_variable_info", "structUninitialized__variable__info.html", "structUninitialized__variable__info" ],

@@ -38,3 +38,5 @@ jvm
 # Generated files
 /build/
 /out/
+outfile
+run_all.sh

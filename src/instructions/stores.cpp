@@ -1,87 +1,104 @@
 #include "../../include/instructions/stores.hpp"
 #include <iostream>
+#include <iterator>
+#include <list>
 
 void astore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void astore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void astore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void astore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void astore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void dstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
 
+    top_frame.insert_into_local(0, value);
+    top_frame.insert_into_local(1, value);
+    
+    top_frame.operand_stack.pop();
+    top_frame.pc++;
+
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[DSTORE_0] value: " << top_frame.local_variables_array[0]._double << endl;
 }
 
 void dstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
-    operand_t dstore_1;
+    auto value = top_frame.operand_stack.top();
 
-    dstore_1._double = 1.0;
-
-    top_frame.operand_stack.push(dstore_1);
+    top_frame.insert_into_local(1, value);
+    top_frame.insert_into_local(2, value);
+    
+    top_frame.operand_stack.pop();
     top_frame.pc++;
 
     stack_f->pop();
     stack_f->push(top_frame);
 
-    cout << "dstore_1: " << dstore_1._double << endl;
+    cout << "[DSTORE_1] value: " << top_frame.local_variables_array[1]._double << endl;
 }
 
 void dstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
-    operand_t dstore_2;
+    auto value = top_frame.operand_stack.top();
 
-    dstore_2._double = 2.0;
-
-    top_frame.operand_stack.push(dstore_2);
+    top_frame.insert_into_local(2, value);
+    top_frame.insert_into_local(3, value);
+    
+    top_frame.operand_stack.pop();
     top_frame.pc++;
 
     stack_f->pop();
     stack_f->push(top_frame);
 
-    cout << "dstore_2: " << dstore_2._double << endl;
+    cout << "[DSTORE_2] value: " << top_frame.local_variables_array[2]._double << endl;
 }
 
 void dstore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
-    operand_t dstore_3;
+    auto value = top_frame.operand_stack.top();
 
-    dstore_3._double = 3.0;
-
-    top_frame.operand_stack.push(dstore_3);
+    top_frame.insert_into_local(3, value);
+    top_frame.insert_into_local(4, value);
+    
+    top_frame.operand_stack.pop();
     top_frame.pc++;
 
     stack_f->pop();
     stack_f->push(top_frame);
 
-    cout << "dstore_3: " << dstore_3._double << endl;
+    cout << "[DSTORE_3] value: " << top_frame.local_variables_array[3]._double << endl;
 }
 
 void lstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void lstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -97,77 +114,77 @@ void lstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     stack_f->pop();
     stack_f->push(top_frame);
 
-    cout << "[LSTORE_1] value: " << value._long << endl;
+    cout << "[LSTORE_1] value: " << top_frame.local_variables_array[1]._long << endl;
 }
 
 void lstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void lstore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void fstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void fstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void fstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void fstore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void iastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void lastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void fastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void dastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void aastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void bastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void castore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void sastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void istore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -176,21 +193,19 @@ void istore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
     auto index = code[++top_frame.pc];
     auto value = top_frame.operand_stack.top();
 
-    while (top_frame.local_variables_array.size() < index + 1)
-        top_frame.local_variables_array.push_back(operand_t());
-
     top_frame.operand_stack.pop();
-    // top_frame.local_variables_array.insert(index, value);
-    top_frame.local_variables_array[index] = value;
+    top_frame.insert_into_local(index, value);
     top_frame.pc++;
 
     stack_f->pop();
     stack_f->push(top_frame);
+
+    cout << "[ISTORE] value: " << top_frame.local_variables_array[index]._int << endl;
 }
 
 void lstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void fstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
@@ -199,38 +214,77 @@ void fstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
     auto index = code[++top_frame.pc];
     auto value = top_frame.operand_stack.top();
 
-    while (top_frame.local_variables_array.size() < index + 1)
-        top_frame.local_variables_array.push_back(operand_t());
-
     top_frame.operand_stack.pop();
-    top_frame.local_variables_array[index] = value;
+    top_frame.insert_into_local(index, value);
     top_frame.pc++;
 
     stack_f->pop();
     stack_f->push(top_frame);
+
+    cout << "[FSTORE] index: " << (u4) index << " value: " << top_frame.local_variables_array[index]._float << endl;
 }
 
 void dstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-
+    exit(1);
 }
 
 void istore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
+    
+    top_frame.operand_stack.pop();
+    top_frame.insert_into_local(0, value);
+    top_frame.pc++;
 
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[ISTORE_0]" << endl;
 }
 
 void istore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
+    
+    top_frame.operand_stack.pop();
+    top_frame.insert_into_local(1, value);
+    top_frame.pc++;
 
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[ISTORE_1]" << endl;
 }
 
 void istore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
+    
+    top_frame.operand_stack.pop();
+    top_frame.insert_into_local(2, value);
+    top_frame.pc++;
 
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[ISTORE_2]" << endl;
 }
 
 void istore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
+    auto top_frame = stack_f->top();
+    auto value = top_frame.operand_stack.top();
+    
+    top_frame.operand_stack.pop();
+    top_frame.insert_into_local(3, value);
+    top_frame.pc++;
 
+    stack_f->pop();
+    stack_f->push(top_frame);
+
+    cout << "[ISTORE_3]" << endl;
 }

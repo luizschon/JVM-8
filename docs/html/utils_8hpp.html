@@ -104,6 +104,8 @@ Functions</h2></td></tr>
 <tr class="separator:af524938aa043dc24631d7b862c98e41f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a133ad5e1a98c72fe4d4143cbc15ccec5"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8hpp.html#a133ad5e1a98c72fe4d4143cbc15ccec5">get_name</a> (<a class="el" href="constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;, <a class="el" href="types_8hpp.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a>)</td></tr>
 <tr class="separator:a133ad5e1a98c72fe4d4143cbc15ccec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af38148ee48451a16b13e3edc7468f95c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8hpp.html#af38148ee48451a16b13e3edc7468f95c">exists</a> (string &amp;name)</td></tr>
+<tr class="separator:af38148ee48451a16b13e3edc7468f95c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6e436098c7ffa280e59f16e8fe9b68f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:af6e436098c7ffa280e59f16e8fe9b68f"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="utils_8hpp.html#af6e436098c7ffa280e59f16e8fe9b68f">read_bytes</a> (ifstream &amp;file)</td></tr>
 <tr class="separator:af6e436098c7ffa280e59f16e8fe9b68f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -236,6 +238,30 @@ Functions</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a id="af38148ee48451a16b13e3edc7468f95c" name="af38148ee48451a16b13e3edc7468f95c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af38148ee48451a16b13e3edc7468f95c">&#9670;&nbsp;</a></span>exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool exists </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00067">67</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>{</div>
+<div class="line"><span class="lineno">   69</span>    <span class="keyword">struct </span>stat buffer;   </div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">return</span> (stat (name.c_str(), &amp;buffer) == 0); </div>
+<div class="line"><span class="lineno">   71</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a95f0d0f9e155d1cf2c7e404d90d607d6" name="a95f0d0f9e155d1cf2c7e404d90d607d6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95f0d0f9e155d1cf2c7e404d90d607d6">&#9670;&nbsp;</a></span>get_bytes()</h2>
 
@@ -254,17 +280,17 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00030">30</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>{</div>
-<div class="line"><span class="lineno">   32</span>    T return_value = 0;</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= <span class="keyword">sizeof</span>(T); i++)</div>
-<div class="line"><span class="lineno">   34</span>    {</div>
-<div class="line"><span class="lineno">   35</span>        return_value &lt;&lt;= 8;</div>
-<div class="line"><span class="lineno">   36</span>        return_value |= *iterator;</div>
-<div class="line"><span class="lineno">   37</span>        iterator++;</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> return_value;</div>
-<div class="line"><span class="lineno">   40</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00031">31</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    T return_value = 0;</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= <span class="keyword">sizeof</span>(T); i++)</div>
+<div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>        return_value &lt;&lt;= 8;</div>
+<div class="line"><span class="lineno">   37</span>        return_value |= *iterator;</div>
+<div class="line"><span class="lineno">   38</span>        iterator++;</div>
+<div class="line"><span class="lineno">   39</span>    }</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">return</span> return_value;</div>
+<div class="line"><span class="lineno">   41</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -344,18 +370,18 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00015">15</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
-<div class="line"><span class="lineno">   17</span>    <a class="code hl_typedef" href="types_8hpp.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a> <span class="keywordtype">byte</span> = 0;</div>
-<div class="line"><span class="lineno">   18</span>    T data = 0;</div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <span class="keyword">sizeof</span>(T); i++) </div>
-<div class="line"><span class="lineno">   20</span>    {</div>
-<div class="line"><span class="lineno">   21</span>        file.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;<span class="keywordtype">byte</span>), <span class="keyword">sizeof</span>(byte));</div>
-<div class="line"><span class="lineno">   22</span>        data &lt;&lt;= 8;</div>
-<div class="line"><span class="lineno">   23</span>        data |= byte;</div>
-<div class="line"><span class="lineno">   24</span>    }</div>
-<div class="line"><span class="lineno">   25</span>    <span class="keywordflow">return</span> data;</div>
-<div class="line"><span class="lineno">   26</span>}</div>
+<p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00016">16</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   17</span>{</div>
+<div class="line"><span class="lineno">   18</span>    <a class="code hl_typedef" href="types_8hpp.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a> <span class="keywordtype">byte</span> = 0;</div>
+<div class="line"><span class="lineno">   19</span>    T data = 0;</div>
+<div class="line"><span class="lineno">   20</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <span class="keyword">sizeof</span>(T); i++) </div>
+<div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        file.read(<span class="keyword">reinterpret_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(&amp;<span class="keywordtype">byte</span>), <span class="keyword">sizeof</span>(byte));</div>
+<div class="line"><span class="lineno">   23</span>        data &lt;&lt;= 8;</div>
+<div class="line"><span class="lineno">   24</span>        data |= byte;</div>
+<div class="line"><span class="lineno">   25</span>    }</div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">return</span> data;</div>
+<div class="line"><span class="lineno">   27</span>}</div>
 <div class="ttc" id="atypes_8hpp_html_ad9f4cdb6757615aae2fad89dab3c5470"><div class="ttname"><a href="types_8hpp.html#ad9f4cdb6757615aae2fad89dab3c5470">u1</a></div><div class="ttdeci">uint8_t u1</div><div class="ttdef"><b>Definition:</b> <a href="types_8hpp_source.html#l00013">types.hpp:13</a></div></div>
 </div><!-- fragment -->
 </div>

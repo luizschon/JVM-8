@@ -49,7 +49,7 @@ void frame_t::execute_frame(method_info method, stack<frame_t> *stack_f)
 
 void frame_t::insert_into_local(u4 index, operand_t &value)
 {
-    while (local_variables_array.size() < index + 1)
+    while (local_variables_array.size() < index)
         local_variables_array.push_back(operand_t());
 
     local_variables_array.push_back(value);
