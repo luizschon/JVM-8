@@ -1,6 +1,14 @@
 # JVM-8
 Implementação menos avançada de JVM já vista na UnB. Projeto da disciplina de Software Básico 2021/2 - Universidade de Brasília
 
+![Diagrama de Comunicação](./assets/diagram.png)
+
+## Integrantes
+- Gustavo Tomás de Paula
+- Luiz Carlos Schonarth Junior
+- Rafael Henrique Nogalha de Lima
+- Tong Zhou
+
 ## TL;DR
 Compilar: `$ make`  
 Exibidor: `$ ./jvm.exe -r ./examples/<nome_da_classe>.class`  
