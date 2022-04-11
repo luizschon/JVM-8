@@ -54,35 +54,33 @@ void JVMInterpreter::load_classes(class_file *class_f)
     /// Searches super class files until it finds java/lang/Object
     /// Each found method is loaded into method area and
     /// mapped as method_name -> method_info
-    do {
-        class_container class_c;
-        class_c.constant_pool = class_f->constant_pool;
-        
-        for (auto method : class_f->methods)
+    class_container class_c;
+    class_c.constant_pool = class_f->constant_pool;
+    
+    for (auto method : class_f->methods)
+    {
+        string method_name = get_utf8_content(*(to_cp_info(class_f->constant_pool[method.name_idx - 1])->_utf8));
+        class_c.methods[method_name] = method;
+    }
+
+    method_a[super_class] = class_c;
+    super_class = get_name(class_f->constant_pool, class_f->super_class);
+    
+    //! Super class must exist in the examples folder
+    if (super_class != object_class)
+    {
+        string super_class_path = "./examples/" + super_class + ".class";
+        if (!exists(super_class_path))
         {
-            string method_name = get_utf8_content(*(to_cp_info(class_f->constant_pool[method.name_idx - 1])->_utf8));
-            class_c.methods[method_name] = method;
+            cout << "Class File \"" << super_class << "\" not in /examples/ - Aborting" << endl;
+            exit(1);
         }
 
-        method_a[super_class] = class_c;
+        ClassLoader super_class_loader;
+        class_f = super_class_loader.load(super_class_path);
         super_class = get_name(class_f->constant_pool, class_f->super_class);
-        
-        //! Super class must exist in the examples folder
-        if (super_class != object_class)
-        {
-            string super_class_path = "./examples/" + super_class + ".class";
-            if (!exists(super_class_path))
-            {
-                cout << "Class File \"" << super_class << "\" not in /examples/ - Aborting" << endl;
-                exit(1);
-            }
-
-            ClassLoader super_class_loader;
-            class_f = super_class_loader.load(super_class_path);
-            super_class = get_name(class_f->constant_pool, class_f->super_class);
-            load_classes(class_f);
-        }
-    } while (super_class != object_class); 
+        load_classes(class_f);
+    }
 }
 
 /**
