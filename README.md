@@ -17,6 +17,9 @@ Exibidor: `$ ./jvm.exe -r ./examples/<nome_da_classe>.class`
 Interpretador: `$ ./jvm.exe ./examples/<nome_da_classe>.class`  
 Docs: `$ doxygen Doxyfile` (`docs/index.html`)
 
+## Dependências
+Para compilar e rodar o código, é necessário ter o `make` e o `g++ -std=c++11` instalados. Opcionalmente, o `Doxygen` para gerar a documentação. 
+
 ## Compilar
 Para compilar o programa, basta utilizar `$ make` (uma pasta `build` será gerada).
 
