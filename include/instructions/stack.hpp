@@ -1,3 +1,8 @@
+/**
+ * @file stack.hpp
+ * @brief Declaration of the instructions of type stack
+ */
+
 #ifndef _STACK_HPP
 #define _STACK_HPP
 

@@ -88,16 +88,21 @@ $(document).ready(function(){initNavTree('d3/d75/classClassLoader.html','../../'
 </div><!--header-->
 <div class="contents">
 
+<p>The <a class="el" href="../../d3/d75/classClassLoader.html" title="The ClassLoader class structure.">ClassLoader</a> class structure.  
+ <a href="../../d3/d75/classClassLoader.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d5/dac/class__loader_8hpp_source.html">class_loader.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a76586400a86391e8ef249fe533942629"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../dc/d78/structclass__file.html">class_file</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d75/classClassLoader.html#a76586400a86391e8ef249fe533942629">load</a> (string &amp;)</td></tr>
+<tr class="memdesc:a76586400a86391e8ef249fe533942629"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the .class input file and parses it into a <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> object.  <a href="../../d3/d75/classClassLoader.html#a76586400a86391e8ef249fe533942629">More...</a><br /></td></tr>
 <tr class="separator:a76586400a86391e8ef249fe533942629"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d5/dac/class__loader_8hpp_source.html#l00006">6</a> of file <a class="el" href="../../d5/dac/class__loader_8hpp_source.html">class_loader.hpp</a>.</p>
+<div class="textblock"><p >The <a class="el" href="../../d3/d75/classClassLoader.html" title="The ClassLoader class structure.">ClassLoader</a> class structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d5/dac/class__loader_8hpp_source.html#l00014">14</a> of file <a class="el" href="../../d5/dac/class__loader_8hpp_source.html">class_loader.hpp</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a76586400a86391e8ef249fe533942629" name="a76586400a86391e8ef249fe533942629"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76586400a86391e8ef249fe533942629">&#9670;&nbsp;</a></span>load()</h2>
@@ -115,24 +120,32 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d8/d4e/class__loader_8cpp_source.html#l00006">6</a> of file <a class="el" href="../../d8/d4e/class__loader_8cpp_source.html">class_loader.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    7</span>{</div>
-<div class="line"><span class="lineno">    8</span>    <a class="code hl_struct" href="../../dc/d78/structclass__file.html">class_file</a> *class_f = <span class="keyword">new</span> <a class="code hl_typedef" href="../../d0/d8b/class__file_8hpp.html#ad28d48ab3b95f7ac897bb31c90b676cf">class_file</a>;</div>
-<div class="line"><span class="lineno">    9</span>    file = <a class="code hl_function" href="../../df/d93/utils_8hpp.html#af524938aa043dc24631d7b862c98e41f">open_file</a>(filename);</div>
-<div class="line"><span class="lineno">   10</span> </div>
-<div class="line"><span class="lineno">   11</span>    get_metadata(class_f);</div>
-<div class="line"><span class="lineno">   12</span>    get_constant_pool(class_f);</div>
-<div class="line"><span class="lineno">   13</span>    get_class_data(class_f);</div>
-<div class="line"><span class="lineno">   14</span>    get_interfaces(class_f);</div>
-<div class="line"><span class="lineno">   15</span>    get_fields(class_f);</div>
-<div class="line"><span class="lineno">   16</span>    get_methods(class_f);</div>
-<div class="line"><span class="lineno">   17</span>    get_attributes(class_f);</div>
-<div class="line"><span class="lineno">   18</span> </div>
-<div class="line"><span class="lineno">   19</span>    <span class="keywordflow">return</span> class_f;</div>
-<div class="line"><span class="lineno">   20</span>}</div>
-<div class="ttc" id="aclass__file_8hpp_html_ad28d48ab3b95f7ac897bb31c90b676cf"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#ad28d48ab3b95f7ac897bb31c90b676cf">class_file</a></div><div class="ttdeci">struct class_file class_file</div></div>
-<div class="ttc" id="astructclass__file_html"><div class="ttname"><a href="../../dc/d78/structclass__file.html">class_file</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00074">class_file.hpp:74</a></div></div>
-<div class="ttc" id="autils_8hpp_html_af524938aa043dc24631d7b862c98e41f"><div class="ttname"><a href="../../df/d93/utils_8hpp.html#af524938aa043dc24631d7b862c98e41f">open_file</a></div><div class="ttdeci">ifstream open_file(string &amp;filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d06/utils_8cpp_source.html#l00056">utils.cpp:56</a></div></div>
+<p>Loads the .class input file and parses it into a <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the path to the .class file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d8/d4e/class__loader_8cpp_source.html#l00010">10</a> of file <a class="el" href="../../d8/d4e/class__loader_8cpp_source.html">class_loader.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
+<div class="line"><span class="lineno">   12</span>    <a class="code hl_struct" href="../../dc/d78/structclass__file.html">class_file</a> *class_f = <span class="keyword">new</span> <a class="code hl_typedef" href="../../d0/d8b/class__file_8hpp.html#ad28d48ab3b95f7ac897bb31c90b676cf">class_file</a>;</div>
+<div class="line"><span class="lineno">   13</span>    file = <a class="code hl_function" href="../../df/d93/utils_8hpp.html#af524938aa043dc24631d7b862c98e41f">open_file</a>(filename);</div>
+<div class="line"><span class="lineno">   14</span> </div>
+<div class="line"><span class="lineno">   15</span>    get_metadata(class_f);</div>
+<div class="line"><span class="lineno">   16</span>    get_constant_pool(class_f);</div>
+<div class="line"><span class="lineno">   17</span>    get_class_data(class_f);</div>
+<div class="line"><span class="lineno">   18</span>    get_interfaces(class_f);</div>
+<div class="line"><span class="lineno">   19</span>    get_fields(class_f);</div>
+<div class="line"><span class="lineno">   20</span>    get_methods(class_f);</div>
+<div class="line"><span class="lineno">   21</span>    get_attributes(class_f);</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> class_f;</div>
+<div class="line"><span class="lineno">   24</span>}</div>
+<div class="ttc" id="aclass__file_8hpp_html_ad28d48ab3b95f7ac897bb31c90b676cf"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#ad28d48ab3b95f7ac897bb31c90b676cf">class_file</a></div><div class="ttdeci">struct class_file class_file</div><div class="ttdoc">The class file structure. Contains the components of a class.</div></div>
+<div class="ttc" id="astructclass__file_html"><div class="ttname"><a href="../../dc/d78/structclass__file.html">class_file</a></div><div class="ttdoc">The class file structure. Contains the components of a class.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00088">class_file.hpp:88</a></div></div>
+<div class="ttc" id="autils_8hpp_html_af524938aa043dc24631d7b862c98e41f"><div class="ttname"><a href="../../df/d93/utils_8hpp.html#af524938aa043dc24631d7b862c98e41f">open_file</a></div><div class="ttdeci">ifstream open_file(string &amp;filename)</div><div class="ttdoc">Creates a file descriptor.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d06/utils_8cpp_source.html#l00075">utils.cpp:75</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

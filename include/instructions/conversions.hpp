@@ -1,3 +1,8 @@
+/**
+ * @file conversions.hpp
+ * @brief Declaration of the instructions of type conversions
+ */
+
 #ifndef CONVERSIONS_HPP
 #define CONVERSIONS_HPP
 

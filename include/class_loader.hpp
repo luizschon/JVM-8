@@ -1,8 +1,16 @@
+/**
+ * @file class_loader.hpp
+ * @brief Declaration of the class loader class
+ */
+
 #ifndef _CLASS_LOADER_HPP
 #define _CLASS_LOADER_HPP
 
 #include "class_file.hpp"
 
+/**
+ * @brief The ClassLoader class structure
+ */
 class ClassLoader {
 private:
     ifstream file;

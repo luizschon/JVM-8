@@ -1,3 +1,8 @@
+/**
+ * @file method_area.hpp
+ * @brief Declaration of method area structures and mapping
+ */
+
 #ifndef _METHOD_AREA_HPP
 #define _METHOD_AREA_HPP
 
@@ -8,15 +13,8 @@
  * @brief A class container with constant pool, method data, attributes and constructor code
  */
 typedef struct class_container {
-    // pool_constantes;
     cp_info_vector constant_pool;
-    
-    // atributos_metodos;
-    // dados_dos_metodos;
-    //! Maps the name of the methods to their info
     map<string, method_info> methods;
-
-    // codigo_de_construtores;
 } class_container;
 
 /**

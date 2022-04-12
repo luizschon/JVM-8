@@ -1,3 +1,8 @@
+/**
+ * @file reserved.hpp
+ * @brief Declaration of the instructions of type reserved
+ */
+
 #ifndef _RESERVED_HPP
 #define _RESERVED_HPP
 

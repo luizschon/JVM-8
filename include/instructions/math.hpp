@@ -1,3 +1,8 @@
+/**
+ * @file math.hpp
+ * @brief Declaration of the instructions of type math
+ */
+
 #ifndef _MATH_HPP
 #define _MATH_HPP
 

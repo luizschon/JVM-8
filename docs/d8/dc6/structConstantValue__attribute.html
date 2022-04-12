@@ -89,13 +89,18 @@ $(document).ready(function(){initNavTree('d8/dc6/structConstantValue__attribute.
 </div><!--header-->
 <div class="contents">
 
+<p>The constant value attribute structure.  
+ <a href="../../d8/dc6/structConstantValue__attribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae02c5a9afbc881cc61b58afaf070246d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc6/structConstantValue__attribute.html#ae02c5a9afbc881cc61b58afaf070246d">ConstantValue_attribute</a> (ifstream &amp;, <a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:ae02c5a9afbc881cc61b58afaf070246d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d8/dc6/structConstantValue__attribute.html#ae02c5a9afbc881cc61b58afaf070246d" title="Construct a new ConstantValue_attribute::ConstantValue_attribute object.">ConstantValue_attribute::ConstantValue_attribute</a> object.  <a href="../../d8/dc6/structConstantValue__attribute.html#ae02c5a9afbc881cc61b58afaf070246d">More...</a><br /></td></tr>
 <tr class="separator:ae02c5a9afbc881cc61b58afaf070246d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af08015d92bfaaa44a59102f3a5498046"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc6/structConstantValue__attribute.html#af08015d92bfaaa44a59102f3a5498046">dump_to_file</a> (<a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:af08015d92bfaaa44a59102f3a5498046"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dumps ConstantValue info into the outfile.  <a href="../../d8/dc6/structConstantValue__attribute.html#af08015d92bfaaa44a59102f3a5498046">More...</a><br /></td></tr>
 <tr class="separator:af08015d92bfaaa44a59102f3a5498046"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -104,8 +109,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a812157e7121906faf8018ce066d1ea27"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00049">49</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<div class="textblock"><p >The constant value attribute structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00066">66</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ae02c5a9afbc881cc61b58afaf070246d" name="ae02c5a9afbc881cc61b58afaf070246d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae02c5a9afbc881cc61b58afaf070246d">&#9670;&nbsp;</a></span>ConstantValue_attribute()</h2>
@@ -133,11 +139,20 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00124">124</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  125</span>{</div>
-<div class="line"><span class="lineno">  126</span>    <a class="code hl_variable" href="../../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27">constantvalue_index</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  127</span>}</div>
-<div class="ttc" id="astructConstantValue__attribute_html_a812157e7121906faf8018ce066d1ea27"><div class="ttname"><a href="../../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27">ConstantValue_attribute::constantvalue_index</a></div><div class="ttdeci">u2 constantvalue_index</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00051">attributes.hpp:51</a></div></div>
+<p>Construct a new <a class="el" href="../../d8/dc6/structConstantValue__attribute.html#ae02c5a9afbc881cc61b58afaf070246d" title="Construct a new ConstantValue_attribute::ConstantValue_attribute object.">ConstantValue_attribute::ConstantValue_attribute</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the class file </td></tr>
+    <tr><td class="paramname">constant_pool</td><td>the class file constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00155">155</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  156</span>{</div>
+<div class="line"><span class="lineno">  157</span>    <a class="code hl_variable" href="../../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27">constantvalue_index</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  158</span>}</div>
+<div class="ttc" id="astructConstantValue__attribute_html_a812157e7121906faf8018ce066d1ea27"><div class="ttname"><a href="../../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27">ConstantValue_attribute::constantvalue_index</a></div><div class="ttdeci">u2 constantvalue_index</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00068">attributes.hpp:68</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -158,11 +173,19 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00129">129</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  130</span>{</div>
-<div class="line"><span class="lineno">  131</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Constant value index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27">constantvalue_index</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  132</span>}</div>
-<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
+<p>Dumps ConstantValue info into the outfile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constant_pool</td><td>the class constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00164">164</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  165</span>{</div>
+<div class="line"><span class="lineno">  166</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Constant value index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27">constantvalue_index</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  167</span>}</div>
+<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -179,7 +202,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>

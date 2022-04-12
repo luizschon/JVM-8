@@ -4,7 +4,7 @@
 #include <iostream>
 
 /**
- * @brief Construct a new frame t::frame t object
+ * @brief Construct a new frame_t object
  * @param constant_pool the reference to the runtime constant pool
  */
 frame_t::frame_t(cp_info_vector* constant_pool)
@@ -12,7 +12,6 @@ frame_t::frame_t(cp_info_vector* constant_pool)
     run_time_constant_pool = constant_pool;
 }
 
-/// TODO: finish execute logic
 /**
  * @brief Executes frame with given method 
  * @param method the method of the frame
@@ -46,7 +45,11 @@ void frame_t::execute_frame(method_info method, stack<frame_t> *stack_f)
         }
     }
 }
-
+/**
+ * @brief Function that inserts a value into the local_variable_vector of the frame
+ * @param index index of the local_variable_vector to insert the value to
+ * @param value a reference to a operand_t instance
+ */
 void frame_t::insert_into_local(u4 index, operand_t &value)
 {
     while (local_variables_array.size() < index)

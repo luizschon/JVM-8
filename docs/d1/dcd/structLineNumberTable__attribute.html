@@ -90,6 +90,9 @@ $(document).ready(function(){initNavTree('d1/dcd/structLineNumberTable__attribut
 </div><!--header-->
 <div class="contents">
 
+<p>The line number table attribute.  
+ <a href="../../d1/dcd/structLineNumberTable__attribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
@@ -100,8 +103,10 @@ Data Structures</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aacda2ed80aa5f48df857662796f06a7b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dcd/structLineNumberTable__attribute.html#aacda2ed80aa5f48df857662796f06a7b">LineNumberTable_attribute</a> (ifstream &amp;, <a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:aacda2ed80aa5f48df857662796f06a7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d1/dcd/structLineNumberTable__attribute.html#aacda2ed80aa5f48df857662796f06a7b" title="Construct a new LineNumberTable_attribute::LineNumberTable_attribute object.">LineNumberTable_attribute::LineNumberTable_attribute</a> object.  <a href="../../d1/dcd/structLineNumberTable__attribute.html#aacda2ed80aa5f48df857662796f06a7b">More...</a><br /></td></tr>
 <tr class="separator:aacda2ed80aa5f48df857662796f06a7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a164ba8ad12075f6bb327aec96faa56b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dcd/structLineNumberTable__attribute.html#a164ba8ad12075f6bb327aec96faa56b3">dump_to_file</a> (<a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:a164ba8ad12075f6bb327aec96faa56b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dumps to file <a class="el" href="../../d1/dcd/structLineNumberTable__attribute.html" title="The line number table attribute.">LineNumberTable_attribute</a>::  <a href="../../d1/dcd/structLineNumberTable__attribute.html#a164ba8ad12075f6bb327aec96faa56b3">More...</a><br /></td></tr>
 <tr class="separator:a164ba8ad12075f6bb327aec96faa56b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -116,8 +121,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a9059aa4c09a46684a0c7a5bdff44b012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00068">68</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<div class="textblock"><p >The line number table attribute. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00091">91</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="aacda2ed80aa5f48df857662796f06a7b" name="aacda2ed80aa5f48df857662796f06a7b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aacda2ed80aa5f48df857662796f06a7b">&#9670;&nbsp;</a></span>LineNumberTable_attribute()</h2>
@@ -145,20 +151,29 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00191">191</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  192</span>{</div>
-<div class="line"><span class="lineno">  193</span>    <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">line_number_table_length</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  194</span> </div>
-<div class="line"><span class="lineno">  195</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">line_number_table_length</a>; i++)</div>
-<div class="line"><span class="lineno">  196</span>    {</div>
-<div class="line"><span class="lineno">  197</span>        line_num_table_item item;</div>
-<div class="line"><span class="lineno">  198</span>        item.start_pc = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  199</span>        item.line_number = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  200</span>        <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a9059aa4c09a46684a0c7a5bdff44b012">line_number_table</a>.push_back(item);</div>
-<div class="line"><span class="lineno">  201</span>    }</div>
-<div class="line"><span class="lineno">  202</span>}</div>
-<div class="ttc" id="astructLineNumberTable__attribute_html_a758c7ed4a08f1398c0ab0966ea59d7d4"><div class="ttname"><a href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">LineNumberTable_attribute::line_number_table_length</a></div><div class="ttdeci">u2 line_number_table_length</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00072">attributes.hpp:72</a></div></div>
-<div class="ttc" id="astructLineNumberTable__attribute_html_a9059aa4c09a46684a0c7a5bdff44b012"><div class="ttname"><a href="../../d1/dcd/structLineNumberTable__attribute.html#a9059aa4c09a46684a0c7a5bdff44b012">LineNumberTable_attribute::line_number_table</a></div><div class="ttdeci">vector&lt; line_num_table_item &gt; line_number_table</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00077">attributes.hpp:77</a></div></div>
+<p>Construct a new <a class="el" href="../../d1/dcd/structLineNumberTable__attribute.html#aacda2ed80aa5f48df857662796f06a7b" title="Construct a new LineNumberTable_attribute::LineNumberTable_attribute object.">LineNumberTable_attribute::LineNumberTable_attribute</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the class file </td></tr>
+    <tr><td class="paramname">constant_pool</td><td>the class constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00240">240</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  241</span>{</div>
+<div class="line"><span class="lineno">  242</span>    <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">line_number_table_length</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">line_number_table_length</a>; i++)</div>
+<div class="line"><span class="lineno">  245</span>    {</div>
+<div class="line"><span class="lineno">  246</span>        line_num_table_item item;</div>
+<div class="line"><span class="lineno">  247</span>        item.start_pc = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  248</span>        item.line_number = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  249</span>        <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a9059aa4c09a46684a0c7a5bdff44b012">line_number_table</a>.push_back(item);</div>
+<div class="line"><span class="lineno">  250</span>    }</div>
+<div class="line"><span class="lineno">  251</span>}</div>
+<div class="ttc" id="astructLineNumberTable__attribute_html_a758c7ed4a08f1398c0ab0966ea59d7d4"><div class="ttname"><a href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">LineNumberTable_attribute::line_number_table_length</a></div><div class="ttdeci">u2 line_number_table_length</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00095">attributes.hpp:95</a></div></div>
+<div class="ttc" id="astructLineNumberTable__attribute_html_a9059aa4c09a46684a0c7a5bdff44b012"><div class="ttname"><a href="../../d1/dcd/structLineNumberTable__attribute.html#a9059aa4c09a46684a0c7a5bdff44b012">LineNumberTable_attribute::line_number_table</a></div><div class="ttdeci">vector&lt; line_num_table_item &gt; line_number_table</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00100">attributes.hpp:100</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -179,21 +194,29 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00204">204</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  205</span>{</div>
-<div class="line"><span class="lineno">  206</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Line number table length `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">line_number_table_length</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  207</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;| Number | Start PC | Line Number |  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  208</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|--------|----------|-------------|  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  209</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> counter = 0;</div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> line_number_table_item : <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a9059aa4c09a46684a0c7a5bdff44b012">line_number_table</a>)</div>
-<div class="line"><span class="lineno">  211</span>    {</div>
-<div class="line"><span class="lineno">  212</span>        <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|&quot;</span> &lt;&lt; setw(8) &lt;&lt; setfill(<span class="charliteral">&#39; &#39;</span>) &lt;&lt; counter++;</div>
-<div class="line"><span class="lineno">  213</span>        <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|&quot;</span> &lt;&lt; setw(10) &lt;&lt; setfill(<span class="charliteral">&#39; &#39;</span>) &lt;&lt; line_number_table_item.start_pc;</div>
-<div class="line"><span class="lineno">  214</span>        <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|&quot;</span> &lt;&lt; setw(13) &lt;&lt; setfill(<span class="charliteral">&#39; &#39;</span>) &lt;&lt; line_number_table_item.line_number &lt;&lt; <span class="stringliteral">&quot;|  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  215</span>    }</div>
-<div class="line"><span class="lineno">  216</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  217</span>}</div>
-<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
+<p>Dumps to file <a class="el" href="../../d1/dcd/structLineNumberTable__attribute.html" title="The line number table attribute.">LineNumberTable_attribute</a>:: </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constant_pool</td><td>the class constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00257">257</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  258</span>{</div>
+<div class="line"><span class="lineno">  259</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Line number table length `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a758c7ed4a08f1398c0ab0966ea59d7d4">line_number_table_length</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;| Number | Start PC | Line Number |  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  261</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|--------|----------|-------------|  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  262</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> counter = 0;</div>
+<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> line_number_table_item : <a class="code hl_variable" href="../../d1/dcd/structLineNumberTable__attribute.html#a9059aa4c09a46684a0c7a5bdff44b012">line_number_table</a>)</div>
+<div class="line"><span class="lineno">  264</span>    {</div>
+<div class="line"><span class="lineno">  265</span>        <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|&quot;</span> &lt;&lt; setw(8) &lt;&lt; setfill(<span class="charliteral">&#39; &#39;</span>) &lt;&lt; counter++;</div>
+<div class="line"><span class="lineno">  266</span>        <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|&quot;</span> &lt;&lt; setw(10) &lt;&lt; setfill(<span class="charliteral">&#39; &#39;</span>) &lt;&lt; line_number_table_item.start_pc;</div>
+<div class="line"><span class="lineno">  267</span>        <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;|&quot;</span> &lt;&lt; setw(13) &lt;&lt; setfill(<span class="charliteral">&#39; &#39;</span>) &lt;&lt; line_number_table_item.line_number &lt;&lt; <span class="stringliteral">&quot;|  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  268</span>    }</div>
+<div class="line"><span class="lineno">  269</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  270</span>}</div>
+<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -210,7 +233,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00071">71</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00094">94</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>
@@ -226,7 +249,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00070">70</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00093">93</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>
@@ -242,7 +265,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00077">77</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>
@@ -258,7 +281,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00072">72</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00095">95</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>

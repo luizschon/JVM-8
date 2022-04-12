@@ -1,3 +1,8 @@
+/**
+ * @file references.hpp
+ * @brief Declaration of the instructions of type reference
+ */
+
 #ifndef REFERENCES_HPP
 #define REFERENCES_HPP
 

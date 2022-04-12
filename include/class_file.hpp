@@ -1,3 +1,8 @@
+/**
+ * @file class_file.hpp
+ * @brief Declaration of the class file structure, as well as methods, fields and classes access flags
+ */
+
 #ifndef _CLASS_FILE_HPP
 #define _CLASS_FILE_HPP
 
@@ -5,7 +10,7 @@
 
 using namespace std;
 
-// Class Access Flags
+//! Class Access Flags
 #define ACC_PUBLIC     0x0001 // Declared public; may be accessed from outside its package
 #define ACC_FINAL      0x0010 // Declared final; no subclasses allowed.
 #define ACC_SUPER      0x0020 // Treat superclass methods specially when invoked by the invokespecial instruction.
@@ -15,7 +20,7 @@ using namespace std;
 #define ACC_ANNOTATION 0x2000 // Declared as an annotation type.
 #define ACC_ENUM       0x4000 // Declared as an enum type.
 
-// Field Access and property flags
+//! Field Access and property flags
 #define ACC_PUBLIC    0x0001 // Declared public; may be accessed from outside its package.
 #define ACC_PRIVATE   0x0002 // Declared private; usable only within the defining class.
 #define ACC_PROTECTED 0x0004 // Declared protected; may be accessed within Subclasses.
@@ -26,7 +31,7 @@ using namespace std;
 #define ACC_SYNTHETIC 0x1000 // Declared synthetic; not present in the source code.
 #define ACC_ENUM      0x4000 // Declared as an element of an enum.
 
-// Method Access and Property Flags
+//! Method Access and Property Flags
 #define ACC_PUBLIC        0x0001 // Declared public; may be accessed from outside its package.
 #define ACC_PRIVATE       0x0002 // Declared private; accessible only within the defining class.
 #define ACC_PROTECTED     0x0004 // Declared protected; may be accessed withinsubclasses.
@@ -40,7 +45,9 @@ using namespace std;
 #define ACC_STRICT        0x0800 // Declared strictfp; floating-point mode is FP-strict.
 #define ACC_SYNTHETIC     0x1000 // Declared synthetic; not present in the source code.
 
-// Attributes Info Structure
+/**
+ * @brief Attribute info structure. Contains values related to an attribute
+ */
 typedef struct attr_info {
     attr_info(ifstream &file);
     attr_info(bytestream_it &iterator);
@@ -49,7 +56,10 @@ typedef struct attr_info {
     vector<u1> info;
 } attr_info;
 
-// Field Info Structure
+/**
+ * @brief The field info structure. Contains values related to a class field.
+ * 
+ */
 typedef struct field_info {
     field_info(ifstream&, cp_info_vector&);
     u2 access_flags;
@@ -59,9 +69,11 @@ typedef struct field_info {
     attr_info_vector attr;
 } field_info;
 
-// Method Info Structure
+/**
+ * @brief The method info structure. Contains values related to a method;
+ */
 typedef struct method_info {
-    method_info() = default; // talvez precise mudar depois
+    method_info() = default;
     method_info(ifstream&, cp_info_vector&);
     u2 access_flags;
     u2 name_idx;
@@ -70,7 +82,9 @@ typedef struct method_info {
     attr_info_vector attr;
 } method_info;
 
-// The Class File Structure
+/**
+ * @brief The class file structure. Contains the components of a class.
+ */
 typedef struct class_file {
     u4 magic;
     u2 minor_version;

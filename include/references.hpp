@@ -1,3 +1,8 @@
+/**
+ * @file references.hpp
+ * @brief Declaration of arraytype and reference type objects
+ */
+
 #ifndef _REFERENCES_HPP
 #define _REFERENCES_HPP
 

@@ -1,3 +1,8 @@
+/**
+ * @file cmd_arguments.hpp
+ * @brief Implementation of command line reader
+ */
+
 #ifndef _CMD_ARGUMENTS_HPP
 #define _CMD_ARGUMENTS_HPP
 
@@ -6,8 +11,7 @@
 using namespace std;
 
 /**
- * @brief Auxiliary class to read and format input file
- * 
+ * @brief Auxiliary class to read and format command-line options
  */
 class CmdArgs 
 {
@@ -21,6 +25,11 @@ public:
     string filename = "";
     bool read_bytecode = false;
 
+    /**
+     * @brief Function that initiates the parsing of the command-line arguments vector
+     * @param argc command-line arguments count
+     * @param argv command-line arguments vector
+     */
     void init(int argc, char** argv) {
         try
         {
@@ -33,6 +42,12 @@ public:
         }
     }
 
+    /**
+     * @brief Parses arguments vector and throws exception if not enough arguments are provided
+     * @param argc command-line arguments count
+     * @param argv command-line arguments vector
+     * @throw wrong number of arguments
+     */
     void read_args(int argc, char** argv) 
     {
         string temp_str = "";

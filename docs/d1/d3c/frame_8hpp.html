@@ -88,6 +88,9 @@ $(document).ready(function(){initNavTree('d1/d3c/frame_8hpp.html','../../'); ini
   <div class="headertitle"><div class="title">frame.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Declaration of frame and auxiliary structures.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../dd/de3/types_8hpp_source.html">types.hpp</a>&quot;</code><br />
 <code>#include &lt;cstddef&gt;</code><br />
@@ -117,7 +120,11 @@ Typedefs</h2></td></tr>
 <tr class="memdesc:a6f6f2252656d030dcf7f61e3b82d2e8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">A frame with local variables array, operand stack and reference to run-time constant pool.  <a href="../../d1/d3c/frame_8hpp.html#a6f6f2252656d030dcf7f61e3b82d2e8c">More...</a><br /></td></tr>
 <tr class="separator:a6f6f2252656d030dcf7f61e3b82d2e8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Declaration of frame and auxiliary structures. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../d1/d3c/frame_8hpp_source.html">frame.hpp</a>.</p>
+</div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a6f6f2252656d030dcf7f61e3b82d2e8c" name="a6f6f2252656d030dcf7f61e3b82d2e8c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6f6f2252656d030dcf7f61e3b82d2e8c">&#9670;&nbsp;</a></span>frame_t</h2>
 
@@ -145,7 +152,7 @@ Typedefs</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p >The type of a local variable can be boolean, byte, char, short, int, float, long, double, reference or returnAddress </p>
+<p >A single local variable can hold a value of type boolean, byte, char, short, int, float, reference, or returnAddress. A pair of local variables can hold a value of type long or double. </p>
 
 </div>
 </div>

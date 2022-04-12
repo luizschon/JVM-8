@@ -89,13 +89,18 @@ $(document).ready(function(){initNavTree('de/df3/structattr__info.html','../../'
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="../../de/d9d/classAttribute.html" title="The general format of an attribute.">Attribute</a> info structure. Contains values related to an attribute.  
+ <a href="../../de/df3/structattr__info.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a53514349354019c650494a7a0d8a51f0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df3/structattr__info.html#a53514349354019c650494a7a0d8a51f0">attr_info</a> (ifstream &amp;file)</td></tr>
+<tr class="memdesc:a53514349354019c650494a7a0d8a51f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../de/df3/structattr__info.html" title="Attribute info structure. Contains values related to an attribute.">attr_info</a> object.  <a href="../../de/df3/structattr__info.html#a53514349354019c650494a7a0d8a51f0">More...</a><br /></td></tr>
 <tr class="separator:a53514349354019c650494a7a0d8a51f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e84b542fa9f6a06fe61f86bf4810f46"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df3/structattr__info.html#a7e84b542fa9f6a06fe61f86bf4810f46">attr_info</a> (<a class="el" href="../../dd/de3/types_8hpp.html#a11af69373a3136d304605417f23e959a">bytestream_it</a> &amp;iterator)</td></tr>
+<tr class="memdesc:a7e84b542fa9f6a06fe61f86bf4810f46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../de/df3/structattr__info.html" title="Attribute info structure. Contains values related to an attribute.">attr_info</a> object.  <a href="../../de/df3/structattr__info.html#a7e84b542fa9f6a06fe61f86bf4810f46">More...</a><br /></td></tr>
 <tr class="separator:a7e84b542fa9f6a06fe61f86bf4810f46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -108,8 +113,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:aa98393bc72af24ac1459a712550f5cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00044">44</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
+<div class="textblock"><p ><a class="el" href="../../de/d9d/classAttribute.html" title="The general format of an attribute.">Attribute</a> info structure. Contains values related to an attribute. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00051">51</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a53514349354019c650494a7a0d8a51f0" name="a53514349354019c650494a7a0d8a51f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a53514349354019c650494a7a0d8a51f0">&#9670;&nbsp;</a></span>attr_info() <span class="overload">[1/2]</span></h2>
@@ -127,17 +133,25 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d11/class__file_8cpp_source.html#l00008">8</a> of file <a class="el" href="../../d1/d11/class__file_8cpp_source.html">class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
-<div class="line"><span class="lineno">   10</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa2e8434c97e1b900ff9331f64b12b567">attr_name_idx</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">   11</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a> = read_bytes&lt;u4&gt;(file);</div>
-<div class="line"><span class="lineno">   12</span> </div>
-<div class="line"><span class="lineno">   13</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a>; i++) </div>
-<div class="line"><span class="lineno">   14</span>        <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa98393bc72af24ac1459a712550f5cbb">info</a>.push_back(read_bytes&lt;u1&gt;(file));</div>
-<div class="line"><span class="lineno">   15</span>}</div>
-<div class="ttc" id="astructattr__info_html_a758ebc1cc146bebea47d8f23f66094a2"><div class="ttname"><a href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_info::attr_length</a></div><div class="ttdeci">u4 attr_length</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00048">class_file.hpp:48</a></div></div>
-<div class="ttc" id="astructattr__info_html_aa2e8434c97e1b900ff9331f64b12b567"><div class="ttname"><a href="../../de/df3/structattr__info.html#aa2e8434c97e1b900ff9331f64b12b567">attr_info::attr_name_idx</a></div><div class="ttdeci">u2 attr_name_idx</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00047">class_file.hpp:47</a></div></div>
-<div class="ttc" id="astructattr__info_html_aa98393bc72af24ac1459a712550f5cbb"><div class="ttname"><a href="../../de/df3/structattr__info.html#aa98393bc72af24ac1459a712550f5cbb">attr_info::info</a></div><div class="ttdeci">vector&lt; u1 &gt; info</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00049">class_file.hpp:49</a></div></div>
+<p>Construct a new <a class="el" href="../../de/df3/structattr__info.html" title="Attribute info structure. Contains values related to an attribute.">attr_info</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the input .class file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d11/class__file_8cpp_source.html#l00012">12</a> of file <a class="el" href="../../d1/d11/class__file_8cpp_source.html">class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   13</span>{</div>
+<div class="line"><span class="lineno">   14</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa2e8434c97e1b900ff9331f64b12b567">attr_name_idx</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">   15</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a> = read_bytes&lt;u4&gt;(file);</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a>; i++) </div>
+<div class="line"><span class="lineno">   18</span>        <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa98393bc72af24ac1459a712550f5cbb">info</a>.push_back(read_bytes&lt;u1&gt;(file));</div>
+<div class="line"><span class="lineno">   19</span>}</div>
+<div class="ttc" id="astructattr__info_html_a758ebc1cc146bebea47d8f23f66094a2"><div class="ttname"><a href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_info::attr_length</a></div><div class="ttdeci">u4 attr_length</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00055">class_file.hpp:55</a></div></div>
+<div class="ttc" id="astructattr__info_html_aa2e8434c97e1b900ff9331f64b12b567"><div class="ttname"><a href="../../de/df3/structattr__info.html#aa2e8434c97e1b900ff9331f64b12b567">attr_info::attr_name_idx</a></div><div class="ttdeci">u2 attr_name_idx</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00054">class_file.hpp:54</a></div></div>
+<div class="ttc" id="astructattr__info_html_aa98393bc72af24ac1459a712550f5cbb"><div class="ttname"><a href="../../de/df3/structattr__info.html#aa98393bc72af24ac1459a712550f5cbb">attr_info::info</a></div><div class="ttdeci">vector&lt; u1 &gt; info</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00056">class_file.hpp:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -157,13 +171,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d1/d11/class__file_8cpp_source.html#l00017">17</a> of file <a class="el" href="../../d1/d11/class__file_8cpp_source.html">class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   18</span>{</div>
-<div class="line"><span class="lineno">   19</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa2e8434c97e1b900ff9331f64b12b567">attr_name_idx</a> = get_bytes&lt;u2&gt;(iterator);</div>
-<div class="line"><span class="lineno">   20</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a> = get_bytes&lt;u4&gt;(iterator);</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a>; i++)</div>
-<div class="line"><span class="lineno">   22</span>        <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa98393bc72af24ac1459a712550f5cbb">info</a>.push_back(get_bytes&lt;u1&gt;(iterator));</div>
-<div class="line"><span class="lineno">   23</span>}</div>
+<p>Construct a new <a class="el" href="../../de/df3/structattr__info.html" title="Attribute info structure. Contains values related to an attribute.">attr_info</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">iterator</td><td>the iterator of a byte vector (bytestream) </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d1/d11/class__file_8cpp_source.html#l00025">25</a> of file <a class="el" href="../../d1/d11/class__file_8cpp_source.html">class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   26</span>{</div>
+<div class="line"><span class="lineno">   27</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa2e8434c97e1b900ff9331f64b12b567">attr_name_idx</a> = get_bytes&lt;u2&gt;(iterator);</div>
+<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a> = get_bytes&lt;u4&gt;(iterator);</div>
+<div class="line"><span class="lineno">   29</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../de/df3/structattr__info.html#a758ebc1cc146bebea47d8f23f66094a2">attr_length</a>; i++)</div>
+<div class="line"><span class="lineno">   30</span>        <a class="code hl_variable" href="../../de/df3/structattr__info.html#aa98393bc72af24ac1459a712550f5cbb">info</a>.push_back(get_bytes&lt;u1&gt;(iterator));</div>
+<div class="line"><span class="lineno">   31</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -180,7 +202,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00048">48</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00055">55</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
 
 </div>
 </div>
@@ -196,7 +218,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00047">47</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00054">54</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
 
 </div>
 </div>
@@ -212,7 +234,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00049">49</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d0/d8b/class__file_8hpp_source.html#l00056">56</a> of file <a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>.</p>
 
 </div>
 </div>

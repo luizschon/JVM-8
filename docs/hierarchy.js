@@ -30,27 +30,17 @@ var hierarchy =
     [ "CP_Item", "de/d2f/classCP__Item.html", [
       [ "CP_Info", "dd/d6d/classCP__Info.html", null ]
     ] ],
-    [ "Double_variable_info", "d8/dbc/structDouble__variable__info.html", null ],
     [ "Exception_attribute", "d6/dce/structException__attribute.html", null ],
     [ "exception_table_info", "d2/dee/structexception__table__info.html", null ],
     [ "field_info", "d5/df4/structfield__info.html", null ],
-    [ "Float_variable_info", "d0/df4/structFloat__variable__info.html", null ],
     [ "frame_t", "d8/df2/structframe__t.html", null ],
-    [ "Integer_variable_info", "df/dc2/structInteger__variable__info.html", null ],
     [ "JVMInterpreter", "df/dcb/classJVMInterpreter.html", null ],
     [ "LineNumberTable_attribute::line_num_table_item", "da/d5c/structLineNumberTable__attribute_1_1line__num__table__item.html", null ],
     [ "LineNumberTable_attribute", "d1/dcd/structLineNumberTable__attribute.html", null ],
-    [ "Long_variable_info", "d7/d75/structLong__variable__info.html", null ],
     [ "method_info", "dd/d05/structmethod__info.html", null ],
     [ "Nibble", "d3/d1d/unionNibble.html", null ],
-    [ "Null_variable_info", "de/df7/structNull__variable__info.html", null ],
-    [ "Object_variable_info", "dd/d87/structObject__variable__info.html", null ],
     [ "operand_t", "dd/d8c/structoperand__t.html", null ],
     [ "reference", "db/d7f/structreference.html", null ],
     [ "SourceFile_attribute", "df/d1f/structSourceFile__attribute.html", null ],
-    [ "Top_variable_info", "dd/dc2/structTop__variable__info.html", null ],
-    [ "Uninitialized_variable_info", "d0/dc3/structUninitialized__variable__info.html", null ],
-    [ "UninitializedThis_variable_info", "df/d9b/structUninitializedThis__variable__info.html", null ],
-    [ "Unknown_attribute", "d2/d8d/structUnknown__attribute.html", null ],
-    [ "verification_type_info", "d3/d40/unionverification__type__info.html", null ]
+    [ "Unknown_attribute", "d2/d8d/structUnknown__attribute.html", null ]
 ];

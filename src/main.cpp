@@ -4,10 +4,9 @@ using namespace std;
 
 /**
  * @brief Entry point of the JVM
- * 
  * @param argc number of args
- * @param argv vector of args
- * @return int 
+ * @param argv vector of args (the .class file)
+ * @return the status of the execution 
  */
 int main(int argc, char** argv) 
 {

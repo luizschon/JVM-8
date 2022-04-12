@@ -1,3 +1,8 @@
+/**
+ * @file stores.hpp
+ * @brief Declaration of the instructions of type store
+ */
+
 #ifndef _STORES_HPP
 #define _STORES_HPP
 

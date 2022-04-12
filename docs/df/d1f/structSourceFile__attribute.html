@@ -89,13 +89,18 @@ $(document).ready(function(){initNavTree('df/d1f/structSourceFile__attribute.htm
 </div><!--header-->
 <div class="contents">
 
+<p>The source file attribute structure.  
+ <a href="../../df/d1f/structSourceFile__attribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a40193d7084d16bec34ce18588aec6393"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d1f/structSourceFile__attribute.html#a40193d7084d16bec34ce18588aec6393">SourceFile_attribute</a> (ifstream &amp;, <a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:a40193d7084d16bec34ce18588aec6393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../df/d1f/structSourceFile__attribute.html#a40193d7084d16bec34ce18588aec6393" title="Construct a new SourceFile_attribute::SourceFile_attribute object.">SourceFile_attribute::SourceFile_attribute</a> object.  <a href="../../df/d1f/structSourceFile__attribute.html#a40193d7084d16bec34ce18588aec6393">More...</a><br /></td></tr>
 <tr class="separator:a40193d7084d16bec34ce18588aec6393"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf72744288005d7c06002c07cde2fd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/d1f/structSourceFile__attribute.html#aebf72744288005d7c06002c07cde2fd1">dump_to_file</a> (<a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:aebf72744288005d7c06002c07cde2fd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump SourceFile info into outfile.  <a href="../../df/d1f/structSourceFile__attribute.html#aebf72744288005d7c06002c07cde2fd1">More...</a><br /></td></tr>
 <tr class="separator:aebf72744288005d7c06002c07cde2fd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -104,8 +109,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a13cba4fc8896792aad81ab821c3244ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00100">100</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<div class="textblock"><p >The source file attribute structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00127">127</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a40193d7084d16bec34ce18588aec6393" name="a40193d7084d16bec34ce18588aec6393"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a40193d7084d16bec34ce18588aec6393">&#9670;&nbsp;</a></span>SourceFile_attribute()</h2>
@@ -133,11 +139,20 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00247">247</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  248</span>{</div>
-<div class="line"><span class="lineno">  249</span>    <a class="code hl_variable" href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">sourcefile_index</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  250</span>}</div>
-<div class="ttc" id="astructSourceFile__attribute_html_a13cba4fc8896792aad81ab821c3244ca"><div class="ttname"><a href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">SourceFile_attribute::sourcefile_index</a></div><div class="ttdeci">u2 sourcefile_index</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00102">attributes.hpp:102</a></div></div>
+<p>Construct a new <a class="el" href="../../df/d1f/structSourceFile__attribute.html#a40193d7084d16bec34ce18588aec6393" title="Construct a new SourceFile_attribute::SourceFile_attribute object.">SourceFile_attribute::SourceFile_attribute</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the class file </td></tr>
+    <tr><td class="paramname">constant_pool</td><td>the class file constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00323">323</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  324</span>{</div>
+<div class="line"><span class="lineno">  325</span>    <a class="code hl_variable" href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">sourcefile_index</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  326</span>}</div>
+<div class="ttc" id="astructSourceFile__attribute_html_a13cba4fc8896792aad81ab821c3244ca"><div class="ttname"><a href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">SourceFile_attribute::sourcefile_index</a></div><div class="ttdeci">u2 sourcefile_index</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00129">attributes.hpp:129</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -158,15 +173,23 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00252">252</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  253</span>{</div>
-<div class="line"><span class="lineno">  254</span>    <span class="keyword">auto</span> sourcefile_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[<a class="code hl_variable" href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">sourcefile_index</a> - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">  255</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Source file name index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">sourcefile_index</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span>;</div>
-<div class="line"><span class="lineno">  256</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot; `&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../de/d99/dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(sourcefile_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  257</span>}</div>
-<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
-<div class="ttc" id="adump__class__file_8hpp_html_ace07e54f02a2b253a4a84f69b27b093c"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a></div><div class="ttdeci">string get_utf8_content(CONSTANT_utf8_info &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00223">dump_class_file.cpp:223</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_abb7ea1d3958d89b769f958f0b7ff4106"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a></div><div class="ttdeci">#define to_cp_info</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00007">types.hpp:7</a></div></div>
+<p>Dump SourceFile info into outfile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constant_pool</td><td>the class file constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00332">332</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  333</span>{</div>
+<div class="line"><span class="lineno">  334</span>    <span class="keyword">auto</span> sourcefile_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(constant_pool[<a class="code hl_variable" href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">sourcefile_index</a> - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  335</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Source file name index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../df/d1f/structSourceFile__attribute.html#a13cba4fc8896792aad81ab821c3244ca">sourcefile_index</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span>;</div>
+<div class="line"><span class="lineno">  336</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot; `&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../de/d99/dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a>(sourcefile_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  337</span>}</div>
+<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
+<div class="ttc" id="adump__class__file_8hpp_html_ace07e54f02a2b253a4a84f69b27b093c"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a></div><div class="ttdeci">string get_utf8_content(CONSTANT_utf8_info &amp;)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00246">dump_class_file.cpp:246</a></div></div>
+<div class="ttc" id="atypes_8hpp_html_abb7ea1d3958d89b769f958f0b7ff4106"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a></div><div class="ttdeci">#define to_cp_info</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00012">types.hpp:12</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -183,7 +206,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00102">102</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00129">129</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>

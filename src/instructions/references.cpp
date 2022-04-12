@@ -6,26 +6,6 @@
 /// TODO: finish getstatic
 void getstatic(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
-    // auto top_frame = stack_f->top();
-    // u1 indexbyte1 = code[++top_frame.pc];
-    // u1 indexbyte2 = code[++top_frame.pc];
-    // u2 index = ((u2)indexbyte1 << 8) | indexbyte2;
-
-    // auto reference = to_cp_info(constant_pool[index - 1]);
-    // string class_name = reference->get_content(constant_pool);
-
-    // cout << "[GETSTATIC] Class name: " << class_name << endl;
-
-    // top_frame.pc++;
-    // stack_f->pop();
-    // stack_f->push(top_frame);
-
-    // // se for a classe default do Java: System -> nao empilhar
-    // if (class_name == "java/lang/System"){
-    //     top_frame.pc++;
-    //     return;
-    // }
-
     auto top_frame = stack_f->top();
     u1 indexbyte1 = code[++top_frame.pc];
     u1 indexbyte2 = code[++top_frame.pc];
@@ -49,7 +29,7 @@ void getstatic(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *
 
     cout << "[GETSTATIC] Class name: " << class_name << endl;
 
-    if(class_name != "java/lang/System")
+    if(class_name.substr(0, 16) != "java/lang/System")
     {
         cout << "As 'java/lang/System', doesn't need" << endl;
         top_frame.pc++;

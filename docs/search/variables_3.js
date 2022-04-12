@@ -6,6 +6,5 @@ var searchData=
   ['code_5flength_3',['code_length',['../d0/d45/structCode__attribute.html#a80af47e824a13ef4dc604e5b8671f793',1,'Code_attribute']]],
   ['constant_5fpool_4',['constant_pool',['../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7',1,'class_file::constant_pool()'],['../db/dcf/structclass__container.html#abc12b74dac8e65f63d7989b9c2ac3c8d',1,'class_container::constant_pool()']]],
   ['constant_5fpool_5fcount_5',['constant_pool_count',['../dc/d78/structclass__file.html#a16efa35301a6defb65ec2372ee87b9e3',1,'class_file']]],
-  ['constantvalue_5findex_6',['constantvalue_index',['../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27',1,'ConstantValue_attribute']]],
-  ['cpool_5findex_7',['cpool_index',['../dd/d87/structObject__variable__info.html#a0588843a5e59b67c1732ed9f6b5eb5a0',1,'Object_variable_info']]]
+  ['constantvalue_5findex_6',['constantvalue_index',['../d8/dc6/structConstantValue__attribute.html#a812157e7121906faf8018ce066d1ea27',1,'ConstantValue_attribute']]]
 ];

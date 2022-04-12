@@ -88,6 +88,9 @@ $(document).ready(function(){initNavTree('de/d99/dump__class__file_8hpp.html','.
   <div class="headertitle"><div class="title">dump_class_file.hpp File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Declaration of the dump class functions.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="../../d0/d8b/class__file_8hpp_source.html">class_file.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>&quot;</code><br />
 </div>
@@ -105,8 +108,10 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aadffd76a1fb151419daaf8519319a576"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#aadffd76a1fb151419daaf8519319a576">print_all</a> (<a class="el" href="../../dc/d78/structclass__file.html">class_file</a> &amp;class_f, string file_name)</td></tr>
+<tr class="memdesc:aadffd76a1fb151419daaf8519319a576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for calling all functions that dump information to the outfile.  <a href="../../de/d99/dump__class__file_8hpp.html#aadffd76a1fb151419daaf8519319a576">More...</a><br /></td></tr>
 <tr class="separator:aadffd76a1fb151419daaf8519319a576"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4403b429296c23e0b13eef9a560d0f0f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#a4403b429296c23e0b13eef9a560d0f0f">print_general_info</a> (<a class="el" href="../../dc/d78/structclass__file.html">class_file</a> &amp;class_f)</td></tr>
+<tr class="memdesc:a4403b429296c23e0b13eef9a560d0f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file "metadata", such as minor and major versions, access flags, etc.  <a href="../../de/d99/dump__class__file_8hpp.html#a4403b429296c23e0b13eef9a560d0f0f">More...</a><br /></td></tr>
 <tr class="separator:a4403b429296c23e0b13eef9a560d0f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace07e54f02a2b253a4a84f69b27b093c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#ace07e54f02a2b253a4a84f69b27b093c">get_utf8_content</a> (<a class="el" href="../../dd/d71/structCONSTANT__utf8__info.html">CONSTANT_utf8_info</a> &amp;)</td></tr>
 <tr class="separator:ace07e54f02a2b253a4a84f69b27b093c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,19 +120,29 @@ Functions</h2></td></tr>
 <tr class="memitem:a6f06ce58b95bee4355f4e63de97e83f5"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a> (<a class="el" href="../../dd/de3/types_8hpp.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a> access_flags, int type)</td></tr>
 <tr class="separator:a6f06ce58b95bee4355f4e63de97e83f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa42daea7b81baaa0f3b8bd6feae67a9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#afa42daea7b81baaa0f3b8bd6feae67a9">print_pool</a> (<a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:afa42daea7b81baaa0f3b8bd6feae67a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file constant pool, including its items and indexes.  <a href="../../de/d99/dump__class__file_8hpp.html#afa42daea7b81baaa0f3b8bd6feae67a9">More...</a><br /></td></tr>
 <tr class="separator:afa42daea7b81baaa0f3b8bd6feae67a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc98415b9442427b521b48fdc46cbcf8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#acc98415b9442427b521b48fdc46cbcf8">print_attributes_vector</a> (<a class="el" href="../../df/d6a/attributes_8hpp.html#a019cb315b94b1bf591176e7a60431a0b">attr_info_vector</a> &amp;, <a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:acc98415b9442427b521b48fdc46cbcf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file method and field attributes.  <a href="../../de/d99/dump__class__file_8hpp.html#acc98415b9442427b521b48fdc46cbcf8">More...</a><br /></td></tr>
 <tr class="separator:acc98415b9442427b521b48fdc46cbcf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad38783199c6c0e51d2b70e32330ba35e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#ad38783199c6c0e51d2b70e32330ba35e">print_interfaces</a> (<a class="el" href="../../dc/d78/structclass__file.html">class_file</a> &amp;class_f)</td></tr>
+<tr class="memdesc:ad38783199c6c0e51d2b70e32330ba35e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file interfaces.  <a href="../../de/d99/dump__class__file_8hpp.html#ad38783199c6c0e51d2b70e32330ba35e">More...</a><br /></td></tr>
 <tr class="separator:ad38783199c6c0e51d2b70e32330ba35e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac6016315b30d9a36a95d23636f77a36d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#ac6016315b30d9a36a95d23636f77a36d">print_fields</a> (<a class="el" href="../../dc/d78/structclass__file.html">class_file</a> &amp;class_f)</td></tr>
+<tr class="memdesc:ac6016315b30d9a36a95d23636f77a36d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file interfaces.  <a href="../../de/d99/dump__class__file_8hpp.html#ac6016315b30d9a36a95d23636f77a36d">More...</a><br /></td></tr>
 <tr class="separator:ac6016315b30d9a36a95d23636f77a36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82b821e35621971f39f668e4a22a094f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#a82b821e35621971f39f668e4a22a094f">print_methods</a> (<a class="el" href="../../dc/d78/structclass__file.html">class_file</a> &amp;class_f)</td></tr>
+<tr class="memdesc:a82b821e35621971f39f668e4a22a094f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file methods.  <a href="../../de/d99/dump__class__file_8hpp.html#a82b821e35621971f39f668e4a22a094f">More...</a><br /></td></tr>
 <tr class="separator:a82b821e35621971f39f668e4a22a094f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0059c8abf04d7364b111b491e77ef4f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d99/dump__class__file_8hpp.html#a0059c8abf04d7364b111b491e77ef4f9">print_class_attributes</a> (<a class="el" href="../../dc/d78/structclass__file.html">class_file</a> &amp;class_f)</td></tr>
+<tr class="memdesc:a0059c8abf04d7364b111b491e77ef4f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function responsible for printing to the outfile the .class file attributes.  <a href="../../de/d99/dump__class__file_8hpp.html#a0059c8abf04d7364b111b491e77ef4f9">More...</a><br /></td></tr>
 <tr class="separator:a0059c8abf04d7364b111b491e77ef4f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Declaration of the dump class functions. </p>
+
+<p class="definition">Definition in file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="aeb04f2e0012cb07d68538599161c9693" name="aeb04f2e0012cb07d68538599161c9693"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aeb04f2e0012cb07d68538599161c9693">&#9670;&nbsp;</a></span>CLASS</h2>
 
@@ -140,7 +155,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html#l00007">7</a> of file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html#l00012">12</a> of file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
 
 </div>
 </div>
@@ -156,7 +171,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html#l00008">8</a> of file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html#l00013">13</a> of file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
 
 </div>
 </div>
@@ -172,7 +187,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html#l00009">9</a> of file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html#l00014">14</a> of file <a class="el" href="../../de/d99/dump__class__file_8hpp_source.html">dump_class_file.hpp</a>.</p>
 
 </div>
 </div>
@@ -203,150 +218,150 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00092">92</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
-<div class="line"><span class="lineno">   94</span>    <span class="keywordtype">string</span> class_access = <span class="stringliteral">&quot; &quot;</span>;</div>
-<div class="line"><span class="lineno">   95</span>    </div>
-<div class="line"><span class="lineno">   96</span>    <a class="code hl_union" href="../../d3/d1d/unionNibble.html">Nibble</a> n;</div>
-<div class="line"><span class="lineno">   97</span>    n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a9951f6d185591116b65c041bdc471770">h16</a> = access_flags;</div>
-<div class="line"><span class="lineno">   98</span> </div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t3 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a4879648aa966c6f8b02680c3388d21b2">n3</a> &lt;&lt; 12;</div>
-<div class="line"><span class="lineno">  100</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t2 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e4690106dd4dccfe2a1f0e9fc0ae4d1">n2</a> &lt;&lt; 8;</div>
-<div class="line"><span class="lineno">  101</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t1 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a46b8a98a64647d5ab54b930546b2f62f">n1</a> &lt;&lt; 4;</div>
-<div class="line"><span class="lineno">  102</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t0 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a5fd69051a848f173730ab182aba280e7">n0</a>;</div>
-<div class="line"><span class="lineno">  103</span>    vector&lt;unsigned int&gt; flag_v = {t3, t2, t1, t0};</div>
-<div class="line"><span class="lineno">  104</span> </div>
-<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> flag : flag_v)</div>
-<div class="line"><span class="lineno">  106</span>    {</div>
-<div class="line"><span class="lineno">  107</span>        <span class="keywordflow">switch</span> (flag)</div>
-<div class="line"><span class="lineno">  108</span>        {</div>
-<div class="line"><span class="lineno">  109</span>            <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a0fdbb084daf13068941396db9988bb8d">ACC_PUBLIC</a>:</div>
-<div class="line"><span class="lineno">  110</span>                class_access += <span class="stringliteral">&quot;ACC_PUBLIC &quot;</span>;</div>
-<div class="line"><span class="lineno">  111</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#ad170615172fa272627b79f604e3471b9">ACC_FINAL</a>:</div>
-<div class="line"><span class="lineno">  113</span>                class_access += <span class="stringliteral">&quot;ACC_FINAL &quot;</span>;</div>
-<div class="line"><span class="lineno">  114</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  115</span>            <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#acb5d148f4620c15e9ab7cd8442aeb2ab">ACC_SYNTHETIC</a>:</div>
-<div class="line"><span class="lineno">  116</span>                class_access += <span class="stringliteral">&quot;ACC_SYNTHETIC &quot;</span>;</div>
-<div class="line"><span class="lineno">  117</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  118</span>        }</div>
-<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">if</span> (type == <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#aeb04f2e0012cb07d68538599161c9693">CLASS</a>)</div>
-<div class="line"><span class="lineno">  120</span>        {</div>
-<div class="line"><span class="lineno">  121</span>            <span class="keywordflow">switch</span> (flag)</div>
-<div class="line"><span class="lineno">  122</span>            {</div>
-<div class="line"><span class="lineno">  123</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a64ab0ee48e02f736237394d4580bad5a">ACC_SUPER</a>:</div>
-<div class="line"><span class="lineno">  124</span>                    class_access += <span class="stringliteral">&quot;ACC_SUPER &quot;</span>;</div>
-<div class="line"><span class="lineno">  125</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  126</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#aca0c3297ae6a71033cf324d99793189a">ACC_INTERFACE</a>:</div>
-<div class="line"><span class="lineno">  127</span>                    class_access += <span class="stringliteral">&quot;ACC_INTERFACE &quot;</span>;</div>
-<div class="line"><span class="lineno">  128</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  129</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a638658b616d4e7c16078f606224dc9ba">ACC_ABSTRACT</a>:</div>
-<div class="line"><span class="lineno">  130</span>                    class_access += <span class="stringliteral">&quot;ACC_ABSTRACT &quot;</span>;</div>
-<div class="line"><span class="lineno">  131</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  132</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a6563e8bf591cefcc580202ce9ae35e81">ACC_ANNOTATION</a>:</div>
-<div class="line"><span class="lineno">  133</span>                    class_access += <span class="stringliteral">&quot;ACC_ANNOTATION &quot;</span>;</div>
-<div class="line"><span class="lineno">  134</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  135</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a29b47bfd79f44107284aee2f6df6c51e">ACC_ENUM</a>:</div>
-<div class="line"><span class="lineno">  136</span>                    class_access += <span class="stringliteral">&quot;ACC_ENUM &quot;</span>;</div>
-<div class="line"><span class="lineno">  137</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  138</span>                <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  139</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  140</span>            }</div>
-<div class="line"><span class="lineno">  141</span>        }</div>
-<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#abbab477a47201196b8e02020a1c022a1">FIELD</a>)</div>
-<div class="line"><span class="lineno">  143</span>        {</div>
-<div class="line"><span class="lineno">  144</span>            <span class="keywordflow">switch</span> (flag)</div>
-<div class="line"><span class="lineno">  145</span>            {</div>
-<div class="line"><span class="lineno">  146</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a29b47bfd79f44107284aee2f6df6c51e">ACC_ENUM</a>:</div>
-<div class="line"><span class="lineno">  147</span>                    class_access += <span class="stringliteral">&quot;ACC_ENUM &quot;</span>;</div>
-<div class="line"><span class="lineno">  148</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  149</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#ab4a89247b3598c31a5999c76bf168a6a">ACC_PRIVATE</a>:</div>
-<div class="line"><span class="lineno">  150</span>                    class_access += <span class="stringliteral">&quot;ACC_PRIVATE &quot;</span>;</div>
-<div class="line"><span class="lineno">  151</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  152</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#aab759ad3d0d4d4ed59b7f516f1a4e271">ACC_PROTECTED</a>:</div>
-<div class="line"><span class="lineno">  153</span>                    class_access += <span class="stringliteral">&quot;ACC_PROTECTED &quot;</span>;</div>
-<div class="line"><span class="lineno">  154</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  155</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a7980f70a1935dcd3a74bf0e24fd2bce7">ACC_STATIC</a>:</div>
-<div class="line"><span class="lineno">  156</span>                    class_access += <span class="stringliteral">&quot;ACC_STATIC &quot;</span>;</div>
-<div class="line"><span class="lineno">  157</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  158</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#afa6aaa9fa8e6b7c139a6f459ab3a42b1">ACC_VOLATILE</a>:</div>
-<div class="line"><span class="lineno">  159</span>                    class_access += <span class="stringliteral">&quot;ACC_VOLATILE &quot;</span>;</div>
-<div class="line"><span class="lineno">  160</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  161</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a79b164828e45ca7eb81b895b8ee4960e">ACC_TRANSIENT</a>:</div>
-<div class="line"><span class="lineno">  162</span>                    class_access += <span class="stringliteral">&quot;ACC_TRANSIENT &quot;</span>;</div>
-<div class="line"><span class="lineno">  163</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  164</span>                <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  165</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  166</span>            }</div>
-<div class="line"><span class="lineno">  167</span>        }</div>
-<div class="line"><span class="lineno">  168</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#a7acfc6e2f2442cbb9d8657e96d73bbec">METHOD</a>)</div>
-<div class="line"><span class="lineno">  169</span>        {</div>
-<div class="line"><span class="lineno">  170</span>            <span class="keywordflow">switch</span> (flag)</div>
-<div class="line"><span class="lineno">  171</span>            {</div>
-<div class="line"><span class="lineno">  172</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a638658b616d4e7c16078f606224dc9ba">ACC_ABSTRACT</a>:</div>
-<div class="line"><span class="lineno">  173</span>                    class_access += <span class="stringliteral">&quot;ACC_ABSTRACT &quot;</span>;</div>
-<div class="line"><span class="lineno">  174</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  175</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#ab4a89247b3598c31a5999c76bf168a6a">ACC_PRIVATE</a>:</div>
-<div class="line"><span class="lineno">  176</span>                    class_access += <span class="stringliteral">&quot;ACC_PRIVATE &quot;</span>;</div>
-<div class="line"><span class="lineno">  177</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  178</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#aab759ad3d0d4d4ed59b7f516f1a4e271">ACC_PROTECTED</a>:</div>
-<div class="line"><span class="lineno">  179</span>                    class_access += <span class="stringliteral">&quot;ACC_PROTECTED &quot;</span>;</div>
-<div class="line"><span class="lineno">  180</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  181</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a7980f70a1935dcd3a74bf0e24fd2bce7">ACC_STATIC</a>:</div>
-<div class="line"><span class="lineno">  182</span>                    class_access += <span class="stringliteral">&quot;ACC_STATIC &quot;</span>;</div>
-<div class="line"><span class="lineno">  183</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  184</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a6eb88a744819be2fd9b240ed56bbb421">ACC_SYNCHRONIZED</a>:</div>
-<div class="line"><span class="lineno">  185</span>                    class_access += <span class="stringliteral">&quot;ACC_SYNCHRONIZED &quot;</span>;</div>
-<div class="line"><span class="lineno">  186</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  187</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a17fd9c7cabc157f342216dbb0173c4df">ACC_BRIDGE</a>:</div>
-<div class="line"><span class="lineno">  188</span>                    class_access += <span class="stringliteral">&quot;ACC_BRIDGE &quot;</span>;</div>
-<div class="line"><span class="lineno">  189</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  190</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a41cc9873832007980cfa7658a94b7773">ACC_VARARGS</a>:</div>
-<div class="line"><span class="lineno">  191</span>                    class_access += <span class="stringliteral">&quot;ACC_VARARGS &quot;</span>;</div>
-<div class="line"><span class="lineno">  192</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  193</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a21cd44dc8506e7f393a8e90936a22613">ACC_NATIVE</a>:</div>
-<div class="line"><span class="lineno">  194</span>                    class_access += <span class="stringliteral">&quot;ACC_NATIVE &quot;</span>;</div>
-<div class="line"><span class="lineno">  195</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  196</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a896d91d006ed72a57d9ce427f7699555">ACC_STRICT</a>:</div>
-<div class="line"><span class="lineno">  197</span>                    class_access += <span class="stringliteral">&quot;ACC_STRICT &quot;</span>;</div>
-<div class="line"><span class="lineno">  198</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  199</span>                <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  200</span>                    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  201</span>            }</div>
-<div class="line"><span class="lineno">  202</span>        }</div>
-<div class="line"><span class="lineno">  203</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  204</span>            cout &lt;&lt; <span class="stringliteral">&quot;INVALID FLAG TYPE&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  205</span>    }</div>
-<div class="line"><span class="lineno">  206</span>    <span class="keywordflow">return</span> class_access;</div>
-<div class="line"><span class="lineno">  207</span>}</div>
-<div class="ttc" id="aclass__file_8hpp_html_a0fdbb084daf13068941396db9988bb8d"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a0fdbb084daf13068941396db9988bb8d">ACC_PUBLIC</a></div><div class="ttdeci">#define ACC_PUBLIC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00030">class_file.hpp:30</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a17fd9c7cabc157f342216dbb0173c4df"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a17fd9c7cabc157f342216dbb0173c4df">ACC_BRIDGE</a></div><div class="ttdeci">#define ACC_BRIDGE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00036">class_file.hpp:36</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a21cd44dc8506e7f393a8e90936a22613"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a21cd44dc8506e7f393a8e90936a22613">ACC_NATIVE</a></div><div class="ttdeci">#define ACC_NATIVE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00038">class_file.hpp:38</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a29b47bfd79f44107284aee2f6df6c51e"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a29b47bfd79f44107284aee2f6df6c51e">ACC_ENUM</a></div><div class="ttdeci">#define ACC_ENUM</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00027">class_file.hpp:27</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a41cc9873832007980cfa7658a94b7773"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a41cc9873832007980cfa7658a94b7773">ACC_VARARGS</a></div><div class="ttdeci">#define ACC_VARARGS</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00037">class_file.hpp:37</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a638658b616d4e7c16078f606224dc9ba"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a638658b616d4e7c16078f606224dc9ba">ACC_ABSTRACT</a></div><div class="ttdeci">#define ACC_ABSTRACT</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00039">class_file.hpp:39</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a64ab0ee48e02f736237394d4580bad5a"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a64ab0ee48e02f736237394d4580bad5a">ACC_SUPER</a></div><div class="ttdeci">#define ACC_SUPER</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00011">class_file.hpp:11</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a6563e8bf591cefcc580202ce9ae35e81"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a6563e8bf591cefcc580202ce9ae35e81">ACC_ANNOTATION</a></div><div class="ttdeci">#define ACC_ANNOTATION</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00015">class_file.hpp:15</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a6eb88a744819be2fd9b240ed56bbb421"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a6eb88a744819be2fd9b240ed56bbb421">ACC_SYNCHRONIZED</a></div><div class="ttdeci">#define ACC_SYNCHRONIZED</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00035">class_file.hpp:35</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a7980f70a1935dcd3a74bf0e24fd2bce7"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a7980f70a1935dcd3a74bf0e24fd2bce7">ACC_STATIC</a></div><div class="ttdeci">#define ACC_STATIC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00033">class_file.hpp:33</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a79b164828e45ca7eb81b895b8ee4960e"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a79b164828e45ca7eb81b895b8ee4960e">ACC_TRANSIENT</a></div><div class="ttdeci">#define ACC_TRANSIENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00025">class_file.hpp:25</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_a896d91d006ed72a57d9ce427f7699555"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a896d91d006ed72a57d9ce427f7699555">ACC_STRICT</a></div><div class="ttdeci">#define ACC_STRICT</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00040">class_file.hpp:40</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_aab759ad3d0d4d4ed59b7f516f1a4e271"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#aab759ad3d0d4d4ed59b7f516f1a4e271">ACC_PROTECTED</a></div><div class="ttdeci">#define ACC_PROTECTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00032">class_file.hpp:32</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_ab4a89247b3598c31a5999c76bf168a6a"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#ab4a89247b3598c31a5999c76bf168a6a">ACC_PRIVATE</a></div><div class="ttdeci">#define ACC_PRIVATE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00031">class_file.hpp:31</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_aca0c3297ae6a71033cf324d99793189a"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#aca0c3297ae6a71033cf324d99793189a">ACC_INTERFACE</a></div><div class="ttdeci">#define ACC_INTERFACE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00012">class_file.hpp:12</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_acb5d148f4620c15e9ab7cd8442aeb2ab"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#acb5d148f4620c15e9ab7cd8442aeb2ab">ACC_SYNTHETIC</a></div><div class="ttdeci">#define ACC_SYNTHETIC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00041">class_file.hpp:41</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_ad170615172fa272627b79f604e3471b9"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#ad170615172fa272627b79f604e3471b9">ACC_FINAL</a></div><div class="ttdeci">#define ACC_FINAL</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00034">class_file.hpp:34</a></div></div>
-<div class="ttc" id="aclass__file_8hpp_html_afa6aaa9fa8e6b7c139a6f459ab3a42b1"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#afa6aaa9fa8e6b7c139a6f459ab3a42b1">ACC_VOLATILE</a></div><div class="ttdeci">#define ACC_VOLATILE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00024">class_file.hpp:24</a></div></div>
-<div class="ttc" id="adump__class__file_8hpp_html_a7acfc6e2f2442cbb9d8657e96d73bbec"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#a7acfc6e2f2442cbb9d8657e96d73bbec">METHOD</a></div><div class="ttdeci">#define METHOD</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d99/dump__class__file_8hpp_source.html#l00009">dump_class_file.hpp:9</a></div></div>
-<div class="ttc" id="adump__class__file_8hpp_html_abbab477a47201196b8e02020a1c022a1"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#abbab477a47201196b8e02020a1c022a1">FIELD</a></div><div class="ttdeci">#define FIELD</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d99/dump__class__file_8hpp_source.html#l00008">dump_class_file.hpp:8</a></div></div>
-<div class="ttc" id="adump__class__file_8hpp_html_aeb04f2e0012cb07d68538599161c9693"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#aeb04f2e0012cb07d68538599161c9693">CLASS</a></div><div class="ttdeci">#define CLASS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d99/dump__class__file_8hpp_source.html#l00007">dump_class_file.hpp:7</a></div></div>
-<div class="ttc" id="aunionNibble_html"><div class="ttname"><a href="../../d3/d1d/unionNibble.html">Nibble</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00081">dump_class_file.cpp:82</a></div></div>
-<div class="ttc" id="aunionNibble_html_a46b8a98a64647d5ab54b930546b2f62f"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a46b8a98a64647d5ab54b930546b2f62f">Nibble::n1</a></div><div class="ttdeci">unsigned int n1</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00086">dump_class_file.cpp:86</a></div></div>
-<div class="ttc" id="aunionNibble_html_a4879648aa966c6f8b02680c3388d21b2"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a4879648aa966c6f8b02680c3388d21b2">Nibble::n3</a></div><div class="ttdeci">unsigned int n3</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00088">dump_class_file.cpp:88</a></div></div>
-<div class="ttc" id="aunionNibble_html_a5fd69051a848f173730ab182aba280e7"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a5fd69051a848f173730ab182aba280e7">Nibble::n0</a></div><div class="ttdeci">unsigned int n0</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00085">dump_class_file.cpp:85</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00111">111</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordtype">string</span> class_access = <span class="stringliteral">&quot; &quot;</span>;</div>
+<div class="line"><span class="lineno">  114</span>    </div>
+<div class="line"><span class="lineno">  115</span>    <a class="code hl_union" href="../../d3/d1d/unionNibble.html">Nibble</a> n;</div>
+<div class="line"><span class="lineno">  116</span>    n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a9951f6d185591116b65c041bdc471770">h16</a> = access_flags;</div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t3 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a4879648aa966c6f8b02680c3388d21b2">n3</a> &lt;&lt; 12;</div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t2 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e4690106dd4dccfe2a1f0e9fc0ae4d1">n2</a> &lt;&lt; 8;</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t1 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a46b8a98a64647d5ab54b930546b2f62f">n1</a> &lt;&lt; 4;</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> t0 = n.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">nb</a>.<a class="code hl_variable" href="../../d3/d1d/unionNibble.html#a5fd69051a848f173730ab182aba280e7">n0</a>;</div>
+<div class="line"><span class="lineno">  122</span>    vector&lt;unsigned int&gt; flag_v = {t3, t2, t1, t0};</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> flag : flag_v)</div>
+<div class="line"><span class="lineno">  125</span>    {</div>
+<div class="line"><span class="lineno">  126</span>        <span class="keywordflow">switch</span> (flag)</div>
+<div class="line"><span class="lineno">  127</span>        {</div>
+<div class="line"><span class="lineno">  128</span>            <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a0fdbb084daf13068941396db9988bb8d">ACC_PUBLIC</a>:</div>
+<div class="line"><span class="lineno">  129</span>                class_access += <span class="stringliteral">&quot;ACC_PUBLIC &quot;</span>;</div>
+<div class="line"><span class="lineno">  130</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  131</span>            <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#ad170615172fa272627b79f604e3471b9">ACC_FINAL</a>:</div>
+<div class="line"><span class="lineno">  132</span>                class_access += <span class="stringliteral">&quot;ACC_FINAL &quot;</span>;</div>
+<div class="line"><span class="lineno">  133</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  134</span>            <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#acb5d148f4620c15e9ab7cd8442aeb2ab">ACC_SYNTHETIC</a>:</div>
+<div class="line"><span class="lineno">  135</span>                class_access += <span class="stringliteral">&quot;ACC_SYNTHETIC &quot;</span>;</div>
+<div class="line"><span class="lineno">  136</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  137</span>        }</div>
+<div class="line"><span class="lineno">  138</span>        <span class="keywordflow">if</span> (type == <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#aeb04f2e0012cb07d68538599161c9693">CLASS</a>)</div>
+<div class="line"><span class="lineno">  139</span>        {</div>
+<div class="line"><span class="lineno">  140</span>            <span class="keywordflow">switch</span> (flag)</div>
+<div class="line"><span class="lineno">  141</span>            {</div>
+<div class="line"><span class="lineno">  142</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a64ab0ee48e02f736237394d4580bad5a">ACC_SUPER</a>:</div>
+<div class="line"><span class="lineno">  143</span>                    class_access += <span class="stringliteral">&quot;ACC_SUPER &quot;</span>;</div>
+<div class="line"><span class="lineno">  144</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  145</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#aca0c3297ae6a71033cf324d99793189a">ACC_INTERFACE</a>:</div>
+<div class="line"><span class="lineno">  146</span>                    class_access += <span class="stringliteral">&quot;ACC_INTERFACE &quot;</span>;</div>
+<div class="line"><span class="lineno">  147</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  148</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a638658b616d4e7c16078f606224dc9ba">ACC_ABSTRACT</a>:</div>
+<div class="line"><span class="lineno">  149</span>                    class_access += <span class="stringliteral">&quot;ACC_ABSTRACT &quot;</span>;</div>
+<div class="line"><span class="lineno">  150</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  151</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a6563e8bf591cefcc580202ce9ae35e81">ACC_ANNOTATION</a>:</div>
+<div class="line"><span class="lineno">  152</span>                    class_access += <span class="stringliteral">&quot;ACC_ANNOTATION &quot;</span>;</div>
+<div class="line"><span class="lineno">  153</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  154</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a29b47bfd79f44107284aee2f6df6c51e">ACC_ENUM</a>:</div>
+<div class="line"><span class="lineno">  155</span>                    class_access += <span class="stringliteral">&quot;ACC_ENUM &quot;</span>;</div>
+<div class="line"><span class="lineno">  156</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  157</span>                <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  158</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  159</span>            }</div>
+<div class="line"><span class="lineno">  160</span>        }</div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#abbab477a47201196b8e02020a1c022a1">FIELD</a>)</div>
+<div class="line"><span class="lineno">  162</span>        {</div>
+<div class="line"><span class="lineno">  163</span>            <span class="keywordflow">switch</span> (flag)</div>
+<div class="line"><span class="lineno">  164</span>            {</div>
+<div class="line"><span class="lineno">  165</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a29b47bfd79f44107284aee2f6df6c51e">ACC_ENUM</a>:</div>
+<div class="line"><span class="lineno">  166</span>                    class_access += <span class="stringliteral">&quot;ACC_ENUM &quot;</span>;</div>
+<div class="line"><span class="lineno">  167</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  168</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#ab4a89247b3598c31a5999c76bf168a6a">ACC_PRIVATE</a>:</div>
+<div class="line"><span class="lineno">  169</span>                    class_access += <span class="stringliteral">&quot;ACC_PRIVATE &quot;</span>;</div>
+<div class="line"><span class="lineno">  170</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  171</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#aab759ad3d0d4d4ed59b7f516f1a4e271">ACC_PROTECTED</a>:</div>
+<div class="line"><span class="lineno">  172</span>                    class_access += <span class="stringliteral">&quot;ACC_PROTECTED &quot;</span>;</div>
+<div class="line"><span class="lineno">  173</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  174</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a7980f70a1935dcd3a74bf0e24fd2bce7">ACC_STATIC</a>:</div>
+<div class="line"><span class="lineno">  175</span>                    class_access += <span class="stringliteral">&quot;ACC_STATIC &quot;</span>;</div>
+<div class="line"><span class="lineno">  176</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  177</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#afa6aaa9fa8e6b7c139a6f459ab3a42b1">ACC_VOLATILE</a>:</div>
+<div class="line"><span class="lineno">  178</span>                    class_access += <span class="stringliteral">&quot;ACC_VOLATILE &quot;</span>;</div>
+<div class="line"><span class="lineno">  179</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  180</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a79b164828e45ca7eb81b895b8ee4960e">ACC_TRANSIENT</a>:</div>
+<div class="line"><span class="lineno">  181</span>                    class_access += <span class="stringliteral">&quot;ACC_TRANSIENT &quot;</span>;</div>
+<div class="line"><span class="lineno">  182</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  183</span>                <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  184</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  185</span>            }</div>
+<div class="line"><span class="lineno">  186</span>        }</div>
+<div class="line"><span class="lineno">  187</span>        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (type == <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#a7acfc6e2f2442cbb9d8657e96d73bbec">METHOD</a>)</div>
+<div class="line"><span class="lineno">  188</span>        {</div>
+<div class="line"><span class="lineno">  189</span>            <span class="keywordflow">switch</span> (flag)</div>
+<div class="line"><span class="lineno">  190</span>            {</div>
+<div class="line"><span class="lineno">  191</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a638658b616d4e7c16078f606224dc9ba">ACC_ABSTRACT</a>:</div>
+<div class="line"><span class="lineno">  192</span>                    class_access += <span class="stringliteral">&quot;ACC_ABSTRACT &quot;</span>;</div>
+<div class="line"><span class="lineno">  193</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  194</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#ab4a89247b3598c31a5999c76bf168a6a">ACC_PRIVATE</a>:</div>
+<div class="line"><span class="lineno">  195</span>                    class_access += <span class="stringliteral">&quot;ACC_PRIVATE &quot;</span>;</div>
+<div class="line"><span class="lineno">  196</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  197</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#aab759ad3d0d4d4ed59b7f516f1a4e271">ACC_PROTECTED</a>:</div>
+<div class="line"><span class="lineno">  198</span>                    class_access += <span class="stringliteral">&quot;ACC_PROTECTED &quot;</span>;</div>
+<div class="line"><span class="lineno">  199</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  200</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a7980f70a1935dcd3a74bf0e24fd2bce7">ACC_STATIC</a>:</div>
+<div class="line"><span class="lineno">  201</span>                    class_access += <span class="stringliteral">&quot;ACC_STATIC &quot;</span>;</div>
+<div class="line"><span class="lineno">  202</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  203</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a6eb88a744819be2fd9b240ed56bbb421">ACC_SYNCHRONIZED</a>:</div>
+<div class="line"><span class="lineno">  204</span>                    class_access += <span class="stringliteral">&quot;ACC_SYNCHRONIZED &quot;</span>;</div>
+<div class="line"><span class="lineno">  205</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  206</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a17fd9c7cabc157f342216dbb0173c4df">ACC_BRIDGE</a>:</div>
+<div class="line"><span class="lineno">  207</span>                    class_access += <span class="stringliteral">&quot;ACC_BRIDGE &quot;</span>;</div>
+<div class="line"><span class="lineno">  208</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  209</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a41cc9873832007980cfa7658a94b7773">ACC_VARARGS</a>:</div>
+<div class="line"><span class="lineno">  210</span>                    class_access += <span class="stringliteral">&quot;ACC_VARARGS &quot;</span>;</div>
+<div class="line"><span class="lineno">  211</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  212</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a21cd44dc8506e7f393a8e90936a22613">ACC_NATIVE</a>:</div>
+<div class="line"><span class="lineno">  213</span>                    class_access += <span class="stringliteral">&quot;ACC_NATIVE &quot;</span>;</div>
+<div class="line"><span class="lineno">  214</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  215</span>                <span class="keywordflow">case</span> <a class="code hl_define" href="../../d0/d8b/class__file_8hpp.html#a896d91d006ed72a57d9ce427f7699555">ACC_STRICT</a>:</div>
+<div class="line"><span class="lineno">  216</span>                    class_access += <span class="stringliteral">&quot;ACC_STRICT &quot;</span>;</div>
+<div class="line"><span class="lineno">  217</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  218</span>                <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  219</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  220</span>            }</div>
+<div class="line"><span class="lineno">  221</span>        }</div>
+<div class="line"><span class="lineno">  222</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  223</span>            cout &lt;&lt; <span class="stringliteral">&quot;INVALID FLAG TYPE&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  224</span>    }</div>
+<div class="line"><span class="lineno">  225</span>    <span class="keywordflow">return</span> class_access;</div>
+<div class="line"><span class="lineno">  226</span>}</div>
+<div class="ttc" id="aclass__file_8hpp_html_a0fdbb084daf13068941396db9988bb8d"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a0fdbb084daf13068941396db9988bb8d">ACC_PUBLIC</a></div><div class="ttdeci">#define ACC_PUBLIC</div><div class="ttdoc">Class Access Flags.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00035">class_file.hpp:35</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a17fd9c7cabc157f342216dbb0173c4df"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a17fd9c7cabc157f342216dbb0173c4df">ACC_BRIDGE</a></div><div class="ttdeci">#define ACC_BRIDGE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00041">class_file.hpp:41</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a21cd44dc8506e7f393a8e90936a22613"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a21cd44dc8506e7f393a8e90936a22613">ACC_NATIVE</a></div><div class="ttdeci">#define ACC_NATIVE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00043">class_file.hpp:43</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a29b47bfd79f44107284aee2f6df6c51e"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a29b47bfd79f44107284aee2f6df6c51e">ACC_ENUM</a></div><div class="ttdeci">#define ACC_ENUM</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00032">class_file.hpp:32</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a41cc9873832007980cfa7658a94b7773"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a41cc9873832007980cfa7658a94b7773">ACC_VARARGS</a></div><div class="ttdeci">#define ACC_VARARGS</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00042">class_file.hpp:42</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a638658b616d4e7c16078f606224dc9ba"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a638658b616d4e7c16078f606224dc9ba">ACC_ABSTRACT</a></div><div class="ttdeci">#define ACC_ABSTRACT</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00044">class_file.hpp:44</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a64ab0ee48e02f736237394d4580bad5a"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a64ab0ee48e02f736237394d4580bad5a">ACC_SUPER</a></div><div class="ttdeci">#define ACC_SUPER</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00016">class_file.hpp:16</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a6563e8bf591cefcc580202ce9ae35e81"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a6563e8bf591cefcc580202ce9ae35e81">ACC_ANNOTATION</a></div><div class="ttdeci">#define ACC_ANNOTATION</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00020">class_file.hpp:20</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a6eb88a744819be2fd9b240ed56bbb421"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a6eb88a744819be2fd9b240ed56bbb421">ACC_SYNCHRONIZED</a></div><div class="ttdeci">#define ACC_SYNCHRONIZED</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00040">class_file.hpp:40</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a7980f70a1935dcd3a74bf0e24fd2bce7"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a7980f70a1935dcd3a74bf0e24fd2bce7">ACC_STATIC</a></div><div class="ttdeci">#define ACC_STATIC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00038">class_file.hpp:38</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a79b164828e45ca7eb81b895b8ee4960e"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a79b164828e45ca7eb81b895b8ee4960e">ACC_TRANSIENT</a></div><div class="ttdeci">#define ACC_TRANSIENT</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00030">class_file.hpp:30</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_a896d91d006ed72a57d9ce427f7699555"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#a896d91d006ed72a57d9ce427f7699555">ACC_STRICT</a></div><div class="ttdeci">#define ACC_STRICT</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00045">class_file.hpp:45</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_aab759ad3d0d4d4ed59b7f516f1a4e271"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#aab759ad3d0d4d4ed59b7f516f1a4e271">ACC_PROTECTED</a></div><div class="ttdeci">#define ACC_PROTECTED</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00037">class_file.hpp:37</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_ab4a89247b3598c31a5999c76bf168a6a"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#ab4a89247b3598c31a5999c76bf168a6a">ACC_PRIVATE</a></div><div class="ttdeci">#define ACC_PRIVATE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00036">class_file.hpp:36</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_aca0c3297ae6a71033cf324d99793189a"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#aca0c3297ae6a71033cf324d99793189a">ACC_INTERFACE</a></div><div class="ttdeci">#define ACC_INTERFACE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00017">class_file.hpp:17</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_acb5d148f4620c15e9ab7cd8442aeb2ab"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#acb5d148f4620c15e9ab7cd8442aeb2ab">ACC_SYNTHETIC</a></div><div class="ttdeci">#define ACC_SYNTHETIC</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00046">class_file.hpp:46</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_ad170615172fa272627b79f604e3471b9"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#ad170615172fa272627b79f604e3471b9">ACC_FINAL</a></div><div class="ttdeci">#define ACC_FINAL</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00039">class_file.hpp:39</a></div></div>
+<div class="ttc" id="aclass__file_8hpp_html_afa6aaa9fa8e6b7c139a6f459ab3a42b1"><div class="ttname"><a href="../../d0/d8b/class__file_8hpp.html#afa6aaa9fa8e6b7c139a6f459ab3a42b1">ACC_VOLATILE</a></div><div class="ttdeci">#define ACC_VOLATILE</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00029">class_file.hpp:29</a></div></div>
+<div class="ttc" id="adump__class__file_8hpp_html_a7acfc6e2f2442cbb9d8657e96d73bbec"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#a7acfc6e2f2442cbb9d8657e96d73bbec">METHOD</a></div><div class="ttdeci">#define METHOD</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d99/dump__class__file_8hpp_source.html#l00014">dump_class_file.hpp:14</a></div></div>
+<div class="ttc" id="adump__class__file_8hpp_html_abbab477a47201196b8e02020a1c022a1"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#abbab477a47201196b8e02020a1c022a1">FIELD</a></div><div class="ttdeci">#define FIELD</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d99/dump__class__file_8hpp_source.html#l00013">dump_class_file.hpp:13</a></div></div>
+<div class="ttc" id="adump__class__file_8hpp_html_aeb04f2e0012cb07d68538599161c9693"><div class="ttname"><a href="../../de/d99/dump__class__file_8hpp.html#aeb04f2e0012cb07d68538599161c9693">CLASS</a></div><div class="ttdeci">#define CLASS</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d99/dump__class__file_8hpp_source.html#l00012">dump_class_file.hpp:12</a></div></div>
+<div class="ttc" id="aunionNibble_html"><div class="ttname"><a href="../../d3/d1d/unionNibble.html">Nibble</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00100">dump_class_file.cpp:101</a></div></div>
+<div class="ttc" id="aunionNibble_html_a46b8a98a64647d5ab54b930546b2f62f"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a46b8a98a64647d5ab54b930546b2f62f">Nibble::n1</a></div><div class="ttdeci">unsigned int n1</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00105">dump_class_file.cpp:105</a></div></div>
+<div class="ttc" id="aunionNibble_html_a4879648aa966c6f8b02680c3388d21b2"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a4879648aa966c6f8b02680c3388d21b2">Nibble::n3</a></div><div class="ttdeci">unsigned int n3</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00107">dump_class_file.cpp:107</a></div></div>
+<div class="ttc" id="aunionNibble_html_a5fd69051a848f173730ab182aba280e7"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a5fd69051a848f173730ab182aba280e7">Nibble::n0</a></div><div class="ttdeci">unsigned int n0</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00104">dump_class_file.cpp:104</a></div></div>
 <div class="ttc" id="aunionNibble_html_a7e0bc454530509fe10240adda434295b"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a7e0bc454530509fe10240adda434295b">Nibble::nb</a></div><div class="ttdeci">struct Nibble::@6 nb</div></div>
-<div class="ttc" id="aunionNibble_html_a7e4690106dd4dccfe2a1f0e9fc0ae4d1"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a7e4690106dd4dccfe2a1f0e9fc0ae4d1">Nibble::n2</a></div><div class="ttdeci">unsigned int n2</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00087">dump_class_file.cpp:87</a></div></div>
-<div class="ttc" id="aunionNibble_html_a9951f6d185591116b65c041bdc471770"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a9951f6d185591116b65c041bdc471770">Nibble::h16</a></div><div class="ttdeci">u2 h16</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00083">dump_class_file.cpp:83</a></div></div>
+<div class="ttc" id="aunionNibble_html_a7e4690106dd4dccfe2a1f0e9fc0ae4d1"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a7e4690106dd4dccfe2a1f0e9fc0ae4d1">Nibble::n2</a></div><div class="ttdeci">unsigned int n2</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00106">dump_class_file.cpp:106</a></div></div>
+<div class="ttc" id="aunionNibble_html_a9951f6d185591116b65c041bdc471770"><div class="ttname"><a href="../../d3/d1d/unionNibble.html#a9951f6d185591116b65c041bdc471770">Nibble::h16</a></div><div class="ttdeci">u2 h16</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00102">dump_class_file.cpp:102</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,14 +381,14 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00223">223</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  224</span>{</div>
-<div class="line"><span class="lineno">  225</span>    <span class="keywordtype">string</span> out = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><span class="lineno">  226</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> j : utf8.<a class="code hl_variable" href="../../dd/d71/structCONSTANT__utf8__info.html#a975453f16d0b8d678a64b80b82bb50ef">bytes</a>)</div>
-<div class="line"><span class="lineno">  227</span>         out += j;</div>
-<div class="line"><span class="lineno">  228</span>    <span class="keywordflow">return</span> out;</div>
-<div class="line"><span class="lineno">  229</span>}</div>
-<div class="ttc" id="astructCONSTANT__utf8__info_html_a975453f16d0b8d678a64b80b82bb50ef"><div class="ttname"><a href="../../dd/d71/structCONSTANT__utf8__info.html#a975453f16d0b8d678a64b80b82bb50ef">CONSTANT_utf8_info::bytes</a></div><div class="ttdeci">vector&lt; u1 &gt; bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00040">constant_pool_info.hpp:40</a></div></div>
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00246">246</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  247</span>{</div>
+<div class="line"><span class="lineno">  248</span>    <span class="keywordtype">string</span> out = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">  249</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> j : utf8.<a class="code hl_variable" href="../../dd/d71/structCONSTANT__utf8__info.html#a975453f16d0b8d678a64b80b82bb50ef">bytes</a>)</div>
+<div class="line"><span class="lineno">  250</span>         out += j;</div>
+<div class="line"><span class="lineno">  251</span>    <span class="keywordflow">return</span> out;</div>
+<div class="line"><span class="lineno">  252</span>}</div>
+<div class="ttc" id="astructCONSTANT__utf8__info_html_a975453f16d0b8d678a64b80b82bb50ef"><div class="ttname"><a href="../../dd/d71/structCONSTANT__utf8__info.html#a975453f16d0b8d678a64b80b82bb50ef">CONSTANT_utf8_info::bytes</a></div><div class="ttdeci">vector&lt; u1 &gt; bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00057">constant_pool_info.hpp:57</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -403,12 +418,12 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00074">74</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   75</span>{</div>
-<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">if</span> (major &gt;= 45 &amp;&amp; major &lt;= 48)</div>
-<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;1.&quot;</span> + to_string(major - 45 + 1);</div>
-<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">return</span> to_string(major - 49 + 5);</div>
-<div class="line"><span class="lineno">   79</span>}</div>
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00093">93</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (major &gt;= 45 &amp;&amp; major &lt;= 48)</div>
+<div class="line"><span class="lineno">   96</span>        <span class="keywordflow">return</span> <span class="stringliteral">&quot;1.&quot;</span> + to_string(major - 45 + 1);</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">return</span> to_string(major - 49 + 5);</div>
+<div class="line"><span class="lineno">   98</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -428,7 +443,7 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>file_name</em>&#160;</td>
+          <td class="paramname"><em>filepath</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -438,36 +453,47 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00018">18</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   19</span>{</div>
-<div class="line"><span class="lineno">   20</span>    smatch m;</div>
-<div class="line"><span class="lineno">   21</span>    regex regexp(<span class="stringliteral">&quot;[a-zA-Z0-9_]+.class&quot;</span>);</div>
-<div class="line"><span class="lineno">   22</span>    regex_search(filepath, m, regexp);</div>
-<div class="line"><span class="lineno">   23</span>    </div>
-<div class="line"><span class="lineno">   24</span>    <span class="keywordtype">string</span> filename = m[0];</div>
-<div class="line"><span class="lineno">   25</span>    filename = filename.substr(0, filename.find(<span class="charliteral">&#39;.&#39;</span>)); </div>
-<div class="line"><span class="lineno">   26</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a39ccb02095ac028506b49fd0de4c1f9e">open_outfile</a>(filename);</div>
-<div class="line"><span class="lineno">   27</span> </div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;# **&quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;**&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   29</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a4403b429296c23e0b13eef9a560d0f0f">print_general_info</a>(class_f);</div>
-<div class="line"><span class="lineno">   30</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a1f93d7862f183dd7614fcc0fef6bfcb6">print_pool</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
-<div class="line"><span class="lineno">   31</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#ad38783199c6c0e51d2b70e32330ba35e">print_interfaces</a>(class_f);</div>
-<div class="line"><span class="lineno">   32</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#ac6016315b30d9a36a95d23636f77a36d">print_fields</a>(class_f);</div>
-<div class="line"><span class="lineno">   33</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a82b821e35621971f39f668e4a22a094f">print_methods</a>(class_f);</div>
-<div class="line"><span class="lineno">   34</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a0059c8abf04d7364b111b491e77ef4f9">print_class_attributes</a>(class_f);</div>
-<div class="line"><span class="lineno">   35</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.close();</div>
-<div class="line"><span class="lineno">   36</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a10cdca6d37ca0c018388bd095fda5576">pos_counter</a> = 0;</div>
-<div class="line"><span class="lineno">   37</span>}</div>
-<div class="ttc" id="adump__class__file_8cpp_html_a0059c8abf04d7364b111b491e77ef4f9"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a0059c8abf04d7364b111b491e77ef4f9">print_class_attributes</a></div><div class="ttdeci">void print_class_attributes(class_file &amp;class_f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00308">dump_class_file.cpp:308</a></div></div>
+<p>Function responsible for calling all functions that dump information to the outfile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+    <tr><td class="paramname">filepath</td><td>the name of the .class </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00031">31</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    smatch m;</div>
+<div class="line"><span class="lineno">   34</span>    regex regexp(<span class="stringliteral">&quot;[a-zA-Z0-9_]+.class&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>    regex_search(filepath, m, regexp);</div>
+<div class="line"><span class="lineno">   36</span>    </div>
+<div class="line"><span class="lineno">   37</span>    <span class="keywordtype">string</span> filename = m[0];</div>
+<div class="line"><span class="lineno">   38</span>    filename = filename.substr(0, filename.find(<span class="charliteral">&#39;.&#39;</span>)); </div>
+<div class="line"><span class="lineno">   39</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a39ccb02095ac028506b49fd0de4c1f9e">open_outfile</a>(filename);</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;# **&quot;</span> &lt;&lt; filename &lt;&lt; <span class="stringliteral">&quot;**&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   42</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a4403b429296c23e0b13eef9a560d0f0f">print_general_info</a>(class_f);</div>
+<div class="line"><span class="lineno">   43</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a1f93d7862f183dd7614fcc0fef6bfcb6">print_pool</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
+<div class="line"><span class="lineno">   44</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#ad38783199c6c0e51d2b70e32330ba35e">print_interfaces</a>(class_f);</div>
+<div class="line"><span class="lineno">   45</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#ac6016315b30d9a36a95d23636f77a36d">print_fields</a>(class_f);</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a82b821e35621971f39f668e4a22a094f">print_methods</a>(class_f);</div>
+<div class="line"><span class="lineno">   47</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a0059c8abf04d7364b111b491e77ef4f9">print_class_attributes</a>(class_f);</div>
+<div class="line"><span class="lineno">   48</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.close();</div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a10cdca6d37ca0c018388bd095fda5576">pos_counter</a> = 0;</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>    cout &lt;&lt; <span class="stringliteral">&quot;Generated \&quot;&quot;</span> &lt;&lt; filename + <span class="stringliteral">&quot;.md\&quot; at /out/&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   52</span>}</div>
+<div class="ttc" id="adump__class__file_8cpp_html_a0059c8abf04d7364b111b491e77ef4f9"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a0059c8abf04d7364b111b491e77ef4f9">print_class_attributes</a></div><div class="ttdeci">void print_class_attributes(class_file &amp;class_f)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file attributes.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00347">dump_class_file.cpp:347</a></div></div>
 <div class="ttc" id="adump__class__file_8cpp_html_a10cdca6d37ca0c018388bd095fda5576"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a10cdca6d37ca0c018388bd095fda5576">pos_counter</a></div><div class="ttdeci">unsigned int pos_counter</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00009">dump_class_file.cpp:9</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_a1f93d7862f183dd7614fcc0fef6bfcb6"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a1f93d7862f183dd7614fcc0fef6bfcb6">print_pool</a></div><div class="ttdeci">void print_pool(cp_info_vector &amp;constant_pool)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00209">dump_class_file.cpp:209</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_a39ccb02095ac028506b49fd0de4c1f9e"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a39ccb02095ac028506b49fd0de4c1f9e">open_outfile</a></div><div class="ttdeci">void open_outfile(string filename)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00013">dump_class_file.cpp:13</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_a4403b429296c23e0b13eef9a560d0f0f"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a4403b429296c23e0b13eef9a560d0f0f">print_general_info</a></div><div class="ttdeci">void print_general_info(class_file &amp;class_f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00039">dump_class_file.cpp:39</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_a82b821e35621971f39f668e4a22a094f"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a82b821e35621971f39f668e4a22a094f">print_methods</a></div><div class="ttdeci">void print_methods(class_file &amp;class_f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00277">dump_class_file.cpp:277</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_ac6016315b30d9a36a95d23636f77a36d"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#ac6016315b30d9a36a95d23636f77a36d">print_fields</a></div><div class="ttdeci">void print_fields(class_file &amp;class_f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00246">dump_class_file.cpp:246</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_ad38783199c6c0e51d2b70e32330ba35e"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#ad38783199c6c0e51d2b70e32330ba35e">print_interfaces</a></div><div class="ttdeci">void print_interfaces(class_file &amp;class_f)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00231">dump_class_file.cpp:231</a></div></div>
-<div class="ttc" id="astructclass__file_html_a7adc703897ee0e8f4a53618e80a8c2b7"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">class_file::constant_pool</a></div><div class="ttdeci">cp_info_vector constant_pool</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00079">class_file.hpp:79</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_a1f93d7862f183dd7614fcc0fef6bfcb6"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a1f93d7862f183dd7614fcc0fef6bfcb6">print_pool</a></div><div class="ttdeci">void print_pool(cp_info_vector &amp;constant_pool)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file constant pool, including its items a...</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00232">dump_class_file.cpp:232</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_a39ccb02095ac028506b49fd0de4c1f9e"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a39ccb02095ac028506b49fd0de4c1f9e">open_outfile</a></div><div class="ttdeci">void open_outfile(string filename)</div><div class="ttdoc">Function that opens the outfile.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00020">dump_class_file.cpp:20</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_a4403b429296c23e0b13eef9a560d0f0f"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a4403b429296c23e0b13eef9a560d0f0f">print_general_info</a></div><div class="ttdeci">void print_general_info(class_file &amp;class_f)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file &quot;metadata&quot;, such as minor and major ...</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00058">dump_class_file.cpp:58</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_a82b821e35621971f39f668e4a22a094f"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a82b821e35621971f39f668e4a22a094f">print_methods</a></div><div class="ttdeci">void print_methods(class_file &amp;class_f)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file methods.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00312">dump_class_file.cpp:312</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_ac6016315b30d9a36a95d23636f77a36d"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#ac6016315b30d9a36a95d23636f77a36d">print_fields</a></div><div class="ttdeci">void print_fields(class_file &amp;class_f)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file interfaces.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00277">dump_class_file.cpp:277</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_ad38783199c6c0e51d2b70e32330ba35e"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#ad38783199c6c0e51d2b70e32330ba35e">print_interfaces</a></div><div class="ttdeci">void print_interfaces(class_file &amp;class_f)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file interfaces.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00258">dump_class_file.cpp:258</a></div></div>
+<div class="ttc" id="astructclass__file_html_a7adc703897ee0e8f4a53618e80a8c2b7"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">class_file::constant_pool</a></div><div class="ttdeci">cp_info_vector constant_pool</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00093">class_file.hpp:93</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -497,18 +523,26 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00316">316</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  317</span>{</div>
-<div class="line"><span class="lineno">  318</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> attr_counter = 0;</div>
-<div class="line"><span class="lineno">  319</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> attr : attr_vector)</div>
-<div class="line"><span class="lineno">  320</span>    {</div>
-<div class="line"><span class="lineno">  321</span>        <span class="keyword">auto</span> <a class="code hl_struct" href="../../de/df3/structattr__info.html">attr_info</a> = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#a811d474a4039f1315585d0a630058583">to_attr_info</a>(attr);</div>
-<div class="line"><span class="lineno">  322</span>        <a class="code hl_struct" href="../../de/df3/structattr__info.html">attr_info</a>-&gt;dump_info_to_file(constant_pool, attr_counter);</div>
-<div class="line"><span class="lineno">  323</span>    }</div>
-<div class="line"><span class="lineno">  324</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  325</span>}</div>
-<div class="ttc" id="astructattr__info_html"><div class="ttname"><a href="../../de/df3/structattr__info.html">attr_info</a></div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00044">class_file.hpp:44</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_a811d474a4039f1315585d0a630058583"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#a811d474a4039f1315585d0a630058583">to_attr_info</a></div><div class="ttdeci">#define to_attr_info</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00008">types.hpp:8</a></div></div>
+<p>Function responsible for printing to the outfile the .class file method and field attributes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00359">359</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  360</span>{</div>
+<div class="line"><span class="lineno">  361</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> attr_counter = 0;</div>
+<div class="line"><span class="lineno">  362</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> attr : attr_vector)</div>
+<div class="line"><span class="lineno">  363</span>    {</div>
+<div class="line"><span class="lineno">  364</span>        <span class="keyword">auto</span> <a class="code hl_struct" href="../../de/df3/structattr__info.html">attr_info</a> = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#a811d474a4039f1315585d0a630058583">to_attr_info</a>(attr);</div>
+<div class="line"><span class="lineno">  365</span>        <a class="code hl_struct" href="../../de/df3/structattr__info.html">attr_info</a>-&gt;dump_info_to_file(constant_pool, attr_counter);</div>
+<div class="line"><span class="lineno">  366</span>    }</div>
+<div class="line"><span class="lineno">  367</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  368</span>}</div>
+<div class="ttc" id="astructattr__info_html"><div class="ttname"><a href="../../de/df3/structattr__info.html">attr_info</a></div><div class="ttdoc">Attribute info structure. Contains values related to an attribute.</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00051">class_file.hpp:51</a></div></div>
+<div class="ttc" id="atypes_8hpp_html_a811d474a4039f1315585d0a630058583"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#a811d474a4039f1315585d0a630058583">to_attr_info</a></div><div class="ttdeci">#define to_attr_info</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00013">types.hpp:13</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -528,15 +562,23 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00308">308</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  309</span>{</div>
-<div class="line"><span class="lineno">  310</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Attributes**&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  311</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  312</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a83d792be5eb24fa00c1485be11d7db16">attributes</a>, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
-<div class="line"><span class="lineno">  313</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  314</span>}</div>
-<div class="ttc" id="adump__class__file_8cpp_html_a6dd0749fa50af2f7c062b67cf93f0983"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a></div><div class="ttdeci">void print_attributes_vector(attr_info_vector &amp;attr_vector, cp_info_vector &amp;constant_pool)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00316">dump_class_file.cpp:316</a></div></div>
-<div class="ttc" id="astructclass__file_html_a83d792be5eb24fa00c1485be11d7db16"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a83d792be5eb24fa00c1485be11d7db16">class_file::attributes</a></div><div class="ttdeci">attr_info_vector attributes</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00090">class_file.hpp:90</a></div></div>
+<p>Function responsible for printing to the outfile the .class file attributes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00347">347</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  348</span>{</div>
+<div class="line"><span class="lineno">  349</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Attributes**&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  350</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  351</span>    <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a83d792be5eb24fa00c1485be11d7db16">attributes</a>, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
+<div class="line"><span class="lineno">  352</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  353</span>}</div>
+<div class="ttc" id="adump__class__file_8cpp_html_a6dd0749fa50af2f7c062b67cf93f0983"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a></div><div class="ttdeci">void print_attributes_vector(attr_info_vector &amp;attr_vector, cp_info_vector &amp;constant_pool)</div><div class="ttdoc">Function responsible for printing to the outfile the .class file method and field attributes.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00359">dump_class_file.cpp:359</a></div></div>
+<div class="ttc" id="astructclass__file_html_a83d792be5eb24fa00c1485be11d7db16"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a83d792be5eb24fa00c1485be11d7db16">class_file::attributes</a></div><div class="ttdeci">attr_info_vector attributes</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00104">class_file.hpp:104</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -556,40 +598,48 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00246">246</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  247</span>{</div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> field_counter = 0;</div>
-<div class="line"><span class="lineno">  249</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Fields**&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  250</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  251</span> </div>
-<div class="line"><span class="lineno">  252</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> field : class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a55201f0d54d77423a1bf55df28d1a0fe">fields</a>) </div>
-<div class="line"><span class="lineno">  253</span>    {</div>
-<div class="line"><span class="lineno">  254</span>        <span class="keyword">auto</span> field_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[field.name_idx - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">  255</span>        <span class="keyword">auto</span> field_descriptor = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[field.descriptor_idx - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">  256</span> </div>
-<div class="line"><span class="lineno">  257</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;### [&quot;</span> &lt;&lt; field_counter++ &lt;&lt; <span class="stringliteral">&quot;] `&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(field_name) &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  258</span> </div>
-<div class="line"><span class="lineno">  259</span>        ios_base::fmtflags f(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
-<div class="line"><span class="lineno">  260</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Fields Access Flags `0x&quot;</span> &lt;&lt; hex &lt;&lt; setw(4) &lt;&lt; setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; field.access_flags &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  261</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;[`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a>(field.access_flags, <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#abbab477a47201196b8e02020a1c022a1">FIELD</a>) &lt;&lt; <span class="stringliteral">&quot;`]&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  262</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
-<div class="line"><span class="lineno">  263</span> </div>
-<div class="line"><span class="lineno">  264</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Name Index `&quot;</span> &lt;&lt; field.name_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">  265</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(field_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  266</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Descriptor Index `&quot;</span> &lt;&lt; field.descriptor_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">  267</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(field_descriptor) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  268</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Attribute Count `&quot;</span> &lt;&lt; field.attr_count &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  269</span>        </div>
-<div class="line"><span class="lineno">  270</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt;&lt;summary&gt;Show attributes&lt;/summary&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  271</span>        <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a>(field.attr, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
-<div class="line"><span class="lineno">  272</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  273</span>    }</div>
-<div class="line"><span class="lineno">  274</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  275</span>}</div>
-<div class="ttc" id="adump__class__file_8cpp_html_a6f06ce58b95bee4355f4e63de97e83f5"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a></div><div class="ttdeci">string get_access_flags(u2 access_flags, int type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00092">dump_class_file.cpp:92</a></div></div>
-<div class="ttc" id="adump__class__file_8cpp_html_afe2b18717ca7894e1e058a7c8ba7cbe4"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a></div><div class="ttdeci">string get_utf8_content(CONSTANT_utf8_info &amp;utf8)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00223">dump_class_file.cpp:223</a></div></div>
-<div class="ttc" id="astructclass__file_html_a55201f0d54d77423a1bf55df28d1a0fe"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a55201f0d54d77423a1bf55df28d1a0fe">class_file::fields</a></div><div class="ttdeci">vector&lt; field_info &gt; fields</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00086">class_file.hpp:86</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_abb7ea1d3958d89b769f958f0b7ff4106"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a></div><div class="ttdeci">#define to_cp_info</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00007">types.hpp:7</a></div></div>
+<p>Function responsible for printing to the outfile the .class file interfaces. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00277">277</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  278</span>{</div>
+<div class="line"><span class="lineno">  279</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> field_counter = 0;</div>
+<div class="line"><span class="lineno">  280</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Fields**&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  281</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> field : class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a55201f0d54d77423a1bf55df28d1a0fe">fields</a>) </div>
+<div class="line"><span class="lineno">  284</span>    {</div>
+<div class="line"><span class="lineno">  285</span>        <span class="keyword">auto</span> field_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[field.name_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  286</span>        <span class="keyword">auto</span> field_descriptor = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[field.descriptor_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  287</span> </div>
+<div class="line"><span class="lineno">  288</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;### [&quot;</span> &lt;&lt; field_counter++ &lt;&lt; <span class="stringliteral">&quot;] `&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(field_name) &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  289</span> </div>
+<div class="line"><span class="lineno">  290</span>        ios_base::fmtflags f(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
+<div class="line"><span class="lineno">  291</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Fields Access Flags `0x&quot;</span> &lt;&lt; hex &lt;&lt; setw(4) &lt;&lt; setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; field.access_flags &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  292</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;[`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a>(field.access_flags, <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#abbab477a47201196b8e02020a1c022a1">FIELD</a>) &lt;&lt; <span class="stringliteral">&quot;`]&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  293</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
+<div class="line"><span class="lineno">  294</span> </div>
+<div class="line"><span class="lineno">  295</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Name Index `&quot;</span> &lt;&lt; field.name_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">  296</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(field_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  297</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Descriptor Index `&quot;</span> &lt;&lt; field.descriptor_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">  298</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(field_descriptor) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  299</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Attribute Count `&quot;</span> &lt;&lt; field.attr_count &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  300</span>        </div>
+<div class="line"><span class="lineno">  301</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt;&lt;summary&gt;Show attributes&lt;/summary&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  302</span>        <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a>(field.attr, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
+<div class="line"><span class="lineno">  303</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  304</span>    }</div>
+<div class="line"><span class="lineno">  305</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  306</span>}</div>
+<div class="ttc" id="adump__class__file_8cpp_html_a6f06ce58b95bee4355f4e63de97e83f5"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a></div><div class="ttdeci">string get_access_flags(u2 access_flags, int type)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00111">dump_class_file.cpp:111</a></div></div>
+<div class="ttc" id="adump__class__file_8cpp_html_afe2b18717ca7894e1e058a7c8ba7cbe4"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a></div><div class="ttdeci">string get_utf8_content(CONSTANT_utf8_info &amp;utf8)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00246">dump_class_file.cpp:246</a></div></div>
+<div class="ttc" id="astructclass__file_html_a55201f0d54d77423a1bf55df28d1a0fe"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a55201f0d54d77423a1bf55df28d1a0fe">class_file::fields</a></div><div class="ttdeci">vector&lt; field_info &gt; fields</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00100">class_file.hpp:100</a></div></div>
+<div class="ttc" id="atypes_8hpp_html_abb7ea1d3958d89b769f958f0b7ff4106"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a></div><div class="ttdeci">#define to_cp_info</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00012">types.hpp:12</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -609,52 +659,60 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00039">39</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **General Information**&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   42</span>    ios_base::fmtflags f(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
-<div class="line"><span class="lineno">   43</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Magic &quot;</span> &lt;&lt; <span class="stringliteral">&quot;`0x&quot;</span> &lt;&lt; uppercase &lt;&lt; hex &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a85eeca89e225dff97572e4101bddf809">magic</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   44</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
-<div class="line"><span class="lineno">   45</span>    </div>
-<div class="line"><span class="lineno">   46</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Minor version `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#af362259638ccc177e18363c5ca419f5a">minor_version</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   47</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Major version `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#aacfd70a757d576327ee05bad69449e8e">major_version</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span>;</div>
-<div class="line"><span class="lineno">   48</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;[`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a640cf81e05d66892c78563fc81a2726f">get_version</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#aacfd70a757d576327ee05bad69449e8e">major_version</a>, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#af362259638ccc177e18363c5ca419f5a">minor_version</a>) &lt;&lt; <span class="stringliteral">&quot;`]  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   49</span>    </div>
-<div class="line"><span class="lineno">   50</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Constant Pool Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a16efa35301a6defb65ec2372ee87b9e3">constant_pool_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   51</span>    </div>
-<div class="line"><span class="lineno">   52</span>    ios_base::fmtflags g(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Access Flags `0x&quot;</span> &lt;&lt; setw(4) &lt;&lt; setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; hex &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a83db3ec66452e03fdcb025cee67b781a">access_flag</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span>;</div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot; [`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a83db3ec66452e03fdcb025cee67b781a">access_flag</a>, <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#aeb04f2e0012cb07d68538599161c9693">CLASS</a>) &lt;&lt; <span class="stringliteral">&quot;`]  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   55</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(g);</div>
-<div class="line"><span class="lineno">   56</span>    </div>
-<div class="line"><span class="lineno">   57</span>    <span class="keyword">auto</span> this_class = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7128e599618f05d320e275f06d52a4cd">this_class</a> - 1])-&gt;_class-&gt;name_idx;</div>
-<div class="line"><span class="lineno">   58</span>    <span class="keyword">auto</span> this_class_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[this_class - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">   59</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;This Class `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7128e599618f05d320e275f06d52a4cd">this_class</a> &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(this_class_name)  &lt;&lt; <span class="stringliteral">&quot;&gt;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   61</span>    </div>
-<div class="line"><span class="lineno">   62</span>    <span class="keyword">auto</span> super_class = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a636a77b3213838147827e280ee890399">super_class</a> - 1])-&gt;_class-&gt;name_idx;</div>
-<div class="line"><span class="lineno">   63</span>    <span class="keyword">auto</span> super_class_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[super_class - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">   64</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Super Class `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a636a77b3213838147827e280ee890399">super_class</a> &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(super_class_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Interfaces Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a4b8bc154339e1ec07b8d4aa7cdd17f86">interfaces_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   68</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Fields Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a62a092b3f156f859c8dadd7698783ef4">fields_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Methods Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a75f7815370a51fc2c80c0371dd10fac5">methods_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   70</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Attributes Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a97d635072677aedf4a30f48128726c00">attributes_count</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   71</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">   72</span>}</div>
-<div class="ttc" id="adump__class__file_8cpp_html_a640cf81e05d66892c78563fc81a2726f"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a640cf81e05d66892c78563fc81a2726f">get_version</a></div><div class="ttdeci">string get_version(u2 major, u2 minor)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00074">dump_class_file.cpp:74</a></div></div>
-<div class="ttc" id="astructclass__file_html_a16efa35301a6defb65ec2372ee87b9e3"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a16efa35301a6defb65ec2372ee87b9e3">class_file::constant_pool_count</a></div><div class="ttdeci">u2 constant_pool_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00078">class_file.hpp:78</a></div></div>
-<div class="ttc" id="astructclass__file_html_a4b8bc154339e1ec07b8d4aa7cdd17f86"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a4b8bc154339e1ec07b8d4aa7cdd17f86">class_file::interfaces_count</a></div><div class="ttdeci">u2 interfaces_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00083">class_file.hpp:83</a></div></div>
-<div class="ttc" id="astructclass__file_html_a62a092b3f156f859c8dadd7698783ef4"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a62a092b3f156f859c8dadd7698783ef4">class_file::fields_count</a></div><div class="ttdeci">u2 fields_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00085">class_file.hpp:85</a></div></div>
-<div class="ttc" id="astructclass__file_html_a636a77b3213838147827e280ee890399"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a636a77b3213838147827e280ee890399">class_file::super_class</a></div><div class="ttdeci">u2 super_class</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00082">class_file.hpp:82</a></div></div>
-<div class="ttc" id="astructclass__file_html_a7128e599618f05d320e275f06d52a4cd"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a7128e599618f05d320e275f06d52a4cd">class_file::this_class</a></div><div class="ttdeci">u2 this_class</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00081">class_file.hpp:81</a></div></div>
-<div class="ttc" id="astructclass__file_html_a75f7815370a51fc2c80c0371dd10fac5"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a75f7815370a51fc2c80c0371dd10fac5">class_file::methods_count</a></div><div class="ttdeci">u2 methods_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00087">class_file.hpp:87</a></div></div>
-<div class="ttc" id="astructclass__file_html_a83db3ec66452e03fdcb025cee67b781a"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a83db3ec66452e03fdcb025cee67b781a">class_file::access_flag</a></div><div class="ttdeci">u2 access_flag</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00080">class_file.hpp:80</a></div></div>
-<div class="ttc" id="astructclass__file_html_a85eeca89e225dff97572e4101bddf809"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a85eeca89e225dff97572e4101bddf809">class_file::magic</a></div><div class="ttdeci">u4 magic</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00075">class_file.hpp:75</a></div></div>
-<div class="ttc" id="astructclass__file_html_a97d635072677aedf4a30f48128726c00"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a97d635072677aedf4a30f48128726c00">class_file::attributes_count</a></div><div class="ttdeci">u2 attributes_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00089">class_file.hpp:89</a></div></div>
-<div class="ttc" id="astructclass__file_html_aacfd70a757d576327ee05bad69449e8e"><div class="ttname"><a href="../../dc/d78/structclass__file.html#aacfd70a757d576327ee05bad69449e8e">class_file::major_version</a></div><div class="ttdeci">u2 major_version</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00077">class_file.hpp:77</a></div></div>
-<div class="ttc" id="astructclass__file_html_af362259638ccc177e18363c5ca419f5a"><div class="ttname"><a href="../../dc/d78/structclass__file.html#af362259638ccc177e18363c5ca419f5a">class_file::minor_version</a></div><div class="ttdeci">u2 minor_version</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00076">class_file.hpp:76</a></div></div>
+<p>Function responsible for printing to the outfile the .class file "metadata", such as minor and major versions, access flags, etc. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   59</span>{</div>
+<div class="line"><span class="lineno">   60</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **General Information**&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   61</span>    ios_base::fmtflags f(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Magic &quot;</span> &lt;&lt; <span class="stringliteral">&quot;`0x&quot;</span> &lt;&lt; uppercase &lt;&lt; hex &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a85eeca89e225dff97572e4101bddf809">magic</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   63</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
+<div class="line"><span class="lineno">   64</span>    </div>
+<div class="line"><span class="lineno">   65</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Minor version `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#af362259638ccc177e18363c5ca419f5a">minor_version</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Major version `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#aacfd70a757d576327ee05bad69449e8e">major_version</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span>;</div>
+<div class="line"><span class="lineno">   67</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;[`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a640cf81e05d66892c78563fc81a2726f">get_version</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#aacfd70a757d576327ee05bad69449e8e">major_version</a>, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#af362259638ccc177e18363c5ca419f5a">minor_version</a>) &lt;&lt; <span class="stringliteral">&quot;`]  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   68</span>    </div>
+<div class="line"><span class="lineno">   69</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Constant Pool Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a16efa35301a6defb65ec2372ee87b9e3">constant_pool_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   70</span>    </div>
+<div class="line"><span class="lineno">   71</span>    ios_base::fmtflags g(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
+<div class="line"><span class="lineno">   72</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Access Flags `0x&quot;</span> &lt;&lt; setw(4) &lt;&lt; setfill(<span class="charliteral">&#39;0&#39;</span>) &lt;&lt; hex &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a83db3ec66452e03fdcb025cee67b781a">access_flag</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span>;</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot; [`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a83db3ec66452e03fdcb025cee67b781a">access_flag</a>, <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#aeb04f2e0012cb07d68538599161c9693">CLASS</a>) &lt;&lt; <span class="stringliteral">&quot;`]  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   74</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(g);</div>
+<div class="line"><span class="lineno">   75</span>    </div>
+<div class="line"><span class="lineno">   76</span>    <span class="keyword">auto</span> this_class = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7128e599618f05d320e275f06d52a4cd">this_class</a> - 1])-&gt;_class-&gt;name_idx;</div>
+<div class="line"><span class="lineno">   77</span>    <span class="keyword">auto</span> this_class_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[this_class - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">   78</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;This Class `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7128e599618f05d320e275f06d52a4cd">this_class</a> &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">   79</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(this_class_name)  &lt;&lt; <span class="stringliteral">&quot;&gt;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   80</span>    </div>
+<div class="line"><span class="lineno">   81</span>    <span class="keyword">auto</span> super_class = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a636a77b3213838147827e280ee890399">super_class</a> - 1])-&gt;_class-&gt;name_idx;</div>
+<div class="line"><span class="lineno">   82</span>    <span class="keyword">auto</span> super_class_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[super_class - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">   83</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Super Class `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a636a77b3213838147827e280ee890399">super_class</a> &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">   84</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(super_class_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Interfaces Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a4b8bc154339e1ec07b8d4aa7cdd17f86">interfaces_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   87</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Fields Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a62a092b3f156f859c8dadd7698783ef4">fields_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   88</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Methods Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a75f7815370a51fc2c80c0371dd10fac5">methods_count</a> &lt;&lt; <span class="stringliteral">&quot;`  &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   89</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;Attributes Count `&quot;</span> &lt;&lt; class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a97d635072677aedf4a30f48128726c00">attributes_count</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   90</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   91</span>}</div>
+<div class="ttc" id="adump__class__file_8cpp_html_a640cf81e05d66892c78563fc81a2726f"><div class="ttname"><a href="../../d4/dde/dump__class__file_8cpp.html#a640cf81e05d66892c78563fc81a2726f">get_version</a></div><div class="ttdeci">string get_version(u2 major, u2 minor)</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00093">dump_class_file.cpp:93</a></div></div>
+<div class="ttc" id="astructclass__file_html_a16efa35301a6defb65ec2372ee87b9e3"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a16efa35301a6defb65ec2372ee87b9e3">class_file::constant_pool_count</a></div><div class="ttdeci">u2 constant_pool_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00092">class_file.hpp:92</a></div></div>
+<div class="ttc" id="astructclass__file_html_a4b8bc154339e1ec07b8d4aa7cdd17f86"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a4b8bc154339e1ec07b8d4aa7cdd17f86">class_file::interfaces_count</a></div><div class="ttdeci">u2 interfaces_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00097">class_file.hpp:97</a></div></div>
+<div class="ttc" id="astructclass__file_html_a62a092b3f156f859c8dadd7698783ef4"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a62a092b3f156f859c8dadd7698783ef4">class_file::fields_count</a></div><div class="ttdeci">u2 fields_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00099">class_file.hpp:99</a></div></div>
+<div class="ttc" id="astructclass__file_html_a636a77b3213838147827e280ee890399"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a636a77b3213838147827e280ee890399">class_file::super_class</a></div><div class="ttdeci">u2 super_class</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00096">class_file.hpp:96</a></div></div>
+<div class="ttc" id="astructclass__file_html_a7128e599618f05d320e275f06d52a4cd"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a7128e599618f05d320e275f06d52a4cd">class_file::this_class</a></div><div class="ttdeci">u2 this_class</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00095">class_file.hpp:95</a></div></div>
+<div class="ttc" id="astructclass__file_html_a75f7815370a51fc2c80c0371dd10fac5"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a75f7815370a51fc2c80c0371dd10fac5">class_file::methods_count</a></div><div class="ttdeci">u2 methods_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00101">class_file.hpp:101</a></div></div>
+<div class="ttc" id="astructclass__file_html_a83db3ec66452e03fdcb025cee67b781a"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a83db3ec66452e03fdcb025cee67b781a">class_file::access_flag</a></div><div class="ttdeci">u2 access_flag</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00094">class_file.hpp:94</a></div></div>
+<div class="ttc" id="astructclass__file_html_a85eeca89e225dff97572e4101bddf809"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a85eeca89e225dff97572e4101bddf809">class_file::magic</a></div><div class="ttdeci">u4 magic</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00089">class_file.hpp:89</a></div></div>
+<div class="ttc" id="astructclass__file_html_a97d635072677aedf4a30f48128726c00"><div class="ttname"><a href="../../dc/d78/structclass__file.html#a97d635072677aedf4a30f48128726c00">class_file::attributes_count</a></div><div class="ttdeci">u2 attributes_count</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00103">class_file.hpp:103</a></div></div>
+<div class="ttc" id="astructclass__file_html_aacfd70a757d576327ee05bad69449e8e"><div class="ttname"><a href="../../dc/d78/structclass__file.html#aacfd70a757d576327ee05bad69449e8e">class_file::major_version</a></div><div class="ttdeci">u2 major_version</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00091">class_file.hpp:91</a></div></div>
+<div class="ttc" id="astructclass__file_html_af362259638ccc177e18363c5ca419f5a"><div class="ttname"><a href="../../dc/d78/structclass__file.html#af362259638ccc177e18363c5ca419f5a">class_file::minor_version</a></div><div class="ttdeci">u2 minor_version</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00090">class_file.hpp:90</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -674,21 +732,29 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00231">231</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  232</span>{</div>
-<div class="line"><span class="lineno">  233</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Interfaces**&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  234</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  235</span> </div>
-<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> interface : class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#ac38ed8101894843022b5692e3fcebfab">interfaces</a>)</div>
-<div class="line"><span class="lineno">  237</span>    {</div>
-<div class="line"><span class="lineno">  238</span>        <span class="keyword">auto</span> interface_name_index = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[interface - 1])-&gt;_class-&gt;name_idx;</div>
-<div class="line"><span class="lineno">  239</span>        <span class="keyword">auto</span> interface_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[interface_name_index - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">  240</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Interface: `&quot;</span> &lt;&lt; <span class="keyword">interface </span>&lt;&lt; &quot;` &quot;;</div>
-<div class="line"><span class="lineno">  241</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(interface_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  242</span>    }</div>
-<div class="line"><span class="lineno">  243</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  244</span>}</div>
-<div class="ttc" id="astructclass__file_html_ac38ed8101894843022b5692e3fcebfab"><div class="ttname"><a href="../../dc/d78/structclass__file.html#ac38ed8101894843022b5692e3fcebfab">class_file::interfaces</a></div><div class="ttdeci">vector&lt; u2 &gt; interfaces</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00084">class_file.hpp:84</a></div></div>
+<p>Function responsible for printing to the outfile the .class file interfaces. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00258">258</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>{</div>
+<div class="line"><span class="lineno">  260</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Interfaces**&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  261</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  262</span> </div>
+<div class="line"><span class="lineno">  263</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> interface : class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#ac38ed8101894843022b5692e3fcebfab">interfaces</a>)</div>
+<div class="line"><span class="lineno">  264</span>    {</div>
+<div class="line"><span class="lineno">  265</span>        <span class="keyword">auto</span> interface_name_index = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[interface - 1])-&gt;_class-&gt;name_idx;</div>
+<div class="line"><span class="lineno">  266</span>        <span class="keyword">auto</span> interface_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[interface_name_index - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  267</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Interface: `&quot;</span> &lt;&lt; <span class="keyword">interface </span>&lt;&lt; &quot;` &quot;;</div>
+<div class="line"><span class="lineno">  268</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(interface_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  269</span>    }</div>
+<div class="line"><span class="lineno">  270</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  271</span>}</div>
+<div class="ttc" id="astructclass__file_html_ac38ed8101894843022b5692e3fcebfab"><div class="ttname"><a href="../../dc/d78/structclass__file.html#ac38ed8101894843022b5692e3fcebfab">class_file::interfaces</a></div><div class="ttdeci">vector&lt; u2 &gt; interfaces</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00098">class_file.hpp:98</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -708,37 +774,45 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00277">277</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  278</span>{</div>
-<div class="line"><span class="lineno">  279</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> method_counter = 0;</div>
-<div class="line"><span class="lineno">  280</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Methods**&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  281</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  282</span> </div>
-<div class="line"><span class="lineno">  283</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> method : class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#ac57aa89bc671869e0a51de11886cb489">methods</a>) </div>
-<div class="line"><span class="lineno">  284</span>    {</div>
-<div class="line"><span class="lineno">  285</span>        <span class="keyword">auto</span> method_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[method.name_idx - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">  286</span>        <span class="keyword">auto</span> method_descriptor = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[method.descriptor_idx - 1])-&gt;_utf8);</div>
-<div class="line"><span class="lineno">  287</span> </div>
-<div class="line"><span class="lineno">  288</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;### [&quot;</span> &lt;&lt; method_counter++ &lt;&lt; <span class="stringliteral">&quot;] `&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(method_name) &lt;&lt; <span class="stringliteral">&quot;` &quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  289</span> </div>
-<div class="line"><span class="lineno">  290</span>        ios_base::fmtflags f(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
-<div class="line"><span class="lineno">  291</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Methods Access Flags &quot;</span> &lt;&lt; <span class="stringliteral">&quot;`0x&quot;</span> &lt;&lt; uppercase &lt;&lt; hex &lt;&lt; method.access_flags &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">  292</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
-<div class="line"><span class="lineno">  293</span> </div>
-<div class="line"><span class="lineno">  294</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;[`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a>(method.access_flags, <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#a7acfc6e2f2442cbb9d8657e96d73bbec">METHOD</a>) &lt;&lt; <span class="stringliteral">&quot;`]&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  295</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Name Index `&quot;</span> &lt;&lt; method.name_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">  296</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(method_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  297</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Descriptor Index `&quot;</span> &lt;&lt; method.descriptor_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
-<div class="line"><span class="lineno">  298</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(method_descriptor) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  299</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Attribute Count `&quot;</span> &lt;&lt; method.attr_count &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  300</span>        </div>
-<div class="line"><span class="lineno">  301</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt;&lt;summary&gt;Show attributes&lt;/summary&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  302</span>        <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a>(method.attr, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
-<div class="line"><span class="lineno">  303</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  304</span>    }</div>
-<div class="line"><span class="lineno">  305</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  306</span>}</div>
-<div class="ttc" id="astructclass__file_html_ac57aa89bc671869e0a51de11886cb489"><div class="ttname"><a href="../../dc/d78/structclass__file.html#ac57aa89bc671869e0a51de11886cb489">class_file::methods</a></div><div class="ttdeci">vector&lt; method_info &gt; methods</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00088">class_file.hpp:88</a></div></div>
+<p>Function responsible for printing to the outfile the .class file methods. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00312">312</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  313</span>{</div>
+<div class="line"><span class="lineno">  314</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> method_counter = 0;</div>
+<div class="line"><span class="lineno">  315</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Methods**&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  316</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> method : class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#ac57aa89bc671869e0a51de11886cb489">methods</a>) </div>
+<div class="line"><span class="lineno">  319</span>    {</div>
+<div class="line"><span class="lineno">  320</span>        <span class="keyword">auto</span> method_name = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[method.name_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  321</span>        <span class="keyword">auto</span> method_descriptor = *(<a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>[method.descriptor_idx - 1])-&gt;_utf8);</div>
+<div class="line"><span class="lineno">  322</span> </div>
+<div class="line"><span class="lineno">  323</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;### [&quot;</span> &lt;&lt; method_counter++ &lt;&lt; <span class="stringliteral">&quot;] `&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(method_name) &lt;&lt; <span class="stringliteral">&quot;` &quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  324</span> </div>
+<div class="line"><span class="lineno">  325</span>        ios_base::fmtflags f(<a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
+<div class="line"><span class="lineno">  326</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Methods Access Flags &quot;</span> &lt;&lt; <span class="stringliteral">&quot;`0x&quot;</span> &lt;&lt; uppercase &lt;&lt; hex &lt;&lt; method.access_flags &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">  327</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
+<div class="line"><span class="lineno">  328</span> </div>
+<div class="line"><span class="lineno">  329</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;[`&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6f06ce58b95bee4355f4e63de97e83f5">get_access_flags</a>(method.access_flags, <a class="code hl_define" href="../../de/d99/dump__class__file_8hpp.html#a7acfc6e2f2442cbb9d8657e96d73bbec">METHOD</a>) &lt;&lt; <span class="stringliteral">&quot;`]&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  330</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Name Index `&quot;</span> &lt;&lt; method.name_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">  331</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(method_name) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  332</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Descriptor Index `&quot;</span> &lt;&lt; method.descriptor_idx &lt;&lt; <span class="stringliteral">&quot;` &quot;</span>;</div>
+<div class="line"><span class="lineno">  333</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;`&lt;&quot;</span> &lt;&lt; <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#afe2b18717ca7894e1e058a7c8ba7cbe4">get_utf8_content</a>(method_descriptor) &lt;&lt; <span class="stringliteral">&quot;&gt;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  334</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Attribute Count `&quot;</span> &lt;&lt; method.attr_count &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  335</span>        </div>
+<div class="line"><span class="lineno">  336</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt;&lt;summary&gt;Show attributes&lt;/summary&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  337</span>        <a class="code hl_function" href="../../d4/dde/dump__class__file_8cpp.html#a6dd0749fa50af2f7c062b67cf93f0983">print_attributes_vector</a>(method.attr, class_f.<a class="code hl_variable" href="../../dc/d78/structclass__file.html#a7adc703897ee0e8f4a53618e80a8c2b7">constant_pool</a>);</div>
+<div class="line"><span class="lineno">  338</span>        <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  339</span>    }</div>
+<div class="line"><span class="lineno">  340</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt;&lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  341</span>}</div>
+<div class="ttc" id="astructclass__file_html_ac57aa89bc671869e0a51de11886cb489"><div class="ttname"><a href="../../dc/d78/structclass__file.html#ac57aa89bc671869e0a51de11886cb489">class_file::methods</a></div><div class="ttdeci">vector&lt; method_info &gt; methods</div><div class="ttdef"><b>Definition:</b> <a href="../../d0/d8b/class__file_8hpp_source.html#l00102">class_file.hpp:102</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -758,19 +832,27 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00209">209</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  210</span>{</div>
-<div class="line"><span class="lineno">  211</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cp_counter = 1;</div>
-<div class="line"><span class="lineno">  212</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Constant Pool**  &quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  213</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  214</span> </div>
-<div class="line"><span class="lineno">  215</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> cp_item : constant_pool) </div>
-<div class="line"><span class="lineno">  216</span>    {</div>
-<div class="line"><span class="lineno">  217</span>        <span class="keyword">auto</span> cp_info = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(cp_item);</div>
-<div class="line"><span class="lineno">  218</span>        cp_info-&gt;dump_info_to_file(constant_pool, cp_counter);</div>
-<div class="line"><span class="lineno">  219</span>    }</div>
-<div class="line"><span class="lineno">  220</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt; &lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  221</span>}</div>
+<p>Function responsible for printing to the outfile the .class file constant pool, including its items and indexes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">class_f</td><td>a reference to the <a class="el" href="../../dc/d78/structclass__file.html" title="The class file structure. Contains the components of a class.">class_file</a> instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html#l00232">232</a> of file <a class="el" href="../../d4/dde/dump__class__file_8cpp_source.html">dump_class_file.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  233</span>{</div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> cp_counter = 1;</div>
+<div class="line"><span class="lineno">  235</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;## **Constant Pool**  &quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  236</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;details&gt; &lt;summary&gt;Show more&lt;/summary&gt; &lt;hr&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  237</span> </div>
+<div class="line"><span class="lineno">  238</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> cp_item : constant_pool) </div>
+<div class="line"><span class="lineno">  239</span>    {</div>
+<div class="line"><span class="lineno">  240</span>        <span class="keyword">auto</span> cp_info = <a class="code hl_define" href="../../dd/de3/types_8hpp.html#abb7ea1d3958d89b769f958f0b7ff4106">to_cp_info</a>(cp_item);</div>
+<div class="line"><span class="lineno">  241</span>        cp_info-&gt;dump_info_to_file(constant_pool, cp_counter);</div>
+<div class="line"><span class="lineno">  242</span>    }</div>
+<div class="line"><span class="lineno">  243</span>    <a class="code hl_variable" href="../../d4/dde/dump__class__file_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;&lt;/details&gt; &lt;br&gt;&quot;</span> &lt;&lt; endl &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  244</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

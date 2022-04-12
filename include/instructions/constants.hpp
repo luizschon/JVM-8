@@ -1,3 +1,8 @@
+/**
+ * @file constants.hpp
+ * @brief Declaration of the instructions of type constants
+ */
+
 #ifndef _CONSTANTS_HPP
 #define _CONSTANTS_HPP
 

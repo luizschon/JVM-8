@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['wide_0',['wide',['../dc/db0/extended_8hpp.html#a971b22faa1fabcdc856f7e3b35557701',1,'wide(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;extended.cpp'],['../d3/d1e/extended_8cpp.html#a971b22faa1fabcdc856f7e3b35557701',1,'wide(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;extended.cpp']]],
-  ['wide_5fdebug_1',['wide_debug',['../de/d75/bytecode_8hpp.html#a65d4e679ee49af5b737a3d54e9e7e1a9',1,'wide_debug(int &amp;, cp_info_vector &amp;, bytestream &amp;):&#160;debug.cpp'],['../d1/d00/debug_8cpp.html#a041c2581fe99fef5344e9f37b41cd31d',1,'wide_debug(int &amp;code_index, cp_info_vector &amp;constant_pool, bytestream &amp;code):&#160;debug.cpp']]]
+  ['_7eattribute_0',['~Attribute',['../de/d9d/classAttribute.html#a541f3a6bfe9cf23c89ba4f73296496d6',1,'Attribute']]],
+  ['_7eattribute_5finfo_1',['~Attribute_Info',['../d5/d5e/classAttribute__Info.html#af5d1153361fbd4e989c7d380e1e1a73f',1,'Attribute_Info']]],
+  ['_7ecp_5finfo_2',['~CP_Info',['../dd/d6d/classCP__Info.html#a7e130ce30af7f120e32bc92c360546b9',1,'CP_Info']]],
+  ['_7ecp_5fitem_3',['~CP_Item',['../de/d2f/classCP__Item.html#a46c45b7e6b4a4522f7fefef5bd00a673',1,'CP_Item']]]
 ];

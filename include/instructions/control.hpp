@@ -1,3 +1,8 @@
+/**
+ * @file control.hpp
+ * @brief Declaration of the instructions of type control
+ */
+
 #ifndef _CONTROL_HPP
 #define _CONTROL_HPP
 

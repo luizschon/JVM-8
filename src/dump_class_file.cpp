@@ -8,13 +8,26 @@ using namespace std;
 
 unsigned int pos_counter = 0;
 
+/**
+ * @brief Global file used to dump information stored in the .class file in Markdown format
+ */
 ofstream outfile;
 
-void open_outfile(string filename) {
+/**
+ * @brief Function that opens the outfile
+ * @param filename the name of the .class file
+ */
+void open_outfile(string filename)
+{
     create_dir();
     outfile = ofstream("./out/" + filename + ".md");
 }
 
+/**
+ * @brief Function responsible for calling all functions that dump information to the outfile
+ * @param class_f a reference to the class_file instance
+ * @param filepath the name of the .class
+ */
 void print_all(class_file &class_f, string filepath)
 {
     smatch m;
@@ -34,8 +47,14 @@ void print_all(class_file &class_f, string filepath)
     print_class_attributes(class_f);
     outfile.close();
     pos_counter = 0;
+
+    cout << "Generated \"" << filename + ".md\" at /out/" << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file "metadata", such as minor and major versions, access flags, etc.
+ * @param class_f a reference to the class_file instance
+ */
 void print_general_info(class_file &class_f)
 {
     outfile << "## **General Information**" << endl;
@@ -206,6 +225,10 @@ string get_access_flags(u2 access_flags, int type)
     return class_access;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file constant pool, including its items and indexes
+ * @param class_f a reference to the class_file instance
+ */
 void print_pool(cp_info_vector &constant_pool)
 {
     unsigned int cp_counter = 1;
@@ -228,6 +251,10 @@ string get_utf8_content(CONSTANT_utf8_info &utf8)
     return out;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file interfaces
+ * @param class_f a reference to the class_file instance
+ */
 void print_interfaces(class_file &class_f)
 {
     outfile << "## **Interfaces**" << endl << endl;
@@ -243,6 +270,10 @@ void print_interfaces(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file interfaces
+ * @param class_f a reference to the class_file instance
+ */
 void print_fields(class_file &class_f)
 {
     unsigned int field_counter = 0;
@@ -274,6 +305,10 @@ void print_fields(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file methods
+ * @param class_f a reference to the class_file instance
+ */
 void print_methods(class_file &class_f)
 {
     unsigned int method_counter = 0;
@@ -305,6 +340,10 @@ void print_methods(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file attributes
+ * @param class_f a reference to the class_file instance
+ */
 void print_class_attributes(class_file &class_f)
 {
     outfile << "## **Attributes**" << endl;
@@ -313,6 +352,10 @@ void print_class_attributes(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file method and field attributes
+ * @param class_f a reference to the class_file instance
+ */
 void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &constant_pool)
 {
     unsigned int attr_counter = 0;

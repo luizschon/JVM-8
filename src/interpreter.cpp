@@ -44,7 +44,7 @@ void JVMInterpreter::run(class_file *class_f)
 /**
  * @brief Loads classes into method area 
  * @param class_f the first class file loaded by class loader
- * @return method_area the method area with loaded classes
+ * @return the method area with loaded classes
  */
 void JVMInterpreter::load_classes(class_file *class_f)
 {

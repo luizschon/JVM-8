@@ -89,13 +89,18 @@ $(document).ready(function(){initNavTree('db/d8a/structBootstrapMethods__attribu
 </div><!--header-->
 <div class="contents">
 
+<p>The bootstrap methods attribute structure.  
+ <a href="../../db/d8a/structBootstrapMethods__attribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af1328956fdbfda942e155ad4aba4be67"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8a/structBootstrapMethods__attribute.html#af1328956fdbfda942e155ad4aba4be67">BootstrapMethods_attribute</a> (ifstream &amp;, <a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:af1328956fdbfda942e155ad4aba4be67"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../db/d8a/structBootstrapMethods__attribute.html#af1328956fdbfda942e155ad4aba4be67" title="Construct a new BootstrapMethods_attribute::BootstrapMethods_attribute object.">BootstrapMethods_attribute::BootstrapMethods_attribute</a> object.  <a href="../../db/d8a/structBootstrapMethods__attribute.html#af1328956fdbfda942e155ad4aba4be67">More...</a><br /></td></tr>
 <tr class="separator:af1328956fdbfda942e155ad4aba4be67"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5925e418d249e4215c12fbe2776e8af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d8a/structBootstrapMethods__attribute.html#aa5925e418d249e4215c12fbe2776e8af">dump_to_file</a> (<a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:aa5925e418d249e4215c12fbe2776e8af"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump BoostrapMethods info into outfile.  <a href="../../db/d8a/structBootstrapMethods__attribute.html#aa5925e418d249e4215c12fbe2776e8af">More...</a><br /></td></tr>
 <tr class="separator:aa5925e418d249e4215c12fbe2776e8af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -106,8 +111,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:acfa19c982e89333ee1e4b134794c2473"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00093">93</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<div class="textblock"><p >The bootstrap methods attribute structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00117">117</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="af1328956fdbfda942e155ad4aba4be67" name="af1328956fdbfda942e155ad4aba4be67"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af1328956fdbfda942e155ad4aba4be67">&#9670;&nbsp;</a></span>BootstrapMethods_attribute()</h2>
@@ -135,16 +141,25 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00233">233</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  234</span>{</div>
-<div class="line"><span class="lineno">  235</span>    <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">num_bootstrap_methods</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  236</span>    </div>
-<div class="line"><span class="lineno">  237</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">num_bootstrap_methods</a>; i++)</div>
-<div class="line"><span class="lineno">  238</span>       <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#acfa19c982e89333ee1e4b134794c2473">bootstrap_methods</a>.push_back(<a class="code hl_struct" href="../../d7/d76/structbootstrap__methods__info.html">bootstrap_methods_info</a>(file)); </div>
-<div class="line"><span class="lineno">  239</span>}</div>
-<div class="ttc" id="astructBootstrapMethods__attribute_html_a4e8f99df950a9adb887c2039a600045b"><div class="ttname"><a href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">BootstrapMethods_attribute::num_bootstrap_methods</a></div><div class="ttdeci">u2 num_bootstrap_methods</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00095">attributes.hpp:95</a></div></div>
-<div class="ttc" id="astructBootstrapMethods__attribute_html_acfa19c982e89333ee1e4b134794c2473"><div class="ttname"><a href="../../db/d8a/structBootstrapMethods__attribute.html#acfa19c982e89333ee1e4b134794c2473">BootstrapMethods_attribute::bootstrap_methods</a></div><div class="ttdeci">vector&lt; bootstrap_methods_info &gt; bootstrap_methods</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00096">attributes.hpp:96</a></div></div>
-<div class="ttc" id="astructbootstrap__methods__info_html"><div class="ttname"><a href="../../d7/d76/structbootstrap__methods__info.html">bootstrap_methods_info</a></div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00042">attributes.hpp:42</a></div></div>
+<p>Construct a new <a class="el" href="../../db/d8a/structBootstrapMethods__attribute.html#af1328956fdbfda942e155ad4aba4be67" title="Construct a new BootstrapMethods_attribute::BootstrapMethods_attribute object.">BootstrapMethods_attribute::BootstrapMethods_attribute</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the class file </td></tr>
+    <tr><td class="paramname">constant_pool</td><td>the class file constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00300">300</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  301</span>{</div>
+<div class="line"><span class="lineno">  302</span>    <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">num_bootstrap_methods</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  303</span>    </div>
+<div class="line"><span class="lineno">  304</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">num_bootstrap_methods</a>; i++)</div>
+<div class="line"><span class="lineno">  305</span>       <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#acfa19c982e89333ee1e4b134794c2473">bootstrap_methods</a>.push_back(<a class="code hl_struct" href="../../d7/d76/structbootstrap__methods__info.html">bootstrap_methods_info</a>(file)); </div>
+<div class="line"><span class="lineno">  306</span>}</div>
+<div class="ttc" id="astructBootstrapMethods__attribute_html_a4e8f99df950a9adb887c2039a600045b"><div class="ttname"><a href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">BootstrapMethods_attribute::num_bootstrap_methods</a></div><div class="ttdeci">u2 num_bootstrap_methods</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00119">attributes.hpp:119</a></div></div>
+<div class="ttc" id="astructBootstrapMethods__attribute_html_acfa19c982e89333ee1e4b134794c2473"><div class="ttname"><a href="../../db/d8a/structBootstrapMethods__attribute.html#acfa19c982e89333ee1e4b134794c2473">BootstrapMethods_attribute::bootstrap_methods</a></div><div class="ttdeci">vector&lt; bootstrap_methods_info &gt; bootstrap_methods</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00120">attributes.hpp:120</a></div></div>
+<div class="ttc" id="astructbootstrap__methods__info_html"><div class="ttname"><a href="../../d7/d76/structbootstrap__methods__info.html">bootstrap_methods_info</a></div><div class="ttdoc">The bootstrap methods info structure.</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00056">attributes.hpp:56</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -165,12 +180,20 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00241">241</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  242</span>{</div>
-<div class="line"><span class="lineno">  243</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Number of bootstrap methods: &quot;</span> &lt;&lt; <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">num_bootstrap_methods</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  244</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - TODO: PRINTAR EXCEPTION_TABLE&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  245</span>}</div>
-<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
+<p>Dump BoostrapMethods info into outfile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constant_pool</td><td>the class file constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00312">312</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  313</span>{</div>
+<div class="line"><span class="lineno">  314</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Number of bootstrap methods: &quot;</span> &lt;&lt; <a class="code hl_variable" href="../../db/d8a/structBootstrapMethods__attribute.html#a4e8f99df950a9adb887c2039a600045b">num_bootstrap_methods</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  315</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - TODO: PRINTAR EXCEPTION_TABLE&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  316</span>}</div>
+<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -187,7 +210,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00096">96</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00120">120</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>
@@ -203,7 +226,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00095">95</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00119">119</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>

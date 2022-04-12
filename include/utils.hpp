@@ -1,3 +1,8 @@
+/**
+ * @file utils.hpp
+ * @brief Declaration of auxiliary functions 
+ */
+
 #ifndef _UTILS_HPP
 #define _UTILS_HPP
 
@@ -11,7 +16,12 @@ ifstream open_file(string &filename);
 string get_name(cp_info_vector&, u2);
 bool exists(string &name);
 
-// A template to read u1, u2, u4 or u8 bytes in big-endian order
+/**
+ * @brief A template to read u1, u2, u4 or u8 bytes in big-endian order
+ * @tparam T type of byte
+ * @param file the class file
+ * @return T data read from file
+ */
 template <typename T>
 T read_bytes(ifstream &file) 
 {
@@ -26,7 +36,12 @@ T read_bytes(ifstream &file)
     return data;
 }
 
-// A template to convert u1, u2, u4 or u8 bytes to little-endian order
+/**
+ * @brief A template to convert u1, u2, u4 or u8 bytes to little-endian order
+ * @tparam T type of byte
+ * @param iterator bytestream iterator
+ * @return T the size of data
+ */
 template <typename T>
 T get_bytes(bytestream_it &iterator)
 {

@@ -1,3 +1,8 @@
+/**
+ * @file interpreter.hpp
+ * @brief Declaration of the JVM interpreter class
+ */
+
 #ifndef _INTERPRETER_HPP
 #define _INTERPRETER_HPP
 

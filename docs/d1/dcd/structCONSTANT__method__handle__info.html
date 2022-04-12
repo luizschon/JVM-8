@@ -89,13 +89,18 @@ $(document).ready(function(){initNavTree('d1/dcd/structCONSTANT__method__handle_
 </div><!--header-->
 <div class="contents">
 
+<p>The constant method handle structure.  
+ <a href="../../d1/dcd/structCONSTANT__method__handle__info.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2d5d0d213a20eaf35c997fe4322245ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a2d5d0d213a20eaf35c997fe4322245ef">CONSTANT_method_handle_info</a> (ifstream &amp;file)</td></tr>
+<tr class="memdesc:a2d5d0d213a20eaf35c997fe4322245ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Constant_Method_Handle_Info object.  <a href="../../d1/dcd/structCONSTANT__method__handle__info.html#a2d5d0d213a20eaf35c997fe4322245ef">More...</a><br /></td></tr>
 <tr class="separator:a2d5d0d213a20eaf35c997fe4322245ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad80609ee77ec6f0dc1464ef0ecc325a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dcd/structCONSTANT__method__handle__info.html#ad80609ee77ec6f0dc1464ef0ecc325a1">dump_to_file</a> ()</td></tr>
+<tr class="memdesc:ad80609ee77ec6f0dc1464ef0ecc325a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump Constant_method_handle specfic information to the markdown outfile.  <a href="../../d1/dcd/structCONSTANT__method__handle__info.html#ad80609ee77ec6f0dc1464ef0ecc325a1">More...</a><br /></td></tr>
 <tr class="separator:ad80609ee77ec6f0dc1464ef0ecc325a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a87a4e634af6a183da3cdfcd6d5b6f4a2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a87a4e634af6a183da3cdfcd6d5b6f4a2">get_content</a> ()</td></tr>
 <tr class="separator:a87a4e634af6a183da3cdfcd6d5b6f4a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,8 +113,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a6aa7ef38c0ead9d623c153d872c84bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00126">126</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<div class="textblock"><p >The constant method handle structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00176">176</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a2d5d0d213a20eaf35c997fe4322245ef" name="a2d5d0d213a20eaf35c997fe4322245ef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2d5d0d213a20eaf35c997fe4322245ef">&#9670;&nbsp;</a></span>CONSTANT_method_handle_info()</h2>
@@ -127,13 +133,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00415">415</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  416</span>{</div>
-<div class="line"><span class="lineno">  417</span>    <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a596c6d08dcd273da4934efe8058e2926">reference_kind</a> = read_bytes&lt;u1&gt;(file);</div>
-<div class="line"><span class="lineno">  418</span>    <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a6aa7ef38c0ead9d623c153d872c84bce">reference_index</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  419</span>}</div>
-<div class="ttc" id="astructCONSTANT__method__handle__info_html_a596c6d08dcd273da4934efe8058e2926"><div class="ttname"><a href="../../d1/dcd/structCONSTANT__method__handle__info.html#a596c6d08dcd273da4934efe8058e2926">CONSTANT_method_handle_info::reference_kind</a></div><div class="ttdeci">u1 reference_kind</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00128">constant_pool_info.hpp:128</a></div></div>
-<div class="ttc" id="astructCONSTANT__method__handle__info_html_a6aa7ef38c0ead9d623c153d872c84bce"><div class="ttname"><a href="../../d1/dcd/structCONSTANT__method__handle__info.html#a6aa7ef38c0ead9d623c153d872c84bce">CONSTANT_method_handle_info::reference_index</a></div><div class="ttdeci">u2 reference_index</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00129">constant_pool_info.hpp:129</a></div></div>
+<p>Construct a new Constant_Method_Handle_Info object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the input .class file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00586">586</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  587</span>{</div>
+<div class="line"><span class="lineno">  588</span>    <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a596c6d08dcd273da4934efe8058e2926">reference_kind</a> = read_bytes&lt;u1&gt;(file);</div>
+<div class="line"><span class="lineno">  589</span>    <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a6aa7ef38c0ead9d623c153d872c84bce">reference_index</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  590</span>}</div>
+<div class="ttc" id="astructCONSTANT__method__handle__info_html_a596c6d08dcd273da4934efe8058e2926"><div class="ttname"><a href="../../d1/dcd/structCONSTANT__method__handle__info.html#a596c6d08dcd273da4934efe8058e2926">CONSTANT_method_handle_info::reference_kind</a></div><div class="ttdeci">u1 reference_kind</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00178">constant_pool_info.hpp:178</a></div></div>
+<div class="ttc" id="astructCONSTANT__method__handle__info_html_a6aa7ef38c0ead9d623c153d872c84bce"><div class="ttname"><a href="../../d1/dcd/structCONSTANT__method__handle__info.html#a6aa7ef38c0ead9d623c153d872c84bce">CONSTANT_method_handle_info::reference_index</a></div><div class="ttdeci">u2 reference_index</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00179">constant_pool_info.hpp:179</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -153,13 +167,15 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00421">421</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  422</span>{</div>
-<div class="line"><span class="lineno">  423</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Reference Kind `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a596c6d08dcd273da4934efe8058e2926">reference_kind</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  424</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Reference Index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a6aa7ef38c0ead9d623c153d872c84bce">reference_index</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  425</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  426</span>}</div>
-<div class="ttc" id="aconstant__pool__info_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
+<p>Dump Constant_method_handle specfic information to the markdown outfile. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00595">595</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  596</span>{</div>
+<div class="line"><span class="lineno">  597</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Reference Kind `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a596c6d08dcd273da4934efe8058e2926">reference_kind</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  598</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Reference Index `&quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d1/dcd/structCONSTANT__method__handle__info.html#a6aa7ef38c0ead9d623c153d872c84bce">reference_index</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  599</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  600</span>}</div>
+<div class="ttc" id="aconstant__pool__info_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -193,7 +209,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00129">129</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00179">179</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 
 </div>
 </div>
@@ -209,7 +225,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00128">128</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00178">178</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 
 </div>
 </div>

@@ -21,9 +21,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "references.hpp", "d1/da4/references_8hpp.html", [
       [ "array_t", "d1/d16/structarray__t.html", "d1/d16/structarray__t" ]
     ] ],
-    [ "stack_map_frame.hpp", "d4/d69/stack__map__frame_8hpp.html", null ],
     [ "types.hpp", "dd/de3/types_8hpp.html", "dd/de3/types_8hpp" ],
     [ "utils.hpp", "df/d93/utils_8hpp.html", "df/d93/utils_8hpp" ],
-    [ "verification_type_info.hpp", "d5/d29/verification__type__info_8hpp.html", "d5/d29/verification__type__info_8hpp" ],
     [ "windows.hpp", "d5/d34/windows_8hpp.html", "d5/d34/windows_8hpp" ]
 ];

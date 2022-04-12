@@ -89,15 +89,21 @@ $(document).ready(function(){initNavTree('d6/d39/structCONSTANT__long__info.html
 </div><!--header-->
 <div class="contents">
 
+<p>The constant long structure.  
+ <a href="../../d6/d39/structCONSTANT__long__info.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:abe71e3c7d4f0698548e50497712f3f54"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d39/structCONSTANT__long__info.html#abe71e3c7d4f0698548e50497712f3f54">CONSTANT_long_info</a> (ifstream &amp;file)</td></tr>
+<tr class="memdesc:abe71e3c7d4f0698548e50497712f3f54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Constant_Long_Info object.  <a href="../../d6/d39/structCONSTANT__long__info.html#abe71e3c7d4f0698548e50497712f3f54">More...</a><br /></td></tr>
 <tr class="separator:abe71e3c7d4f0698548e50497712f3f54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad578e637cd0de1e9b88d581fa5d44669"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d39/structCONSTANT__long__info.html#ad578e637cd0de1e9b88d581fa5d44669">dump_to_file</a> ()</td></tr>
+<tr class="memdesc:ad578e637cd0de1e9b88d581fa5d44669"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump Constant_long specfic information to the markdown outfile.  <a href="../../d6/d39/structCONSTANT__long__info.html#ad578e637cd0de1e9b88d581fa5d44669">More...</a><br /></td></tr>
 <tr class="separator:ad578e637cd0de1e9b88d581fa5d44669"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdbb2d3ecdcc068511406cc9aab654f4"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d39/structCONSTANT__long__info.html#afdbb2d3ecdcc068511406cc9aab654f4">get_content</a> ()</td></tr>
+<tr class="memdesc:afdbb2d3ecdcc068511406cc9aab654f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function that retrieves the bytes stored in Constant_Long_Info as a string.  <a href="../../d6/d39/structCONSTANT__long__info.html#afdbb2d3ecdcc068511406cc9aab654f4">More...</a><br /></td></tr>
 <tr class="separator:afdbb2d3ecdcc068511406cc9aab654f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -108,8 +114,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:aa5b0eb3b5f19fc94cc401fbfd92b795e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00059">59</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<div class="textblock"><p >The constant long structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00085">85</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abe71e3c7d4f0698548e50497712f3f54" name="abe71e3c7d4f0698548e50497712f3f54"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abe71e3c7d4f0698548e50497712f3f54">&#9670;&nbsp;</a></span>CONSTANT_long_info()</h2>
@@ -127,13 +134,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00221">221</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  222</span>{</div>
-<div class="line"><span class="lineno">  223</span>    <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a> = read_bytes&lt;u4&gt;(file);</div>
-<div class="line"><span class="lineno">  224</span>    <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a> = read_bytes&lt;u4&gt;(file);</div>
-<div class="line"><span class="lineno">  225</span>}</div>
-<div class="ttc" id="astructCONSTANT__long__info_html_a3b51795f195245dc9dbf8101820f760f"><div class="ttname"><a href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">CONSTANT_long_info::high_bytes</a></div><div class="ttdeci">u4 high_bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00061">constant_pool_info.hpp:61</a></div></div>
-<div class="ttc" id="astructCONSTANT__long__info_html_aa5b0eb3b5f19fc94cc401fbfd92b795e"><div class="ttname"><a href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">CONSTANT_long_info::low_bytes</a></div><div class="ttdeci">u4 low_bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00062">constant_pool_info.hpp:62</a></div></div>
+<p>Construct a new Constant_Long_Info object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the input .class file </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00280">280</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  281</span>{</div>
+<div class="line"><span class="lineno">  282</span>    <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a> = read_bytes&lt;u4&gt;(file);</div>
+<div class="line"><span class="lineno">  283</span>    <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a> = read_bytes&lt;u4&gt;(file);</div>
+<div class="line"><span class="lineno">  284</span>}</div>
+<div class="ttc" id="astructCONSTANT__long__info_html_a3b51795f195245dc9dbf8101820f760f"><div class="ttname"><a href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">CONSTANT_long_info::high_bytes</a></div><div class="ttdeci">u4 high_bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00087">constant_pool_info.hpp:87</a></div></div>
+<div class="ttc" id="astructCONSTANT__long__info_html_aa5b0eb3b5f19fc94cc401fbfd92b795e"><div class="ttname"><a href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">CONSTANT_long_info::low_bytes</a></div><div class="ttdeci">u4 low_bytes</div><div class="ttdef"><b>Definition:</b> <a href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00088">constant_pool_info.hpp:88</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -153,17 +168,19 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00227">227</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  228</span>{</div>
-<div class="line"><span class="lineno">  229</span>    ios_base::fmtflags f(<a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
-<div class="line"><span class="lineno">  230</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- High Bytes `0x&quot;</span> &lt;&lt; hex &lt;&lt; <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  231</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Low Bytes `0x&quot;</span> &lt;&lt; hex &lt;&lt; <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  232</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
-<div class="line"><span class="lineno">  233</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Long `&quot;</span> &lt;&lt; <a class="code hl_function" href="../../df/d93/utils_8hpp.html#aabeeb237d84a2016c22e6eb537fc9525">calc_long</a>(<a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a>, <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a>) &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  234</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  235</span>}</div>
-<div class="ttc" id="aconstant__pool__info_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
-<div class="ttc" id="autils_8hpp_html_aabeeb237d84a2016c22e6eb537fc9525"><div class="ttname"><a href="../../df/d93/utils_8hpp.html#aabeeb237d84a2016c22e6eb537fc9525">calc_long</a></div><div class="ttdeci">long long calc_long(u4 high, u4 low)</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d06/utils_8cpp_source.html#l00050">utils.cpp:50</a></div></div>
+<p>Dump Constant_long specfic information to the markdown outfile. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00289">289</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  290</span>{</div>
+<div class="line"><span class="lineno">  291</span>    ios_base::fmtflags f(<a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags());</div>
+<div class="line"><span class="lineno">  292</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- High Bytes `0x&quot;</span> &lt;&lt; hex &lt;&lt; <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  293</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Low Bytes `0x&quot;</span> &lt;&lt; hex &lt;&lt; <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a> &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  294</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a>.flags(f);</div>
+<div class="line"><span class="lineno">  295</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;- Long `&quot;</span> &lt;&lt; <a class="code hl_function" href="../../df/d93/utils_8hpp.html#aabeeb237d84a2016c22e6eb537fc9525">calc_long</a>(<a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a>, <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a>) &lt;&lt; <span class="stringliteral">&quot;`&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  296</span>    <a class="code hl_variable" href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  297</span>}</div>
+<div class="ttc" id="aconstant__pool__info_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../d7/dc5/constant__pool__info_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
+<div class="ttc" id="autils_8hpp_html_aabeeb237d84a2016c22e6eb537fc9525"><div class="ttname"><a href="../../df/d93/utils_8hpp.html#aabeeb237d84a2016c22e6eb537fc9525">calc_long</a></div><div class="ttdeci">long long calc_long(u4 high, u4 low)</div><div class="ttdoc">Calculate to long.</div><div class="ttdef"><b>Definition:</b> <a href="../../de/d06/utils_8cpp_source.html#l00064">utils.cpp:64</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -182,10 +199,13 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00237">237</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  238</span>{</div>
-<div class="line"><span class="lineno">  239</span>    <span class="keywordflow">return</span> to_string(<a class="code hl_function" href="../../df/d93/utils_8hpp.html#aabeeb237d84a2016c22e6eb537fc9525">calc_long</a>(<a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a>, <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a>));</div>
-<div class="line"><span class="lineno">  240</span>}</div>
+<p>Function that retrieves the bytes stored in Constant_Long_Info as a string. </p>
+<dl class="section return"><dt>Returns</dt><dd>long converted to a string </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html#l00303">303</a> of file <a class="el" href="../../d7/dc5/constant__pool__info_8cpp_source.html">constant_pool_info.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  304</span>{</div>
+<div class="line"><span class="lineno">  305</span>    <span class="keywordflow">return</span> to_string(<a class="code hl_function" href="../../df/d93/utils_8hpp.html#aabeeb237d84a2016c22e6eb537fc9525">calc_long</a>(<a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#a3b51795f195245dc9dbf8101820f760f">high_bytes</a>, <a class="code hl_variable" href="../../d6/d39/structCONSTANT__long__info.html#aa5b0eb3b5f19fc94cc401fbfd92b795e">low_bytes</a>));</div>
+<div class="line"><span class="lineno">  306</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -202,7 +222,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00061">61</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00087">87</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 
 </div>
 </div>
@@ -218,7 +238,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00062">62</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../d3/dcb/constant__pool__info_8hpp_source.html">constant_pool_info.hpp</a>.</p>
 
 </div>
 </div>

@@ -1,3 +1,9 @@
+/**
+ * @file bytecode.hpp
+ * @brief Declarations of the debug instructions for the reader, the mnemonic map (opcode to string),
+ * the debug map (opcode to debug function) and the bytecode map (opcode to instruction function)
+ */
+
 #ifndef _BYTECODE_HPP
 #define _BYTECODE_HPP
 
@@ -40,6 +46,9 @@ void wide_debug           (int&, cp_info_vector&, bytestream&);
 
 typedef map<u1, string> mnemonic_map;
 
+/**
+ * @brief Map the instruction opcode to its name
+ */
 const mnemonic_map mnemonic = {
     {0x00, "nop"},             {0x01, "aconst_null"},     {0x02, "iconst_m1"},     {0x03, "iconst_0"},
     {0x04, "iconst_1"},        {0x05, "iconst_2"},        {0x06, "iconst_3"},      {0x07, "iconst_4"}, 
@@ -100,6 +109,9 @@ const mnemonic_map mnemonic = {
 
 typedef map<u1, function<void(int&, cp_info_vector&, bytestream&)>> bytecode_map;
 
+/**
+ * @brief Map the instruction opcode to its debug function
+ */
 const bytecode_map debug = {
     {0x18, index_debug},           // dload
     {0x19, index_debug},           // aload
@@ -160,7 +172,9 @@ const bytecode_map debug = {
 
 typedef map<u1, function<void(cp_info_vector&, bytestream&, stack<frame_t>*)>> bytecode_instr;
 
-// TODO: fix swap and ldiv
+/**
+ * @brief Map the instruction opcode to its instruction function
+ */
 const bytecode_instr bytecodes = {
     {0x00, nop},             {0x01, aconst_null},     {0x02, iconst_m1},     {0x03, iconst_0},
     {0x04, iconst_1},        {0x05, iconst_2},        {0x06, iconst_3},      {0x07, iconst_4}, 

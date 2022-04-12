@@ -5,6 +5,11 @@
 #include <limits>
 #include <sys/stat.h>
 
+/**
+* @brief Calculate to double
+* @param high the most significant bit
+* @param low the least significant bit
+*/
 double calc_double(u4 high, u4 low)
 {
     u8 bits = calc_long(high, low);
@@ -25,6 +30,10 @@ double calc_double(u4 high, u4 low)
     }
 }
 
+/**
+ * @brief Calculate to float
+ * @param bytes the run time constant pool
+ */
 float calc_float(u4 bytes)
 {
     if (bytes == 0x7f800000)
@@ -47,23 +56,45 @@ float calc_float(u4 bytes)
     }
 }
 
+/**
+* @brief Calculate to long
+* @param high the most significant bit
+* @param low the least significant bit
+*/
 long long calc_long(u4 high, u4 low)
 {
     auto l = ((u8) high << 32) | low;
     return (long long) l;
 }
 
+/**
+ * @brief Creates a file descriptor
+ * @param filename the name of the file
+ * @return ifstream the file descriptor
+ */
 ifstream open_file(string &filename)
 {
     ifstream file(filename, ios::binary);
     return file;
 }
 
+/**
+ * @brief Retrieves the name stored in a Constant_Class_Info instance in the constant pool
+ * @param constant_pool a reference to the class_file constant pool
+ * @param idx index of the constant pool item
+ * @return the name of the class 
+ */
 string get_name(cp_info_vector &constant_pool, u2 idx)
 {
     return to_cp_info(constant_pool[idx - 1])->_class->get_content(constant_pool);
 }
 
+/**
+ * @brief Checks existence of a file
+ * @param name the file name
+ * @return true if file exists
+ * @return false if file doesnt exists
+ */
 bool exists(string &name)
 {
     struct stat buffer;   

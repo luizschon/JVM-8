@@ -1,12 +1,17 @@
+/**
+ * @file attributes.hpp
+ * @brief The declaration of the attributes types
+ */
+
 #ifndef _ATTRIBUTES_HPP
 #define _ATTRIBUTES_HPP
 
 #include "constant_pool_info.hpp"
 #include "types.hpp"
-// #include "stack_map_frame.hpp"
 
-#define RANGE(x,y,n) ((n >= x && n <= y) ? n : -1)
-
+/**
+ * @brief Enumeration of the different attributes types
+ */
 typedef enum {
     ConstantValue, 
     Code,
@@ -18,6 +23,9 @@ typedef enum {
     Unknown
 } Attribute_Types;
 
+/**
+ * @brief The general format of an attribute
+ */
 class Attribute {
 public:
     Attribute(ifstream &file, cp_info_vector &constant_pool);
@@ -29,8 +37,11 @@ public:
 
 typedef vector<shared_ptr<Attribute>> attr_info_vector;
 
-// See p.95 - jvm8
+// See p.95 - jvms8
 
+/**
+ * @brief The exception table info structure.
+ */
 struct exception_table_info {
     exception_table_info(ifstream&);
     u2 start_pc;
@@ -39,6 +50,9 @@ struct exception_table_info {
     u2 catch_type;
 };
 
+/**
+ * @brief The bootstrap methods info structure
+ */
 struct bootstrap_methods_info {
     bootstrap_methods_info(ifstream&);
     u2 bootstrap_method_ref;
@@ -46,12 +60,18 @@ struct bootstrap_methods_info {
     vector<u2> bootstrap_arguments;
 };
 
+/**
+ * @brief The constant value attribute structure
+ */
 struct ConstantValue_attribute {
     ConstantValue_attribute(ifstream&, cp_info_vector&);
     u2 constantvalue_index;
     void dump_to_file(cp_info_vector&);
 };
 
+/**
+ * @brief The code attribute structure
+ */
 struct Code_attribute {
     Code_attribute(ifstream&, cp_info_vector&);
     u2 max_stack;
@@ -65,6 +85,9 @@ struct Code_attribute {
     void dump_to_file(cp_info_vector&);
 };
 
+/**
+ * @brief The line number table attribute
+ */
 struct LineNumberTable_attribute {
     LineNumberTable_attribute(ifstream&, cp_info_vector&);
     u2 attribute_name_index;
@@ -78,11 +101,9 @@ struct LineNumberTable_attribute {
     void dump_to_file(cp_info_vector&);
 };
 
-// struct StackMapTable_attribute {
-//     u2 number_of_entries;
-//     vector<stack_map_frame> entries;
-// };
-
+/**
+ * @brief The exception attribute structure
+ */
 struct Exception_attribute {
     Exception_attribute(ifstream&, cp_info_vector&);
     u2 number_of_exceptions;
@@ -90,6 +111,9 @@ struct Exception_attribute {
     void dump_to_file(cp_info_vector&);
 };
 
+/**
+ * @brief The bootstrap methods attribute structure
+ */
 struct BootstrapMethods_attribute {
     BootstrapMethods_attribute(ifstream&, cp_info_vector&);
     u2 num_bootstrap_methods;
@@ -97,18 +121,26 @@ struct BootstrapMethods_attribute {
     void dump_to_file(cp_info_vector&);
 };
 
+/**
+ * @brief The source file attribute structure
+ */
 struct SourceFile_attribute {
     SourceFile_attribute(ifstream&, cp_info_vector&);
     u2 sourcefile_index;
     void dump_to_file(cp_info_vector&);
 };
 
-// gamer attribute - finish other attributes
+/**
+ * @brief The unknown attribute structure
+ */
 struct Unknown_attribute {
     Unknown_attribute(ifstream&, u4);
     bytestream info;
 };
 
+/**
+ * @brief The Attribute info class
+ */
 class Attribute_Info : public Attribute {
 public:
     Attribute_Info(ifstream&, cp_info_vector&);

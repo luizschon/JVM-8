@@ -1,3 +1,8 @@
+/**
+ * @file laods.hpp
+ * @brief Declaration of the instructions of type load
+ */
+
 #ifndef LOADS_HPP
 #define LOADS_HPP
 

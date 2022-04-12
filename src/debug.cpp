@@ -5,12 +5,24 @@
 using namespace std;
 extern ofstream outfile;
 
+/**
+ * @brief Dumps the information about the bipush instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void bipush_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 byte = code[++code_index];
     outfile << " " << (int)byte;
 }
 
+/**
+ * @brief Dumps the information about the iinc instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void iinc_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 index = code[++code_index];
@@ -18,6 +30,12 @@ void iinc_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code
     outfile << " " << (int)index << " by " << (int)_const;
 }
 
+/**
+ * @brief Dumps the information about the iinc(wide) instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void iinc_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 indexbyte1 = code[++code_index];
@@ -30,12 +48,24 @@ void iinc_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream 
     outfile << " #" << (int)index << " <" << (int)_const << ">  ";
 }
 
+/**
+ * @brief Dumps the information about the index instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void index_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 index = code[++code_index];
     outfile << " " << (int)index;
 }
 
+/**
+ * @brief Dumps the information about the index(wide) instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void index_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 indexbyte1 = code[++code_index];
@@ -44,6 +74,12 @@ void index_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream
     outfile << " #" << (int)index;
 }
 
+/**
+ * @brief Dumps the information about the invoke instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void invoke_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     reference_debug(code_index, constant_pool, code);
@@ -51,6 +87,12 @@ void invoke_debug(int &code_index, cp_info_vector &constant_pool, bytestream &co
     u1 zero = code[++code_index];
 }
 
+/**
+ * @brief Dumps the information about the jump instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void jump_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     s2 old_index = code_index;
@@ -60,7 +102,12 @@ void jump_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code
     outfile << " " << old_index + branchoffset << " (" << branchoffset << ")";
 }
 
-// this int may be a headache in windows
+/**
+ * @brief Dumps the information about the jump(wide) instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void jump_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     s4 old_index = code_index;
@@ -72,6 +119,12 @@ void jump_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream 
     outfile << " " << old_index + branchoffset << " (" << branchoffset << ")";
 }
 
+/**
+ * @brief Dumps the information about the lookupswitch instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void lookupswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u4 old_index = code_index;
@@ -110,6 +163,12 @@ void lookupswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestre
     code_index += padding - 1;
 }
 
+/**
+ * @brief Dumps the information about the multinewarray instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void multianewarray_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 indexbyte1 = code[++code_index];
@@ -123,6 +182,12 @@ void multianewarray_debug(int &code_index, cp_info_vector &constant_pool, bytest
     outfile << "dim " << (int) dimensions;
 }
 
+/**
+ * @brief Dumps the information about the newarray instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void newarray_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 atype = code[++code_index];
@@ -139,6 +204,12 @@ void newarray_debug(int &code_index, cp_info_vector &constant_pool, bytestream &
     outfile << " " << types[atype];
 }
 
+/**
+ * @brief Dumps the information about the reference instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void reference_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code) 
 {
     u1 index = code[++code_index];
@@ -148,6 +219,12 @@ void reference_debug(int &code_index, cp_info_vector &constant_pool, bytestream 
     outfile << " <" << reference->get_content(constant_pool) << ">  ";
 }
 
+/**
+ * @brief Dumps the information about the reference(wide) instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void reference_wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 indexbyte1 = code[++code_index];
@@ -159,6 +236,12 @@ void reference_wide_debug(int &code_index, cp_info_vector &constant_pool, bytest
     outfile << " <" << reference->get_content(constant_pool) << ">  ";
 }
 
+/**
+ * @brief Dumps the information about the sipush instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void sipush_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u1 byte1 = code[++code_index];
@@ -168,6 +251,12 @@ void sipush_debug(int &code_index, cp_info_vector &constant_pool, bytestream &co
 }
 
 // no examples to debug tableswitch! :D
+/**
+ * @brief Dumps the information about the tableswitch instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void tableswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code)
 {
     u4 padding = (++code_index) % 4;
@@ -198,6 +287,12 @@ void tableswitch_debug(int &code_index, cp_info_vector &constant_pool, bytestrea
     }
 }
 
+/**
+ * @brief Dumps the information about the wide instruction
+ * @param code_index the current index of the bytecode
+ * @param constant_pool the class constant pool
+ * @param code the instruction vector
+ */
 void wide_debug(int &code_index, cp_info_vector &constant_pool, bytestream &code) 
 {
     u1 bytecode   = code[++code_index];

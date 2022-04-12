@@ -1,3 +1,8 @@
+/**
+ * @file libraries.hpp
+ * @brief The aggregate of many includes
+ */
+
 #ifndef _LIBRARIES_HPP
 #define _LIBRARIES_HPP
 
@@ -13,9 +18,7 @@
 #include "frame.hpp"
 #include "interpreter.hpp"
 #include "method_area.hpp"
-#include "stack_map_frame.hpp"
 #include "types.hpp"
 #include "utils.hpp"
-#include "verification_type_info.hpp"
 
 #endif // _LIBRARIES_HPP

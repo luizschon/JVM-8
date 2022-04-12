@@ -8,6 +8,11 @@
 using namespace std;
 extern ofstream outfile;
 
+/**
+ * @brief Construct a new Attribute:: Attribute object
+ * @param file the class file
+ * @param constant_pool the class constant pool
+ */
 Attribute::Attribute(ifstream &file, cp_info_vector &constant_pool)
 {
     attribute_name_index = read_bytes<u2>(file);
@@ -32,6 +37,11 @@ Attribute::Attribute(ifstream &file, cp_info_vector &constant_pool)
         tag = Unknown;
 }
 
+/**
+ * @brief Construct a new Attribute_Info::Attribute_Info object
+ * @param file the class file
+ * @param constant_pool the class file constant pool
+ */
 Attribute_Info::Attribute_Info(ifstream &file, cp_info_vector &constant_pool)
 : Attribute(file, constant_pool)
 {
@@ -47,7 +57,7 @@ Attribute_Info::Attribute_Info(ifstream &file, cp_info_vector &constant_pool)
             _linenumbertable = new LineNumberTable_attribute(file, constant_pool);
             break;
         case StackMapTable:
-            // TODO StackMapTable
+            // StackMapTable
             break;
         case Exception:
             _exception = new Exception_attribute(file, constant_pool);
@@ -64,6 +74,9 @@ Attribute_Info::Attribute_Info(ifstream &file, cp_info_vector &constant_pool)
     }
 }
 
+/**
+ * @brief Destroy the Attribute_Info::Attribute_Info object
+ */
 Attribute_Info::~Attribute_Info()
 {
     switch (tag)
@@ -78,7 +91,12 @@ Attribute_Info::~Attribute_Info()
         case Unknown: delete _unknown; break;
     }
 }
-
+ 
+/**
+ * @brief Attribute_Info:: Dump info to file
+ * @param constant_pool the class file constant pool
+ * @param counter 
+ */
 void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, unsigned int &counter) 
 {
     auto attribute_name = *(to_cp_info(constant_pool[attribute_name_index - 1])->_utf8);
@@ -104,6 +122,10 @@ void Attribute_Info::dump_info_to_file(cp_info_vector &constant_pool, unsigned i
     }
 }
 
+/**
+ * @brief Construct a new exception table info::exception table info object
+ * @param file the class file
+ */
 exception_table_info::exception_table_info(ifstream &file)
 {
     start_pc = read_bytes<u2>(file);
@@ -112,6 +134,10 @@ exception_table_info::exception_table_info(ifstream &file)
     catch_type = read_bytes<u2>(file); 
 }
 
+/**
+ * @brief Construct a new bootstrap methods info::bootstrap methods info object
+ * @param file the class file
+ */
 bootstrap_methods_info::bootstrap_methods_info(ifstream &file)
 {
     bootstrap_method_ref = read_bytes<u2>(file);
@@ -121,16 +147,30 @@ bootstrap_methods_info::bootstrap_methods_info(ifstream &file)
         bootstrap_arguments.push_back(read_bytes<u2>(file));
 }
 
+/**
+ * @brief Construct a new ConstantValue_attribute::ConstantValue_attribute object
+ * @param file the class file
+ * @param constant_pool the class file constant pool
+ */
 ConstantValue_attribute::ConstantValue_attribute(ifstream &file, cp_info_vector& constant_pool) 
 {
     constantvalue_index = read_bytes<u2>(file);
 }
 
+/**
+ * @brief Dumps ConstantValue info into the outfile
+ * @param constant_pool the class constant pool
+ */
 void ConstantValue_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Constant value index `" << constantvalue_index << "`" << endl;
 }
 
+/**
+ * @brief Construct a new Code_attribute::Code_attribute object
+ * @param file the class file
+ * @param constant_pool the class file constant pool
+ */
 Code_attribute::Code_attribute(ifstream &file, cp_info_vector& constant_pool)
 {
     max_stack = read_bytes<u2>(file);
@@ -150,6 +190,10 @@ Code_attribute::Code_attribute(ifstream &file, cp_info_vector& constant_pool)
     }
 }
 
+/**
+ * @brief Dumps Code info into the outfile
+ * @param constant_pool the class constant pool
+ */
 void Code_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Maximum stack size `" << max_stack << "`" << endl;
@@ -188,6 +232,11 @@ void Code_attribute::dump_to_file(cp_info_vector &constant_pool)
     }
 }
 
+/**
+ * @brief Construct a new LineNumberTable_attribute::LineNumberTable_attribute object
+ * @param file the class file
+ * @param constant_pool the class constant pool
+ */
 LineNumberTable_attribute::LineNumberTable_attribute(ifstream &file, cp_info_vector &constant_pool)
 {
     line_number_table_length = read_bytes<u2>(file);
@@ -201,6 +250,10 @@ LineNumberTable_attribute::LineNumberTable_attribute(ifstream &file, cp_info_vec
     }
 }
 
+/**  
+* @brief Dumps to file LineNumberTable_attribute::
+* @param constant_pool the class constant pool
+*/
 void LineNumberTable_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Line number table length `" << line_number_table_length << "`  " << endl << endl;
@@ -216,6 +269,11 @@ void LineNumberTable_attribute::dump_to_file(cp_info_vector &constant_pool)
     outfile << endl;
 }
 
+/**
+ * @brief Construct a new Exception_attribute::Exception_attribute object
+ * @param file the class file
+ * @param constant_pool the class constant pool
+ */
 Exception_attribute::Exception_attribute(ifstream &file, cp_info_vector& constant_pool)
 {
     number_of_exceptions = read_bytes<u2>(file);
@@ -224,12 +282,21 @@ Exception_attribute::Exception_attribute(ifstream &file, cp_info_vector& constan
         exception_index_table.push_back(read_bytes<u2>(file));
 }
 
+/**
+ * @brief Dump Exception info into the outfile
+ * @param constant_pool the class constant pool
+ */
 void Exception_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Number of exceptions: " << number_of_exceptions << endl;
     outfile << "  - TODO: PRINTAR EXCEPTION_TABLE" << endl;
 }
 
+/**
+ * @brief Construct a new BootstrapMethods_attribute::BootstrapMethods_attribute object
+ * @param file the class file
+ * @param constant_pool the class file constant pool
+ */
 BootstrapMethods_attribute::BootstrapMethods_attribute(ifstream &file, cp_info_vector& constant_pool) 
 {
     num_bootstrap_methods = read_bytes<u2>(file);
@@ -238,17 +305,30 @@ BootstrapMethods_attribute::BootstrapMethods_attribute(ifstream &file, cp_info_v
        bootstrap_methods.push_back(bootstrap_methods_info(file)); 
 }
 
+/**
+ * @brief Dump BoostrapMethods info into outfile
+ * @param constant_pool the class file constant pool
+ */
 void BootstrapMethods_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Number of bootstrap methods: " << num_bootstrap_methods << endl;
     outfile << "  - TODO: PRINTAR EXCEPTION_TABLE" << endl;
 }
 
+/**
+ * @brief Construct a new SourceFile_attribute::SourceFile_attribute object
+ * @param file the class file
+ * @param constant_pool the class file constant pool
+ */
 SourceFile_attribute::SourceFile_attribute(ifstream &file, cp_info_vector& constant_pool)
 {
     sourcefile_index = read_bytes<u2>(file);
 }
 
+/**
+ * @brief Dump SourceFile info into outfile
+ * @param constant_pool the class file constant pool
+ */
 void SourceFile_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     auto sourcefile_name = *(to_cp_info(constant_pool[sourcefile_index - 1])->_utf8);
@@ -256,6 +336,11 @@ void SourceFile_attribute::dump_to_file(cp_info_vector &constant_pool)
     outfile << " `<" << get_utf8_content(sourcefile_name) << ">`" << endl;
 }
 
+/**
+ * @brief Construct a new Unknown_attribute::Unknown_attribute object
+ * @param file the class file 
+ * @param length the length of the attribute
+ */
 Unknown_attribute::Unknown_attribute(ifstream &file, u4 length)
 {
     for (int i = 0; i < length; i++)

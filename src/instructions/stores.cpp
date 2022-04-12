@@ -28,6 +28,12 @@ void astore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     exit(1);
 }
 
+/**
+ * @brief Store double into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void dstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -45,6 +51,12 @@ void dstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     cout << "[DSTORE_0] value: " << top_frame.local_variables_array[0]._double << endl;
 }
 
+/**
+ * @brief Store double into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void dstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -62,6 +74,12 @@ void dstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     cout << "[DSTORE_1] value: " << top_frame.local_variables_array[1]._double << endl;
 }
 
+/**
+ * @brief Store double into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void dstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -79,6 +97,12 @@ void dstore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     cout << "[DSTORE_2] value: " << top_frame.local_variables_array[2]._double << endl;
 }
 
+/**
+ * @brief Store double into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void dstore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -101,6 +125,12 @@ void lstore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     exit(1);
 }
 
+/**
+ * @brief Store long into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void lstore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -187,6 +217,12 @@ void sastore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *st
     exit(1);
 }
 
+/**
+ * @brief Store integer into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void istore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -208,6 +244,12 @@ void lstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
     exit(1);
 }
 
+/**
+ * @brief Store float into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void fstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -229,6 +271,12 @@ void dstore(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *sta
     exit(1);
 }
 
+/**
+ * @brief Store integer into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void istore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -244,6 +292,12 @@ void istore_0(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     cout << "[ISTORE_0]" << endl;
 }
 
+/**
+ * @brief Store integer into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void istore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -259,6 +313,12 @@ void istore_1(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     cout << "[ISTORE_1]" << endl;
 }
 
+/**
+ * @brief Store integer into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void istore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();
@@ -274,6 +334,12 @@ void istore_2(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *s
     cout << "[ISTORE_2]" << endl;
 }
 
+/**
+ * @brief Store integer into local variable
+ * @param constant_pool the run time constant pool
+ * @param code the opcode vector
+ * @param stack_f a reference to the stack frame
+ */
 void istore_3(cp_info_vector &constant_pool, bytestream &code, stack<frame_t> *stack_f)
 {
     auto top_frame = stack_f->top();

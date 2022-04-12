@@ -89,11 +89,15 @@ $(document).ready(function(){initNavTree('d2/d8d/structUnknown__attribute.html',
 </div><!--header-->
 <div class="contents">
 
+<p>The unknown attribute structure.  
+ <a href="../../d2/d8d/structUnknown__attribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ad35794c80d8c0842f906e8b09d5b908d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d2/d8d/structUnknown__attribute.html#ad35794c80d8c0842f906e8b09d5b908d">Unknown_attribute</a> (ifstream &amp;, <a class="el" href="../../dd/de3/types_8hpp.html#ae5be1f726785414dd1b77d60df074c9d">u4</a>)</td></tr>
+<tr class="memdesc:ad35794c80d8c0842f906e8b09d5b908d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d2/d8d/structUnknown__attribute.html#ad35794c80d8c0842f906e8b09d5b908d" title="Construct a new Unknown_attribute::Unknown_attribute object.">Unknown_attribute::Unknown_attribute</a> object.  <a href="../../d2/d8d/structUnknown__attribute.html#ad35794c80d8c0842f906e8b09d5b908d">More...</a><br /></td></tr>
 <tr class="separator:ad35794c80d8c0842f906e8b09d5b908d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -102,8 +106,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:a3fbeb7e2fb4ec0b560453898171f75e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00107">107</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<div class="textblock"><p >The unknown attribute structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00136">136</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad35794c80d8c0842f906e8b09d5b908d" name="ad35794c80d8c0842f906e8b09d5b908d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad35794c80d8c0842f906e8b09d5b908d">&#9670;&nbsp;</a></span>Unknown_attribute()</h2>
@@ -131,12 +136,21 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00259">259</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  260</span>{</div>
-<div class="line"><span class="lineno">  261</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; length; i++)</div>
-<div class="line"><span class="lineno">  262</span>        <a class="code hl_variable" href="../../d2/d8d/structUnknown__attribute.html#a3fbeb7e2fb4ec0b560453898171f75e6">info</a>.push_back(read_bytes&lt;u1&gt;(file));</div>
-<div class="line"><span class="lineno">  263</span>}</div>
-<div class="ttc" id="astructUnknown__attribute_html_a3fbeb7e2fb4ec0b560453898171f75e6"><div class="ttname"><a href="../../d2/d8d/structUnknown__attribute.html#a3fbeb7e2fb4ec0b560453898171f75e6">Unknown_attribute::info</a></div><div class="ttdeci">bytestream info</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00109">attributes.hpp:109</a></div></div>
+<p>Construct a new <a class="el" href="../../d2/d8d/structUnknown__attribute.html#ad35794c80d8c0842f906e8b09d5b908d" title="Construct a new Unknown_attribute::Unknown_attribute object.">Unknown_attribute::Unknown_attribute</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the class file </td></tr>
+    <tr><td class="paramname">length</td><td>the length of the attribute </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00344">344</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  345</span>{</div>
+<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; length; i++)</div>
+<div class="line"><span class="lineno">  347</span>        <a class="code hl_variable" href="../../d2/d8d/structUnknown__attribute.html#a3fbeb7e2fb4ec0b560453898171f75e6">info</a>.push_back(read_bytes&lt;u1&gt;(file));</div>
+<div class="line"><span class="lineno">  348</span>}</div>
+<div class="ttc" id="astructUnknown__attribute_html_a3fbeb7e2fb4ec0b560453898171f75e6"><div class="ttname"><a href="../../d2/d8d/structUnknown__attribute.html#a3fbeb7e2fb4ec0b560453898171f75e6">Unknown_attribute::info</a></div><div class="ttdeci">bytestream info</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00138">attributes.hpp:138</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -153,7 +167,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00109">109</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00138">138</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>

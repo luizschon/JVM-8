@@ -1,3 +1,8 @@
+/**
+ * @file comparisons.hpp
+ * @brief Declaration of the instructions of type comparison
+ */
+
 #ifndef COMPARISONS_HPP
 #define COMPARISONS_HPP
 

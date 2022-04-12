@@ -1,3 +1,8 @@
+/**
+ * @file extended.hpp
+ * @brief Declaration of the instructions of type extended
+ */
+
 #ifndef _EXTENDED_HPP
 #define _EXTENDED_HPP
 

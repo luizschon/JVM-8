@@ -89,13 +89,18 @@ $(document).ready(function(){initNavTree('d6/dce/structException__attribute.html
 </div><!--header-->
 <div class="contents">
 
+<p>The exception attribute structure.  
+ <a href="../../d6/dce/structException__attribute.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ab14714a4c893f502ac78b54a24d2d60c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dce/structException__attribute.html#ab14714a4c893f502ac78b54a24d2d60c">Exception_attribute</a> (ifstream &amp;, <a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:ab14714a4c893f502ac78b54a24d2d60c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="../../d6/dce/structException__attribute.html#ab14714a4c893f502ac78b54a24d2d60c" title="Construct a new Exception_attribute::Exception_attribute object.">Exception_attribute::Exception_attribute</a> object.  <a href="../../d6/dce/structException__attribute.html#ab14714a4c893f502ac78b54a24d2d60c">More...</a><br /></td></tr>
 <tr class="separator:ab14714a4c893f502ac78b54a24d2d60c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1f2158a46fcab99500c96fcd99f0f32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/dce/structException__attribute.html#ae1f2158a46fcab99500c96fcd99f0f32">dump_to_file</a> (<a class="el" href="../../d3/dcb/constant__pool__info_8hpp.html#a1afd886c768964f93b98ba1d912579e2">cp_info_vector</a> &amp;)</td></tr>
+<tr class="memdesc:ae1f2158a46fcab99500c96fcd99f0f32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump Exception info into the outfile.  <a href="../../d6/dce/structException__attribute.html#ae1f2158a46fcab99500c96fcd99f0f32">More...</a><br /></td></tr>
 <tr class="separator:ae1f2158a46fcab99500c96fcd99f0f32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -106,8 +111,9 @@ Data Fields</h2></td></tr>
 <tr class="separator:adcd20f59140e9b636876d7f0905524b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00086">86</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<div class="textblock"><p >The exception attribute structure. </p>
+
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00107">107</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab14714a4c893f502ac78b54a24d2d60c" name="ab14714a4c893f502ac78b54a24d2d60c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab14714a4c893f502ac78b54a24d2d60c">&#9670;&nbsp;</a></span>Exception_attribute()</h2>
@@ -135,16 +141,25 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00219">219</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  220</span>{</div>
-<div class="line"><span class="lineno">  221</span>    <a class="code hl_variable" href="../../d6/dce/structException__attribute.html#af0e61cabb5c9cecd42c43665106373e7">number_of_exceptions</a> = read_bytes&lt;u2&gt;(file);</div>
-<div class="line"><span class="lineno">  222</span>    </div>
-<div class="line"><span class="lineno">  223</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= <span class="keyword">sizeof</span>(<a class="code hl_typedef" href="../../dd/de3/types_8hpp.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a>); i++)</div>
-<div class="line"><span class="lineno">  224</span>        <a class="code hl_variable" href="../../d6/dce/structException__attribute.html#adcd20f59140e9b636876d7f0905524b4">exception_index_table</a>.push_back(read_bytes&lt;u2&gt;(file));</div>
-<div class="line"><span class="lineno">  225</span>}</div>
-<div class="ttc" id="astructException__attribute_html_adcd20f59140e9b636876d7f0905524b4"><div class="ttname"><a href="../../d6/dce/structException__attribute.html#adcd20f59140e9b636876d7f0905524b4">Exception_attribute::exception_index_table</a></div><div class="ttdeci">vector&lt; u2 &gt; exception_index_table</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00089">attributes.hpp:89</a></div></div>
-<div class="ttc" id="astructException__attribute_html_af0e61cabb5c9cecd42c43665106373e7"><div class="ttname"><a href="../../d6/dce/structException__attribute.html#af0e61cabb5c9cecd42c43665106373e7">Exception_attribute::number_of_exceptions</a></div><div class="ttdeci">u2 number_of_exceptions</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00088">attributes.hpp:88</a></div></div>
-<div class="ttc" id="atypes_8hpp_html_a732cde1300aafb73b0ea6c2558a7a54f"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a></div><div class="ttdeci">uint16_t u2</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00014">types.hpp:14</a></div></div>
+<p>Construct a new <a class="el" href="../../d6/dce/structException__attribute.html#ab14714a4c893f502ac78b54a24d2d60c" title="Construct a new Exception_attribute::Exception_attribute object.">Exception_attribute::Exception_attribute</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the class file </td></tr>
+    <tr><td class="paramname">constant_pool</td><td>the class constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00277">277</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  278</span>{</div>
+<div class="line"><span class="lineno">  279</span>    <a class="code hl_variable" href="../../d6/dce/structException__attribute.html#af0e61cabb5c9cecd42c43665106373e7">number_of_exceptions</a> = read_bytes&lt;u2&gt;(file);</div>
+<div class="line"><span class="lineno">  280</span>    </div>
+<div class="line"><span class="lineno">  281</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 1; i &lt;= <span class="keyword">sizeof</span>(<a class="code hl_typedef" href="../../dd/de3/types_8hpp.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a>); i++)</div>
+<div class="line"><span class="lineno">  282</span>        <a class="code hl_variable" href="../../d6/dce/structException__attribute.html#adcd20f59140e9b636876d7f0905524b4">exception_index_table</a>.push_back(read_bytes&lt;u2&gt;(file));</div>
+<div class="line"><span class="lineno">  283</span>}</div>
+<div class="ttc" id="astructException__attribute_html_adcd20f59140e9b636876d7f0905524b4"><div class="ttname"><a href="../../d6/dce/structException__attribute.html#adcd20f59140e9b636876d7f0905524b4">Exception_attribute::exception_index_table</a></div><div class="ttdeci">vector&lt; u2 &gt; exception_index_table</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00110">attributes.hpp:110</a></div></div>
+<div class="ttc" id="astructException__attribute_html_af0e61cabb5c9cecd42c43665106373e7"><div class="ttname"><a href="../../d6/dce/structException__attribute.html#af0e61cabb5c9cecd42c43665106373e7">Exception_attribute::number_of_exceptions</a></div><div class="ttdeci">u2 number_of_exceptions</div><div class="ttdef"><b>Definition:</b> <a href="../../df/d6a/attributes_8hpp_source.html#l00109">attributes.hpp:109</a></div></div>
+<div class="ttc" id="atypes_8hpp_html_a732cde1300aafb73b0ea6c2558a7a54f"><div class="ttname"><a href="../../dd/de3/types_8hpp.html#a732cde1300aafb73b0ea6c2558a7a54f">u2</a></div><div class="ttdeci">uint16_t u2</div><div class="ttdef"><b>Definition:</b> <a href="../../dd/de3/types_8hpp_source.html#l00019">types.hpp:19</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -165,12 +180,20 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00227">227</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
-<div class="fragment"><div class="line"><span class="lineno">  228</span>{</div>
-<div class="line"><span class="lineno">  229</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Number of exceptions: &quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d6/dce/structException__attribute.html#af0e61cabb5c9cecd42c43665106373e7">number_of_exceptions</a> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  230</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - TODO: PRINTAR EXCEPTION_TABLE&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><span class="lineno">  231</span>}</div>
-<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00011">dump_class_file.cpp:11</a></div></div>
+<p>Dump Exception info into the outfile. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">constant_pool</td><td>the class constant pool </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="../../da/d97/attributes_8cpp_source.html#l00289">289</a> of file <a class="el" href="../../da/d97/attributes_8cpp_source.html">attributes.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  290</span>{</div>
+<div class="line"><span class="lineno">  291</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - Number of exceptions: &quot;</span> &lt;&lt; <a class="code hl_variable" href="../../d6/dce/structException__attribute.html#af0e61cabb5c9cecd42c43665106373e7">number_of_exceptions</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  292</span>    <a class="code hl_variable" href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a> &lt;&lt; <span class="stringliteral">&quot;  - TODO: PRINTAR EXCEPTION_TABLE&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  293</span>}</div>
+<div class="ttc" id="aattributes_8cpp_html_a667ad9d6ce915ec7e7499928043aee8a"><div class="ttname"><a href="../../da/d97/attributes_8cpp.html#a667ad9d6ce915ec7e7499928043aee8a">outfile</a></div><div class="ttdeci">ofstream outfile</div><div class="ttdoc">Global file used to dump information stored in the .class file in Markdown format.</div><div class="ttdef"><b>Definition:</b> <a href="../../d4/dde/dump__class__file_8cpp_source.html#l00014">dump_class_file.cpp:14</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -187,7 +210,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00089">89</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00110">110</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>
@@ -203,7 +226,7 @@ Data Fields</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00088">88</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="../../df/d6a/attributes_8hpp_source.html#l00109">109</a> of file <a class="el" href="../../df/d6a/attributes_8hpp_source.html">attributes.hpp</a>.</p>
 
 </div>
 </div>

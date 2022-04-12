@@ -931,8 +931,7 @@ FILE_PATTERNS          = *.c \
                          *.phtml \
                          *.inc \
                          *.m \
-                         *.markdown \
-                         *.md \
+                         README.md \ # modifiquei aqui
                          *.mm \
                          *.dox \
                          *.py \
