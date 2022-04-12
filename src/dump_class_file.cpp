@@ -90,6 +90,12 @@ void print_general_info(class_file &class_f)
     outfile << endl;
 }
 
+/**
+ * @brief Parses the Major and Minor versions to interpret the Java version
+ * @param major 2 bytes representing the class_file major version
+ * @param minor 2 bytes representing the class_file minor version
+ * @return the parsed version as a string 
+ */
 string get_version(u2 major, u2 minor)
 {
     if (major >= 45 && major <= 48)
@@ -97,6 +103,9 @@ string get_version(u2 major, u2 minor)
     return to_string(major - 49 + 5);
 }
 
+/**
+ * @brief Data structure that divides a hexadecimal number into 4 parts
+ */
 union Nibble
 {
     u2 h16;
@@ -108,6 +117,12 @@ union Nibble
     } nb;
 };
 
+/**
+ * @brief Parses the class_file access flags
+ * @param access_flags 2 bytes representig the class_file access flags
+ * @param type the type of access flag (class, method or field)
+ * @return the string representng the access flag 
+ */
 string get_access_flags(u2 access_flags, int type)
 {
     string class_access = " ";
@@ -243,6 +258,11 @@ void print_pool(cp_info_vector &constant_pool)
     outfile << "</details> <br>" << endl << endl;
 }
 
+/**
+ * @brief Get the utf8 content from a Constant_UTF8_Info instance in the constant pool
+ * @param utf8 a reference to a Constant_UTF8_Info reference
+ * @return the UTF8 string
+ */
 string get_utf8_content(CONSTANT_utf8_info &utf8)
 {
     string out = "";

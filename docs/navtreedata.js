@@ -29,11 +29,12 @@ var NAVTREE =
       [ "<a href=\"https://luizschonarth.github.io/JVM-8/\" >Wiki do Projeto</a>", "d0/d30/md_README.html#autotoc_md1", null ],
       [ "Integrantes", "d0/d30/md_README.html#autotoc_md2", null ],
       [ "TL;DR", "d0/d30/md_README.html#autotoc_md3", null ],
-      [ "Compilar", "d0/d30/md_README.html#autotoc_md4", null ],
-      [ "Interpretador", "d0/d30/md_README.html#autotoc_md5", null ],
-      [ "Exibidor", "d0/d30/md_README.html#autotoc_md6", null ],
-      [ "Limpar", "d0/d30/md_README.html#autotoc_md7", null ],
-      [ "Documentação", "d0/d30/md_README.html#autotoc_md8", null ]
+      [ "Dependências", "d0/d30/md_README.html#autotoc_md4", null ],
+      [ "Compilar", "d0/d30/md_README.html#autotoc_md5", null ],
+      [ "Interpretador", "d0/d30/md_README.html#autotoc_md6", null ],
+      [ "Exibidor", "d0/d30/md_README.html#autotoc_md7", null ],
+      [ "Limpar", "d0/d30/md_README.html#autotoc_md8", null ],
+      [ "Documentação", "d0/d30/md_README.html#autotoc_md9", null ]
     ] ],
     [ "Data Structures", "annotated.html", [
       [ "Data Structures", "annotated.html", "annotated_dup" ],
@@ -63,10 +64,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"d4/d78/math_8hpp.html#a6e1b1370636539546624a868f7c6227a",
-"d9/d54/structCONSTANT__invoke__dynamic__info.html",
-"de/d06/utils_8cpp.html#a44a6f015436b4ec7a52a8f5b053ec7c0",
-"globals_func_w.html"
+"d4/d78/math_8hpp.html#a641e77a18a715f2f21ac219a235d4ed4",
+"d8/df2/structframe__t.html#af3f0ee0b1d1c33d2e72e7d5343072626",
+"de/d06/utils_8cpp.html#a32e498ebfb86143f816712919331f01b",
+"globals_func_t.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
