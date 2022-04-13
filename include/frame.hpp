@@ -29,10 +29,10 @@ typedef struct operand_t {
         s8 _long;
         float _float;
         double _double;
-        string* _string;
+        // string* _string;
 
-        u4 *_return_address;
-        reference *_reference;
+        // u4 *_return_address;
+        // reference *_reference;
     };
 } operand_t;
 

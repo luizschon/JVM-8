@@ -289,7 +289,6 @@ Exception_attribute::Exception_attribute(ifstream &file, cp_info_vector& constan
 void Exception_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Number of exceptions: " << number_of_exceptions << endl;
-    outfile << "  - TODO: PRINTAR EXCEPTION_TABLE" << endl;
 }
 
 /**
@@ -312,7 +311,6 @@ BootstrapMethods_attribute::BootstrapMethods_attribute(ifstream &file, cp_info_v
 void BootstrapMethods_attribute::dump_to_file(cp_info_vector &constant_pool)
 {
     outfile << "  - Number of bootstrap methods: " << num_bootstrap_methods << endl;
-    outfile << "  - TODO: PRINTAR EXCEPTION_TABLE" << endl;
 }
 
 /**
