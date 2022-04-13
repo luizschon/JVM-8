@@ -7,8 +7,5 @@ var structoperand__t =
     [ "_float", "dd/d8c/structoperand__t.html#af8032b3516cf84dd5cb961534694de94", null ],
     [ "_int", "dd/d8c/structoperand__t.html#ad45b50e3da123e2fbe5df0d4e3f21211", null ],
     [ "_long", "dd/d8c/structoperand__t.html#af19ccce3b4b07c01e3ff459452149498", null ],
-    [ "_reference", "dd/d8c/structoperand__t.html#a42fc2c3ad3c0d5a53ce107c9ce4d3c1a", null ],
-    [ "_return_address", "dd/d8c/structoperand__t.html#a9568158dd379e5d8fe926800f5ffdaf3", null ],
-    [ "_short", "dd/d8c/structoperand__t.html#ac3f5f8614e86844027cceeb1c79a93f5", null ],
-    [ "_string", "dd/d8c/structoperand__t.html#a8ed21982efd12a17010f53d398a7f847", null ]
+    [ "_short", "dd/d8c/structoperand__t.html#ac3f5f8614e86844027cceeb1c79a93f5", null ]
 ];

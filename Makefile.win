@@ -1,0 +1,30 @@
+make:
+	mkdir build\.\src\
+ 
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\main.cpp -o build\.\src\main.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\constant_pool_info.cpp -o build\.\src\constant_pool_info.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\class_file.cpp -o build\.\src\class_file.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\debug.cpp -o build\.\src\debug.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\utils.cpp -o build\.\src\utils.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\dump_class_file.cpp -o build\.\src\dump_class_file.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\frame.cpp -o build\.\src\frame.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\class_loader.cpp -o build\.\src\class_loader.o
+	mkdir build\.\src\instructions\
+	
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\math.cpp -o build\.\src\instructions\math.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\stack.cpp -o build\.\src\instructions\stack.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\reserved.cpp -o build\.\src\instructions\reserved.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\control.cpp -o build\.\src\instructions\control.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\stores.cpp -o build\.\src\instructions\stores.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\extended.cpp -o build\.\src\instructions\extended.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\comparisons.cpp -o build\.\src\instructions\comparisons.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\references.cpp -o build\.\src\instructions\references.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\conversions.cpp -o build\.\src\instructions\conversions.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\constants.cpp -o build\.\src\instructions\constants.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\instructions\loads.cpp -o build\.\src\instructions\loads.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\attributes.cpp -o build\.\src\attributes.o
+	g++ -std=c++11 -I.\include -I.\include\instructions -c src\interpreter.cpp -o build\.\src\interpreter.o
+	g++ -std=c++11 .\build\.\src\main.o .\build\.\src\constant_pool_info.o .\build\.\src\class_file.o .\build\.\src\debug.o .\build\.\src\utils.o .\build\.\src\dump_class_file.o .\build\.\src\frame.o .\build\.\src\class_loader.o .\build\.\src\instructions\math.o .\build\.\src\instructions\stack.o .\build\.\src\instructions\reserved.o .\build\.\src\instructions\control.o .\build\.\src\instructions\stores.o .\build\.\src\instructions\extended.o .\build\.\src\instructions\comparisons.o .\build\.\src\instructions\references.o .\build\.\src\instructions\conversions.o .\build\.\src\instructions\constants.o .\build\.\src\instructions\loads.o .\build\.\src\attributes.o .\build\.\src\interpreter.o -o jvm
+
+clean:
+	rmdir /s build

@@ -18,9 +18,6 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     ] ],
     [ "libraries.hpp", "d2/da3/libraries_8hpp.html", null ],
     [ "method_area.hpp", "d2/dc4/method__area_8hpp.html", "d2/dc4/method__area_8hpp" ],
-    [ "references.hpp", "d1/da4/references_8hpp.html", [
-      [ "array_t", "d1/d16/structarray__t.html", "d1/d16/structarray__t" ]
-    ] ],
     [ "types.hpp", "dd/de3/types_8hpp.html", "dd/de3/types_8hpp" ],
     [ "utils.hpp", "df/d93/utils_8hpp.html", "df/d93/utils_8hpp" ],
     [ "windows.hpp", "d5/d34/windows_8hpp.html", "d5/d34/windows_8hpp" ]

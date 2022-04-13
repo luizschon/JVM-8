@@ -99,7 +99,7 @@ Integrantes</h1>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 TL;DR</h1>
-<p >Compilar: <code>$ make</code> <br  />
+<p >Compilar: <code>$ make -f Makefile.win</code> <br  />
  Exibidor: <code>$ ./jvm.exe -r ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
  Interpretador: <code>$ ./jvm.exe ./examples/&lt;nome_da_classe&gt;.class</code> <br  />
  Docs: <code>$ doxygen Doxyfile</code> (<code>docs/index.html</code>)</p>
@@ -108,7 +108,7 @@ Dependências</h1>
 <p >Para compilar e rodar o código, é necessário ter o <code>make</code> e o <code>g++ -std=c++11</code> instalados. Opcionalmente, o <code>Doxygen</code> para gerar a documentação.</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 Compilar</h1>
-<p >Para compilar o programa, basta utilizar <code>$ make</code> (uma pasta <code>build</code> será gerada).</p>
+<p >Para compilar o programa, basta utilizar <code>$ make -f Makefile.win</code> (para Windows) ou <code>$ make -f Makefile.lin</code> (para Linux) e uma pasta <code>build</code> será gerada.</p>
 <h1><a class="anchor" id="autotoc_md6"></a>
 Interpretador</h1>
 <p >Para rodar o programa no mode interpretador, basta usar o comando de acordo com o sistema operacional:</p>
@@ -128,7 +128,7 @@ Exibidor</h1>
  É preciso que todas as classes chamadas pela classe executada estejam no diretório <code>/examples/</code>. Caso contrário o interpretador não irá funcionar corretamente.</p>
 <h1><a class="anchor" id="autotoc_md8"></a>
 Limpar</h1>
-<p >Depois de executar o programa, basta executar <code>$ make clean</code> para deletar os arquivos gerados (arquivos objetos e executáveis).</p>
+<p >Depois de executar o programa, basta executar <code>$ make clean -f Makefile.win</code> para deletar os arquivos gerados (arquivos objetos e executáveis).</p>
 <h1><a class="anchor" id="autotoc_md9"></a>
 Documentação</h1>
 <p >É possível gerar uma página HTML com a documentação do código. Para isso, basta utilizar o comando <code>$ doxygen Doxyfile</code> (é preciso ter o doxygen instalado). Então, basta abrir na pasta docs o arquivo <code>index.html</code> no navegador, que ele irá te direcionar à página. </p>

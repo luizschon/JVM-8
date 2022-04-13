@@ -1,6 +1,5 @@
 var hierarchy =
 [
-    [ "array_t", "d1/d16/structarray__t.html", null ],
     [ "attr_info", "de/df3/structattr__info.html", null ],
     [ "Attribute", "de/d9d/classAttribute.html", [
       [ "Attribute_Info", "d5/d5e/classAttribute__Info.html", null ]

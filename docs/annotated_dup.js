@@ -1,6 +1,5 @@
 var annotated_dup =
 [
-    [ "array_t", "d1/d16/structarray__t.html", "d1/d16/structarray__t" ],
     [ "attr_info", "de/df3/structattr__info.html", "de/df3/structattr__info" ],
     [ "Attribute", "de/d9d/classAttribute.html", "de/d9d/classAttribute" ],
     [ "Attribute_Info", "d5/d5e/classAttribute__Info.html", "d5/d5e/classAttribute__Info" ],

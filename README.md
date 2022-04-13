@@ -12,7 +12,7 @@ Implementação menos avançada de JVM já vista na UnB. Projeto da disciplina d
 - Tong Zhou
 
 ## TL;DR
-Compilar: `$ make`  
+Compilar: `$ make -f Makefile.win`  
 Exibidor: `$ ./jvm.exe -r ./examples/<nome_da_classe>.class`  
 Interpretador: `$ ./jvm.exe ./examples/<nome_da_classe>.class`  
 Docs: `$ doxygen Doxyfile` (`docs/index.html`)
@@ -21,7 +21,7 @@ Docs: `$ doxygen Doxyfile` (`docs/index.html`)
 Para compilar e rodar o código, é necessário ter o `make` e o `g++ -std=c++11` instalados. Opcionalmente, o `Doxygen` para gerar a documentação. 
 
 ## Compilar
-Para compilar o programa, basta utilizar `$ make` (uma pasta `build` será gerada).
+Para compilar o programa, basta utilizar `$ make -f Makefile.win` (para Windows) ou `$ make -f Makefile.lin` (para Linux) e uma pasta `build` será gerada.
 
 ## Interpretador
 Para rodar o programa no mode interpretador, basta usar o comando de acordo com o sistema operacional:
@@ -43,7 +43,7 @@ __Atenção para o interpretador__
 É preciso que todas as classes chamadas pela classe executada estejam no diretório `/examples/`. Caso contrário o interpretador não irá funcionar corretamente.
 
 ## Limpar
-Depois de executar o programa, basta executar `$ make clean` para deletar os arquivos gerados (arquivos objetos e executáveis).
+Depois de executar o programa, basta executar `$ make clean -f Makefile.win` para deletar os arquivos gerados (arquivos objetos e executáveis).
 
 ## Documentação
 É possível gerar uma página HTML com a documentação do código. Para isso, basta utilizar o comando `$ doxygen Doxyfile` (é preciso ter o doxygen instalado). Então, basta abrir na pasta docs o arquivo `index.html` no navegador, que ele irá te direcionar à página.

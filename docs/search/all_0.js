@@ -22,13 +22,11 @@ var searchData=
   ['_5fmethod_5ftype_19',['_method_type',['../dd/d6d/classCP__Info.html#a021c5a4a267a015953c2391d6e72ed2b',1,'CP_Info']]],
   ['_5fmethodref_20',['_methodref',['../dd/d6d/classCP__Info.html#ad3606469337aeb493249877d421c467e',1,'CP_Info']]],
   ['_5fname_5fand_5ftype_21',['_name_and_type',['../dd/d6d/classCP__Info.html#addff4bcddcce37770ffa24f4efda15f8',1,'CP_Info']]],
-  ['_5fnew_22',['_new',['../da/d29/references_8cpp.html#a5e5a2f77979a6844866182b7a41a4415',1,'_new(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;references.cpp'],['../de/d42/instructions_2references_8hpp.html#a5e5a2f77979a6844866182b7a41a4415',1,'_new(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;references.cpp']]],
-  ['_5freference_23',['_reference',['../dd/d8c/structoperand__t.html#a42fc2c3ad3c0d5a53ce107c9ce4d3c1a',1,'operand_t']]],
-  ['_5freturn_24',['_return',['../d0/d92/control_8cpp.html#acdc1d408536f4e103822c7565aacb6ac',1,'_return(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;control.cpp'],['../dc/dfd/control_8hpp.html#acdc1d408536f4e103822c7565aacb6ac',1,'_return(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;control.cpp']]],
-  ['_5freturn_5faddress_25',['_return_address',['../dd/d8c/structoperand__t.html#a9568158dd379e5d8fe926800f5ffdaf3',1,'operand_t']]],
-  ['_5fshort_26',['_short',['../dd/d8c/structoperand__t.html#ac3f5f8614e86844027cceeb1c79a93f5',1,'operand_t']]],
-  ['_5fsourcefile_27',['_sourcefile',['../d5/d5e/classAttribute__Info.html#aa3d0c03c1f2e018000febc7c62c39ad5',1,'Attribute_Info']]],
-  ['_5fstring_28',['_string',['../dd/d8c/structoperand__t.html#a8ed21982efd12a17010f53d398a7f847',1,'operand_t::_string()'],['../dd/d6d/classCP__Info.html#a4f41f8c978c5622464ebadaf9810135c',1,'CP_Info::_string()']]],
-  ['_5funknown_29',['_unknown',['../d5/d5e/classAttribute__Info.html#adcc3d0b07c47c53dbd66ab7a9ea5cf82',1,'Attribute_Info']]],
-  ['_5futf8_30',['_utf8',['../dd/d6d/classCP__Info.html#a91af98c4974692cd91dcfb2343a494a2',1,'CP_Info']]]
+  ['_5fnew_22',['_new',['../d1/da4/references_8hpp.html#a5e5a2f77979a6844866182b7a41a4415',1,'_new(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;references.cpp'],['../da/d29/references_8cpp.html#a5e5a2f77979a6844866182b7a41a4415',1,'_new(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;references.cpp']]],
+  ['_5freturn_23',['_return',['../dc/dfd/control_8hpp.html#acdc1d408536f4e103822c7565aacb6ac',1,'_return(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;control.cpp'],['../d0/d92/control_8cpp.html#acdc1d408536f4e103822c7565aacb6ac',1,'_return(cp_info_vector &amp;constant_pool, bytestream &amp;code, stack&lt; frame_t &gt; *stack_f):&#160;control.cpp']]],
+  ['_5fshort_24',['_short',['../dd/d8c/structoperand__t.html#ac3f5f8614e86844027cceeb1c79a93f5',1,'operand_t']]],
+  ['_5fsourcefile_25',['_sourcefile',['../d5/d5e/classAttribute__Info.html#aa3d0c03c1f2e018000febc7c62c39ad5',1,'Attribute_Info']]],
+  ['_5fstring_26',['_string',['../dd/d6d/classCP__Info.html#a4f41f8c978c5622464ebadaf9810135c',1,'CP_Info']]],
+  ['_5funknown_27',['_unknown',['../d5/d5e/classAttribute__Info.html#adcc3d0b07c47c53dbd66ab7a9ea5cf82',1,'Attribute_Info']]],
+  ['_5futf8_28',['_utf8',['../dd/d6d/classCP__Info.html#a91af98c4974692cd91dcfb2343a494a2',1,'CP_Info']]]
 ];
