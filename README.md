@@ -1,5 +1,7 @@
 # JVM-8
-Implementação menos avançada de JVM já vista na UnB. Projeto da disciplina de Software Básico 2021/2 - Universidade de Brasília
+Projeto da disciplina de Software Básico 2021/2 - Universidade de Brasília
+
+[Repositório GitHub](https://github.com/luizschonarth/JVM-8/)
 
 ## [Wiki do Projeto](https://luizschonarth.github.io/JVM-8/)
 
