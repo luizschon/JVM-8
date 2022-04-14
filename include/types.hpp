@@ -1,3 +1,8 @@
+/**
+ * @file types.hpp
+ * @brief Declaration of unsigned and signed types, dynamic pointer cast
+ */
+
 #ifndef _TYPES_HPP
 #define _TYPES_HPP
 
@@ -9,13 +14,13 @@
 
 using namespace std;
 
-// Unsigned types
+/// Unsigned types
 typedef uint8_t  u1;
 typedef uint16_t u2;
 typedef uint32_t u4;
 typedef uint64_t u8;
 
-// Signed types
+/// Signed types
 typedef int8_t  s1;
 typedef int16_t s2; 
 typedef int32_t s4;

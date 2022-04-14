@@ -1,3 +1,8 @@
+/**
+ * @file dump_class_file.hpp
+ * @brief Declaration of the dump class functions
+ */
+
 #ifndef _DUMP_CLASS_FILE_HPP
 #define _DUMP_CLASS_FILE_HPP
 

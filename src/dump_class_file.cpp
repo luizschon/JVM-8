@@ -2,18 +2,32 @@
 #include "../include/windows.hpp"
 #include <iomanip>
 #include <regex>
+#include <iostream>
 
 using namespace std;
 
 unsigned int pos_counter = 0;
 
+/**
+ * @brief Global file used to dump information stored in the .class file in Markdown format
+ */
 ofstream outfile;
 
-void open_outfile(string filename) {
+/**
+ * @brief Function that opens the outfile
+ * @param filename the name of the .class file
+ */
+void open_outfile(string filename)
+{
     create_dir();
     outfile = ofstream("./out/" + filename + ".md");
 }
 
+/**
+ * @brief Function responsible for calling all functions that dump information to the outfile
+ * @param class_f a reference to the class_file instance
+ * @param filepath the name of the .class
+ */
 void print_all(class_file &class_f, string filepath)
 {
     smatch m;
@@ -33,8 +47,14 @@ void print_all(class_file &class_f, string filepath)
     print_class_attributes(class_f);
     outfile.close();
     pos_counter = 0;
+
+    cout << "Generated \"" << filename + ".md\" at /out/" << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file "metadata", such as minor and major versions, access flags, etc.
+ * @param class_f a reference to the class_file instance
+ */
 void print_general_info(class_file &class_f)
 {
     outfile << "## **General Information**" << endl;
@@ -70,6 +90,12 @@ void print_general_info(class_file &class_f)
     outfile << endl;
 }
 
+/**
+ * @brief Parses the Major and Minor versions to interpret the Java version
+ * @param major 2 bytes representing the class_file major version
+ * @param minor 2 bytes representing the class_file minor version
+ * @return the parsed version as a string 
+ */
 string get_version(u2 major, u2 minor)
 {
     if (major >= 45 && major <= 48)
@@ -77,6 +103,9 @@ string get_version(u2 major, u2 minor)
     return to_string(major - 49 + 5);
 }
 
+/**
+ * @brief Data structure that divides a hexadecimal number into 4 parts
+ */
 union Nibble
 {
     u2 h16;
@@ -88,6 +117,12 @@ union Nibble
     } nb;
 };
 
+/**
+ * @brief Parses the class_file access flags
+ * @param access_flags 2 bytes representig the class_file access flags
+ * @param type the type of access flag (class, method or field)
+ * @return the string representng the access flag 
+ */
 string get_access_flags(u2 access_flags, int type)
 {
     string class_access = " ";
@@ -205,6 +240,10 @@ string get_access_flags(u2 access_flags, int type)
     return class_access;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file constant pool, including its items and indexes
+ * @param class_f a reference to the class_file instance
+ */
 void print_pool(cp_info_vector &constant_pool)
 {
     unsigned int cp_counter = 1;
@@ -219,6 +258,11 @@ void print_pool(cp_info_vector &constant_pool)
     outfile << "</details> <br>" << endl << endl;
 }
 
+/**
+ * @brief Get the utf8 content from a Constant_UTF8_Info instance in the constant pool
+ * @param utf8 a reference to a Constant_UTF8_Info reference
+ * @return the UTF8 string
+ */
 string get_utf8_content(CONSTANT_utf8_info &utf8)
 {
     string out = "";
@@ -227,6 +271,10 @@ string get_utf8_content(CONSTANT_utf8_info &utf8)
     return out;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file interfaces
+ * @param class_f a reference to the class_file instance
+ */
 void print_interfaces(class_file &class_f)
 {
     outfile << "## **Interfaces**" << endl << endl;
@@ -242,6 +290,10 @@ void print_interfaces(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file interfaces
+ * @param class_f a reference to the class_file instance
+ */
 void print_fields(class_file &class_f)
 {
     unsigned int field_counter = 0;
@@ -273,7 +325,10 @@ void print_fields(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
-// add attributes info when types are defined
+/**
+ * @brief Function responsible for printing to the outfile the .class file methods
+ * @param class_f a reference to the class_file instance
+ */
 void print_methods(class_file &class_f)
 {
     unsigned int method_counter = 0;
@@ -305,6 +360,10 @@ void print_methods(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file attributes
+ * @param class_f a reference to the class_file instance
+ */
 void print_class_attributes(class_file &class_f)
 {
     outfile << "## **Attributes**" << endl;
@@ -313,6 +372,10 @@ void print_class_attributes(class_file &class_f)
     outfile << "</details><br>" << endl << endl;
 }
 
+/**
+ * @brief Function responsible for printing to the outfile the .class file method and field attributes
+ * @param class_f a reference to the class_file instance
+ */
 void print_attributes_vector(attr_info_vector &attr_vector, cp_info_vector &constant_pool)
 {
     unsigned int attr_counter = 0;
